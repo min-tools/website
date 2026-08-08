@@ -32,3 +32,39 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+header.site {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+header.site .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+header.site .brand img { width: 28px; height: 28px; border-radius: 7px; }
+header.site nav a { margin-left: 20px; color: var(--muted); }
+
+/* Keep standalone document navigation inside narrow screens. Landing pages
+   have their own compact header layout. */
+@media (max-width: 600px) {
+  body:not(.landing) header.site {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  body:not(.landing) header.site nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+  body:not(.landing) header.site nav a { margin-left: 0; }
+}
+
