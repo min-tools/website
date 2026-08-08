@@ -68,3 +68,26 @@ header.site nav a { margin-left: 20px; color: var(--muted); }
   body:not(.landing) header.site nav a { margin-left: 0; }
 }
 
+main { max-width: 960px; margin: 0 auto; padding: 0 24px 24px; }
+
+.hero { text-align: center; padding: 40px 0 24px; }
+.hero img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); }
+.hero h1 { font-size: 44px; margin: 20px 0 8px; letter-spacing: -0.02em; }
+.hero .tag { font-size: 22px; color: var(--muted); margin: 0 0 24px; }
+.hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.cta.soon { background: var(--card); color: var(--muted); border: 1px solid var(--line); }
+.cta:hover { text-decoration: none; filter: brightness(1.05); }
+
+section { margin: 40px 0; }
+section > h2 { font-size: 26px; letter-spacing: -0.01em; margin: 0 0 6px; }
+section > p.lead { color: var(--muted); margin: 0 0 20px; max-width: 64ch; }
+
