@@ -103,3 +103,12 @@ section > p.lead { color: var(--muted); margin: 0 0 20px; max-width: 64ch; }
 .doc .meta { color: var(--muted); margin-top: 0; }
 .doc code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; background: var(--card); padding: 1px 5px; border-radius: 5px; }
 
+/* Framed documents add "embed" in their page script: hide the standalone
+   header and footer, and use the dialog background. */
+.embed body { background: transparent; }
+.embed header.site, .embed footer.site, .embed .doc h1 { display: none; }
+.embed main { max-width: none; margin: 0; padding: 4px 22px 30px; }
+.embed .doc h2 { font-size: 20px; margin: 26px 0 8px; }
+.embed .doc h3 { margin: 20px 0 4px; }
+.embed .doc .meta { margin: 4px 0 0; }
+
