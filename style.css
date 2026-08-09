@@ -112,3 +112,13 @@ section > p.lead { color: var(--muted); margin: 0 0 20px; max-width: 64ch; }
 .embed .doc h3 { margin: 20px 0 4px; }
 .embed .doc .meta { margin: 4px 0 0; }
 
+footer.site {
+  max-width: 960px;
+  margin: 40px auto 0;
+  padding: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+footer.site a { color: var(--muted); }
