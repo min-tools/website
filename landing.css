@@ -224,3 +224,30 @@ body.landing header.site.scrolled::before {
   opacity: 1;
 }
 
+/* Menu links are not muted grey: near white on a dark ground (the capsule above
+in both schemes, the hero in the dark scheme) and the text color over the light
+hero. */
+@media (prefers-color-scheme: dark) {
+  body.landing header.site {
+    --muted: #efefef;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body.landing header.site {
+    --muted: #1d1d1f;
+  }
+}
+
+body.landing header.site .brand {
+  gap: 9px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+body.landing header.site .brand img {
+  width: 26px;
+  height: 26px;
+}
+
