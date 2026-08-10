@@ -117,3 +117,38 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Keep decorative glows from widening the viewport without creating a
+   scrolling container that would interfere with the sticky header. */
+html {
+  overflow-x: clip;
+}
+
+body.landing {
+  overflow-x: clip;
+}
+
+body.landing main {
+  max-width: none;
+  padding: 0;
+}
+
+body.landing section {
+  margin: 0;
+}
+
+body.landing section:not(.hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Once the page is idle, or right before an anchor jump, every section is laid out for real so the jump lands exactly (landing.js adds the class). */
+html.settled body.landing section:not(.hero) {
+  content-visibility: visible;
+}
+
