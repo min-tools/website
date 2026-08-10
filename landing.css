@@ -251,3 +251,43 @@ body.landing header.site .brand img {
   height: 26px;
 }
 
+body.landing header.site nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+body.landing header.site nav a {
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+body.landing header.site nav a:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  text-decoration: none;
+}
+
+body.landing header.site nav a.gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+
+body.landing header.site nav a.gh:hover {
+  background: color-mix(in srgb, var(--fg) 14%, transparent);
+}
+
+body.landing header.site nav a.gh .ic {
+  width: 15px;
+  height: 15px;
+}
+
