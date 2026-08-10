@@ -1,0 +1,119 @@
+/* Landing page only. style.css supplies the shared tokens, header, and footer. */
+
+:root {
+  --grad: linear-gradient(120deg, #4db2ff 0%, #0a7aff 48%, #5b5bff 100%);
+  --win-shadow: 0 30px 80px -24px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(0, 0, 0, 0.35);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 16px 40px -20px rgba(0, 0, 0, 0.14);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --glow-a: rgba(10, 122, 255, 0.34);
+  --glow-b: rgba(90, 200, 250, 0.26);
+  --glow-c: rgba(91, 91, 255, 0.2);
+  --header-fill: 67%;
+  --header-halo: #f5f5f7;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  /* Light palette for the drawn app windows; dark-mode overrides follow
+     below. */
+  --win: #f5f5f7;
+  --win-2: #ebebef;
+  --win-3: #dfdfe5;
+  --win-4: #d2d2d9;
+  --pane: #ffffff;
+  --win-line: rgba(0, 0, 0, 0.08);
+  --win-border: rgba(0, 0, 0, 0.12);
+  --win-border-2: rgba(0, 0, 0, 0.22);
+  /* Text and accent colors for the light app-window palette. */
+  --win-fg: #1d1d1f;
+  --win-fg-2: #3a3a3f;
+  --win-muted: #6e6e73;
+  --win-dim: rgba(0, 0, 0, 0.38);
+  --win-accent: #0a7aff;
+  --win-accent-bg: #d6e8ff;
+  --win-accent-bg-2: #c4ddff;
+  --win-fill: rgba(0, 0, 0, 0.05);
+  --win-fill-2: rgba(0, 0, 0, 0.11);
+  --win-inset: rgba(0, 0, 0, 0.05);
+  --win-overlay: rgba(250, 250, 252, 0.96);
+  /* Semantic colors for success, errors, and warnings in app previews. */
+  --win-ok: #1b8a3d;
+  --win-ok-bg: rgba(52, 199, 89, 0.16);
+  --win-bad: #d12f27;
+  --win-bad-bg: rgba(255, 59, 48, 0.12);
+  --win-warn: #a86400;
+  --win-warn-bg: rgba(255, 159, 10, 0.18);
+  /* Shared desktop, keyboard, and import artwork colors. */
+  --mbar-bg: rgba(255, 255, 255, 0.6);
+  --mbar-fg: rgba(0, 0, 0, 0.85);
+  --keycap-bg: linear-gradient(180deg, #ffffff, #e8e8ee);
+  --keycap-shadow: 0 0.3em 0 rgba(0, 0, 0, 0.16), 0 12px 30px -12px rgba(0, 0, 0, 0.3);
+  --cube-doc: rgba(77, 163, 255, 0.14);
+  --cube-img: rgba(224, 90, 214, 0.12);
+  --cube-aud: rgba(255, 159, 46, 0.16);
+  --filechip: rgba(255, 159, 46, 0.22);
+  --desk-bg:
+    radial-gradient(70% 60% at 30% 20%, rgba(10, 122, 255, 0.22), transparent 70%),
+    radial-gradient(50% 50% at 85% 85%, rgba(120, 91, 255, 0.18), transparent 70%),
+    linear-gradient(160deg, #e3e9f7, #eef0f6);
+  --desk-fade: rgba(236, 239, 246, 0.92);
+  /* The thin highlight along the hero window's top edge only reads on a dark
+     window. */
+  --win-sheen: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0e;
+    --card: #141418;
+    --line: rgba(255, 255, 255, 0.09);
+    --win-shadow: 0 30px 80px -24px rgba(0, 0, 0, 0.85), 0 0 0 0.5px rgba(255, 255, 255, 0.07);
+    --card-shadow: none;
+    --glow-a: rgba(10, 122, 255, 0.4);
+    --glow-b: rgba(90, 200, 250, 0.22);
+    --glow-c: rgba(120, 91, 255, 0.28);
+    --header-fill: 33%;
+    --header-halo: #0b0b0e;
+    /* Match all app-preview surfaces and artwork to the dark color scheme. */
+    --win: #1a1a1e;
+    --win-2: #212126;
+    --win-3: #2a2a30;
+    --win-4: #35353b;
+    --pane: #111114;
+    --win-line: rgba(255, 255, 255, 0.09);
+    --win-border: rgba(255, 255, 255, 0.12);
+    --win-border-2: rgba(255, 255, 255, 0.26);
+    /* Dark-scheme text, accent fills, and inset surfaces. */
+    --win-fg: #f2f2f5;
+    --win-fg-2: #c9c9d0;
+    --win-muted: #9a9aa3;
+    --win-dim: rgba(255, 255, 255, 0.4);
+    --win-accent: #3f9cff;
+    --win-accent-bg: #162a4c;
+    --win-accent-bg-2: #1a3258;
+    --win-fill: rgba(255, 255, 255, 0.07);
+    --win-fill-2: rgba(255, 255, 255, 0.16);
+    --win-inset: rgba(0, 0, 0, 0.2);
+    --win-overlay: rgba(36, 36, 42, 0.96);
+    /* Keep semantic status colors readable on dark surfaces. */
+    --win-ok: #7ee787;
+    --win-ok-bg: rgba(52, 199, 89, 0.16);
+    --win-bad: #ff8078;
+    --win-bad-bg: rgba(255, 128, 120, 0.16);
+    --win-warn: #ffd166;
+    --win-warn-bg: rgba(255, 204, 0, 0.16);
+    /* Dark-scheme desktop and decorative artwork colors. */
+    --mbar-bg: rgba(20, 20, 26, 0.6);
+    --mbar-fg: rgba(255, 255, 255, 0.85);
+    --keycap-bg: linear-gradient(180deg, #3a3a42, #26262c);
+    --keycap-shadow: 0 0.3em 0 rgba(0, 0, 0, 0.45), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+    --cube-doc: rgba(28, 52, 88, 0.55);
+    --cube-img: rgba(66, 26, 66, 0.55);
+    --cube-aud: rgba(74, 44, 16, 0.55);
+    --filechip: rgba(74, 44, 16, 0.85);
+    --desk-bg:
+      radial-gradient(70% 60% at 30% 20%, rgba(10, 122, 255, 0.35), transparent 70%),
+      radial-gradient(50% 50% at 85% 85%, rgba(120, 91, 255, 0.3), transparent 70%),
+      linear-gradient(160deg, #2b2f4a, #141420);
+    --desk-fade: rgba(18, 18, 24, 0.9);
+    --win-sheen: rgba(120, 190, 255, 0.55);
+  }
+}
+
