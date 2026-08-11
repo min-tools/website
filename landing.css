@@ -338,3 +338,44 @@ body.landing header.site nav a.on:hover {
   text-align: center;
 }
 
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.eyebrow .ic {
+  width: 14px;
+  height: 14px;
+}
+
+.landing h2 {
+  font-size: clamp(30px, 4.2vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.landing .lead {
+  font-size: clamp(17px, 1.6vw, 20px);
+  color: var(--muted);
+  margin: 0;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.sec-head.center .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
