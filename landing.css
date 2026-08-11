@@ -291,3 +291,25 @@ body.landing header.site nav a.gh .ic {
   height: 15px;
 }
 
+/* Inside the dark capsule, hover and the GitHub pill use a near-black fill
+   rather than a pale grey wash. */
+html:not(.js) body.landing header.site nav a:hover,
+html:not(.js) body.landing header.site nav a.gh,
+body.landing header.site.scrolled nav a:hover,
+body.landing header.site.scrolled nav a.gh {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+html:not(.js) body.landing header.site nav a.gh:hover,
+body.landing header.site.scrolled nav a.gh:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* The menu item for the section in view is highlighted: white with black
+   text, in both schemes and over the capsule. */
+body.landing header.site nav a.on,
+body.landing header.site nav a.on:hover {
+  color: #111;
+  background: #fff;
+}
+
