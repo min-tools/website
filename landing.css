@@ -313,3 +313,28 @@ body.landing header.site nav a.on:hover {
   background: #fff;
 }
 
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sec {
+  padding: clamp(56px, 8vw, 104px) 0;
+}
+
+.sec+.sec {
+  padding-top: 0;
+}
+
+.sec-head {
+  max-width: 64ch;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.sec-head.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
