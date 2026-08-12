@@ -541,3 +541,28 @@ body.landing header.site nav a.on:hover {
   color: var(--muted);
 }
 
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 14px;
+  font-size: 16px;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.cta .ic {
+  width: 18px;
+  height: 18px;
+}
+
+.cta.primary {
+  background: linear-gradient(180deg, #2b8dff, #0a6fff);
+  box-shadow: 0 10px 24px -10px rgba(10, 111, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.cta.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -10px rgba(10, 111, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
