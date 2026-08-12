@@ -425,3 +425,26 @@ body.landing header.site nav a.on:hover {
   }
 }
 
+/* Hero */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: clamp(36px, 5vw, 64px) 0 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -22%;
+  width: min(130vw, 1500px);
+  height: 78%;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(38% 42% at 50% 34%, var(--glow-a), transparent 72%),
+    radial-gradient(22% 30% at 24% 58%, var(--glow-b), transparent 70%),
+    radial-gradient(24% 32% at 76% 52%, var(--glow-c), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
