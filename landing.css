@@ -503,3 +503,28 @@ body.landing header.site nav a.on:hover {
   box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
 }
 
+.hero h1 {
+  font-size: clamp(40px, 6.6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  margin: 0 auto 16px;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero .sub {
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 auto 26px;
+}
+
