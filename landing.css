@@ -566,3 +566,28 @@ body.landing header.site nav a.on:hover {
   box-shadow: 0 14px 30px -10px rgba(10, 111, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
+/* The wordmark, in white, inside a primary button, ahead of the words that
+   follow it. */
+.cta .wordmark {
+  width: auto;
+  height: 26px;
+  /* The artwork has empty space on both sides; pull it in so the mark sits
+     on the padding and "on" follows at a word space. */
+  margin: -2px -12px -2px -6px;
+  /* style.css decorates images in a hero with a rounded shadow; the wordmark
+     is flat. */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.cta.ghost {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+.cta.ghost:hover {
+  transform: translateY(-1px);
+}
+
