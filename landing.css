@@ -448,3 +448,58 @@ body.landing header.site nav a.on:hover {
   z-index: -1;
 }
 
+.whatsnew {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 22px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.whatsnew .plat {
+  display: inline-block;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.whatsnew .plat::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.45;
+  vertical-align: 0.05em;
+}
+
+.whatsnew .plat em {
+  font-style: normal;
+}
+
+/* A fact beside the platform status carries no status dot. */
+.whatsnew .plat.fact::before {
+  display: none;
+}
+
+.whatsnew .plat.on {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.whatsnew .plat.on::before {
+  background: #34c759;
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
+}
+
