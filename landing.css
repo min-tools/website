@@ -528,3 +528,16 @@ body.landing header.site nav a.on:hover {
   margin: 0 auto 26px;
 }
 
+.hero .actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero .fine {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
