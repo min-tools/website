@@ -725,3 +725,55 @@ body.landing header.site nav a.on:hover {
   text-align: left;
 }
 
+.win-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  height: 3em;
+  padding: 0 1.1em;
+  font-weight: 600;
+  font-size: 1.02em;
+  background: var(--win-2);
+  border-bottom: 1px solid var(--win-line);
+}
+
+.win-bar .spacer {
+  flex: 1;
+}
+
+.win-bar .muted {
+  color: var(--win-muted);
+  font-weight: 500;
+}
+
+.win-bar .ic {
+  width: 1.25em;
+  height: 1.25em;
+  color: var(--win-muted);
+}
+
+.dots {
+  display: flex;
+  gap: 0.55em;
+  margin-right: 0.5em;
+}
+
+.dots i {
+  display: block;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 50%;
+}
+
+.dots i:nth-child(1) {
+  background: #ff5f57;
+}
+
+.dots i:nth-child(2) {
+  background: #febc2e;
+}
+
+.dots i:nth-child(3) {
+  background: #28c840;
+}
+
