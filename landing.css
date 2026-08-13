@@ -703,3 +703,25 @@ body.landing header.site nav a.on:hover {
   color: var(--accent);
 }
 
+/* App windows, sized in em so they scale with their container. */
+.frame {
+  container-type: inline-size;
+}
+
+.frame .win {
+  font-size: clamp(9px, 2cqw, 15px);
+}
+
+.win {
+  position: relative;
+  font-size: clamp(8.5px, 1.6cqw, 15px);
+  line-height: 1.4;
+  color: var(--win-fg);
+  background: var(--win);
+  border: 1px solid var(--win-line);
+  border-radius: 1em;
+  box-shadow: var(--win-shadow);
+  overflow: hidden;
+  text-align: left;
+}
+
