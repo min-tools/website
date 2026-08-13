@@ -777,3 +777,34 @@ body.landing header.site nav a.on:hover {
   background: #28c840;
 }
 
+/* The launcher: input pane, arrow, result pane, chips, footer. */
+.launcher {
+  padding: 1.2em;
+}
+
+.splitview {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5em;
+  height: 28em;
+}
+
+.splitview.short {
+  height: 19em;
+}
+
+.pane-in,
+.pane-out {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--win-border);
+  border-radius: 0.9em;
+  background: var(--pane);
+  overflow: hidden;
+}
+
+.pane-in.focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--win-accent);
+}
+
