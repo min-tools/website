@@ -808,3 +808,27 @@ body.landing header.site nav a.on:hover {
   box-shadow: 0 0 0 2px var(--win-accent);
 }
 
+.pane-in .text {
+  padding: 1em 1.2em;
+  font-size: 1.3em;
+  line-height: 1.4;
+  color: var(--win-fg);
+  overflow-wrap: anywhere;
+}
+
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  margin-left: 1px;
+  background: var(--win-fg);
+  vertical-align: -0.18em;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
