@@ -634,3 +634,41 @@ body.landing header.site nav a.on:hover {
   }
 }
 
+.sat {
+  position: absolute;
+  z-index: 2;
+  animation: bob 6s ease-in-out infinite;
+}
+
+.sat.hud {
+  left: -5%;
+  top: 30%;
+  animation-delay: -2s;
+}
+
+.sat.toast {
+  right: -3%;
+  top: 8%;
+  animation-delay: -4s;
+}
+
+.sat.keys {
+  right: 3%;
+  bottom: -4%;
+  display: flex;
+  gap: 6px;
+  animation-delay: -1s;
+}
+
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
