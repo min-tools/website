@@ -1027,3 +1027,45 @@ body.landing header.site nav a.on:hover {
   color: var(--win-accent);
 }
 
+.res-follow {
+  border-top: 1px solid var(--win-line);
+  padding: 0.75em 1.1em 0.8em;
+}
+
+.res-follow .field {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 2.2em;
+}
+
+.res-follow .field .ph {
+  color: var(--win-muted);
+}
+
+.res-follow .field.filled .ph {
+  display: none;
+}
+
+.res-follow .field .typed {
+  overflow-wrap: anywhere;
+}
+
+.res-follow .field .send {
+  margin-left: auto;
+}
+
+.fmodel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 0.55em;
+  font-size: 0.85em;
+  color: var(--win-muted);
+}
+
+.fmodel .chev {
+  width: 0.85em;
+  height: 0.85em;
+}
+
