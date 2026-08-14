@@ -895,3 +895,41 @@ body.landing header.site nav a.on:hover {
   max-width: 26em;
 }
 
+.pane-out .res {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.45s var(--ease);
+}
+
+.res-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.8em 1.1em 0.4em;
+  font-weight: 600;
+  font-size: 1.02em;
+  white-space: nowrap;
+}
+
+.res-head>span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.res-head .wc {
+  display: flex;
+  gap: 0.4em;
+  margin-left: auto;
+}
+
+.res-head .wc .ic {
+  width: 1.5em;
+  height: 1.5em;
+  padding: 0.25em;
+  border-radius: 0.35em;
+  background: var(--win-fill);
+  color: var(--win-muted);
+}
+
