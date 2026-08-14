@@ -933,3 +933,37 @@ body.landing header.site nav a.on:hover {
   color: var(--win-muted);
 }
 
+.res-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.3em 1.1em 0.7em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.res-tools i {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.45em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  color: var(--win-muted);
+}
+
+.res-tools i .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.res-tools .meta {
+  margin-left: auto;
+  min-width: 0;
+  font-size: 0.8em;
+  color: var(--win-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
