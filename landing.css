@@ -873,3 +873,25 @@ body.landing header.site nav a.on:hover {
   height: 1.5em;
 }
 
+.pane-out .empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: 2em;
+  text-align: center;
+  color: var(--win-muted);
+}
+
+.pane-out .empty b {
+  font-size: 1.2em;
+  color: var(--win-fg-2);
+}
+
+.pane-out .empty span {
+  max-width: 26em;
+}
+
