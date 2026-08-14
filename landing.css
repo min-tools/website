@@ -967,3 +967,63 @@ body.landing header.site nav a.on:hover {
   text-overflow: ellipsis;
 }
 
+.working {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1em 1.2em;
+}
+
+.working b {
+  font-weight: 600;
+}
+
+.working span {
+  color: var(--win-muted);
+}
+
+.res-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.85em 1.2em;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.res-body h4,
+.convo h4 {
+  margin: 0 0 0.5em;
+  font-size: 1.12em;
+  font-weight: 500;
+}
+
+.res-body p,
+.convo p {
+  margin: 0 0 0.6em;
+}
+
+.res-body p:last-child {
+  margin-bottom: 0;
+}
+
+.who {
+  display: block;
+  margin: 0.55em 0 0.1em;
+  font-size: 0.85em;
+  color: var(--win-muted);
+}
+
+.who.you {
+  color: var(--win-accent);
+  font-weight: 600;
+}
+
+.res-body .langhead {
+  display: block;
+  margin: 0.3em 0 0.1em;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: var(--win-accent);
+}
+
