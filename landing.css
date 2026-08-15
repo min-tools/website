@@ -1186,3 +1186,95 @@ button.chip:focus-visible {
   color: var(--win-accent);
 }
 
+/* Empty input: the placeholder question, a hint, and the three drop targets. */
+.pane-in .drop {
+  position: absolute;
+  inset: 0 0 2.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  padding: 1em 1.2em;
+  text-align: center;
+}
+
+.pane-in .drop>b {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--win-fg-2);
+}
+
+.pane-in .drop>span {
+  font-size: 0.95em;
+  color: var(--win-muted);
+}
+
+.pane-in.filled .drop {
+  display: none;
+}
+
+.cubes {
+  display: flex;
+  justify-content: center;
+  gap: 0.8em;
+  margin-top: 1.1em;
+}
+
+.cube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+  width: 7em;
+  padding: 0.85em 0.35em 0.75em;
+  border-radius: 0.8em;
+  border: 1px solid;
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.cube .ic {
+  width: 1.5em;
+  height: 1.5em;
+  margin-bottom: 0.25em;
+}
+
+.cube b {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--win-fg);
+}
+
+.cube small {
+  /* Wrap within the tile when the browser enlarges small text. */
+  max-width: 100%;
+  font-size: 0.66em;
+  letter-spacing: 0.03em;
+  color: var(--win-muted);
+}
+
+.cube.doc {
+  color: #4da3ff;
+  background: var(--cube-doc);
+  border-color: rgba(77, 163, 255, 0.28);
+}
+
+.cube.img {
+  color: #e05ad6;
+  background: var(--cube-img);
+  border-color: rgba(224, 90, 214, 0.28);
+}
+
+.cube.aud {
+  color: #ff9f2e;
+  background: var(--cube-aud);
+  border-color: rgba(255, 159, 46, 0.3);
+}
+
+.cube.on,
+.pane-in.dropping .cube.aud,
+.pane-in[data-import="drop"] .cube.aud {
+  box-shadow: 0 0 0 2px currentColor, 0 12px 30px -14px currentColor;
+  transform: translateY(-2px);
+}
+
