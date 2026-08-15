@@ -1278,3 +1278,52 @@ button.chip:focus-visible {
   transform: translateY(-2px);
 }
 
+.filechip {
+  position: absolute;
+  left: 1.1em;
+  top: 1em;
+  display: none;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45em 0.8em 0.45em 0.6em;
+  border-radius: 0.6em;
+  font-size: 0.95em;
+  color: var(--win-fg);
+  background: var(--filechip);
+  border: 1px solid rgba(255, 159, 46, 0.4);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.8);
+  animation: dropin 0.45s var(--ease) both;
+}
+
+.filechip .ic {
+  width: 1.1em;
+  height: 1.1em;
+  color: #ff9f2e;
+}
+
+.filechip b {
+  font-weight: 600;
+}
+
+.filechip span {
+  color: var(--win-muted);
+}
+
+.filechip.show,
+.pane-in[data-import="drop"] .filechip,
+.pane-in[data-import="working"] .filechip {
+  display: inline-flex;
+}
+
+@keyframes dropin {
+  from {
+    opacity: 0;
+    transform: translateY(-0.8em) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
