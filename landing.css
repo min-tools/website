@@ -1141,3 +1141,48 @@ button.chip:focus-visible {
   outline-offset: 2px;
 }
 
+.launcher-foot {
+  display: flex;
+  align-items: center;
+  gap: 1.6em;
+  margin-top: 1.1em;
+  font-weight: 600;
+  color: var(--win-muted);
+}
+
+.launcher-foot .model {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: var(--win-fg-2);
+}
+
+.launcher-foot .model .ic {
+  color: var(--win-fg-2);
+}
+
+.launcher-foot .model .chev {
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--win-muted);
+}
+
+.launcher-foot .go {
+  margin-left: auto;
+  transition: transform 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.launcher-foot .go b {
+  color: var(--win-fg);
+  font-weight: 600;
+}
+
+.launcher-foot .go.press {
+  transform: scale(1.08);
+  color: var(--win-accent);
+}
+
+.launcher-foot .go.press b {
+  color: var(--win-accent);
+}
+
