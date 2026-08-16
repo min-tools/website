@@ -1327,3 +1327,98 @@ button.chip:focus-visible {
   }
 }
 
+/* While a recording is being imported the sheet owns the pane: no caret behind the file chip, no send button under the sheet. */
+.pane-in[data-import] .caret,
+.pane-in[data-import] .send {
+  display: none;
+}
+
+.import {
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  z-index: 2;
+  display: none;
+  width: min(92%, 30em);
+  padding: 0.9em 1em 1em;
+  font-size: 0.92em;
+  border-radius: 0.9em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.85);
+  transform: translateX(-50%);
+}
+
+.import.show,
+.pane-in[data-import="working"] .import {
+  display: block;
+}
+
+.import .row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.import .row .spin {
+  width: 1.1em;
+  height: 1.1em;
+  stroke-width: 2.4;
+}
+
+.import .row b {
+  min-width: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.import .row>span {
+  color: var(--win-muted);
+  white-space: nowrap;
+}
+
+.import .row .cancel {
+  margin-left: auto;
+  padding: 0.3em 0.8em;
+  border-radius: 0.5em;
+  background: var(--win-fill);
+  color: var(--win-fg);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.import .bar {
+  display: block;
+  position: relative;
+  height: 0.4em;
+  margin-top: 0.8em;
+  border-radius: 1em;
+  overflow: hidden;
+  background: var(--win-fill);
+}
+
+.import .bar i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 1em;
+  background: linear-gradient(90deg, var(--win-muted), var(--win-fg));
+}
+
+.pane-in[data-import="working"] .import .bar i {
+  animation: fillbar 2.4s ease-out forwards;
+}
+
+@keyframes fillbar {
+  from {
+    width: 4%;
+  }
+
+  to {
+    width: 96%;
+  }
+}
+
