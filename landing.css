@@ -1507,3 +1507,36 @@ button.chip:focus-visible {
   }
 }
 
+/* Hero replay states (JavaScript drives them; without it, or with reduced motion, the finished conversation shows). */
+html.motion [data-hero]:not(.live) .res,
+html.motion [data-hero]:not(.live) .typed {
+  visibility: hidden;
+}
+
+[data-hero][data-state="idle"] .res {
+  display: none;
+}
+
+[data-hero]:not([data-state="idle"]) .empty {
+  display: none;
+}
+
+[data-hero]:not([data-state="working"]) .working {
+  display: none;
+}
+
+[data-hero][data-state="working"] .res-body,
+[data-hero][data-state="working"] .res-follow {
+  visibility: hidden;
+}
+
+[data-hero][data-state="leaving"] .res {
+  opacity: 0;
+}
+
+[data-hero][data-state="idle"] .send.live,
+[data-hero][data-state="leaving"] .send.live {
+  background: var(--win-fill);
+  color: var(--win-muted);
+}
+
