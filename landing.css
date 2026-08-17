@@ -1632,3 +1632,23 @@ html.motion [data-hero]:not(.live) .typed {
   }
 }
 
+/* Scroll reveal, only when JavaScript is running. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+html.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .reveal.d1 {
+  transition-delay: 0.1s;
+}
+
+html.js .reveal.d2 {
+  transition-delay: 0.2s;
+}
+
