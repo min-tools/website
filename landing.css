@@ -1700,3 +1700,69 @@ html.js .reveal.d2 {
   }
 }
 
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: 1em;
+  border: 1px solid var(--win-border);
+  background: var(--pane);
+  padding: 1em 1.15em 1.1em;
+}
+
+.pane.in {
+  box-shadow: 0 0 0 2px rgba(63, 156, 255, 0.55);
+  border-color: transparent;
+}
+
+.pane.out {
+  background: var(--win-2);
+  border-color: var(--win-line);
+}
+
+.pane .lbl {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.6em;
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+}
+
+.pane .lbl .right {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.pane p {
+  margin: 0 0 0.6em;
+  font-size: 1.12em;
+  line-height: 1.5;
+}
+
+.pane p:last-child {
+  margin-bottom: 0;
+}
+
+.pane h3 {
+  margin: 0 0 0.35em;
+  font-size: 1.6em;
+  letter-spacing: -0.02em;
+}
+
+.pane h4 {
+  margin: 0.7em 0 0.25em;
+  font-size: 1.05em;
+}
+
+.pane h4 .ipa {
+  font-weight: 400;
+  color: var(--win-muted);
+  margin-left: 0.4em;
+}
+
