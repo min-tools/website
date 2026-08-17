@@ -1797,3 +1797,33 @@ html.js .reveal.d2 {
   vertical-align: -0.05em;
 }
 
+.pane .src {
+  margin-top: auto;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--win-line);
+  font-size: 0.92em;
+  color: var(--win-muted);
+}
+
+.pane .src b {
+  display: block;
+  color: var(--win-fg);
+  margin-bottom: 0.2em;
+}
+
+.pane .src a {
+  color: var(--win-accent);
+}
+
+.pane .langhead {
+  display: block;
+  margin: 0.5em 0 0.15em;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--win-accent);
+}
+
+.pane .langhead:first-of-type {
+  margin-top: 0;
+}
+
