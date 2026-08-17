@@ -1766,3 +1766,34 @@ html.js .reveal.d2 {
   margin-left: 0.4em;
 }
 
+.pane ul,
+.pane ol {
+  margin: 0.2em 0 0.4em;
+  padding-left: 1.3em;
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+.pane li {
+  margin: 0.15em 0;
+}
+
+.pane li em {
+  color: var(--win-muted);
+  font-style: italic;
+}
+
+/* Pronunciation glyphs sit inline in the secondary color, like the app's speaker.wave.2 attachment: no button chrome. */
+.pane .spk {
+  display: inline-block;
+  margin-left: 0.3em;
+  color: var(--win-muted);
+  line-height: 1;
+}
+
+.pane .spk .ic {
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.05em;
+}
+
