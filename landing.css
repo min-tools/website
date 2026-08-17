@@ -1611,3 +1611,24 @@ html.motion [data-hero]:not(.live) .typed {
   font-weight: 500;
 }
 
+.keycap {
+  display: grid;
+  place-items: center;
+  min-width: 2.2em;
+  height: 2.2em;
+  padding: 0 0.5em;
+  border-radius: 0.55em;
+  font-size: clamp(12px, 2.2cqw, 17px);
+  font-weight: 600;
+  color: var(--win-fg);
+  background: var(--keycap-bg);
+  border: 1px solid var(--win-border);
+  box-shadow: var(--keycap-shadow);
+}
+
+@media (max-width: 720px) {
+  .stage .sat {
+    display: none;
+  }
+}
+
