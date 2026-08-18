@@ -1859,3 +1859,61 @@ html.js .reveal.d2 {
   color: var(--win-muted);
 }
 
+.pane .opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.9em;
+  font-size: 0.9em;
+  color: var(--win-muted);
+}
+
+.pane .seg {
+  display: inline-flex;
+  padding: 0.15em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+}
+
+.pane .seg span {
+  padding: 0.25em 0.7em;
+  border-radius: 0.45em;
+  font-weight: 600;
+  color: var(--win-muted);
+}
+
+.pane .seg span.on {
+  background: var(--win-3);
+  color: var(--win-fg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.pane .lbl .seg {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.pane .lbl .seg span {
+  padding: 0.15em 0.6em;
+}
+
+.pane .opts .tick {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.3em 0.7em;
+  border-radius: 0.6em;
+  font-weight: 600;
+  color: var(--win-fg);
+  background: var(--win-fill);
+}
+
+.pane .opts .tick .ic {
+  width: 0.9em;
+  height: 0.9em;
+  color: var(--win-accent);
+}
+
