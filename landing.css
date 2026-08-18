@@ -1917,3 +1917,17 @@ html.js .reveal.d2 {
   color: var(--win-accent);
 }
 
+.pane del {
+  color: var(--win-bad);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 128, 120, 0.8);
+}
+
+.pane ins {
+  color: var(--win-ok);
+  text-decoration: none;
+  background: rgba(52, 199, 89, 0.14);
+  border-radius: 0.25em;
+  padding: 0 0.12em;
+}
+
