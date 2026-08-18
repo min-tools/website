@@ -1931,3 +1931,65 @@ html.js .reveal.d2 {
   padding: 0 0.12em;
 }
 
+.linkcard {
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+  margin-bottom: 0.6em;
+  padding: 0.7em 0.85em;
+  border-radius: 0.7em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+}
+
+.linkcard .ic {
+  width: 1.6em;
+  height: 1.6em;
+  color: var(--win-accent);
+}
+
+.linkcard b {
+  display: block;
+  font-size: 1.05em;
+  line-height: 1.35;
+}
+
+.linkcard span {
+  display: block;
+  font-size: 0.85em;
+  color: var(--win-muted);
+}
+
+.pageimg {
+  margin: 0.2em 0 0.8em;
+}
+
+.art {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 0.6em;
+  background: linear-gradient(135deg, #2b6cff, #7a4dff);
+}
+
+.art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.art.bridge {
+  aspect-ratio: 16 / 7;
+  background: linear-gradient(170deg, #1a3a6f 0%, #3d8ad6 55%, #9fd0ff 100%);
+}
+
+.pageimg figcaption {
+  margin-top: 0.4em;
+  font-size: 0.82em;
+  color: var(--win-muted);
+}
+
+.pageimg figcaption a {
+  color: var(--win-accent);
+}
+
