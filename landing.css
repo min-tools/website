@@ -1993,3 +1993,44 @@ html.js .reveal.d2 {
   color: var(--win-accent);
 }
 
+.arrow {
+  display: grid;
+  place-items: center;
+  color: var(--win-muted);
+}
+
+.arrow .ic {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+mark.bad {
+  background: none;
+  color: inherit;
+  text-decoration: underline wavy #ff6b6b;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+}
+
+.demo-cap {
+  margin: 20px auto 0;
+  max-width: 72ch;
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.demo-cap[hidden] {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
+  .arrow .ic {
+    transform: rotate(90deg);
+  }
+}
+
