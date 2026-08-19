@@ -2034,3 +2034,89 @@ mark.bad {
   }
 }
 
+/* Two-column feature rows */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.split.flip .visual {
+  order: -1;
+}
+
+.split .copy h2 {
+  font-size: clamp(28px, 3.6vw, 40px);
+}
+
+.split .copy .lead {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.split .visual {
+  position: relative;
+}
+
+.split .visual::before {
+  content: "";
+  position: absolute;
+  inset: 12% 6%;
+  background: radial-gradient(55% 55% at 50% 50%, var(--glow-a), transparent 72%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.feats {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feat {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.feat .badge {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.feat .badge .ic {
+  width: 20px;
+  height: 20px;
+}
+
+.feat h3 {
+  margin: 0 0 3px;
+  font-size: 17px;
+}
+
+.feat p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split.flip .visual {
+    order: 0;
+  }
+}
+
