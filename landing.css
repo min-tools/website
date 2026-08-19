@@ -2231,3 +2231,36 @@ mark.bad {
   font-size: 1.05em;
 }
 
+.player {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.75em 1.1em;
+  border-top: 1px solid var(--win-line);
+  background: var(--win-2);
+}
+
+.pbtn {
+  display: grid;
+  place-items: center;
+  height: 1.95em;
+  min-width: 2.4em;
+  padding: 0 0.45em;
+  border-radius: 0.45em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  color: var(--win-accent);
+  font-size: 0.95em;
+  font-weight: 700;
+}
+
+.pbtn .ic {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.pbtn.play .ic {
+  width: 1.05em;
+  height: 1.05em;
+}
+
