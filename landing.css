@@ -2168,3 +2168,51 @@ mark.bad {
   text-overflow: ellipsis;
 }
 
+.result .body {
+  padding: 1.2em 1.4em 1.3em;
+  font-size: 1.06em;
+  line-height: 1.55;
+}
+
+.result .body h4 {
+  margin: 0 0 0.5em;
+  font-size: 1.15em;
+  font-weight: 500;
+}
+
+.result .body p {
+  margin: 0 0 0.7em;
+}
+
+.result .body p:last-child {
+  margin-bottom: 0;
+}
+
+.result .body b.hl {
+  background: rgba(10, 132, 255, 0.32);
+  border-radius: 0.2em;
+  padding: 0.05em 0.1em;
+  font-weight: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.result .body .src {
+  margin-top: 1em;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--win-line);
+  font-size: 0.88em;
+  color: var(--win-muted);
+}
+
+.result .body .src b {
+  color: var(--win-fg);
+  display: block;
+  margin-bottom: 0.2em;
+}
+
+.result .body .src a {
+  color: var(--win-accent);
+  margin-right: 0.6em;
+}
+
