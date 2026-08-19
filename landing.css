@@ -2301,3 +2301,53 @@ mark.bad {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.voices {
+  position: absolute;
+  left: 4.4em;
+  top: 5.4em;
+  width: 48%;
+  min-width: 17em;
+  padding: 0.5em;
+  border-radius: 0.9em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  font-size: 0.9em;
+}
+
+.voices .g {
+  padding: 0.45em 0.8em 0.1em;
+  font-weight: 700;
+  color: var(--win-muted);
+}
+
+.voices .sg {
+  padding: 0.1em 0.8em 0.05em 1.4em;
+  font-weight: 600;
+  color: var(--win-muted);
+  font-size: 0.85em;
+}
+
+.voices .v {
+  padding: 0.28em 0.8em 0.28em 2em;
+  border-radius: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voices .v span {
+  color: var(--win-muted);
+}
+
+.voices .v.on {
+  background: var(--win-accent);
+  color: #fff;
+}
+
+.voices .v.on span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
