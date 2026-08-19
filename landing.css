@@ -2120,3 +2120,51 @@ mark.bad {
   }
 }
 
+/* Result windows: toolbar, body, conversation, narration player, voice picker. */
+.result .win-bar .mark {
+  margin-left: auto;
+  width: 1.15em;
+  height: 1.15em;
+  color: var(--win-muted);
+}
+
+.result .tools {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.6em 1em;
+  border-bottom: 1px solid var(--win-line);
+  background: var(--win-2);
+}
+
+.result .tools i {
+  display: grid;
+  place-items: center;
+  width: 2.1em;
+  height: 2.1em;
+  border-radius: 0.5em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  color: var(--win-muted);
+}
+
+.result .tools i .ic {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.result .tools i.on {
+  color: var(--win-accent);
+  border-color: rgba(10, 132, 255, 0.5);
+}
+
+.result .tools .model {
+  margin-left: auto;
+  min-width: 0;
+  font-size: 0.88em;
+  color: var(--win-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
