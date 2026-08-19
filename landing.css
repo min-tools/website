@@ -2216,3 +2216,18 @@ mark.bad {
   margin-right: 0.6em;
 }
 
+.who .acts {
+  display: inline-flex;
+  gap: 1em;
+  margin-left: 1.1em;
+}
+
+.who .acts a {
+  color: var(--win-accent);
+  font-weight: 500;
+}
+
+.thread .res-follow .field {
+  font-size: 1.05em;
+}
+
