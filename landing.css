@@ -2264,3 +2264,40 @@ mark.bad {
   height: 1.05em;
 }
 
+.player .time {
+  margin: 0 0.25em;
+  font-size: 0.85em;
+  color: var(--win-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.player .track {
+  position: relative;
+  flex: 1;
+  height: 0.35em;
+  border-radius: 1em;
+  background: var(--win-fill-2);
+}
+
+.player .track i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4%;
+  border-radius: 1em;
+  background: var(--win-accent);
+}
+
+.player .track b {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
