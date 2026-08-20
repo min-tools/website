@@ -2512,3 +2512,48 @@ mark.edit {
   padding: 0 0.1em;
 }
 
+.hyg {
+  display: grid;
+  gap: 0.8em;
+  padding: 1em 1.1em;
+}
+
+.hyg .lbl {
+  display: block;
+  margin-bottom: 0.3em;
+  font-size: 0.74em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+}
+
+.hyg .row p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.55;
+}
+
+.hyg .row.in p i {
+  display: inline-block;
+  margin: 0 0.1em;
+  padding: 0 0.35em;
+  border-radius: 0.3em;
+  font: 600 0.66em/1.75 var(--mono);
+  font-style: normal;
+  color: var(--win-bad);
+  background: var(--win-bad-bg);
+  vertical-align: 0.15em;
+}
+
+.hyg .row.out {
+  padding: 0.7em 0.8em;
+  border-radius: 0.7em;
+  background: var(--win-2);
+  border: 1px solid var(--win-line);
+}
+
+.hyg .row.out .lbl {
+  color: var(--win-ok);
+}
+
