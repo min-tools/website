@@ -2400,3 +2400,58 @@ mark.bad {
   overflow: hidden;
 }
 
+.editor .ebar {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.7em 0.8em;
+  border-bottom: 1px solid var(--win-line);
+  background: var(--win-2);
+}
+
+.editor .grp {
+  display: inline-flex;
+  border: 1px solid var(--win-line);
+  border-radius: 0.55em;
+  overflow: hidden;
+}
+
+.editor .grp>* {
+  display: grid;
+  place-items: center;
+  min-width: 1.7em;
+  height: 2.1em;
+  padding: 0 0.4em;
+  border-right: 1px solid var(--win-line);
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--win-muted);
+}
+
+.editor .grp>*:last-child {
+  border-right: 0;
+}
+
+.editor .grp b {
+  color: var(--win-fg);
+}
+
+.editor .grp i {
+  font-style: italic;
+}
+
+.editor .grp u {
+  text-decoration: underline;
+}
+
+.editor .grp s {
+  text-decoration: line-through;
+}
+
+.editor .grp .ic {
+  width: 1em;
+  height: 1em;
+}
+
