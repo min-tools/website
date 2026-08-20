@@ -2351,3 +2351,52 @@ mark.bad {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Results bento: the text editor, text hygiene, and printing. */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.bcard {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 22px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  container-type: inline-size;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.bcard:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.bcard h3 {
+  margin: 18px 4px 6px;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.bcard p {
+  margin: 0 4px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.bvis {
+  height: 17em;
+  font-size: clamp(9px, 3.3cqw, 13px);
+  line-height: 1.4;
+  color: var(--win-fg);
+  border-radius: 14px;
+  background: var(--win);
+  border: 1px solid var(--win-line);
+  box-shadow: var(--win-shadow);
+  overflow: hidden;
+}
+
