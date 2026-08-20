@@ -2455,3 +2455,36 @@ mark.bad {
   height: 1em;
 }
 
+.editor .sel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  height: calc(2.1em + 2px);
+  padding: 0 0.6em 0 0.7em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.55em;
+  font-weight: 500;
+}
+
+.editor .sel .ic {
+  width: 1em;
+  height: 1em;
+  color: var(--win-fg);
+}
+
+.editor .spacer {
+  flex: 1;
+}
+
+.editor .grp.act>* {
+  min-width: auto;
+  padding: 0 0.65em;
+  font-weight: 500;
+  color: var(--win-fg);
+}
+
+.editor .grp .done {
+  color: var(--win-accent);
+  font-weight: 600;
+}
+
