@@ -2586,3 +2586,70 @@ mark.edit {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
+.paper {
+  position: relative;
+  height: 100%;
+  padding: 1.3em 1.4em 0;
+  overflow: hidden;
+  background: radial-gradient(60% 50% at 25% 10%, rgba(10, 122, 255, 0.35), transparent 70%), linear-gradient(160deg, #23273f, #121218);
+}
+
+.paper .sheet {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  width: 76%;
+  height: 100%;
+  padding: 1.1em 1.2em;
+  border-radius: 0.5em 0.5em 0 0;
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+}
+
+.paper .sheet.back {
+  position: absolute;
+  left: 50%;
+  top: 2.4em;
+  z-index: 0;
+  height: 100%;
+  padding: 0;
+  background: #e6e6ea;
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.paper .sheet b {
+  display: block;
+  margin-bottom: 0.7em;
+  font-size: 1.05em;
+}
+
+.paper .sheet i {
+  display: block;
+  height: 0.45em;
+  margin: 0.45em 0;
+  border-radius: 0.25em;
+  background: #dcdce1;
+}
+
+.paper .sheet i.s {
+  width: 58%;
+}
+
+.paper .sheet em {
+  display: block;
+  margin: 0.9em 0 0.2em;
+  font-size: 0.7em;
+  font-style: normal;
+  font-weight: 600;
+  color: #0a7aff;
+}
+
+.paper .sheet .pg {
+  position: absolute;
+  right: 1.2em;
+  bottom: 0.9em;
+  font-size: 0.65em;
+  color: #8e8e93;
+}
+
