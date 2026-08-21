@@ -2767,3 +2767,54 @@ mark.sel {
   -webkit-box-decoration-break: clone;
 }
 
+.ctx {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  width: 21%;
+  padding: 0.4em;
+  border-radius: 0.8em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 20px 50px -16px rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  font-size: 1.02em;
+}
+
+.ctx div {
+  display: flex;
+  align-items: center;
+  padding: 0.35em 0.8em;
+  border-radius: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ctx div.dim {
+  color: var(--win-dim);
+}
+
+.ctx div.hi {
+  background: var(--win-accent);
+  color: #fff;
+}
+
+.ctx div .chev {
+  margin-left: auto;
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.ctx hr {
+  border: 0;
+  border-top: 1px solid var(--win-border);
+  margin: 0.3em 0.5em;
+}
+
+.ctx.sub {
+  left: 60%;
+  top: 32%;
+  width: 38%;
+}
+
