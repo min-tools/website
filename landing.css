@@ -2653,3 +2653,18 @@ mark.edit {
   color: #8e8e93;
 }
 
+@media (max-width: 960px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bvis {
+    height: auto;
+    min-height: 15em;
+  }
+
+  .paper {
+    height: 17em;
+  }
+}
+
