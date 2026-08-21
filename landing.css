@@ -2722,3 +2722,48 @@ mark.edit {
   height: 1.05em;
 }
 
+.note {
+  position: absolute;
+  left: 5%;
+  top: 13%;
+  width: 60%;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  background: var(--win);
+  border: 1px solid var(--win-line);
+  border-radius: 1em;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.note .win-bar {
+  height: 2.8em;
+}
+
+.note-body {
+  padding: 1.4em 1.6em;
+  font-size: 1.15em;
+  line-height: 1.55;
+}
+
+.note-body h4 {
+  margin: 0 0 0.5em;
+  font-size: 1.35em;
+  letter-spacing: -0.01em;
+}
+
+.note-body p {
+  margin: 0 0 0.6em;
+  color: var(--win-fg);
+}
+
+mark.sel {
+  background: rgba(10, 132, 255, 0.38);
+  color: inherit;
+  border-radius: 0.2em;
+  padding: 0.05em 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
