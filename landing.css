@@ -2892,3 +2892,43 @@ mark.sel {
   padding-bottom: 0.75em;
 }
 
+/* Keyboard desk: the command palette and a chip's options menu. */
+.desk {
+  position: relative;
+  aspect-ratio: 16 / 12;
+  container-type: inline-size;
+  font-size: clamp(7.5px, 1.75cqw, 14px);
+  color: var(--win-fg);
+  border-radius: 1.4em;
+  overflow: hidden;
+  background: var(--desk-bg);
+  box-shadow: var(--win-shadow);
+}
+
+.palette {
+  position: absolute;
+  left: 5%;
+  top: 8%;
+  width: 60%;
+  border-radius: 1em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.palette .search {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 1.1em;
+  font-size: 1.25em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.palette .search .ic {
+  width: 1.05em;
+  height: 1.05em;
+  color: var(--win-muted);
+}
+
