@@ -2668,3 +2668,57 @@ mark.edit {
   }
 }
 
+/* Desktop scene: menu bar, a note, the Services submenu, and the clipboard panel. */
+.scene {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  container-type: inline-size;
+  font-size: clamp(7px, 1.6cqw, 13px);
+  color: var(--win-fg);
+  border-radius: 1.4em;
+  overflow: hidden;
+  background: var(--desk-bg);
+  box-shadow: var(--win-shadow);
+}
+
+.mbar {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+  height: 2.4em;
+  padding: 0 1.4em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--mbar-fg);
+  background: var(--mbar-bg);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.mbar b {
+  font-weight: 700;
+}
+
+.mbar .spacer {
+  flex: 1;
+}
+
+.mbar .status {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.4em;
+  font-weight: 700;
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.85em;
+}
+
+.mbar .status .ic {
+  width: 1.05em;
+  height: 1.05em;
+}
+
