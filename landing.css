@@ -2987,3 +2987,65 @@ mark.sel {
   color: var(--win-dim);
 }
 
+.menu {
+  position: absolute;
+  right: 4%;
+  bottom: 7%;
+  width: 48%;
+  z-index: 2;
+  padding: 0.4em;
+  border-radius: 0.9em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.85);
+}
+
+.menu .head,
+.pop .head {
+  padding: 0.65em 0.9em 0.4em;
+  font: 600 0.78em/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+}
+
+.menu .row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.9em;
+  border-radius: 0.55em;
+  font-size: 1.05em;
+  font-weight: 500;
+}
+
+.menu .row span {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-weight: 400;
+}
+
+.menu .row .ok {
+  margin-left: auto;
+  width: 1em;
+  height: 1em;
+  color: var(--win-fg);
+  stroke-width: 2.4;
+}
+
+.menu .row .chev {
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--win-dim);
+}
+
+.menu .row.on {
+  background: rgba(10, 132, 255, 0.3);
+}
+
+.menu hr {
+  border: 0;
+  border-top: 1px solid var(--win-border);
+  margin: 0.4em 0.4em;
+}
+
