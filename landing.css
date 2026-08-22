@@ -3049,3 +3049,74 @@ mark.sel {
   margin: 0.4em 0.4em;
 }
 
+/* Model picker */
+.picker {
+  position: relative;
+}
+
+.pop {
+  position: absolute;
+  left: 1.2em;
+  bottom: 4.6em;
+  width: 58%;
+  min-width: 18em;
+  padding: 0.4em;
+  border-radius: 1em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+.pop .head {
+  padding: 0.55em 0.9em 0.35em;
+}
+
+.pop .row {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.4em 0.9em;
+  border-radius: 0.6em;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.pop .row .ic {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--win-fg);
+}
+
+.pop .row span {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-weight: 400;
+}
+
+.pop .row .ok {
+  width: 1em;
+  height: 1em;
+  color: var(--win-fg);
+  margin-left: 0.5em;
+  stroke-width: 2.4;
+}
+
+.pop .row.hi {
+  background: rgba(10, 132, 255, 0.3);
+}
+
+.pop hr {
+  border: 0;
+  border-top: 1px solid var(--win-border);
+  margin: 0.4em 0.3em;
+}
+
+.pop .row .chev {
+  margin-left: auto;
+  width: 0.9em;
+  height: 0.9em;
+  color: var(--win-muted);
+}
+
