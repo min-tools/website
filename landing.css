@@ -2932,3 +2932,58 @@ mark.sel {
   color: var(--win-muted);
 }
 
+.palette .row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin: 0.3em 0.5em;
+  padding: 0.55em 0.8em;
+  border-radius: 0.6em;
+  font-size: 1.08em;
+  font-weight: 500;
+}
+
+.palette .row:first-of-type {
+  margin-top: 0.5em;
+}
+
+.palette .row .ic {
+  width: 1.15em;
+  height: 1.15em;
+  color: var(--win-muted);
+}
+
+.palette .row .spacer {
+  flex: 1;
+}
+
+.palette .row .pin {
+  width: 0.95em;
+  height: 0.95em;
+  color: var(--win-dim);
+}
+
+.palette .row kbd {
+  font: inherit;
+  font-size: 0.85em;
+  color: var(--win-muted);
+}
+
+.palette .row.on {
+  background: rgba(10, 132, 255, 0.3);
+}
+
+.palette .row.on .ic {
+  color: var(--win-fg);
+}
+
+.palette .foot {
+  display: flex;
+  gap: 1.6em;
+  margin-top: 0.3em;
+  padding: 0.7em 1.1em 0.8em;
+  border-top: 1px solid var(--win-line);
+  font: 500 0.85em/1 var(--mono);
+  color: var(--win-dim);
+}
+
