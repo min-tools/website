@@ -3137,3 +3137,49 @@ mark.sel {
   border: 1px solid var(--line);
 }
 
+/* Privacy */
+.alert {
+  width: min(100%, 26em);
+  margin: 0 auto;
+  padding: 1.6em 1.4em 1.3em;
+  border-radius: 1.2em;
+  text-align: center;
+  font-size: clamp(11px, 2cqw, 15px);
+  color: var(--win-fg);
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: var(--win-shadow);
+}
+
+.alert img {
+  width: 4.2em;
+  height: 4.2em;
+  border-radius: 1em;
+}
+
+.alert h3 {
+  margin: 0.8em 0 0.4em;
+  font-size: 1.15em;
+}
+
+.alert p {
+  margin: 0 0 1.2em;
+  font-size: 0.92em;
+  line-height: 1.45;
+  color: var(--win-muted);
+}
+
+.alert .btn {
+  display: block;
+  margin: 0.45em 0 0;
+  padding: 0.55em;
+  border-radius: 0.55em;
+  font-weight: 600;
+  background: var(--win-fill);
+}
+
+.alert .btn.primary {
+  background: var(--win-accent);
+  color: #fff;
+}
+
