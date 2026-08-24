@@ -3183,3 +3183,49 @@ mark.sel {
   color: #fff;
 }
 
+/* Dictionary entry */
+.dict .body {
+  font-size: 1.02em;
+}
+
+.dict .entry-head {
+  display: grid;
+  grid-template-columns: 1fr 34%;
+  gap: 1.1em;
+  align-items: start;
+}
+
+.dict .body h3 {
+  margin: 0 0 0.4em;
+  font-size: 1.7em;
+  letter-spacing: -0.02em;
+}
+
+.dict .body h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0.9em 0 0.3em;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+
+.dict .entry-head h4 {
+  margin-top: 0.4em;
+}
+
+.dict .body h4 .ipa {
+  font-weight: 400;
+  color: var(--win-muted);
+}
+
+.dict .body ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.dict .body li {
+  margin: 0.2em 0;
+}
+
