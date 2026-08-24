@@ -3316,3 +3316,71 @@ mark.sel {
   color: var(--win-accent);
 }
 
+/* Library */
+.lib .search {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 1.1em 1.2em 0.9em;
+  padding: 0.55em 0.9em;
+  border-radius: 0.8em;
+  background: var(--win-inset);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 0 0 2px rgba(63, 156, 255, 0.45);
+  color: var(--win-muted);
+  font-size: 1.1em;
+}
+
+.lib .search .ic {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.lib .search .caret {
+  height: 1.2em;
+  margin: 0;
+  background: var(--win-accent);
+}
+
+.lib .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  padding: 0 1.2em 1em;
+}
+
+.lib .filters span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.95em;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--win-fill);
+}
+
+.lib .filters span.on {
+  background: var(--win-accent);
+  color: #fff;
+}
+
+.lib .filters span .ic {
+  width: 1em;
+  height: 1em;
+  color: var(--win-accent);
+}
+
+.lib .filters span.on .ic {
+  color: #fff;
+}
+
+.lib .filters span sup {
+  font-size: 0.65em;
+  color: var(--win-muted);
+}
+
+.lib .filters span.add {
+  padding: 0.4em 0.7em;
+  color: var(--win-muted);
+}
+
