@@ -3272,3 +3272,47 @@ mark.sel {
   color: var(--win-fg);
 }
 
+.dict .body .lang {
+  margin: 1.1em 0 0;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--win-accent);
+}
+
+.dict .body .phr {
+  margin: 0.2em 0 0;
+}
+
+.dict .body .phr b {
+  color: var(--win-fg);
+}
+
+.illus {
+  margin: 0.2em 0 0;
+}
+
+.illus .art {
+  aspect-ratio: 1;
+  border-radius: 0.8em;
+  background: #3b7fe6;
+  box-shadow: 0 14px 30px -12px rgba(10, 100, 255, 0.6);
+}
+
+.illus figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  margin-top: 0.45em;
+  font-size: 0.78em;
+  color: var(--win-muted);
+}
+
+.illus figcaption .ic {
+  width: 0.95em;
+  height: 0.95em;
+  color: var(--win-accent);
+}
+
