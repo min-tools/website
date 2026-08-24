@@ -3229,3 +3229,46 @@ mark.sel {
   margin: 0.2em 0;
 }
 
+.dict .body em {
+  display: block;
+  margin: 0.15em 0 0.35em;
+  padding: 0.05em 0.6em;
+  border-left: 2px solid var(--win-border-2);
+  color: var(--win-muted);
+  font-style: italic;
+}
+
+.dict .body em.now {
+  color: var(--win-fg);
+  border-left-color: var(--win-accent);
+  background: linear-gradient(90deg, rgba(10, 132, 255, 0.16), transparent 75%);
+  border-radius: 0 0.3em 0.3em 0;
+}
+
+.dict .spk {
+  display: inline-block;
+  margin-left: 0.35em;
+  color: var(--win-muted);
+  line-height: 1;
+}
+
+.dict .spk .ic {
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.05em;
+}
+
+.dict .spk.playing {
+  color: var(--win-accent);
+}
+
+.dict .body .syn {
+  margin: 0.5em 0 0 0.35em;
+  font-size: 0.95em;
+  color: var(--win-muted);
+}
+
+.dict .body .syn b {
+  color: var(--win-fg);
+}
+
