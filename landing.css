@@ -3553,3 +3553,57 @@ mark.sel {
   background: linear-gradient(var(--card), var(--card)) padding-box, var(--grad) border-box;
 }
 
+.plan .name {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.plan .name .price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.plan .name .price.grad {
+  color: transparent;
+}
+
+.plan .tag {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.plan ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.plan li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 15.5px;
+}
+
+.plan li .ic {
+  width: 20px;
+  height: 20px;
+  color: #34c759;
+  margin-top: 2px;
+}
+
+.plan.pro li .ic {
+  color: var(--accent);
+}
+
+.plan li span {
+  color: var(--muted);
+}
+
