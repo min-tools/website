@@ -3645,3 +3645,44 @@ mark.sel {
   }
 }
 
+/* Details grid */
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.details .card {
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.details .card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.details .card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.details .card h3 .ic {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.details pre {
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 12px/1.6 var(--mono);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--fg);
+}
+
