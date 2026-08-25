@@ -3532,3 +3532,24 @@ mark.sel {
   }
 }
 
+/* Pro */
+.plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.plan {
+  position: relative;
+  padding: 28px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+.plan.pro {
+  border-color: transparent;
+  background: linear-gradient(var(--card), var(--card)) padding-box, var(--grad) border-box;
+}
+
