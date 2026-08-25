@@ -3498,3 +3498,37 @@ mark.sel {
   }
 }
 
+/* Keep a static language list available to assistive technology. Reduced
+   motion also shows it visually in place of the moving rows. */
+.lang-cloud {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    display: none;
+  }
+
+  .lang-cloud {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+    height: auto;
+    max-width: 1040px;
+    margin: 26px auto 0;
+    padding: 0 24px;
+    overflow: visible;
+    clip: auto;
+    list-style: none;
+    white-space: normal;
+  }
+}
+
