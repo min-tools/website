@@ -3877,3 +3877,45 @@ body.landing main .langs+.sec {
   height: 18px;
 }
 
+/* Allow the document body to shrink and scroll under its fixed header. */
+.doc-dialog .doc-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* Reaching the end of the document must not scroll the page behind the
+     dialog. */
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 14px 22px 26px;
+}
+
+/* While the dialog is open the page itself does not scroll at all. */
+html.dialog-open,
+html.dialog-open body {
+  overflow: hidden;
+}
+
+/* Framed pages supply their own horizontal padding. */
+.doc-dialog .doc-scroll.frame {
+  padding: 8px 0 0;
+}
+
+/* Use a compact heading rhythm inside the dialog. */
+.doc-dialog .doc h2 {
+  font-size: 20px;
+  margin: 26px 0 8px;
+}
+
+.doc-dialog .doc h3 {
+  font-size: 17px;
+  margin: 20px 0 4px;
+}
+
+.doc-dialog .doc .meta {
+  margin: 0;
+}
+
+.doc-dialog .doc > :first-child {
+  margin-top: 0;
+}
+
