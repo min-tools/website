@@ -3830,3 +3830,50 @@ body.landing main .langs+.sec {
   }
 }
 
+/* Only open dialogs become flex containers; closed ones stay out of layout. */
+.doc-dialog {
+  display: none;
+}
+
+.doc-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep the document identity and close button outside the scrolling content. */
+.doc-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: none;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Provide a distinct circular close target at the edge of the header. */
+.doc-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.doc-close:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 14%, transparent);
+}
+
+.doc-close .ic {
+  width: 18px;
+  height: 18px;
+}
+
