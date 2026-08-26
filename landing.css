@@ -3737,3 +3737,53 @@ body.landing main .langs+.sec {
   box-shadow: 0 0 0 1px var(--accent), var(--card-shadow);
 }
 
+/* Share card identity styles with the header of the opened document. */
+.doc-card .badge,
+.doc-head .badge {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.doc-card .badge .ic,
+.doc-head .badge .ic {
+  width: 20px;
+  height: 20px;
+}
+
+.doc-card .t,
+.doc-head .t {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.doc-card .t b,
+.doc-head .t b {
+  font-size: 17px;
+}
+
+.doc-card .t span,
+.doc-head .t span {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.doc-card .chev {
+  flex: none;
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  transition: transform 0.3s var(--ease);
+}
+
+.doc-card:hover .chev {
+  transform: translateX(3px);
+}
+
