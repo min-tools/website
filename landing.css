@@ -3711,3 +3711,29 @@ body.landing main .langs+.sec {
   scroll-margin-top: 92px;
 }
 
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  scroll-margin-top: 92px;
+  transition: border-color 0.3s var(--ease);
+}
+
+.doc-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-decoration: none;
+}
+
+/* Outline the selected document card until scrolling input or history/hash
+   navigation releases the menu lock. */
+.doc-card.on {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--card-shadow);
+}
+
