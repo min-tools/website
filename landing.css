@@ -3686,3 +3686,28 @@ mark.sel {
   color: var(--fg);
 }
 
+/* Document cards open in a dialog when supported. Their ordinary links also
+   work without JavaScript or dialog support. */
+.docs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* Reserve room for the floating header when jumping to section headings. */
+body.landing main section[id] {
+  scroll-margin-top: 92px;
+}
+
+/* A section that follows the hero or the languages band keeps its own top
+   padding, so its link lands closer to the heading. */
+body.landing main .hero+.sec,
+body.landing main .langs+.sec {
+  scroll-margin-top: -8px;
+}
+
+/* Support and Privacy menu links share this section as their scroll target. */
+#docs {
+  scroll-margin-top: 92px;
+}
+
