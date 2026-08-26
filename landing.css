@@ -3787,3 +3787,46 @@ body.landing main .langs+.sec {
   transform: translateX(3px);
 }
 
+/* Stack document cards when their summaries need more room. */
+@media (max-width: 860px) {
+  .docs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The dialog: a card in the middle of the screen over a blurred page, with
+   the document scrolling inside it. */
+.doc-dialog {
+  width: min(760px, calc(100% - 32px));
+  max-height: min(86vh, 900px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  color: var(--fg);
+  background: var(--card);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.55), 0 0 0 0.5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: dialogin 0.3s var(--ease);
+}
+
+/* Dim and blur the page while retaining the native dialog backdrop. */
+.doc-dialog::backdrop {
+  background: rgba(10, 10, 14, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Animate entry subtly; the reduced-motion rule disables this animation. */
+@keyframes dialogin {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
