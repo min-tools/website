@@ -3919,3 +3919,34 @@ html.dialog-open body {
   margin-top: 0;
 }
 
+/* Reserve initial frame height until its page reports the measured body
+   height. */
+.doc-frame {
+  display: block;
+  width: 100%;
+  height: 60vh;
+  border: 0;
+}
+
+/* Keep the loading message and spinner compact while the request is pending. */
+.doc-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 6px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.doc-loading .ic {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+/* A failed request leaves a normal link to the standalone document. */
+.doc-fallback {
+  margin: 16px 0 6px;
+  color: var(--muted);
+}
+
