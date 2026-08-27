@@ -3996,3 +3996,55 @@ body.landing footer.site {
   flex-wrap: wrap;
 }
 
+@media (max-width: 720px) {
+  .splitview {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .splitview .pane-in {
+    height: 9em;
+  }
+
+  .splitview .pane-out {
+    height: 28em;
+  }
+
+  .splitview.short .pane-out {
+    height: 9em;
+  }
+
+  .splitview .mid {
+    display: none;
+  }
+
+  .pane-in .text {
+    font-size: 1.2em;
+  }
+
+  .splitview:not(.solo) .cubes {
+    display: none;
+  }
+
+  .splitview.solo {
+    height: 26em;
+  }
+
+  .splitview.solo .pane-in {
+    height: 100%;
+  }
+
+  .cube {
+    width: 5.8em;
+    padding: 0.75em 0.3em 0.65em;
+  }
+
+  .dict .entry-head {
+    grid-template-columns: 1fr;
+  }
+
+  .dict .illus {
+    width: 50%;
+  }
+}
+
