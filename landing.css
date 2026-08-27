@@ -4048,3 +4048,44 @@ body.landing footer.site {
   }
 }
 
+@media (max-width: 520px) {
+  body.landing header.site {
+    top: 8px;
+    width: calc(100% - 16px);
+    padding: 7px 7px 7px 13px;
+  }
+
+  body.landing header.site .brand {
+    font-size: 15px;
+    gap: 8px;
+  }
+
+  body.landing header.site .brand img {
+    width: 24px;
+    height: 24px;
+  }
+
+  body.landing header.site nav a {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  body.landing header.site nav a.gh {
+    margin-left: 2px;
+  }
+
+  body.landing header.site nav a[href="#features"] {
+    display: none;
+  }
+
+  .whatsnew {
+    gap: 14px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .whatsnew .plat em {
+    display: none;
+  }
+}
+
