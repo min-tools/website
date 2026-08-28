@@ -4205,3 +4205,65 @@ body.landing header.site nav a.home::before {
   color: var(--win-accent);
 }
 
+/* Align each item icon, description, and trailing status tag. */
+.ledger .row {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.75em 1.1em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.ledger .row:last-child {
+  border-bottom: 0;
+}
+
+.ledger .row>.ic {
+  width: 1.3em;
+  height: 1.3em;
+  color: var(--win-muted);
+}
+
+/* Keep explanatory text visually secondary to each ledger item name. */
+.ledger .row .t {
+  min-width: 0;
+}
+
+.ledger .row b {
+  display: block;
+  font-weight: 600;
+}
+
+.ledger .row span {
+  display: block;
+  font-size: 0.85em;
+  color: var(--win-muted);
+}
+
+/* Keep status tags compact and aligned at the row edge. */
+.ledger .tag {
+  flex: none;
+  margin-left: auto;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Use shared semantic colors for allowed, excluded, and conditional entries. */
+.ledger .tag.ok {
+  color: var(--win-ok);
+  background: var(--win-ok-bg);
+}
+
+.ledger .tag.no {
+  color: var(--win-bad);
+  background: var(--win-bad-bg);
+}
+
+.ledger .tag.ask {
+  color: var(--win-warn);
+  background: var(--win-warn-bg);
+}
+
