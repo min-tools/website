@@ -4174,3 +4174,34 @@ body.landing header.site nav a.home::before {
   color: var(--muted);
 }
 
+/* Compact ledger rows for privacy summaries and the home page repository
+   list. */
+.ledger {
+  width: min(100%, 31em);
+  margin: 0 auto;
+  font-size: clamp(11px, 2cqw, 15px);
+  color: var(--win-fg);
+  background: var(--win);
+  border: 1px solid var(--win-line);
+  border-radius: 1.1em;
+  box-shadow: var(--win-shadow);
+  overflow: hidden;
+}
+
+/* Separate the ledger title from its status rows. */
+.ledger .head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 1.1em;
+  font-weight: 600;
+  background: var(--win-2);
+  border-bottom: 1px solid var(--win-line);
+}
+
+.ledger .head .ic {
+  width: 1.15em;
+  height: 1.15em;
+  color: var(--win-accent);
+}
+
