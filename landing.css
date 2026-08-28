@@ -4107,3 +4107,28 @@ body.landing footer.site {
   }
 }
 
+/* The link back to the Min Tools home at the start of a product page's menu. */
+body.landing header.site nav a.home {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 4px;
+  font-weight: 500;
+}
+
+body.landing header.site nav a.home::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  body.landing header.site nav a.home {
+    display: none;
+  }
+}
+
