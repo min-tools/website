@@ -4267,3 +4267,29 @@ body.landing header.site nav a.home::before {
   background: var(--win-warn-bg);
 }
 
+@media (prefers-reduced-motion: reduce) {
+
+  .stage .win,
+  .sat,
+  .spin,
+  .caret,
+  .panel,
+  .hero::before,
+  .filechip,
+  .import .bar i,
+  .doc-dialog {
+    animation: none;
+  }
+
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cta,
+  .details .card,
+  .bcard {
+    transition: none;
+  }
+}
