@@ -4089,3 +4089,21 @@ body.landing footer.site {
   }
 }
 
+@media (max-width: 760px) {
+
+  body.landing header.site nav a[href="#privacy-policy"],
+  body.landing header.site nav a[href="#pro"] {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  body.landing header.site nav a {
+    padding: 6px 7px;
+  }
+
+  body.landing header.site nav a.gh .ic {
+    display: none;
+  }
+}
+
