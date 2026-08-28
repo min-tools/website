@@ -4132,3 +4132,45 @@ body.landing header.site nav a.home::before {
   }
 }
 
+/* Keyboard reference: one card per key. */
+.keymap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.keymap .key {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+/* Draw shortcut keys as raised caps that stay on one line. */
+.keymap .key kbd {
+  flex: none;
+  font: 600 14px var(--mono);
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 0 var(--line);
+  white-space: nowrap;
+}
+
+.keymap .key b {
+  display: block;
+  font-size: 15px;
+}
+
+.keymap .key span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
+
