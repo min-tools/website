@@ -64,3 +64,36 @@
   color: var(--win-muted);
 }
 
+/* Split the preview between clipped history rows and selected-item details. */
+.pm-body {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+.pm-list {
+  padding: 0.7em;
+  overflow: hidden;
+  border-right: 1px solid var(--win-line);
+}
+
+/* Keep rows compact and use the accent fill for the selected example. */
+.pm-list .row {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.55em 0.75em;
+  border-radius: 0.6em;
+  transition: background 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.pm-list .row.on {
+  background: var(--win-accent);
+  color: #fff;
+}
+
+.pm-list .row[hidden] {
+  display: none;
+}
+
