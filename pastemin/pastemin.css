@@ -31,3 +31,36 @@
   background: var(--win-line);
 }
 
+/* The script replaces the placeholder with animated search text. */
+.pm-bar .search {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: 1.55em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.pm-bar .search .ph {
+  color: var(--win-muted);
+}
+
+.pm-bar .search.filled .ph {
+  display: none;
+}
+
+.pm-bar .search .caret {
+  height: 1em;
+  vertical-align: -0.12em;
+}
+
+.pm-bar .spacer {
+  flex: 1;
+}
+
+.pm-bar .more {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--win-muted);
+}
+
