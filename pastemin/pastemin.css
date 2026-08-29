@@ -97,3 +97,33 @@
   display: none;
 }
 
+/* Truncate long titles while preserving their source labels. */
+.pm-list .row .t {
+  min-width: 0;
+}
+
+.pm-list .row b {
+  display: block;
+  font-size: 1.12em;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pm-list .row span {
+  display: block;
+  font-size: 0.9em;
+  color: var(--win-muted);
+}
+
+.pm-list .row.on span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.pm-list .empty {
+  padding: 2em 1em;
+  text-align: center;
+  color: var(--win-muted);
+}
+
