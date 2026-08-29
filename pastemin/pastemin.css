@@ -1,0 +1,33 @@
+/* Pastemin app previews used on the home and product pages: the clipboard
+   window, options menu, and source icons. Shared styles live in landing.css. */
+
+/* The Pastemin panel: search field in the title row, history on the left,
+   the selected item on the right. */
+.pm {
+  display: flex;
+  flex-direction: column;
+  height: 30em;
+}
+
+.pm-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  flex: none;
+  height: 3.6em;
+  padding: 0 1.4em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.pm-bar .clip {
+  width: 1.6em;
+  height: 1.6em;
+  stroke-width: 1.6;
+}
+
+.pm-bar .vr {
+  width: 1px;
+  height: 1.8em;
+  background: var(--win-line);
+}
+
