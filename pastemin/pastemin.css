@@ -127,3 +127,37 @@
   color: var(--win-muted);
 }
 
+/* Source-app icons, drawn in CSS so they follow the mock's scale. */
+.src {
+  position: relative;
+  flex: none;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 0.6em;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.src::before,
+.src::after {
+  content: "";
+  position: absolute;
+}
+
+/* Build the Notes icon from a yellow header and short ruled lines. */
+.src.notes::before {
+  inset: 0 0 auto;
+  height: 32%;
+  background: #ffd60a;
+}
+
+.src.notes::after {
+  left: 22%;
+  right: 22%;
+  top: 48%;
+  height: 0.16em;
+  background: #c9c9ce;
+  box-shadow: 0 0.42em 0 #c9c9ce, 0 0.84em 0 #c9c9ce;
+}
+
