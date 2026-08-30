@@ -161,3 +161,28 @@
   box-shadow: 0 0.42em 0 #c9c9ce, 0 0.84em 0 #c9c9ce;
 }
 
+/* Build the Mail icon from an envelope over a blue gradient. */
+.src.mail {
+  background: linear-gradient(180deg, #5ab2ff, #0a7aff);
+}
+
+.src.mail::before {
+  left: 20%;
+  right: 20%;
+  top: 30%;
+  bottom: 30%;
+  border-radius: 0.2em;
+  background: #fff;
+}
+
+.src.mail::after {
+  left: 20%;
+  right: 20%;
+  top: 30%;
+  height: 40%;
+  background: linear-gradient(135deg, transparent 47%, #d6e8ff 47%, #d6e8ff 53%, transparent 53%), linear-gradient(225deg, transparent 47%, #d6e8ff 47%, #d6e8ff 53%, transparent 53%);
+  background-size: 50% 100%;
+  background-position: left, right;
+  background-repeat: no-repeat;
+}
+
