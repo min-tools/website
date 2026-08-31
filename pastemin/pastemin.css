@@ -339,3 +339,44 @@
   }
 }
 
+/* The options menu, floating over the panel in the "your rules" section. */
+.pm-scene {
+  position: relative;
+  aspect-ratio: 16 / 12;
+  container-type: inline-size;
+  font-size: clamp(7.5px, 1.75cqw, 14px);
+  color: var(--win-fg);
+  border-radius: 1.4em;
+  overflow: hidden;
+  background: var(--desk-bg);
+  box-shadow: var(--win-shadow);
+}
+
+/* Position a smaller clipboard window behind the floating options menu. */
+.pm-scene .pm {
+  position: absolute;
+  left: 5%;
+  top: 8%;
+  width: 78%;
+  height: 84%;
+  font-size: 0.9em;
+  border: 1px solid var(--win-line);
+  border-radius: 1em;
+  background: var(--win);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.pm-scene .menu {
+  right: 4%;
+  top: 14%;
+  bottom: auto;
+  width: 46%;
+}
+
+.pm-scene .menu .row .sub {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-weight: 400;
+}
+
