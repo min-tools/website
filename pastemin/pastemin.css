@@ -319,3 +319,23 @@
   text-overflow: ellipsis;
 }
 
+/* Stack history above details on narrow screens. */
+@media (max-width: 720px) {
+  .pm {
+    height: auto;
+  }
+
+  .pm-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pm-list {
+    border-right: 0;
+    border-bottom: 1px solid var(--win-line);
+  }
+
+  .pm-detail {
+    height: 17em;
+  }
+}
+
