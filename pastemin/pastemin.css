@@ -423,3 +423,37 @@
   font-weight: 600;
 }
 
+/* Place the history-limit submenu above the main preview. */
+.pm-scene .submenu {
+  position: absolute;
+  right: 2%;
+  bottom: 6%;
+  width: 34%;
+  z-index: 3;
+  padding: 0.4em;
+  border-radius: 0.9em;
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.85);
+}
+
+.pm-scene .submenu .row {
+  display: flex;
+  align-items: center;
+  padding: 0.45em 0.9em;
+  border-radius: 0.55em;
+  font-size: 1.05em;
+  font-weight: 500;
+}
+
+.pm-scene .submenu .row.on {
+  background: rgba(10, 132, 255, 0.3);
+}
+
+.pm-scene .submenu .row .ok {
+  margin-left: auto;
+  width: 1em;
+  height: 1em;
+  stroke-width: 2.4;
+}
+
