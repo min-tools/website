@@ -267,3 +267,35 @@
   color: var(--win-muted);
 }
 
+/* Clip long example text to the available preview height. */
+.pm-text {
+  flex: 1;
+  min-height: 0;
+  padding: 1.2em 1.5em;
+  overflow: hidden;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.pm-text h4 {
+  margin: 0 0 0.5em;
+  font-size: 1.25em;
+  letter-spacing: -0.01em;
+}
+
+.pm-text p {
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* The image example uses the same landscape colors as its row icon. */
+.pm-text .pic {
+  width: 100%;
+  height: 8.6em;
+  border-radius: 0.6em;
+  background:
+    radial-gradient(40% 50% at 30% 30%, rgba(255, 231, 160, 0.9), transparent 60%),
+    linear-gradient(160deg, #3b7fe6, #7a4dff);
+}
+
