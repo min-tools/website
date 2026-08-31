@@ -233,3 +233,37 @@
   opacity: 0.85;
 }
 
+/* Let the selected item fill the detail pane between its header and
+   metadata. */
+.pm-detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--pane);
+}
+
+.pm-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1em 1.4em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.pm-head .ic {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.pm-head b {
+  font-size: 1.1em;
+}
+
+.pm-head .spacer {
+  flex: 1;
+}
+
+.pm-head .trash {
+  color: var(--win-muted);
+}
+
