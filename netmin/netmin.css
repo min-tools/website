@@ -124,3 +124,64 @@
   color: #fff;
 }
 
+/* Main column: the tool header, the report, and the footer actions. */
+.nm-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nm-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  padding: 1em 1.3em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+/* Give the active tool a larger accent tile beside its title. */
+.nm-head .tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.3em;
+  height: 3.3em;
+  border-radius: 0.9em;
+  background: linear-gradient(180deg, #3d9bff, #0a6fff);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(10, 111, 255, 0.8);
+}
+
+.nm-head .tile .ic {
+  width: 1.7em;
+  height: 1.7em;
+}
+
+/* Truncate the tool title and target when report width is limited. */
+.nm-head .t {
+  min-width: 0;
+}
+
+.nm-head .t b {
+  display: block;
+  font-size: 1.3em;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nm-head .t span {
+  display: block;
+  font-size: 0.9em;
+  color: var(--win-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nm-head .t span code {
+  font: inherit;
+  font-family: var(--mono);
+}
+
