@@ -1,0 +1,36 @@
+/* Netmin app previews used on the home and product pages: the diagnostics
+   window, report cards, and device table. Shared styles live in landing.css. */
+
+.nm {
+  display: flex;
+  flex-direction: column;
+  height: 36em;
+}
+
+/* Center the window title independently of the traffic-light controls. */
+.nm .win-bar {
+  position: relative;
+  justify-content: center;
+}
+
+.nm .win-bar .dots {
+  position: absolute;
+  left: 1.1em;
+}
+
+/* Reserve a fixed share for tools and let the report fill the remainder. */
+.nm-body {
+  display: grid;
+  grid-template-columns: 27% 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar: the filter field and the tool groups. */
+.nm-side {
+  padding: 0.9em 0.8em;
+  overflow: hidden;
+  background: var(--win-2);
+  border-right: 1px solid var(--win-line);
+}
+
