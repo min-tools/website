@@ -72,3 +72,55 @@
   white-space: nowrap;
 }
 
+.nm-side .row {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.38em 0.5em;
+  border-radius: 0.55em;
+  font-size: 0.98em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Keep tool glyphs centered in equally sized tiles. */
+.nm-side .row .tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.5em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+}
+
+.nm-side .row .tile .ic {
+  width: 1em;
+  height: 1em;
+}
+
+/* Use filled stars for favorites and an accent row for the selected tool. */
+.nm-side .row .star {
+  margin-left: auto;
+  width: 1em;
+  height: 1em;
+  color: var(--win-dim);
+}
+
+.nm-side .row .star.on {
+  color: #ffb340;
+  fill: #ffb340;
+}
+
+.nm-side .row.on {
+  background: rgba(10, 132, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(63, 156, 255, 0.5);
+}
+
+.nm-side .row.on .tile {
+  background: var(--win-accent);
+  border-color: transparent;
+  color: #fff;
+}
+
