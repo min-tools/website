@@ -457,3 +457,30 @@
   stroke-width: 2.4;
 }
 
+/* Hide details in the narrow options scene to leave room for both menus. */
+@media (max-width: 720px) {
+  .pm-scene .pm {
+    height: auto;
+    bottom: 8%;
+  }
+
+  .pm-scene .pm .pm-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pm-scene .pm .pm-detail {
+    display: none;
+  }
+}
+
+/* Show the toast during the simulated restore, or keep it visible in the
+   static preview when motion is disabled. */
+.stage .sat.toast {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.stage.restored .sat.toast,
+html:not(.motion) .stage .sat.toast {
+  opacity: 1;
+}
