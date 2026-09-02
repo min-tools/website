@@ -185,3 +185,27 @@
   font-family: var(--mono);
 }
 
+/* Draw the overview/raw-output selector as an inset segmented control. */
+.nm-head .seg {
+  display: inline-flex;
+  flex: none;
+  margin-left: auto;
+  padding: 0.15em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+}
+
+.nm-head .seg span {
+  padding: 0.4em 0.85em;
+  border-radius: 0.45em;
+  font-weight: 600;
+  color: var(--win-muted);
+  white-space: nowrap;
+}
+
+.nm-head .seg span.on {
+  background: var(--win-3);
+  color: var(--win-fg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
