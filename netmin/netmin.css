@@ -209,3 +209,42 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
+/* Keep the completion indicator and duration together on one line. */
+.nm-head .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  flex: none;
+  padding: 0.5em 0.9em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.nm-head .status i {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
+}
+
+/* Frame the refresh icon that the hero script spins during its replay. */
+.nm-head .refresh {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 0.6em;
+  border: 1px solid var(--win-line);
+  background: var(--win-fill);
+}
+
+.nm-head .refresh .ic {
+  width: 1.1em;
+  height: 1.1em;
+}
+
