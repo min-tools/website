@@ -342,3 +342,40 @@
   color: var(--win-muted);
 }
 
+/* Align report labels and values consistently across each card. */
+.nm-card .r {
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  gap: 1em;
+  padding: 0.55em 1em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.nm-card .r:last-child {
+  border-bottom: 0;
+}
+
+.nm-card .r span {
+  color: var(--win-muted);
+}
+
+/* Preserve command-output formatting while wrapping long lines to the card. */
+.nm-card code,
+.nm-card pre {
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+.nm-card pre {
+  margin: 0;
+  padding: 0.7em 1em;
+  color: var(--win-fg);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.nm-card pre .c {
+  color: var(--win-muted);
+}
+
