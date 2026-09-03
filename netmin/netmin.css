@@ -501,3 +501,32 @@
   background: #34c759;
 }
 
+/* Set interface names apart from the adjacent action text. */
+.nm-table .iface {
+  font: 500 0.85em var(--mono);
+  padding: 0.15em 0.5em;
+  border-radius: 0.35em;
+  background: var(--win-fill);
+}
+
+.nm-table .act {
+  color: var(--win-accent);
+  font-weight: 600;
+}
+
+/* Feature-section windows show one report without a sidebar and take their
+   natural height. */
+.nm.sweep,
+.nm.raw {
+  height: auto;
+}
+
+.nm.sweep .nm-report,
+.nm.raw .nm-report {
+  flex: none;
+}
+
+.nm-table i {
+  font-style: normal;
+}
+
