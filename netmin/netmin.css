@@ -379,3 +379,61 @@
   color: var(--win-muted);
 }
 
+/* Keep the saved-check link and report actions together in the report footer. */
+.nm-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.85em 1.3em;
+  border-top: 1px solid var(--win-line);
+  white-space: nowrap;
+}
+
+.nm-foot .new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+}
+
+.nm-foot kbd {
+  font: 500 0.8em var(--mono);
+  padding: 0.15em 0.45em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.35em;
+  color: var(--win-muted);
+}
+
+.nm-foot .spacer {
+  flex: 1;
+}
+
+/* Distinguish the primary report action from secondary controls. */
+.nm-foot .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.55em 1em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+}
+
+.nm-foot .btn .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.nm-foot .btn.primary {
+  background: var(--win-accent);
+  border-color: transparent;
+  color: #fff;
+}
+
+.nm-foot .btn.primary kbd {
+  background: rgba(255, 255, 255, 0.2);
+  border: 0;
+  color: #fff;
+}
+
