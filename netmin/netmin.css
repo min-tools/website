@@ -469,3 +469,35 @@
   font-size: 0.95em;
 }
 
+/* Show service counts in badges and distinguish the current device. */
+.nm-table .pill {
+  padding: 0.1em 0.55em;
+  border-radius: 0.4em;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--win-accent);
+  border: 1px solid rgba(63, 156, 255, 0.45);
+}
+
+.nm-table .pill.you {
+  color: var(--win-muted);
+  border-color: var(--win-line);
+}
+
+/* Draw a bounded bar beside each device's example latency value. */
+.nm-table .bar {
+  flex: 1;
+  max-width: 6em;
+  height: 0.45em;
+  border-radius: 1em;
+  background: var(--win-fill);
+  overflow: hidden;
+}
+
+.nm-table .bar i {
+  display: block;
+  height: 100%;
+  border-radius: 1em;
+  background: #34c759;
+}
+
