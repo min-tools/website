@@ -530,3 +530,31 @@
   font-style: normal;
 }
 
+/* Drop the sidebar and fourth table column when the report needs more room. */
+@media (max-width: 720px) {
+  .nm {
+    height: auto;
+  }
+
+  .nm-body {
+    grid-template-columns: 1fr;
+  }
+
+  .nm-side {
+    display: none;
+  }
+
+  .nm-head .seg,
+  .nm-head .refresh {
+    display: none;
+  }
+
+  .nm-table {
+    grid-template-columns: 1fr 1.4fr 1fr;
+  }
+
+  .nm-table>span:nth-child(4n) {
+    display: none;
+  }
+}
+
