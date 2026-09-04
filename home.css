@@ -1,0 +1,34 @@
+/* Min Tools home only: the wordmark in the header, the icon trio, the app
+   cards with their cropped windows, the repository ledger, and the ways to
+   contribute. landing.css supplies everything else. */
+
+/* The min.tools wordmark is the home page's brand: the dark-ink version
+   over a light hero, the light-ink version in the dark scheme and inside
+   the scrolled capsule, which is dark in both schemes. */
+body.landing header.site .brand img {
+  width: auto;
+  height: 26px;
+  border-radius: 0;
+}
+
+body.landing header.site .brand img.dark,
+html:not(.js) body.landing header.site .brand img.light,
+body.landing header.site.scrolled .brand img.light {
+  display: none;
+}
+
+html:not(.js) body.landing header.site .brand img.dark,
+body.landing header.site.scrolled .brand img.dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.landing header.site .brand img.light {
+    display: none;
+  }
+
+  body.landing header.site .brand img.dark {
+    display: block;
+  }
+}
+
