@@ -657,3 +657,23 @@ html:not(.motion) .stage .sat.toast {
   color: var(--muted);
 }
 
+/* Wrap tool names into compact pills inside each catalog card. */
+.catalog .tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog .tools li {
+  /* Lift the text slightly for optical centering without changing pill height. */
+  padding: 4px 11px 5.5px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
