@@ -558,3 +558,49 @@
   }
 }
 
+/* Hero replay: the simulated running state uses an amber status and hides
+   the fixed report until the script marks it done. */
+[data-nm][data-state="running"] .nm-head .status i {
+  background: #ffb340;
+  box-shadow: 0 0 0 3px rgba(255, 179, 64, 0.2);
+}
+
+[data-nm][data-state="running"] .nm-foot .btn {
+  opacity: 0.4;
+}
+
+[data-nm] .nm-metrics,
+[data-nm] .nm-card {
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+[data-nm][data-state="running"] .nm-metrics,
+[data-nm][data-state="running"] .nm-card {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+[data-nm][data-state="done"] .nm-card:nth-of-type(1) {
+  transition-delay: 0.15s;
+}
+
+[data-nm][data-state="done"] .nm-card:nth-of-type(2) {
+  transition-delay: 0.3s;
+}
+
+[data-nm][data-state="done"] .nm-card:nth-of-type(3) {
+  transition-delay: 0.45s;
+}
+
+/* Show the copy toast during the replay or in a static reduced-motion
+   preview. */
+.stage .sat.toast {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.stage.saved .sat.toast,
+html:not(.motion) .stage .sat.toast {
+  opacity: 1;
+}
+
