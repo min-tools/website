@@ -122,3 +122,33 @@ body.landing header.site.scrolled .brand img.dark {
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
+/* Clip each app preview to a shallow desktop window at the card width. */
+.shot {
+  position: relative;
+  height: 15em;
+  padding: 1.6em 1.4em 0;
+  overflow: hidden;
+  font-size: clamp(7.5px, 2.2cqw, 10px);
+  container-type: inline-size;
+  background: var(--desk-bg);
+}
+
+/* Fade the clipped bottom edge into the surrounding desktop. */
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3em;
+  background: linear-gradient(to bottom, transparent, var(--desk-fade));
+  pointer-events: none;
+}
+
+.shot .win {
+  font-size: clamp(7.5px, 2.4cqw, 10.5px);
+  height: auto;
+  min-height: 100%;
+  border-radius: 1em 1em 0 0;
+  border-bottom: 0;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8), 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+}
+
