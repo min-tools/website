@@ -152,3 +152,31 @@ body.landing header.site.scrolled .brand img.dark {
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8), 0 0 0 0.5px rgba(255, 255, 255, 0.08);
 }
 
+/* Each card shows the top of one window with just enough inside it: the
+   Pastemin list without its detail pane, and the Netmin report without its
+   sidebar. */
+.shot .pm-body,
+.shot .nm-body {
+  grid-template-columns: 1fr;
+  min-height: 12em;
+}
+
+.shot .pm-detail,
+.shot .nm-side,
+.shot .nm-head .status,
+.shot .nm-head .seg {
+  display: none;
+}
+
+.shot .pm-list {
+  border-right: 0;
+}
+
+.shot .launcher {
+  padding: 1em;
+}
+
+.shot .splitview.short {
+  height: 12em;
+}
+
