@@ -65,3 +65,37 @@ body.landing header.site.scrolled .brand img.dark {
   }
 }
 
+/* Lift linked icons on hover while keeping each label with its icon. */
+.trio a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--fg);
+  text-decoration: none;
+  transition: transform 0.3s var(--ease);
+}
+
+.trio a:hover {
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.trio img {
+  width: clamp(60px, 10vw, 110px);
+  height: clamp(60px, 10vw, 110px);
+  border-radius: 22.5%;
+  box-shadow: 0 24px 50px -18px rgba(10, 100, 255, 0.55), 0 0 0 0.5px rgba(0, 0, 0, 0.2);
+}
+
+.trio b {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.trio span {
+  margin-top: -8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
