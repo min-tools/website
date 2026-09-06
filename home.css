@@ -248,3 +248,19 @@ body.landing header.site.scrolled .brand img.dark {
   font-size: 15px;
 }
 
+/* Stack complete cards when three readable previews no longer fit. */
+@media (max-width: 1120px) {
+  .apps {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+/* The repository list in the source section reuses the ledger, with a
+   monospace repository name. */
+.ledger .row .t code {
+  font: 600 0.95em var(--mono);
+  color: var(--win-fg);
+}
+
