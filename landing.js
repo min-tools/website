@@ -57,6 +57,33 @@
   window.MinTools = Object.freeze({ reduceMotion, wait, whenVisible, typeInto, loop });
 
   // ---------------------------------------------------------------------------------------------------------------------
+  // content-visibility can leave off-screen section sizes estimated. Request full
+  // layout when idle and before in-page jumps so targets can be measured.
+
+  // settle(): switches every section to real layout; the stylesheet reads the class.
+  const settle = () => html.classList.add("settled");
+
+  // setupSettling(): settles the page when idle, before any hash-link click, and at once when the URL already has a hash.
+  const setupSettling = () => {
+    // Load handler(): defer full layout until after the page's initial load.
+    window.addEventListener("load", () => {
+      // Let the browser choose an idle moment when it supports idle callbacks.
+      if ("requestIdleCallback" in window) { requestIdleCallback(settle, { timeout: 2000 }); } else {
+        // Older browsers get a short delay before laying out every section.
+        setTimeout(settle, 1000);
+      }
+    });
+    // Capture handler(event): lay out hash targets before click handlers measure them.
+    document.addEventListener("click", (event) => {
+      // Hash links need their targets laid out before the browser jumps to them.
+      if (event.target.closest?.("a[href^='#']")) { settle(); }
+    }, true);
+    // A direct fragment URL needs real section sizes from the outset.
+    if (location.hash.length > 1) { settle(); }
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------------
   // Wire up whatever this page has.
 
+  setupSettling();
 })();
