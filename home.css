@@ -214,3 +214,37 @@ body.landing header.site.scrolled .brand img.dark {
   line-height: 1.5;
 }
 
+/* Wrap compact feature badges without stretching the card. */
+.bits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 22px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bits li {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* Align card actions at the bottom even when descriptions differ in length. */
+.app-card .links {
+  display: flex;
+  gap: 10px;
+  margin: auto 22px 0;
+  padding: 20px 0 22px;
+}
+
+.cta.small {
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
