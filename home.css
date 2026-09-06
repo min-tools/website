@@ -264,3 +264,46 @@ body.landing header.site.scrolled .brand img.dark {
   color: var(--win-fg);
 }
 
+/* Ways to contribute: four compact cards between the lead and the button. */
+.ways {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+.ways .edge {
+  padding: 18px 18px 20px;
+}
+
+.ways .edge h3 {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.ways .edge p {
+  font-size: 14px;
+}
+
+/* Keep contribution cards readable as the available width narrows. */
+@media (max-width: 960px) {
+  .ways {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Give each contribution card the full width on small phones. */
+@media (max-width: 560px) {
+  .ways {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hide secondary navigation links on narrow screens. */
+@media (max-width: 760px) {
+  body.landing header.site nav a[href="#source"],
+  body.landing header.site nav a[href="#contribute"] {
+    display: none;
+  }
+}
