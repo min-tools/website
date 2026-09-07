@@ -637,6 +637,47 @@
   };
 
   // ---------------------------------------------------------------------------------------------------------------------
+  // Mode demo: one tab per mode, arrow keys move between them, captions follow the active panel.
+
+  // setupModeDemo(demo): wires the demo's tabs to its panels and the captions under it.
+  const setupModeDemo = (demo) => {
+    const tabs = $$("[role=tab]", demo);
+    const panels = $$("[role=tabpanel]", demo);
+    const captions = $$("[data-cap]");
+
+    // select(tab): shows the tab's panel and caption and moves keyboard focus order to the tab.
+    const select = (tab) => {
+      const id = tab.getAttribute("aria-controls");
+      for (const candidate of tabs) {
+        const on = candidate === tab;
+        candidate.classList.toggle("on", on);
+        candidate.setAttribute("aria-selected", String(on));
+        candidate.tabIndex = on ? 0 : -1;
+      }
+      // Panel callback(panel): show only the panel controlled by this tab.
+      panels.forEach((panel) => { panel.hidden = panel.id !== id; });
+      // Caption callback(caption): show the matching explanation below the demo.
+      captions.forEach((caption) => { caption.hidden = caption.dataset.cap !== id; });
+    };
+
+    // Tab callback(tab, n): wire each tab with its index for wrapping arrow keys.
+    tabs.forEach((tab, n) => {
+      // Click handler(): select this tab without moving focus to another tab.
+      tab.addEventListener("click", () => select(tab));
+      // Key handler(event): focus and select a neighbouring tab with arrow keys.
+      tab.addEventListener("keydown", (event) => {
+        const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        // Other keys retain their normal browser behavior.
+        if (!step) { return; }
+        event.preventDefault();
+        const next = tabs[(n + step + tabs.length) % tabs.length];
+        next.focus();
+        select(next);
+      });
+    });
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------------
   // Wire up whatever this page has.
 
   setupSettling();
@@ -653,4 +694,7 @@
   const cards = $$("a[data-doc]");
   // The document dialog needs cards to open and a browser with the dialog element.
   if (cards.length && "HTMLDialogElement" in window) { setupDocDialog(cards); }
+  const demo = $("[data-demo]");
+  // Only the Langmin modes section contains the tabbed example window.
+  if (demo) { setupModeDemo(demo); }
 })();
