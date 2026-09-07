@@ -479,6 +479,164 @@
   };
 
   // ---------------------------------------------------------------------------------------------------------------------
+  // Support, privacy, and terms keep their own pages. The landing page links to them with cards, and a card opens the page
+  // in a dialog: fetched over HTTP, or framed for local-file previews.
+
+  // docPath(url): resolve against this page and return the absolute pathname
+  // without a trailing index.html, so equivalent document links compare equally.
+  const docPath = (url) => new URL(url, location.href).pathname.replace(/index\.html$/, "");
+
+  // setupDocDialog(cards): builds the dialog once and opens a card's document in it on click.
+  const setupDocDialog = (cards) => {
+    // The dialog: a header echoing the card's badge, title, and summary, and a scrolling document area.
+    const dialog = document.createElement("dialog");
+    dialog.className = "doc-dialog";
+    dialog.setAttribute("aria-labelledby", "doc-dialog-title");
+    dialog.innerHTML = `
+      <div class="doc-head">
+        <span class="badge"></span>
+        <span class="t"><b id="doc-dialog-title"></b><span></span></span>
+        <button type="button" class="doc-close" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="doc-scroll doc"></div>`;
+    document.body.append(dialog);
+    const head = $(".doc-head", dialog);
+    const box = $(".doc-scroll", dialog);
+    const cache = new Map(); // Reuse successful fetch results by document URL.
+    let shown = null;        // The card whose document the dialog is showing, or null when closed.
+
+    // describe(card): the document URL, name, summary, and badge markup a card carries.
+    const describe = (card) => ({
+      url: card.dataset.doc,
+      name: $("b", card).textContent,
+      summary: $(".t > span", card).textContent,
+      badge: $(".badge", card).innerHTML
+    });
+    // showHTML(markup, [framed=false]): replace the content and reset its scroll.
+    // Framed content uses the iframe layout instead of the document padding.
+    const showHTML = (markup, framed = false) => {
+      box.className = framed ? "doc-scroll doc frame" : "doc-scroll doc";
+      box.innerHTML = markup;
+      box.scrollTop = 0;
+    };
+
+    // fetchDoc(url): the document's own body without its title, since the dialog header already names it.
+    const fetchDoc = async (url) => {
+      const response = await fetch(url);
+      // HTTP failures use the standalone-page fallback rather than an error body.
+      if (!response.ok) { throw new Error(String(response.status)); }
+      const main = new DOMParser().parseFromString(await response.text(), "text/html").querySelector("main.doc");
+      // A response without the document container cannot fill this dialog.
+      if (!main) { throw new Error("no document"); }
+      main.querySelector("h1")?.remove();
+      // Resolve links against the fetched page before inserting its content here.
+      for (const link of main.querySelectorAll("a[href]")) {
+        link.setAttribute("href", new URL(link.getAttribute("href"), response.url).href);
+      }
+      return main.innerHTML;
+    };
+
+    // loadDoc(card): fills the dialog with a card's document: from the cache, by fetch, or in a frame from disk.
+    const loadDoc = async (card) => {
+      const { url, name, summary, badge } = describe(card);
+      $(".badge", head).innerHTML = badge;
+      $("b", head).textContent = name;
+      $(".t > span", head).textContent = summary;
+      // Seen before: show it at once.
+      if (cache.has(url)) { showHTML(cache.get(url)); return; }
+      // Avoid local-file fetch restrictions with a frame that reports its height.
+      if (location.protocol === "file:") {
+        showHTML("", true);
+        const frame = document.createElement("iframe");
+        frame.className = "doc-frame";
+        frame.setAttribute("aria-label", name);
+        frame.src = url;
+        box.append(frame);
+        return;
+      }
+      // Over HTTP: show a loading line, fetch, cache, and show if this card is still the one open.
+      showHTML(`<p class="doc-loading"><svg class="ic spin"><use href="#i-spinner"/></svg>Loading ${name.toLowerCase()}…</p>`);
+      try {
+        const markup = await fetchDoc(url);
+        cache.set(url, markup);
+        // A late response must not replace a different document or reopen it.
+        if (shown === card) { showHTML(markup); }
+      } catch {
+        // Show a fallback only if this failed request still belongs to the dialog.
+        if (shown === card) { showHTML(`<p class="doc-fallback">Read it on the <a href="${url}">${name.toLowerCase()} page</a>.</p>`); }
+      }
+    };
+    // showDoc(card): opens the dialog on a card's document and locks the page behind it.
+    const showDoc = (card) => {
+      settle();
+      shown = card;
+      loadDoc(card);
+      // Switching documents reuses the open dialog and its existing scroll lock.
+      if (!dialog.open) {
+        dialog.showModal();
+        html.classList.add("dialog-open");
+      }
+    };
+    // closeDoc(): closes the dialog if it is open.
+    const closeDoc = () => { if (dialog.open) { dialog.close(); } };
+
+    $(".doc-close", dialog).addEventListener("click", closeDoc);
+    // Click handler(event): close on the backdrop, outside the dialog's own box.
+    dialog.addEventListener("click", (event) => {
+      // Clicks on document content or controls are not backdrop clicks.
+      if (event.target !== dialog) { return; }
+      const rect = dialog.getBoundingClientRect();
+      const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      // The dialog itself is also an event target, so exclude its interior.
+      if (!inside) { closeDoc(); }
+    });
+    // Close handler(): forget the shown card and release the page's scroll lock.
+    dialog.addEventListener("close", () => {
+      shown = null;
+      html.classList.remove("dialog-open");
+    });
+
+    // cardFor(link): the card a link points at, by the standalone page's path, or null. Menu hash links only
+    // scroll to the cards; the dialog opens on a deliberate click, never on arrival.
+    const cardFor = (link) => {
+      // A matching path on another site is not one of this page's documents.
+      if (link.origin !== location.origin) { return null; }
+      const path = link.pathname.replace(/index\.html$/, "");
+      // Find callback(card): compare normalized paths, including directory URLs.
+      return cards.find((card) => docPath(card.dataset.doc) === path) ?? null;
+    };
+    // Click handler(event): open cards and matching document links in the dialog.
+    document.addEventListener("click", (event) => {
+      // Preserve modified clicks and navigation already handled elsewhere.
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) { return; }
+      const link = event.target.closest?.("a[href]");
+      // Fallback links, downloads, and explicit browsing targets navigate normally.
+      if (link?.closest(".doc-fallback") || link?.hasAttribute("download") || (link?.target && link.target !== "_self")) { return; }
+      const card = link ? cardFor(link) : null;
+      // Leave unrelated links and clicks on other elements to the browser.
+      if (!card) { return; }
+      event.preventDefault();
+      showDoc(card);
+    });
+    // Message handler(event): accept sizing and document links from the open frame.
+    window.addEventListener("message", (event) => {
+      const frame = $("iframe", box);
+      // Ignore other windows and messages from a frame that is no longer shown.
+      if (!frame || frame.contentWindow !== event.source || !event.data) { return; }
+      const { height, doc } = event.data;
+      // Fit the frame to its document with a small rounding allowance.
+      if (typeof height === "number") { frame.style.height = `${Math.ceil(height) + 2}px`; }
+      // Sibling document links use the same dialog header and loading path.
+      if (typeof doc === "string") {
+        // Find callback(candidate): match the app-relative document directory.
+        const card = cards.find((candidate) => candidate.dataset.doc.startsWith(`${doc}/`));
+        // Only documents represented by this page's cards can replace the frame.
+        if (card) { showDoc(card); }
+      }
+    });
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------------
   // Wire up whatever this page has.
 
   setupSettling();
@@ -492,4 +650,7 @@
   const stage = $("[data-hero]");
   // The Langmin hero replays only where there is a stage and motion is welcome.
   if (stage && !reduceMotion) { setupLangminHero(stage); }
+  const cards = $$("a[data-doc]");
+  // The document dialog needs cards to open and a browser with the dialog element.
+  if (cards.length && "HTMLDialogElement" in window) { setupDocDialog(cards); }
 })();
