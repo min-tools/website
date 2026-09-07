@@ -269,6 +269,216 @@
   };
 
   // ---------------------------------------------------------------------------------------------------------------------
+  // The Langmin hero animates fixed example sessions; it makes no model requests.
+
+  const MODEL = "GPT-5.6 Luna";
+  // Each scene: the mode it selects, the request typed, the streamed result, and a follow-up with its reply. Blocks are
+  // headings (h), language labels (l), paragraphs (p) with an optional lang, or speaker labels (who).
+  const SCENES = [
+    {
+      id: "explain", title: "Explain", verb: "explain", key: "3", working: "Explaining",
+      placeholder: "What would you like explained?",
+      input: "What is love?",
+      resultTitle: "Explain — Meaning of Love", meta: `Model: ${MODEL} · Level: A`,
+      result: [
+        { h: "Meaning of Love" },
+        { p: "Love is a strong feeling of care, respect, and closeness. It can be for family, friends, a partner, a pet, or even a cause." }
+      ],
+      follow: "Explain now in Spanish?",
+      reply: [{ p: "El amor es un sentimiento fuerte de cariño, respeto y cercanía. Puede ser por la familia, los amigos o una pareja.", lang: "es" }]
+    },
+    {
+      id: "translate", title: "Translate", verb: "translate", key: "5", working: "Translating",
+      placeholder: "What would you like translated?",
+      input: "Good morning! The meeting moved to three o'clock, room 4B. Bring the printed draft if you can.",
+      resultTitle: "Translate — Good morning!", meta: `Model: ${MODEL} · Српски, Español`,
+      result: [
+        { l: "Српски" },
+        { p: "Добро јутро! Састанак је померен на три сата, сала 4Б. Понеси одштампани нацрт ако можеш.", lang: "sr" },
+        { l: "Español" },
+        { p: "¡Buenos días! La reunión se ha movido a las tres, sala 4B. Trae el borrador impreso si puedes.", lang: "es" }
+      ],
+      follow: "Now also in Japanese.",
+      reply: [
+        { l: "日本語" },
+        { p: "おはようございます！会議は3時に変更になりました。場所は4B室です。できれば印刷した草稿を持ってきてください。", lang: "ja" }
+      ]
+    },
+    {
+      id: "summarize", title: "Summarize", verb: "summarize", key: "4", working: "Summarizing",
+      placeholder: "What would you like summarized?",
+      audio: true,
+      input: "Okay, quick recap. The launch moves to the 24th because the store review took longer than planned. Mira owns the release notes, Tom takes the pricing page, and we meet again Thursday to go through the beta feedback.",
+      resultTitle: "Summarize — Team sync", meta: `Model: ${MODEL} · Short`,
+      result: [
+        { h: "Team sync" },
+        { p: "The launch is postponed to the 24th after a slow store review. Mira will write the release notes and Tom will update the pricing page; the team meets Thursday to review beta feedback." }
+      ],
+      follow: "List the action items.",
+      reply: [
+        { p: "• Mira: write the release notes" },
+        { p: "• Tom: update the pricing page" },
+        { p: "• Everyone: review beta feedback on Thursday" }
+      ]
+    },
+    {
+      id: "proofread", title: "Proofread", verb: "proofread", key: "1", working: "Proofreading",
+      placeholder: "What would you like proofread?",
+      input: "Hi Elliot, thanks for you're patience while we finalized the numbers, the report is attached.",
+      resultTitle: "Proofread — Hi Elliot", meta: `Model: ${MODEL}`,
+      result: [{ p: "Hi Elliot, thanks for your patience while we finalized the numbers. The report is attached." }],
+      follow: "Make it warmer.",
+      reply: [{ p: "Hi Elliot, thank you so much for your patience while we finalized the numbers! The report is attached, and I would love to hear what you think." }]
+    }
+  ];
+
+  // setupLangminHero(stage): plays the scenes in the hero window forever.
+  const setupLangminHero = (stage) => {
+    // find(selector): the first match inside the stage.
+    const find = (selector) => $(selector, stage);
+    // The parts of the window the scenes change.
+    const ui = {
+      title: find("[data-hero-title]"),
+      placeholder: find("[data-hero-ph]"),
+      typed: find("[data-hero-typed]"),
+      paneIn: find(".pane-in"),
+      send: find("[data-hero-send]"),
+      resultTitle: find("[data-hero-rtitle]"),
+      meta: find("[data-hero-meta]"),
+      working: find("[data-hero-working]"),
+      body: find("[data-hero-body]"),
+      field: find(".res-follow .field"),
+      followTyped: find("[data-hero-ftyped]"),
+      followState: find("[data-hero-fstate]"),
+      verb: find("[data-hero-go]"),
+      goKey: find("[data-hero-gokey]"),
+      hud: find("[data-hero-hud]"),
+      key: find("[data-hero-key]")
+    };
+    const chips = $$("[data-mode]", stage);
+    // setState(state): the stage's replay state, which the stylesheet turns into what is visible.
+    const setState = (state) => stage.setAttribute("data-state", state);
+    // keepInView(): keeps the newest text at the bottom of the result in view.
+    const keepInView = () => { ui.body.scrollTop = ui.body.scrollHeight; };
+
+    // streamBlock(block): appends one block and reveals it a few characters or one word at a time.
+    const streamBlock = async (block) => {
+      // A speaker label appears at once.
+      if (block.who) {
+        const node = document.createElement("span");
+        node.className = block.who === "You" ? "who you" : "who";
+        node.textContent = block.who;
+        ui.body.append(node);
+        keepInView();
+        await wait(120);
+        return;
+      }
+      // Text blocks stream in: word by word when the text has spaces, two characters at a time otherwise (CJK).
+      const text = block.h ?? block.l ?? block.p;
+      const node = document.createElement(block.h ? "h4" : block.l ? "span" : "p");
+      // Language headings use the compact label style rather than body text.
+      if (block.l) { node.className = "langhead"; }
+      // Preserve the language of translated text for browser text handling.
+      if (block.lang) { node.lang = block.lang; }
+      ui.body.append(node);
+      const spaced = text.includes(" ");
+      const units = spaced ? text.split(" ") : text.match(/[\s\S]{1,2}/g);
+      const pace = block.h || block.l ? 80 : 36;
+      for (let count = 1; count <= units.length; count += 1) {
+        node.textContent = units.slice(0, count).join(spaced ? " " : "");
+        keepInView();
+        // Pause between chunks, but finish the last chunk without extra delay.
+        if (count < units.length) { await wait(pace); }
+      }
+    };
+    // stream(blocks): streams blocks one after another.
+    const stream = async (blocks) => {
+      for (const block of blocks) { await streamBlock(block); }
+    };
+
+    // reset(scene): puts the window back to its empty state, labelled for the scene about to play.
+    const reset = (scene) => {
+      // Clear text and transient states left by the previous session.
+      setState("idle");
+      ui.typed.textContent = "";
+      ui.followTyped.textContent = "";
+      ui.body.textContent = "";
+      ui.paneIn.classList.remove("filled");
+      ui.send.classList.remove("live");
+      ui.field.classList.remove("filled");
+      ui.followState.textContent = "Follow-up";
+      ui.paneIn.removeAttribute("data-import");
+      // Chip callback(chip): select the mode used by the next scene.
+      chips.forEach((chip) => chip.classList.toggle("on", chip.dataset.mode === scene.id));
+      // Set the scene's labels and shortcut key before its typing starts.
+      ui.title.textContent = scene.title;
+      ui.verb.textContent = scene.verb;
+      ui.placeholder.textContent = scene.placeholder;
+      ui.resultTitle.textContent = scene.resultTitle;
+      ui.meta.textContent = scene.meta;
+      ui.working.textContent = scene.working;
+      ui.hud.textContent = scene.working;
+      ui.key.textContent = scene.key;
+    };
+
+    // importRecording(): animate the drop and transcription indicators.
+    // The scene supplies the transcript; no recording is processed here.
+    const importRecording = async () => {
+      ui.paneIn.setAttribute("data-import", "drop");
+      await wait(1000);
+      ui.paneIn.setAttribute("data-import", "working");
+      await wait(2700);
+      ui.paneIn.removeAttribute("data-import");
+    };
+
+    // play(scene): animate one SCENES entry through its reply and fade-out.
+    const play = async (scene) => {
+      reset(scene);
+      await wait(2600);
+      // The Summarize scene starts from a dropped recording rather than typed text.
+      if (scene.audio) { await importRecording(); }
+      // Animate the request and a press of the send shortcut.
+      ui.paneIn.classList.add("filled");
+      ui.send.classList.add("live");
+      await typeInto(ui.typed, scene.input, scene.audio ? 4 : 24);
+      await wait(550);
+      ui.goKey.classList.add("press");
+      await wait(320);
+      ui.goKey.classList.remove("press");
+      // Show a working state before revealing the scene's fixed result.
+      setState("working");
+      await wait(1200);
+      setState("result");
+      await stream(scene.result);
+      await wait(1000);
+      // A follow-up is typed, sent, and answered under the result.
+      ui.field.classList.add("filled");
+      await typeInto(ui.followTyped, scene.follow, 30);
+      await wait(450);
+      ui.followTyped.textContent = "";
+      ui.field.classList.remove("filled");
+      ui.followState.textContent = "Replying…";
+      // Append the example conversation below the original result.
+      await stream([{ who: "You" }, { p: scene.follow }]);
+      await wait(1000);
+      ui.followState.textContent = "Follow-up";
+      await stream([{ who: `Langmin · ${MODEL}` }, ...scene.reply]);
+      // The finished session stays up for a while, then fades before the next scene.
+      await wait(5200);
+      setState("leaving");
+      await wait(500);
+    };
+
+    let index = 0;
+    stage.classList.add("live");
+    // Replay step(): advance through the scenes, wrapping after the last one.
+    loop(async () => {
+      await play(SCENES[index]);
+      index = (index + 1) % SCENES.length;
+    });
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------------
   // Wire up whatever this page has.
 
   setupSettling();
@@ -279,4 +489,7 @@
     setupMenu(header);
   }
   setupReveal();
+  const stage = $("[data-hero]");
+  // The Langmin hero replays only where there is a stage and motion is welcome.
+  if (stage && !reduceMotion) { setupLangminHero(stage); }
 })();
