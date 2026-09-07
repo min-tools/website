@@ -244,6 +244,31 @@
   };
 
   // ---------------------------------------------------------------------------------------------------------------------
+  // Fade sections in as they scroll into view; show everything at once when the observer is missing or motion is reduced.
+
+  // setupReveal(): observes every .reveal element and marks it once it enters the viewport.
+  const setupReveal = () => {
+    const reveals = $$(".reveal");
+    // Without an observer, or with reduced motion, everything is simply visible.
+    if (!("IntersectionObserver" in window) || reduceMotion) {
+      // Element callback(element): show every section without waiting for a reveal.
+      reveals.forEach((element) => element.classList.add("in"));
+      return;
+    }
+    // Observer callback(entries): reveal each element once at the viewport edge.
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        // Leave off-screen elements observed until they enter the reveal area.
+        if (!entry.isIntersecting) { continue; }
+        entry.target.classList.add("in");
+        observer.unobserve(entry.target);
+      }
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    // Element callback(element): register each section for its first reveal.
+    reveals.forEach((element) => observer.observe(element));
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------------
   // Wire up whatever this page has.
 
   setupSettling();
@@ -253,4 +278,5 @@
     setupHeader(header);
     setupMenu(header);
   }
+  setupReveal();
 })();
