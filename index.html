@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Min Tools — Native Mac Apps with No Tracking</title>
+<meta name="description" content="Native Mac apps for language, clipboard history, and network diagnostics. Source available on GitHub, with no Min Tools accounts, analytics, or servers.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://min.tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Min Tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Min Tools — Native Mac Apps with No Tracking">
+<meta property="og:description" content="Native Mac apps for language, clipboard history, and network diagnostics. Source available, with no analytics or Min Tools servers.">
+<meta property="og:url" content="https://min.tools/">
+<meta property="og:image" content="https://min.tools/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Min Tools mark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Min Tools — Native Mac Apps with No Tracking">
+<meta name="twitter:description" content="Native Mac apps for language, clipboard history, and network diagnostics. Source available, with no analytics or Min Tools servers.">
+<meta name="twitter:image" content="https://min.tools/icon.png">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="pastemin/pastemin.css">
+<link rel="stylesheet" href="netmin/netmin.css">
+<link rel="stylesheet" href="home.css">
+<script>
+// Mark scripting support before first paint so CSS can prepare scroll reveals.
+document.documentElement.classList.add("js");
+// Enable animated hero states only when motion is allowed at page load.
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://min.tools/#org","name":"Min Tools","url":"https://min.tools/","logo":"https://min.tools/icon.png","sameAs":["https://github.com/min-tools"],"founder":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"}},
+{"@type":"WebSite","url":"https://min.tools/","name":"Min Tools","publisher":{"@id":"https://min.tools/#org"}},
+{"@type":"ItemList","name":"Min Tools apps","itemListElement":[
+{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"Langmin","url":"https://min.tools/langmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A private AI language assistant for the whole Mac: proofread, rewrite, explain, summarize, translate, and look words up from any app."}},
+{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A private clipboard history for the Mac: search saved text and images and restore them from any app."}},
+{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"Netmin","url":"https://min.tools/netmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"Network diagnostics for the Mac without the terminal: DNS, routing, local devices, mail, TLS, websites, and ports in one app."}}
+]}]}
+</script>
+</head>
+<body class="landing">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Shared icon symbols; visible instances reference these IDs with use. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-mac" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 5-4 14"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10 10 0 0 1 12 5c5 0 8.5 4 9.5 7-.4 1.1-1.1 2.3-2.1 3.4"/><path d="M6.6 6.6C4.6 8 3.2 10 2.5 12c1 3 4.5 7 9.5 7 1.6 0 3-.4 4.3-1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 2 2 3.5-4"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 7v10"/><path d="M18 11a4 4 0 0 1-4 4h-4a4 4 0 0 0-4 4"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 12V4.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 12V6.5a1.5 1.5 0 0 1 3 0V13"/><path d="M17 13v-3a1.5 1.5 0 0 1 3 0v5a7 7 0 0 1-7 7h-1.5a7 7 0 0 1-5.6-2.8L3.4 15a1.6 1.6 0 0 1 2.5-2L8 15"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M8 9h8"/><path d="M8 12h5"/></symbol>
+  <symbol id="i-translate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4"/><path d="m11 11 9-9"/><path d="m16 6 2.5 2.5"/><path d="m18.5 3.5 2 2"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/><path d="M5 7.5h14"/><path d="M5 16.5h14"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><path d="M9 11h6"/><path d="M9 15h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="m13.5 16.5 2 2"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.8 16.2a6 6 0 0 1 0-8.4"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4"/><path d="M5 19a10 10 0 0 1 0-14"/><path d="M19 5a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-proofread" viewBox="0 0 24 24"><path d="m4 20 1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1Z"/><path d="m14 7 3 3"/></symbol>
+  <symbol id="i-rewrite" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.2"/><path d="M4 4v4.5h4.5"/><path d="M4 13a8 8 0 0 0 14.6 4.2"/><path d="M20 20v-4.5h-4.5"/></symbol>
+  <symbol id="i-explain" viewBox="0 0 24 24"><path d="M9.5 18h5"/><path d="M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.2 1.1 2.2h5c0-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></symbol>
+  <symbol id="i-summarize" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 10h16"/><path d="M4 14h10"/><path d="M4 18h7"/></symbol>
+  <symbol id="i-dictionary" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8.8 16.5 3.2-9 3.2 9"/><path d="M10 13.5h4"/></symbol>
+  <symbol id="i-library" viewBox="0 0 24 24"><path d="M4 4h4v16H4z"/><path d="M10 4h4v16h-4z"/><path d="m15.5 5.2 3.8-1 3.9 14.6-3.8 1z"/></symbol>
+  <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+</svg>
+
+<header class="site">
+  <a class="brand" href="index.html" aria-label="Min Tools home"><img class="light" src="logo-wide.svg" alt="min.tools" width="2400" height="600"><img class="dark" src="logo-wide-dark.svg" alt="" width="2400" height="600"></a>
+  <nav aria-label="Main navigation"><a href="#apps">Apps</a><a href="#source">Source</a><a href="#privacy">Privacy</a><a href="#contribute">Contribute</a><a class="gh" href="https://github.com/min-tools" aria-label="Min Tools on GitHub"><svg class="ic"><use href="#i-star"/></svg>GitHub</a></nav>
+</header>
+
+<main id="main-content">
+
+
+
+
+
+</main>
+
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+<script src="landing.js" defer></script>
+</body>
+</html>
