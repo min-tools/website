@@ -204,6 +204,44 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </ul>
   </section>
 
+  <section id="features" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-sparkles"/></svg>Six modes</p>
+        <h2>Six modes, one shortcut away.</h2>
+        <p class="lead">Copy text and press a shortcut, select it and use the Services menu, or type in the window and press <kbd>⌘↩</kbd>. Every result can be saved, shared, printed, read aloud, and followed up.</p>
+      </div>
+
+      <!-- Tab aria-controls, panel IDs, and caption data-cap values must
+           stay in sync. -->
+      <div class="demo reveal" data-demo>
+        <div class="panel" id="d-proofread" role="tabpanel" aria-labelledby="t-proofread">
+          <div class="pane in">
+            <span class="lbl">Your text <span class="right">Copied from Mail</span></span>
+            <p>Hi Elliot, thanks for <mark class="bad">you're</mark> patience while we finalized the <mark class="bad">numbers, the</mark> report is attached and I'd appreciate <mark class="bad">you</mark> feedback before <mark class="bad">friday</mark>.</p>
+            <div class="opts"><span class="tick"><svg class="ic"><use href="#i-check"/></svg>Keeps your wording</span><span>Fixes only what is wrong</span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">On your clipboard <span class="seg mini"><span>Result</span><span class="on">Diff</span></span></span>
+            <p>Hi Elliot, thanks for <del>you're</del><ins>your</ins> patience while we finalized the <del>numbers, the</del><ins>numbers. The</ins> report is attached<ins>,</ins> and I'd appreciate <del>you</del><ins>your</ins> feedback before <del>friday</del><ins>Friday</ins>.</p>
+            <div class="stamp">Apple Intelligence · on this Mac · ⌘V to paste</div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="demo-tabs" role="tablist" aria-label="Modes">
+          <button class="chip on" role="tab" id="t-proofread" aria-selected="true" aria-controls="d-proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd></button>
+        </div>
+      </div>
+
+      <p class="demo-cap" data-cap="d-proofread">Spelling, grammar, and punctuation fixed. Your voice untouched. Flip to Diff to see exactly what changed. From a shortcut the result lands on your clipboard; from the Services menu it replaces the selection in place.</p>
+    </div>
+  </section>
 
 
 
