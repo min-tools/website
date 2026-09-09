@@ -112,6 +112,97 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 </header>
 
 <main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat">Linux<em> planned</em></span><span class="plat on">macOS</span><span class="plat">Windows<em> planned</em></span></p>
+      <h1>Your language assistant for the <span class="grad">whole Mac</span>.</h1>
+      <p class="sub">Proofread, rewrite, explain, summarize, translate, or look a word up. Drop a recording, a document, or a screenshot and work with its text. Ask a follow-up, edit the answer, hear it read aloud, and keep it in your Library. Use a shortcut from any app or work in Langmin's own window.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/langmin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-mac"/></svg>Coming to the Mac App Store</span>
+      </div>
+      <p class="fine">macOS 14 or later. Free with Apple Intelligence on device, and 30 days of full access from first launch.</p>
+    </div>
+
+    <!-- Fixed example content stays visible without motion; landing.js
+         animates the data-hero fields. -->
+    <div class="stage" data-hero data-state="done">
+      <div class="win app" role="img" aria-label="The Langmin window: a text field on the left, the result on the right with a follow-up conversation, six mode chips for Proofread, Rewrite, Explain, Summarize, Translate, and Dictionary with their keyboard shortcuts, and a model picker set to GPT-5.6 Luna.">
+        <div class="win-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span>Langmin • <span data-hero-title>Explain</span></span>
+          <span class="spacer"></span>
+          <svg class="ic"><use href="#i-library"/></svg>
+          <span>Library</span><span class="muted">· 36 saved ›</span>
+        </div>
+        <div class="launcher">
+          <div class="splitview">
+            <div class="pane-in focus filled">
+              <div class="text"><span class="typed" data-hero-typed>What is love?</span><i class="caret"></i></div>
+              <div class="drop">
+                <b data-hero-ph>What would you like explained?</b>
+                <span>Type or paste here, or drop a file</span>
+                <div class="cubes">
+                  <span class="cube doc"><svg class="ic"><use href="#i-doc"/></svg><b>Documents</b><small>PDF · DOCX · TXT</small></span>
+                  <span class="cube img"><svg class="ic"><use href="#i-image"/></svg><b>Images</b><small>PNG · JPG · HEIC</small></span>
+                  <span class="cube aud"><svg class="ic"><use href="#i-wave"/></svg><b>Audio</b><small>M4A · MP3 · WAV</small></span>
+                </div>
+              </div>
+              <div class="filechip"><svg class="ic"><use href="#i-wave"/></svg><b>Team sync.m4a</b><span>2:14</span></div>
+              <div class="import"><div class="row"><svg class="ic spin"><use href="#i-spinner"/></svg><b>Transcribing with Apple…</b><span>On this Mac</span><span class="cancel">Cancel</span></div><i class="bar"><i></i></i></div>
+              <span class="send live" data-hero-send><svg class="ic"><use href="#i-arrow-up"/></svg></span>
+            </div>
+            <div class="mid"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+            <div class="pane-out">
+              <div class="empty"><b>Ready when you are</b><span>Enter text on the left, then press ⌘↵ to see your result here.</span></div>
+              <div class="res">
+                <div class="res-head"><span data-hero-rtitle>Explain — Meaning of Love</span><span class="wc"><svg class="ic"><use href="#i-bookmark"/></svg><svg class="ic"><use href="#i-expand"/></svg><svg class="ic"><use href="#i-close"/></svg></span></div>
+                <div class="res-tools"><i><svg class="ic"><use href="#i-copy"/></svg></i><i><svg class="ic"><use href="#i-save"/></svg></i><i><svg class="ic"><use href="#i-share"/></svg></i><i><svg class="ic"><use href="#i-speaker"/></svg></i><i><svg class="ic"><use href="#i-edit"/></svg></i><span class="meta" data-hero-meta>Model: GPT-5.6 Luna · Level: A</span></div>
+                <div class="working"><svg class="ic spin"><use href="#i-spinner"/></svg><b data-hero-working>Explaining</b><span>GPT-5.6 Luna</span></div>
+                <div class="res-body" data-hero-body>
+                  <h4>Meaning of Love</h4>
+                  <p>Love is a strong feeling of care, respect, and closeness. It can be for family, friends, a partner, a pet, or even a cause.</p>
+                  <span class="who you">You</span>
+                  <p>Explain now in Spanish?</p>
+                  <span class="who">Langmin · GPT-5.6 Luna</span>
+                  <p lang="es">El amor es un sentimiento fuerte de cariño, respeto y cercanía. Puede ser por la familia, los amigos o una pareja.</p>
+                </div>
+                <div class="res-follow">
+                  <div class="field"><span class="ph" data-hero-fph>Ask a follow-up or request changes…</span><span class="typed" data-hero-ftyped></span><span class="send live"><svg class="ic"><use href="#i-arrow-up"/></svg></span></div>
+                  <span class="fmodel"><span data-hero-fstate>Follow-up</span> · GPT-5.6 Luna <svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip" data-mode="proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span class="chip" data-mode="rewrite"><svg class="ic"><use href="#i-rewrite"/></svg>Rewrite <kbd>⌃⇧2</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span class="chip on" data-mode="explain"><svg class="ic"><use href="#i-explain"/></svg>Explain <kbd>⌃⇧3</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span class="chip" data-mode="summarize"><svg class="ic"><use href="#i-summarize"/></svg>Summarize <kbd>⌃⇧4</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span class="chip" data-mode="translate"><svg class="ic"><use href="#i-translate"/></svg>Translate → Српски +1 <kbd>⌃⇧5</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span class="chip" data-mode="dictionary"><svg class="ic"><use href="#i-dictionary"/></svg>Dictionary <kbd>⌃⇧6</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+          </div>
+          <div class="launcher-foot">
+            <span class="model"><svg class="ic"><use href="#i-sparkles"/></svg>GPT-5.6 Luna<svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            <span>⌘K search</span>
+            <span class="go" data-hero-gokey>⌘↩ <b data-hero-go>explain</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="sat hud" aria-hidden="true"><svg class="ic spin"><use href="#i-spinner"/></svg><b data-hero-hud>Explaining</b><span>GPT-5.6 Luna</span><span class="cancel">Cancel</span></div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg>Copied <span>⌘V to paste</span></div>
+      <div class="sat keys" aria-hidden="true"><span class="keycap">⌃</span><span class="keycap">⇧</span><span class="keycap" data-hero-key>3</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-sparkles"/></svg>Apple Intelligence on device</li>
+      <li><svg class="ic"><use href="#i-key"/></svg>Or your own API key</li>
+      <li><svg class="ic"><use href="#i-eye-off"/></svg>No account, no Langmin servers</li>
+      <li><svg class="ic"><use href="#i-keyboard"/></svg>One shortcut in every app</li>
+      <li><svg class="ic"><use href="#i-wave"/></svg>Local document reading and Apple transcription</li>
+      <li><svg class="ic"><use href="#i-mac"/></svg>Mac App Store, Family Sharing</li>
+    </ul>
+  </section>
 
 
 
