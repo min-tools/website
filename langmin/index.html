@@ -294,6 +294,27 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           </div>
         </div>
 
+        <div class="panel" id="d-dictionary" role="tabpanel" aria-labelledby="t-dictionary" hidden>
+          <div class="pane in">
+            <span class="lbl">Look up a word</span>
+            <p>permit</p>
+            <div class="opts"><span>Language level</span><span class="seg"><span>A</span><span class="on">B</span><span>C</span></span><span class="tick"><svg class="ic"><use href="#i-check"/></svg>Illustration</span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">Dictionary <span class="tools"><i><svg class="ic"><use href="#i-copy"/></svg></i><i><svg class="ic"><use href="#i-save"/></svg></i><i><svg class="ic"><use href="#i-share"/></svg></i><i class="on"><svg class="ic"><use href="#i-image"/></svg></i></span></span>
+            <h3>permit<span class="spk"><svg class="ic"><use href="#i-speaker"/></svg></span></h3>
+            <h4>Noun<span class="ipa">/ˈpɜːrmɪt/</span><span class="spk"><svg class="ic"><use href="#i-speaker"/></svg></span></h4>
+            <ol>
+              <li>An official document that gives someone permission to do something. <em>You need a permit to build a garage.</em><span class="spk"><svg class="ic"><use href="#i-speaker"/></svg></span></li>
+            </ol>
+            <h4>Verb<span class="ipa">/pərˈmɪt/</span><span class="spk"><svg class="ic"><use href="#i-speaker"/></svg></span></h4>
+            <ol>
+              <li>To allow someone to do something. <em>The teacher does not permit phones in class.</em><span class="spk"><svg class="ic"><use href="#i-speaker"/></svg></span></li>
+            </ol>
+            <div class="stamp">Model: Apple Intelligence · Voice: Samantha · Level: B</div>
+          </div>
+        </div>
 
         <div class="demo-tabs" role="tablist" aria-label="Modes">
           <button class="chip on" role="tab" id="t-proofread" aria-selected="true" aria-controls="d-proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd></button>
@@ -301,6 +322,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <button class="chip" role="tab" id="t-explain" aria-selected="false" aria-controls="d-explain" tabindex="-1"><svg class="ic"><use href="#i-explain"/></svg>Explain <kbd>⌃⇧3</kbd></button>
           <button class="chip" role="tab" id="t-summarize" aria-selected="false" aria-controls="d-summarize" tabindex="-1"><svg class="ic"><use href="#i-summarize"/></svg>Summarize <kbd>⌃⇧4</kbd></button>
           <button class="chip" role="tab" id="t-translate" aria-selected="false" aria-controls="d-translate" tabindex="-1"><svg class="ic"><use href="#i-translate"/></svg>Translate <kbd>⌃⇧5</kbd></button>
+          <button class="chip" role="tab" id="t-dictionary" aria-selected="false" aria-controls="d-dictionary" tabindex="-1"><svg class="ic"><use href="#i-dictionary"/></svg>Dictionary <kbd>⌃⇧6</kbd></button>
         </div>
       </div>
 
@@ -309,6 +331,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <p class="demo-cap" data-cap="d-explain" hidden>Explanations at the language level you choose: A for basic, B for intermediate, C for advanced. With web research on, the model can search and cite its sources.</p>
       <p class="demo-cap" data-cap="d-summarize" hidden>Short, balanced, or detailed. Paste a link and Langmin reads the page on your Mac first; a detailed summary can keep up to two of its images with captions and sources. You can also import documents, screenshots, or audio recordings before summarizing.</p>
       <p class="demo-cap" data-cap="d-translate" hidden>One run, several target languages. Serbian is understood in both scripts, recent targets stay one click away in the chip's menu, and the app itself speaks thirty languages.</p>
+      <p class="demo-cap" data-cap="d-dictionary" hidden>An entry grouped by part of speech, with pronunciation, examples, an optional picture, and a section in your own language.</p>
     </div>
   </section>
 
