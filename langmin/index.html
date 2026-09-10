@@ -229,6 +229,19 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           </div>
         </div>
 
+        <div class="panel" id="d-rewrite" role="tabpanel" aria-labelledby="t-rewrite" hidden>
+          <div class="pane in">
+            <span class="lbl">Your text <span class="right">Selected in Pages</span></span>
+            <p>At this point in time we are not in a position to move forward with the proposal due to the fact that there are budget constraints which need to be taken into consideration.</p>
+            <div class="opts"><span>Style</span><span class="seg"><span>Rephrase</span><span>Humanize</span><span class="on">Concise</span><span>Elaborate</span></span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">Replaced in place <span class="right">Services menu</span></span>
+            <p>We can't move forward with the proposal right now because of budget constraints.</p>
+            <div class="stamp">Model: GPT-5.6 Terra · your key</div>
+          </div>
+        </div>
 
 
 
@@ -236,10 +249,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 
         <div class="demo-tabs" role="tablist" aria-label="Modes">
           <button class="chip on" role="tab" id="t-proofread" aria-selected="true" aria-controls="d-proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd></button>
+          <button class="chip" role="tab" id="t-rewrite" aria-selected="false" aria-controls="d-rewrite" tabindex="-1"><svg class="ic"><use href="#i-rewrite"/></svg>Rewrite <kbd>⌃⇧2</kbd></button>
         </div>
       </div>
 
       <p class="demo-cap" data-cap="d-proofread">Spelling, grammar, and punctuation fixed. Your voice untouched. Flip to Diff to see exactly what changed. From a shortcut the result lands on your clipboard; from the Services menu it replaces the selection in place.</p>
+      <p class="demo-cap" data-cap="d-rewrite" hidden>Four styles: Rephrase, Humanize, Concise, and Elaborate. Humanize asks the model to make phrasing more natural while keeping the meaning.</p>
     </div>
   </section>
 
