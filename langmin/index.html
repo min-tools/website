@@ -275,6 +275,24 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           </div>
         </div>
 
+        <div class="panel" id="d-translate" role="tabpanel" aria-labelledby="t-translate" hidden>
+          <div class="pane in">
+            <span class="lbl">Your text</span>
+            <p>Good morning! The meeting moved to three o'clock, room 4B. Bring the printed draft if you can.</p>
+            <div class="opts"><span>Targets</span><span class="tick"><svg class="ic"><use href="#i-check"/></svg>Српски</span><span class="tick"><svg class="ic"><use href="#i-check"/></svg>Español</span><span class="tick"><svg class="ic"><use href="#i-check"/></svg>日本語</span><span>Recent: Deutsch, Français</span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">Result <span class="tools"><i><svg class="ic"><use href="#i-copy"/></svg></i><i><svg class="ic"><use href="#i-save"/></svg></i><i><svg class="ic"><use href="#i-share"/></svg></i><i><svg class="ic"><use href="#i-speaker"/></svg></i></span></span>
+            <span class="langhead">Српски</span>
+            <p lang="sr">Добро јутро! Састанак је померен на три сата, сала 4Б. Понеси одштампани нацрт ако можеш.</p>
+            <span class="langhead">Español</span>
+            <p lang="es">¡Buenos días! La reunión se ha movido a las tres, sala 4B. Trae el borrador impreso si puedes.</p>
+            <span class="langhead">日本語</span>
+            <p lang="ja">おはようございます！会議は3時に変更になりました。場所は4B室です。できれば印刷した草稿を持ってきてください。</p>
+            <div class="stamp">Model: GPT-5.6 Sol · three targets in one run</div>
+          </div>
+        </div>
 
 
         <div class="demo-tabs" role="tablist" aria-label="Modes">
@@ -282,6 +300,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <button class="chip" role="tab" id="t-rewrite" aria-selected="false" aria-controls="d-rewrite" tabindex="-1"><svg class="ic"><use href="#i-rewrite"/></svg>Rewrite <kbd>⌃⇧2</kbd></button>
           <button class="chip" role="tab" id="t-explain" aria-selected="false" aria-controls="d-explain" tabindex="-1"><svg class="ic"><use href="#i-explain"/></svg>Explain <kbd>⌃⇧3</kbd></button>
           <button class="chip" role="tab" id="t-summarize" aria-selected="false" aria-controls="d-summarize" tabindex="-1"><svg class="ic"><use href="#i-summarize"/></svg>Summarize <kbd>⌃⇧4</kbd></button>
+          <button class="chip" role="tab" id="t-translate" aria-selected="false" aria-controls="d-translate" tabindex="-1"><svg class="ic"><use href="#i-translate"/></svg>Translate <kbd>⌃⇧5</kbd></button>
         </div>
       </div>
 
@@ -289,6 +308,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <p class="demo-cap" data-cap="d-rewrite" hidden>Four styles: Rephrase, Humanize, Concise, and Elaborate. Humanize asks the model to make phrasing more natural while keeping the meaning.</p>
       <p class="demo-cap" data-cap="d-explain" hidden>Explanations at the language level you choose: A for basic, B for intermediate, C for advanced. With web research on, the model can search and cite its sources.</p>
       <p class="demo-cap" data-cap="d-summarize" hidden>Short, balanced, or detailed. Paste a link and Langmin reads the page on your Mac first; a detailed summary can keep up to two of its images with captions and sources. You can also import documents, screenshots, or audio recordings before summarizing.</p>
+      <p class="demo-cap" data-cap="d-translate" hidden>One run, several target languages. Serbian is understood in both scripts, recent targets stay one click away in the chip's menu, and the app itself speaks thirty languages.</p>
     </div>
   </section>
 
