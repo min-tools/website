@@ -243,6 +243,21 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           </div>
         </div>
 
+        <div class="panel" id="d-explain" role="tabpanel" aria-labelledby="t-explain" hidden>
+          <div class="pane in">
+            <span class="lbl">Your text</span>
+            <p>What does “leapfrogging” mean in economics?</p>
+            <div class="opts"><span>Language level</span><span class="seg"><span class="on">A</span><span>B</span><span>C</span></span><span class="tick"><svg class="ic"><use href="#i-check"/></svg>Web research</span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">Result <span class="tools"><i><svg class="ic"><use href="#i-copy"/></svg></i><i><svg class="ic"><use href="#i-save"/></svg></i><i><svg class="ic"><use href="#i-share"/></svg></i><i class="on"><svg class="ic"><use href="#i-speaker"/></svg></i></span></span>
+            <p><b>Leapfrogging</b> is when a country or a company skips older steps and jumps straight to a newer technology.</p>
+            <p>For example, many places never built landline phone networks. They went straight to mobile phones. That is leapfrogging.</p>
+            <div class="src"><b>Sources</b>[1] <a>investopedia.com</a> [2] <a>worldbank.org</a> [3] <a>britannica.com</a></div>
+            <div class="stamp">Model: Claude Fable 5.1 · Level: A</div>
+          </div>
+        </div>
 
 
 
@@ -250,11 +265,13 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <div class="demo-tabs" role="tablist" aria-label="Modes">
           <button class="chip on" role="tab" id="t-proofread" aria-selected="true" aria-controls="d-proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd></button>
           <button class="chip" role="tab" id="t-rewrite" aria-selected="false" aria-controls="d-rewrite" tabindex="-1"><svg class="ic"><use href="#i-rewrite"/></svg>Rewrite <kbd>⌃⇧2</kbd></button>
+          <button class="chip" role="tab" id="t-explain" aria-selected="false" aria-controls="d-explain" tabindex="-1"><svg class="ic"><use href="#i-explain"/></svg>Explain <kbd>⌃⇧3</kbd></button>
         </div>
       </div>
 
       <p class="demo-cap" data-cap="d-proofread">Spelling, grammar, and punctuation fixed. Your voice untouched. Flip to Diff to see exactly what changed. From a shortcut the result lands on your clipboard; from the Services menu it replaces the selection in place.</p>
       <p class="demo-cap" data-cap="d-rewrite" hidden>Four styles: Rephrase, Humanize, Concise, and Elaborate. Humanize asks the model to make phrasing more natural while keeping the meaning.</p>
+      <p class="demo-cap" data-cap="d-explain" hidden>Explanations at the language level you choose: A for basic, B for intermediate, C for advanced. With web research on, the model can search and cite its sources.</p>
     </div>
   </section>
 
