@@ -259,6 +259,21 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           </div>
         </div>
 
+        <div class="panel" id="d-summarize" role="tabpanel" aria-labelledby="t-summarize" hidden>
+          <div class="pane in">
+            <span class="lbl">Your text <span class="right">A pasted link</span></span>
+            <div class="linkcard"><svg class="ic"><use href="#i-globe-page"/></svg><div><b>Council approves first phase of riverfront park</b><span>harborview.news · read on your Mac · 1,240 words</span></div></div>
+            <div class="opts"><span>Style</span><span class="seg"><span>Short</span><span>Balanced</span><span class="on">Detailed</span></span></div>
+          </div>
+          <div class="arrow"><svg class="ic"><use href="#i-arrow-right"/></svg></div>
+          <div class="pane out">
+            <span class="lbl">Result <span class="tools"><i><svg class="ic"><use href="#i-copy"/></svg></i><i><svg class="ic"><use href="#i-save"/></svg></i><i><svg class="ic"><use href="#i-share"/></svg></i><i><svg class="ic"><use href="#i-speaker"/></svg></i></span></span>
+            <p>The council approved the first phase of the riverfront park, a pedestrian bridge and native plantings on the east bank, by a 7 to 2 vote after three hours of public comment.</p>
+            <figure class="pageimg"><div class="art bridge"><svg viewBox="0 0 200 90" aria-hidden="true"><path d="M0 70h200" stroke="rgba(255,255,255,.7)" stroke-width="2"/><path d="M20 70V40M60 70V28M100 70V22M140 70V28M180 70V40" stroke="rgba(255,255,255,.55)" stroke-width="2"/><path d="M0 62C40 20 160 20 200 62" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="160" cy="18" r="9" fill="rgba(255,255,255,.85)"/></svg></div><figcaption>Rendering of the pedestrian bridge · <a>harborview.news</a></figcaption></figure>
+            <p>Work starts in spring, paid for by a state grant and last year's bond measure.</p>
+            <div class="stamp">Model: Gemini 2.5 Pro · page read on this Mac, one image kept</div>
+          </div>
+        </div>
 
 
 
@@ -266,12 +281,14 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <button class="chip on" role="tab" id="t-proofread" aria-selected="true" aria-controls="d-proofread"><svg class="ic"><use href="#i-proofread"/></svg>Proofread <kbd>⌃⇧1</kbd></button>
           <button class="chip" role="tab" id="t-rewrite" aria-selected="false" aria-controls="d-rewrite" tabindex="-1"><svg class="ic"><use href="#i-rewrite"/></svg>Rewrite <kbd>⌃⇧2</kbd></button>
           <button class="chip" role="tab" id="t-explain" aria-selected="false" aria-controls="d-explain" tabindex="-1"><svg class="ic"><use href="#i-explain"/></svg>Explain <kbd>⌃⇧3</kbd></button>
+          <button class="chip" role="tab" id="t-summarize" aria-selected="false" aria-controls="d-summarize" tabindex="-1"><svg class="ic"><use href="#i-summarize"/></svg>Summarize <kbd>⌃⇧4</kbd></button>
         </div>
       </div>
 
       <p class="demo-cap" data-cap="d-proofread">Spelling, grammar, and punctuation fixed. Your voice untouched. Flip to Diff to see exactly what changed. From a shortcut the result lands on your clipboard; from the Services menu it replaces the selection in place.</p>
       <p class="demo-cap" data-cap="d-rewrite" hidden>Four styles: Rephrase, Humanize, Concise, and Elaborate. Humanize asks the model to make phrasing more natural while keeping the meaning.</p>
       <p class="demo-cap" data-cap="d-explain" hidden>Explanations at the language level you choose: A for basic, B for intermediate, C for advanced. With web research on, the model can search and cite its sources.</p>
+      <p class="demo-cap" data-cap="d-summarize" hidden>Short, balanced, or detailed. Paste a link and Langmin reads the page on your Mac first; a detailed summary can keep up to two of its images with captions and sources. You can also import documents, screenshots, or audio recordings before summarizing.</p>
     </div>
   </section>
 
