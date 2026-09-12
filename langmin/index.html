@@ -637,6 +637,31 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
   </section>
 
+  <section id="privacy" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Private by design</p>
+        <h2>No Langmin accounts or servers.</h2>
+        <p class="lead">Your text goes only where you send it, straight from your Mac to the provider you chose. Langmin's developer never sees it.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>Straight to the provider, nowhere else</h3><p>Your text travels from your Mac to the AI you chose and back. Langmin operates no servers that receive your text. Remote providers handle it under their own policies.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-ask"/></svg></span><div><h3>Nothing leaves without your say</h3><p>The first time a provider would see your text, Langmin asks. Allow one request, remember permission, or cancel. You can reset permissions in Settings. Secret Protection can also warn about text that looks like a password or API key.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><div><h3>Your keys stay in your Keychain</h3><p>API keys live in the macOS Keychain, go only to their own provider, and can be removed any time.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No analytics, no tracking SDKs, no background clipboard reading. App data stays in its sandboxed container, with API keys stored separately in Keychain. iCloud Library sync stays off until you enable it.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="alert">
+          <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
+          <h3>Send text to OpenAI?</h3>
+          <p>Langmin will send text for requests you make with OpenAI directly from your Mac using your API key. The provider may process or retain it under its privacy policy and terms. Langmin's developer does not receive the text.</p>
+          <span class="btn primary">Always Allow</span>
+          <span class="btn">Allow Once</span>
+          <span class="btn">Cancel</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
