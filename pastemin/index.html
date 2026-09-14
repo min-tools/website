@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pastemin — Private Clipboard History for Mac</title>
+<meta name="description" content="Keep a searchable history of the text and images you copy on your Mac. Open it from any app with a shortcut, find an earlier item, and put it back on the clipboard. Clipboard history stays on your Mac. No Pastemin account, analytics, or servers.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://min.tools/pastemin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Min Tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Pastemin — Private Clipboard History for Mac">
+<meta property="og:description" content="Search copied text and images with a shortcut from any app. Your clipboard history stays on your Mac.">
+<meta property="og:url" content="https://min.tools/pastemin/">
+<meta property="og:image" content="https://min.tools/pastemin/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Pastemin app icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pastemin — Private Clipboard History for Mac">
+<meta name="twitter:description" content="Search copied text and images with a shortcut from any app. Your clipboard history stays on your Mac.">
+<meta name="twitter:image" content="https://min.tools/pastemin/icon.png">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<link rel="stylesheet" href="pastemin.css">
+<script>
+// Mark scripting support before first paint so CSS can prepare scroll reveals.
+document.documentElement.classList.add("js");
+// Enable animated hero states only when motion is allowed at page load.
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","image":"https://min.tools/pastemin/icon.png","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A native macOS clipboard history: a searchable record of the text and images you copy, opened from any app with a global shortcut, restored with Return, and kept only on your Mac.","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body class="landing">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Shared icon symbols; visible instances reference these IDs with use. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5V3h6v1.5"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><path d="M9 11h6"/><path d="M9 15h4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-mac" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor" stroke="none"/><path d="m8.5 12.5 2.5 2.5 4.5-5" stroke="#fff"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m21 16-5.5-5-6 6-2-2L3 19"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10 10 0 0 1 12 5c5 0 8.5 4 9.5 7-.4 1.1-1.1 2.3-2.1 3.4"/><path d="M6.6 6.6C4.6 8 3.2 10 2.5 12c1 3 4.5 7 9.5 7 1.6 0 3-.4 4.3-1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 2 2 3.5-4"/></symbol>
+  <symbol id="i-menubar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/><circle cx="16.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-broom" viewBox="0 0 24 24"><path d="m14 3 7 7"/><path d="m11.5 5.5-8 8 4 4 8-8"/><path d="M3.5 13.5 2 22l8.5-1.5"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12"/><path d="m18 6-12 12"/></symbol>
+  <symbol id="i-spinner" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-8 8"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M8 9h8"/><path d="M8 12h5"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 5-4 14"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14h.01"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4"/><path d="m11 11 9-9"/><path d="m16 6 2.5 2.5"/><path d="m18.5 3.5 2 2"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 7V5h16v2"/><path d="M12 5v14"/><path d="M9 19h6"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-translate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 12V4.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 12V6.5a1.5 1.5 0 0 1 3 0V13"/><path d="M17 13v-3a1.5 1.5 0 0 1 3 0v5a7 7 0 0 1-7 7h-1.5a7 7 0 0 1-5.6-2.8L3.4 15a1.6 1.6 0 0 1 2.5-2L8 15"/></symbol>
+</svg>
+
+<header class="site">
+  <a class="brand" href="index.html" aria-label="Pastemin home"><img src="icon-128.png" alt="" width="128" height="128">Pastemin</a>
+  <nav aria-label="Main navigation"><a class="home" href="../index.html">All apps</a><a href="#features">Features</a><a href="#pro">Plans</a><a href="#support">Support</a><a href="#privacy-policy">Privacy</a><a class="gh" href="https://github.com/min-tools/pastemin-macos" aria-label="Pastemin on GitHub"><svg class="ic"><use href="#i-star"/></svg>GitHub</a></nav>
+</header>
+
+<main id="main-content">
+
+
+
+
+
+
+
+
+  <!-- data-doc opens standalone pages in the dialog; data-scroll names the
+       menu landing target. -->
+
+</main>
+
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+<script src="../landing.js" defer></script>
+<script src="pastemin.js" defer></script>
+</body>
+</html>
