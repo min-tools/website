@@ -911,6 +911,29 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
   </section>
 
+  <section id="more" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-level"/></svg>The details</p>
+        <h2>Small things, done carefully.</h2>
+      </div>
+      <div class="details">
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-copy"/></svg>Clipboard etiquette</h3><p>Langmin reads the clipboard only when you invoke an action. If you copy something else while a proofread is still running, it asks before replacing it.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-globe-page"/></svg>Webpage reading</h3><p>Paste a link into Explain or Summarize and Langmin fetches the page on your Mac, excerpts long pages, and keeps images only when you ask for a detailed answer.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-translate"/></svg>Translate knows when to stop</h3><p>If the whole text is already in a target language, Translate says so and leaves your clipboard alone instead of rewriting it.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-menubar"/></svg>Menu bar mode</h3><p>Close every window and Langmin keeps running in the menu bar for shortcuts and Services; <kbd>⌘Q</kbd> quits it. The Library opens in the main window or in its own, and Langmin remembers which you prefer.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-rewrite"/></svg>Humanize</h3><p>Humanize asks the model for more natural phrasing while preserving meaning. It does not promise to evade AI detectors.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>Langmin runs in the App Sandbox and uses macOS Services and the clipboard without Accessibility permission or simulated copy-and-paste keystrokes.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>An Apple-silicon Mac running macOS 14 or later. Apple Intelligence needs macOS 26 with Apple Intelligence turned on. Apple transcription also needs macOS 26 and a supported language. Cloud providers need your own API key.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-code"/></svg>Source available</h3><p>The app's source is published on GitHub under the PolyForm Strict License 1.0.0 with added permissions, so you can read exactly what leaves your Mac.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-link"/></svg>Automation</h3><p>Run any mode from Shortcuts or a script.</p><pre>langmin://run?mode=summarize&amp;text=…
+langmin://run?mode=translate&amp;text=…&amp;language=Serbian
+langmin://run?mode=explain&amp;text=…&amp;level=a
+langmin://compose?mode=rewrite&amp;text=…
+langmin://library</pre></div>
+      </div>
+    </div>
+  </section>
 
   <!-- data-doc opens standalone pages in the dialog; data-scroll names the
        menu landing target. -->
