@@ -85,6 +85,58 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 </header>
 
 <main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat on">macOS</span><span class="plat fact">Text and images</span><span class="plat fact">31 languages</span></p>
+      <h1>Your clipboard, <span class="grad">ready when you need it</span>.</h1>
+      <p class="sub">Keep a searchable history of the text and images you copy on your Mac. Open it from any app, preview an item, and put it back on the clipboard in a few keystrokes. Your history stays on your Mac.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/pastemin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-mac"/></svg>Coming to the Mac App Store</span>
+      </div>
+      <p class="fine">macOS 14 or later on Apple silicon. 30 days of full access from first launch, with no subscription.</p>
+    </div>
+
+    <!-- A static clipboard example; pastemin.js animates these data-pm
+         fields when motion is allowed. -->
+    <div class="stage" data-pm>
+      <div class="win pm" role="img" aria-label="The Pastemin panel: a search field in the title row, a history of copied items on the left with the app each came from, and the selected item, a note titled Project brief, shown in full on the right.">
+        <div class="pm-bar">
+          <svg class="ic clip"><use href="#i-clipboard"/></svg><i class="vr"></i>
+          <span class="search" data-pm-search><span class="ph">Clipboard</span><span class="typed" data-pm-typed></span><i class="caret"></i></span>
+          <span class="spacer"></span><span class="more">···</span>
+        </div>
+        <div class="pm-body">
+          <!-- Row data attributes supply the details; scene pick indexes in
+               pastemin.js depend on this order. -->
+          <div class="pm-list" data-pm-list>
+            <div class="row on" data-title="Project brief" data-kind="Text" data-source="Notes" data-meta="278 bytes · Sep 20, 2026 at 14:32:17" data-body="Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search."><span class="src notes"></span><div class="t"><b>Project brief</b><span>Notes · 14:32</span></div></div>
+            <div class="row" data-title="Meeting notes" data-kind="Text" data-source="Mail" data-meta="164 bytes · Sep 20, 2026 at 14:28:05" data-body="Thursday sync: the launch moves to the 24th. Mira owns the release notes, Tom takes the pricing page, and we go through the beta feedback next week."><span class="src mail"></span><div class="t"><b>Meeting notes</b><span>Mail · 14:28</span></div></div>
+            <div class="row" data-title="Release checklist" data-kind="Text" data-source="Notes" data-meta="96 bytes · Sep 20, 2026 at 14:20:41" data-body="Tag the build&#10;Update the screenshots&#10;Check every public link&#10;Submit for review"><span class="src notes"></span><div class="t"><b>Release checklist</b><span>Notes · 14:20</span></div></div>
+            <div class="row" data-title="https://min.tools" data-kind="Text" data-source="Safari" data-meta="17 bytes · Sep 20, 2026 at 14:18:22" data-body="https://min.tools"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span>Safari · 14:18</span></div></div>
+            <div class="row" data-title="Design reference" data-kind="Image" data-source="Finder" data-meta="1.2 MB · Sep 20, 2026 at 14:12:09" data-body=""><span class="src finder"></span><div class="t"><b>Design reference</b><span>Finder · 14:12</span></div></div>
+            <div class="empty" hidden>No matching items</div>
+          </div>
+          <div class="pm-detail">
+            <div class="pm-head"><svg class="ic" data-pm-kind-icon><use href="#i-doc"/></svg><b data-pm-kind>Text</b><span class="spacer"></span><svg class="ic trash"><use href="#i-trash"/></svg></div>
+            <div class="pm-text"><h4 data-pm-title>Project brief</h4><p data-pm-body>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search.</p><div class="pic" data-pm-pic hidden></div></div>
+            <div class="pm-foot"><span data-pm-source>Notes</span><span class="spacer"></span><span data-pm-meta>278 bytes · Sep 20, 2026 at 14:32:17</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg>Restored <span>⌘V to paste</span></div>
+      <div class="sat keys" aria-hidden="true"><span class="keycap">⌃</span><span class="keycap">⌥</span><span class="keycap">C</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-lock"/></svg>History stays on this Mac</li>
+      <li><svg class="ic"><use href="#i-eye-off"/></svg>No account, no analytics</li>
+      <li><svg class="ic"><use href="#i-image"/></svg>Text and images</li>
+      <li><svg class="ic"><use href="#i-keyboard"/></svg>⌃⌥C from any app</li>
+      <li><svg class="ic"><use href="#i-shield"/></svg>Concealed items skipped</li>
+      <li><svg class="ic"><use href="#i-mac"/></svg>Mac App Store, Family Sharing</li>
+    </ul>
+  </section>
 
 
 
