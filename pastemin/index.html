@@ -244,6 +244,30 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
   </section>
 
+  <section id="privacy" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Private by design</p>
+        <h2>Your clipboard history stays on your Mac.</h2>
+        <p class="lead">Pastemin stores clipboard history only in its sandboxed Application Support folder. Clipboard content is never uploaded. The only network traffic is Apple's own StoreKit, for product and purchase information.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Marked items are never stored</h3><p>Pastemin skips items marked concealed, transient, or automatically generated. It cannot detect sensitive content that an app copies without those markers.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><div><h3>Permission only when you ask for it</h3><p>When you enable automatic paste and select an item, Pastemin asks for permission to send the paste keystroke. If you decline, the item is still copied. You can revoke access in System Settings.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No account, no analytics, no advertising, no tracking SDKs, and no iCloud sync of your history. Apple handles purchases and never shares payment details with the developer.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-clipboard"/></svg>What Pastemin keeps</div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Project brief</b><span>Text from Notes</span></div><span class="tag ok">Kept on this Mac</span></div>
+          <div class="row"><svg class="ic"><use href="#i-image"/></svg><div class="t"><b>Design reference.png</b><span>Image from Finder</span></div><span class="tag ok">Kept on this Mac</span></div>
+          <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b>••••••••••••</b><span>Marked concealed by a password manager</span></div><span class="tag no">Skipped</span></div>
+          <div class="row"><svg class="ic"><use href="#i-clock"/></svg><div class="t"><b>Verification code</b><span>Marked transient by macOS</span></div><span class="tag no">Skipped</span></div>
+          <div class="row"><svg class="ic"><use href="#i-eye-off"/></svg><div class="t"><b>Anything at all</b><span>To the developer</span></div><span class="tag no">Never sent</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
