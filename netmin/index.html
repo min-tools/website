@@ -96,6 +96,95 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 </header>
 
 <main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat on">macOS</span><span class="plat fact">84 tools</span><span class="plat fact">27 languages</span></p>
+      <h1>Network answers <span class="grad">without the terminal</span>.</h1>
+      <p class="sub">Inspect DNS, routing, local devices, mail, TLS, websites, and ports from one native Mac app. Run a single check or a full report, watch its progress, and compare the overview with the raw command output.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/netmin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-mac"/></svg>Coming to the Mac App Store</span>
+      </div>
+      <p class="fine">macOS 14 or later on Apple silicon. 30 days of Pro from first launch, with no subscription.</p>
+    </div>
+
+    <!-- A fixed report in its completed state; netmin.js replays loading
+         and copy indicators. -->
+    <div class="stage" data-nm data-state="done">
+      <div class="win nm" role="img" aria-label="The Netmin window: a sidebar listing tool groups with Network Lookup starred as a favorite, and a Network Lookup report for the documentation address 203.0.113.42 with an Overview and Raw output switch, metric cards, a Basic table, and Save Report and Copy Result buttons.">
+        <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Netmin</span></div>
+        <div class="nm-body">
+          <div class="nm-side">
+            <div class="filter"><svg class="ic"><use href="#i-search"/></svg>Filter 84 tools<kbd>⌘K</kbd></div>
+            <div class="grp">Favorites</div>
+            <div class="row on"><span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span>Network Lookup<svg class="ic star on"><use href="#i-star"/></svg></div>
+            <div class="grp">Reports</div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-report"/></svg></span>Site Report<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-chart"/></svg></span>My Network Report<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-pin"/></svg></span>My Public IP<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="grp">Local Network</div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-radar"/></svg></span>Local Device Sweep<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-table"/></svg></span>ARP Table<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-list"/></svg></span>IPv6 Neighbors<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-pulse"/></svg></span>Bonjour Services<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-dns"/></svg></span>DNS Configuration<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-lease"/></svg></span>DHCP Lease<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-wifi"/></svg></span>Wi-Fi Diagnostics<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-ports"/></svg></span>Interface Inventory<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="grp">IP, Routing and Registration</div>
+          </div>
+          <div class="nm-main">
+            <div class="nm-head">
+              <span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span>
+              <div class="t"><b>Network Lookup</b><span><code>203.0.113.42</code> · just now</span></div>
+              <span class="seg"><span class="on">Overview</span><span>Raw output</span></span>
+              <span class="status"><i></i><span data-nm-status>Complete · 0.4 s</span></span>
+              <span class="refresh"><svg class="ic" data-nm-refresh><use href="#i-refresh"/></svg></span>
+            </div>
+            <div class="nm-report">
+              <div class="intro"><b>Report for 203.0.113.42</b><span>Results are grouped by completed check.</span></div>
+              <div class="nm-metrics">
+                <div class="metric"><small>Address</small><b class="accent">203.0.113.42</b></div>
+                <div class="metric"><small>Checks</small><b>3</b></div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Basic</div>
+                <div class="r"><span>Input Type</span><code>IP address</code></div>
+                <div class="r"><span>Resolved Address</span><code>203.0.113.42</code></div>
+                <div class="r"><span>IP Version</span><code>IPv4</code></div>
+                <div class="r"><span>Reverse Name</span><code>example.net</code></div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Address and ownership</div>
+                <div class="r"><span>IP Address</span><code>203.0.113.42</code></div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Lookup complete</div>
+                <pre>Quick lookup completed. Full diagnostics were skipped.</pre>
+              </div>
+            </div>
+            <div class="nm-foot">
+              <span class="new">New Report <kbd>esc</kbd></span>
+              <span class="spacer"></span>
+              <span class="btn"><svg class="ic"><use href="#i-download"/></svg>Save Report…</span>
+              <span class="btn primary">Copy Result <kbd>⌘⇧C</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg>Copied <span>the raw output</span></div>
+      <div class="sat keys" aria-hidden="true"><span class="keycap">⌘</span><span class="keycap">↩</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-wrench"/></svg>84 tools in one window</li>
+      <li><svg class="ic"><use href="#i-table"/></svg>Overview and raw output</li>
+      <li><svg class="ic"><use href="#i-eye-off"/></svg>No accounts, no developer servers</li>
+      <li><svg class="ic"><use href="#i-shield"/></svg>Sandboxed, no admin access</li>
+      <li><svg class="ic"><use href="#i-box"/></svg>No Homebrew, no runtimes</li>
+      <li><svg class="ic"><use href="#i-mac"/></svg>Mac App Store, Family Sharing</li>
+    </ul>
+  </section>
 
 
 
