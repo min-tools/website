@@ -226,6 +226,53 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
   </section>
 
+  <section id="sweep" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-radar"/></svg>Discover the local network</p>
+        <h2>Discovered devices in one table.</h2>
+        <p class="lead">Local Device Sweep finds attached networks first and lets you choose which ranges to scan. The results show discovered devices, response times, interfaces, and common services, along with the scanned ranges and raw output.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-check"/></svg></span><div><h3>You pick the ranges</h3><p>Netmin lists the private networks your Mac is attached to and scans only the ones you tick, one range at a time.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pulse"/></svg></span><div><h3>Ping and ports from the row</h3><p>Every discovered device offers a ping and a common-port check right there, so the follow-up is one click.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Only when you start it</h3><p>You start each local check. macOS controls Local Network access, and remote diagnostics remain available if you deny it.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="win nm sweep">
+          <div class="nm-main">
+            <div class="nm-head">
+              <span class="tile"><svg class="ic"><use href="#i-radar"/></svg></span>
+              <div class="t"><b>Local Device Sweep</b><span>1 network · en0 · 4 devices · just now</span></div>
+              <span class="status"><i></i>Complete · 2.8 s</span>
+            </div>
+            <div class="nm-report">
+              <div class="nm-card">
+                <div class="h">Devices <span class="count">4</span><span class="right">MAC and vendor hidden in this run</span></div>
+                <div class="nm-table">
+                  <span class="hd">IP address</span><span class="hd">Name</span><span class="hd">Latency</span><span class="hd">Actions</span>
+                  <span><code>192.168.10.1</code></span><span>Wi-Fi Router <i class="pill">1 service</i></span><span>2.1 ms <i class="bar"><i style="width:30%"></i></i></span><span class="act">Ping Ports</span>
+                  <span><code>192.168.10.12</code></span><span>Office Printer <i class="pill">1 service</i></span><span>4.7 ms <i class="bar"><i style="width:55%"></i></i></span><span class="act">Ping Ports</span>
+                  <span><code>192.168.10.24</code></span><span>Media Server <i class="pill">2 services</i></span><span>6.3 ms <i class="bar"><i style="width:80%"></i></i></span><span class="act">Ping Ports</span>
+                  <span><code>192.168.10.40</code></span><span>This Mac <i class="pill you">you</i></span><span>0.8 ms <i class="bar"><i style="width:12%"></i></i></span><span class="act">Ping Ports</span>
+                </div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Networks scanned</div>
+                <div class="r"><span><code>192.168.10.0/24</code></span><code>via en0</code></div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Common TCP services <span class="count">4 hosts</span><span class="right">Ports that accepted a connection</span></div>
+                <div class="r"><span><code>192.168.10.1</code></span><code>HTTPS (443)</code></div>
+                <div class="r"><span><code>192.168.10.12</code></span><code>IPP (631)</code></div>
+                <div class="r"><span><code>192.168.10.24</code></span><code>SSH (22), AirPlay (7000)</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
