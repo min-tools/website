@@ -319,6 +319,30 @@ example.net.    3600  IN  MX  20 mx2.example.net.
     </div>
   </section>
 
+  <section id="privacy" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Private by design</p>
+        <h2>Checks go directly to the systems involved.</h2>
+        <p class="lead">Netmin has no advertising, analytics, account system, or developer-operated diagnostic service. A check starts only when you choose a tool and run it, and its requests go directly to the systems that check needs.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>Straight to the systems involved</h3><p>Depending on the tool, that is the target itself, its DNS and mail servers, a resolver you select, registries, certificate-transparency logs, or a named public lookup service.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-server"/></svg></span><div><h3>Named services, no surprises</h3><p>Built-in lookups can contact Cloudflare, Google Public DNS, Quad9, OpenDNS, RIPE, Team Cymru, ipify, ipinfo.io, rdap.org, hstspreload.org, and crt.sh. These services receive your public IP address and the query needed for the check, under their own privacy policies. You can avoid those tools or choose another resolver where supported.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>Output stays in memory</h3><p>Complete diagnostic output is discarded when you replace or close the result or quit. A report is written to disk only where you choose to export it. Nothing is sent to the developer.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-globe"/></svg>Where a check goes</div>
+          <div class="row"><svg class="ic"><use href="#i-pin"/></svg><div class="t"><b>The target</b><span>The host, address, or URL you entered</span></div><span class="tag ok">When you run it</span></div>
+          <div class="row"><svg class="ic"><use href="#i-dns"/></svg><div class="t"><b>Its DNS and mail servers</b><span>Or the resolver you picked</span></div><span class="tag ok">When you run it</span></div>
+          <div class="row"><svg class="ic"><use href="#i-server"/></svg><div class="t"><b>Named public lookup services</b><span>RDAP, WHOIS, RPKI, CT logs, IP information</span></div><span class="tag ask">Only those tools</span></div>
+          <div class="row"><svg class="ic"><use href="#i-radar"/></svg><div class="t"><b>Your local network</b><span>After macOS asks for permission</span></div><span class="tag ask">Only local tools</span></div>
+          <div class="row"><svg class="ic"><use href="#i-eye-off"/></svg><div class="t"><b>Netmin's developer</b><span>Targets, queries, results, anything</span></div><span class="tag no">Never</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
