@@ -274,6 +274,50 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
   </section>
 
+  <section id="results" class="sec">
+    <div class="wrap split flip">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-terminal"/></svg>Overview and raw output</p>
+        <h2>A clear overview. The raw output alongside it.</h2>
+        <p class="lead">The overview turns command output into cards, tables, metrics, and clear findings. Raw output shows the captured command response for troubleshooting. Pro also lets you copy structured summaries and save reports as text files.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pulse"/></svg></span><div><h3>Live while it runs</h3><p>Output appears as the check produces it. Cancel stops the active process, and timeouts are clearly reported.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-copy"/></svg></span><div><h3>Copy or save</h3><p><kbd>⌘⇧C</kbd> copies the raw output. With Pro, use Copy Summary for the overview or Save Report to export a plain-text file.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-clock"/></svg></span><div><h3>Recent targets</h3><p>Up to eight recent targets stay one click away until you clear them with Clear Recent Data.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="win nm raw">
+          <div class="nm-main">
+            <div class="nm-head">
+              <span class="tile"><svg class="ic"><use href="#i-mail"/></svg></span>
+              <div class="t"><b>Mail MX</b><span><code>example.net</code> · just now</span></div>
+              <span class="seg"><span>Overview</span><span class="on">Raw output</span></span>
+            </div>
+            <div class="nm-report">
+              <div class="nm-card">
+                <div class="h">Mail exchangers <span class="count">2</span></div>
+                <div class="r"><span>Priority 10</span><code>mx1.example.net</code></div>
+                <div class="r"><span>Priority 20</span><code>mx2.example.net</code></div>
+              </div>
+              <div class="nm-card">
+                <div class="h">Raw output <span class="right">dig +noall +answer MX example.net</span></div>
+                <pre>example.net.    3600  IN  MX  10 mx1.example.net.
+example.net.    3600  IN  MX  20 mx2.example.net.
+<span class="c">;; Query time: 23 msec · SERVER: 1.1.1.1#53 · 2 answers</span></pre>
+              </div>
+            </div>
+            <div class="nm-foot">
+              <span class="new">New Lookup <kbd>esc</kbd></span>
+              <span class="spacer"></span>
+              <span class="btn"><svg class="ic"><use href="#i-download"/></svg>Save Report…</span>
+              <span class="btn primary">Copy Result <kbd>⌘⇧C</kbd></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
