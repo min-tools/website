@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/langmin/support/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Langmin</title>
+<meta name="description" content="Get help with Langmin: contact, common questions, and where to report problems.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../icon-128.png" alt="" width="128" height="128">Langmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/langmin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Support</h1>
+<p class="meta">Help with Langmin, usually within a day or two.</p>
+
+<h2>Contact</h2>
+<ul>
+<li>Questions and support: <a href="https://github.com/min-tools/langmin-macos">Langmin on GitHub</a></li>
+<li>Bug reports and feature requests: <a href="https://github.com/min-tools/langmin-macos/issues">GitHub Issues</a></li>
+</ul>
+<p>When reporting a problem, include your macOS version, the Langmin version from About Langmin, the mode you used, and the provider selected. For transcription problems, include the recording's format, size, and language. Never share API keys. Include text or recordings only if you are comfortable sharing their contents.</p>
+
+<h2>Common questions</h2>
+
+<h3>What does Langmin need?</h3>
+<p>An Apple-silicon Mac running macOS 14 or later. Apple Intelligence features need macOS 26 with Apple Intelligence turned on. Apple audio transcription also needs macOS 26 and a supported language. Cloud providers need Pro and your own API key, added in Settings → Models.</p>
+
+<h3>What happens after the first 30 days?</h3>
+<p>Langmin starts a free 30-day trial after you accept its notice at first launch, without starting a subscription. Afterward, Apple Intelligence, Apple voices, Apple transcription, text editing, and the local Library stay free. Pro adds cloud models, custom endpoints, web research, cloud voices, OpenAI images and transcription, Library folders, and iCloud sync. Choose a yearly subscription or a one-time lifetime purchase. Saved Library items remain readable and exportable with either tier.</p>
+
+<h3>Can I turn a recording into text?</h3>
+<p>Yes. Choose Apple or OpenAI in Settings → Transcription, then drop or paste an M4A, MP3, or WAV file into the input. Apple transcription is free and runs on your Mac. OpenAI requires Pro and your API key, accepts files up to 25 MB, and bills your OpenAI account. Review the transcript before running a writing mode. Cancel keeps text from files that have already finished.</p>
+
+<h3>Are imported files uploaded?</h3>
+<p>Documents and images are read on your Mac without uploading the files. Apple transcription also keeps recordings on your Mac. OpenAI transcription uploads the recording after separate audio permission. The imported text can then go to your selected writing model with the same permissions as typed text. Imported recordings are not attached to the Library or synced through iCloud.</p>
+
+<h3>Why is Apple asking to download a speech model?</h3>
+<p>The selected language needs a model installed on your Mac. Langmin reuses it across imports and app launches, and asks again only when installation is needed. macOS limits how many languages an app can keep, so using a new language can mean downloading a previous one again later. macOS may also remove models that have not been used for a while.</p>
+
+<h3>macOS asked whether Langmin may read what I copied</h3>
+<p>On macOS 15.4 and later the system asks the first time a shortcut reads the clipboard. Choose Always Allow so shortcuts keep working without interruptions. Langmin only reads the clipboard when you invoke an action.</p>
+
+<h3>Langmin is missing from an app's Services menu</h3>
+<p>Right after installing, macOS sometimes needs a moment to register new Services. Log out and back in if they do not appear. Keyboard shortcuts for Services are assigned in System Settings → Keyboard → Keyboard Shortcuts → Services.</p>
+
+<h3>Where are my API keys stored?</h3>
+<p>Only in the macOS Keychain on your Mac. They are sent directly to the provider you chose and nowhere else. Remove a key any time in Settings → Models.</p>
+
+<h3>Where is the source?</h3>
+<p>The <a href="https://github.com/min-tools/langmin-macos">app repository</a> holds the whole app under the PolyForm Strict License 1.0.0 with added permissions, so you can read exactly what leaves your Mac. Bug reports and contributions are welcome there.</p>
+
+<h3>How do I cancel or restore Langmin Pro?</h3>
+<p>Subscriptions are managed in your App Store settings (App Store → your name → Subscriptions). To restore a purchase on another Mac, open the Langmin Pro panel from the app menu and choose Restore Purchases, signed in with the same Apple Account.</p>
+
+<h3>Where is my data?</h3>
+<p>Everything Langmin keeps, including the Library, lives in the app's own container on your Mac. Nothing is uploaded to us. See the <a href="../privacy/index.html">privacy policy</a> for the full picture.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>
