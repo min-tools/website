@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/pastemin/support/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Pastemin</title>
+<meta name="description" content="Get help with Pastemin: contact, common questions, and where to report problems.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../icon-128.png" alt="" width="128" height="128">Pastemin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/pastemin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Support</h1>
+<p class="meta">Help with Pastemin and answers to common questions.</p>
+
+<h2>Contact</h2>
+<ul>
+<li>Questions and support: <a href="https://github.com/min-tools/pastemin-macos">Pastemin on GitHub</a></li>
+<li>Bug reports and feature requests: <a href="https://github.com/min-tools/pastemin-macos/issues">GitHub Issues</a></li>
+<li>Privacy questions: <a href="mailto:privacy@min.tools">privacy@min.tools</a></li>
+</ul>
+<p>When reporting a problem, include your macOS version, the Pastemin version from About, the app you copied from, and clear steps to reproduce. Never include private clipboard content.</p>
+
+<h2>Common questions</h2>
+
+<h3>What does Pastemin need?</h3>
+<p>An Apple-silicon Mac running macOS 14 or later. Normal copy and paste does not need Accessibility access. Optional automatic paste asks for permission to send the paste keystroke.</p>
+
+<h3>How do I open the history?</h3>
+<p>Press <strong>⌃⌥C</strong>. The search field is ready as soon as the panel opens, so just start typing. Use the arrow keys to move, Return to restore an item, ⌘Delete to delete one, and Escape to close. You can change the shortcut in the options menu (⌘,).</p>
+
+<h3>What happens after the first 30 days?</h3>
+<p>Pastemin starts a 30-day full-access trial after you accept its notice at first launch. No subscription starts and there is no charge. After the trial, Pastemin keeps monitoring the clipboard while the panel shows and searches the five newest items. Older items stay on your Mac, subject to your retention settings, and become visible again when Pro access is restored. Pro is a yearly subscription or a one-time lifetime purchase through the Mac App Store.</p>
+
+<h3>Something I copied is missing</h3>
+<p>Pastemin ignores clipboard items that the source app marks as concealed, transient, or automatically generated. Password managers and short-lived macOS features commonly use these markers. Items also expire according to the retention period you chose. If access is limited to five items, check whether the trial or Pro subscription has ended.</p>
+
+<h3>Why is automatic paste asking for Accessibility access?</h3>
+<p>Automatic paste sends one ⌘V after you choose an item, which needs macOS event-posting permission. macOS lists it under System Settings → Privacy &amp; Security → Accessibility. Pastemin asks after you enable automatic paste and select an item. It does not read your keystrokes or inspect other apps' interfaces. If you decline, the item is still copied and focus returns to your app.</p>
+
+<h3>Is my clipboard uploaded anywhere?</h3>
+<p>No. Clipboard history is stored only in Pastemin's sandboxed app container on your Mac. There is no Pastemin account, no analytics, no advertising, and no developer server. See the <a href="../privacy/index.html">privacy policy</a> for details.</p>
+
+<h3>Where is the history stored, and how do I delete it?</h3>
+<p>In Pastemin's own Application Support folder inside its sandbox. The options menu shows how much space it uses and can open the folder in Finder. Delete one item with ⌘Delete, or use Clear History… to remove everything. Removing Pastemin and its container deletes the history and preferences.</p>
+
+<h3>Where is the source?</h3>
+<p>The <a href="https://github.com/min-tools/pastemin-macos">app repository</a> holds the public app source under the PolyForm Strict License 1.0.0 with added permissions, so you can read exactly what Pastemin does with your clipboard. Bug reports and contributions are welcome there.</p>
+
+<h3>How do I cancel or restore Pastemin Pro?</h3>
+<p>Subscriptions are managed in your App Store settings (App Store → your name → Subscriptions). To restore a purchase on another Mac, open the purchase panel from the options menu and choose Restore Purchases, signed in with the same Apple Account.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>
