@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/netmin/terms/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use · Netmin</title>
+<meta name="description" content="The terms under which Netmin and Netmin Pro are provided.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../icon-128.png" alt="" width="128" height="128">Netmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/netmin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Netmin Terms of Use</h1>
+<p class="meta">Effective and last updated: September 21, 2026</p>
+
+<p>Netmin is a macOS network diagnostics app published by Ilia Ross ("we"). By installing or using the App Store version of Netmin you agree to these terms and to Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User License Agreement</a>, which governs every app distributed through the App Store. Where the two differ, Apple's agreement prevails for matters it covers.</p>
+
+<h2>The trial and the free app</h2>
+<p>The 30-day trial begins after you accept its notice at first launch and includes unrestricted access. No subscription starts and nothing is charged. After the trial, every tool and its raw output remain available, with up to five new diagnostic requests per local calendar day. Viewing or copying an existing result does not count against the allowance.</p>
+
+<h2>Netmin Pro</h2>
+<p>Netmin Pro removes the daily limit and restores structured reports, report export, and structured-result copying. It is sold through Apple's In-App Purchase in two forms:</p>
+<ul>
+<li><strong>Yearly subscription.</strong> Billed to your Apple Account. The subscription renews automatically each year at the price shown at purchase unless you cancel it in your App Store settings at least 24 hours before the end of the current period.</li>
+<li><strong>Lifetime unlock.</strong> A one-time purchase that keeps Pro for the life of the app on the App Store.</li>
+</ul>
+<p>Both can be shared with your family through Family Sharing where it is enabled. Prices are shown in the App Store in your local currency before you buy. Purchases, renewals, cancellations, and refunds are handled by Apple under <a href="https://www.apple.com/legal/internet-services/itunes/">Apple Media Services Terms</a>; we cannot issue refunds ourselves.</p>
+
+<h2>Third-party services</h2>
+<p>Some tools contact public services such as Cloudflare, Google Public DNS, Quad9, OpenDNS, RIPE, Team Cymru, ipify, ipinfo.io, rdap.org, hstspreload.org, and crt.sh, or the target and its own servers. Those services receive the request under their own terms and privacy policies, and we do not control their availability, accuracy, or retention. Diagnostic results reflect what those systems answered at the time; verify anything you rely on.</p>
+
+<h2>Acceptable use</h2>
+<p>Use Netmin lawfully and only against networks, hosts, and services you own or are authorized to examine. Do not use it to interfere with systems that are not yours, to circumvent purchases, or to reverse engineer the app beyond what the law allows.</p>
+
+<h2>Source code</h2>
+<p>Netmin's source is published on GitHub under the <a href="https://polyformproject.org/licenses/strict/1.0.0">PolyForm Strict License 1.0.0</a> with added permissions for personal modification and contributions. You may read and inspect it, and prepare a contribution to the official repository under its contribution terms. The license does not otherwise permit distributing the source, modified copies, or binaries. The Min Tools name, the Netmin name, and the Netmin icon are not licensed with the source.</p>
+
+<h2>Warranty and liability</h2>
+<p>Netmin is provided "as is" without warranties of any kind, to the extent permitted by law. To the same extent, we are not liable for indirect or consequential losses, or for losses arising from third-party services or from decisions made on the basis of diagnostic output. Nothing in these terms limits rights you have as a consumer that cannot be limited.</p>
+
+<h2>Changes</h2>
+<p>We may update these terms and will change the date above when we do. Material changes to Netmin Pro are announced in the app before they take effect.</p>
+
+<h2>Contact</h2>
+<p>For questions about these terms, visit the <a href="https://github.com/min-tools/netmin-macos">Netmin GitHub repository</a>.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>
