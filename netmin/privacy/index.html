@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Netmin</title>
+<link rel="canonical" href="https://min.tools/netmin/privacy/">
+<meta name="description" content="What Netmin keeps on your Mac, which services a check contacts, and the controls you have.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../icon-128.png" alt="" width="128" height="128">Netmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/netmin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Netmin Privacy Policy</h1>
+<p class="meta">Effective and last updated: September 21, 2026</p>
+<p>This policy explains what data Netmin handles, where it goes, and how you can control it.</p>
+<p>Netmin runs only the diagnostic requests that you choose. It has no advertising, analytics, tracking SDKs, account system, or developer-operated diagnostic service.</p>
+<h2>Data on your Mac</h2>
+<p>Netmin stores app preferences, favorites, recent diagnostic targets, the local Pro trial start date, and the current day's Free request count in its macOS app container. The trial and daily allowance are calculated on this Mac and are not sent to the developer.</p>
+<p>Diagnostic output stays in memory while you view it. Netmin does not save complete output automatically. A report is written to disk only when you choose where to export it. Text you copy is placed on the macOS general pasteboard.</p>
+<p>The app does not monitor network traffic or run diagnostics in the background.</p>
+<p>Apple processes Netmin Pro purchases and does not share payment details with Netmin's developer. The app reads your Apple purchase status to unlock Pro, including purchases shared through Family Sharing.</p>
+<h2>Network requests</h2>
+<p>The target, hostname, IP address, URL, network range, or resolver you submit is sent only to systems needed for the diagnostic you start. Depending on the tool, this can include the target itself, its DNS and mail servers, a resolver you select, registry and WHOIS servers, certificate-transparency services, IP-information providers, or other public network-data services.</p>
+<p>Built-in lookups can contact Cloudflare, Google Public DNS, Quad9, OpenDNS, RIPE, Team Cymru, ipify, ipinfo.io, rdap.org, hstspreload.org, and crt.sh. These services receive an ordinary network request, your public IP address, and the target or query needed to respond. They may process or retain that information under their own privacy policies and terms.</p>
+<p>Local Network tools inspect addresses, interfaces, routes, and advertised services on networks connected to your Mac. Results are processed on your Mac. macOS asks for Local Network permission before allowing discovery.</p>
+<p>Netmin does not send diagnostic targets, queries, or results to the developer.</p>
+<h2>Retention and deletion</h2>
+<p>Recent targets remain in the app container until you choose <strong>Netmin → Clear Recent Data…</strong> or remove the container. Netmin keeps at most eight recent targets.</p>
+<p>Complete diagnostic output is discarded when you replace or close the current result or quit the app. Exported reports remain at the location you selected until you delete them. Text copied from a result remains on the general pasteboard until you or another app replaces or clears it.</p>
+<p>The trial start date, daily request count, favorites, and other preferences remain in the app container when you clear recent data. Removing Netmin and its app container deletes app-managed data. Apple controls purchase records associated with your Apple Account.</p>
+<p>External services control retention of the requests they receive. Use their privacy and account controls when available.</p>
+<h2>Your choices</h2>
+<p>You choose every diagnostic, its target, and when it runs. You can avoid tools that contact third-party services, choose a different DNS resolver where offered, deny Local Network access, clear recent targets, delete exported reports, clear copied text, or remove Netmin and its container.</p>
+<h2>Changes and contact</h2>
+<p>This policy and its date will be updated when material changes occur. For privacy questions or requests, visit <a href="https://min.tools/netmin/support/">Netmin support</a>.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>
