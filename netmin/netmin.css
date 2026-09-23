@@ -2,15 +2,44 @@
    window, report cards, and device table. Shared styles live in landing.css. */
 
 .nm {
+  /* Match the neutral surfaces and tool colors in the current app captures. */
+  --win: #fafafc;
+  --win-2: #f0f0f1;
+  --pane: #fff;
+  --nm-sidebar: #f5f5f7;
+  --nm-purple: #8854bb;
+  --nm-green: #008f58;
+  --nm-pink: #c4385e;
   display: flex;
   flex-direction: column;
-  height: 36em;
+  height: 48em;
+}
+
+/* Fit the complete lookup report and its actions inside the hero window. */
+.stage .nm {
+  font-size: clamp(8.5px, 1.35cqw, 13px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nm {
+    --win: #1f1f1f;
+    --win-2: #272727;
+    --pane: #1f1f1f;
+    --nm-sidebar: #232323;
+    --nm-purple: #c297ef;
+    --nm-green: #28d990;
+    --nm-pink: #ff86a2;
+  }
 }
 
 /* Center the window title independently of the traffic-light controls. */
 .nm .win-bar {
   position: relative;
   justify-content: center;
+  flex: none;
+  height: 2.2em;
+  color: var(--win-dim);
+  font-size: 0.9em;
 }
 
 .nm .win-bar .dots {
@@ -18,10 +47,15 @@
   left: 1.1em;
 }
 
+.nm .win-bar .dots i {
+  background: var(--win-fill-2);
+  box-shadow: inset 0 0 0 1px var(--win-line);
+}
+
 /* Reserve a fixed share for tools and let the report fill the remainder. */
 .nm-body {
   display: grid;
-  grid-template-columns: 27% 1fr;
+  grid-template-columns: 24% minmax(0, 1fr);
   flex: 1;
   min-height: 0;
 }
@@ -30,7 +64,7 @@
 .nm-side {
   padding: 0.9em 0.8em;
   overflow: hidden;
-  background: var(--win-2);
+  background: var(--nm-sidebar);
   border-right: 1px solid var(--win-line);
 }
 
@@ -83,6 +117,25 @@
   overflow: hidden;
 }
 
+/* Long tool names truncate without displacing the icon or favorite star. */
+.nm-side .row .name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tool groups retain their own tint even when their row is selected. */
+.nm .tile {
+  --tool-color: var(--win-accent);
+  color: var(--tool-color);
+  background: color-mix(in srgb, var(--tool-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tool-color) 20%, transparent);
+}
+
+.nm .tile.report { --tool-color: var(--nm-purple); }
+.nm .tile.local { --tool-color: var(--nm-green); }
+.nm .tile.mail { --tool-color: var(--nm-pink); }
+
 /* Keep tool glyphs centered in equally sized tiles. */
 .nm-side .row .tile {
   display: grid;
@@ -91,8 +144,6 @@
   width: 1.9em;
   height: 1.9em;
   border-radius: 0.5em;
-  background: var(--win-fill);
-  border: 1px solid var(--win-line);
 }
 
 .nm-side .row .tile .ic {
@@ -102,6 +153,7 @@
 
 /* Use filled stars for favorites and an accent row for the selected tool. */
 .nm-side .row .star {
+  flex: none;
   margin-left: auto;
   width: 1em;
   height: 1em;
@@ -114,14 +166,8 @@
 }
 
 .nm-side .row.on {
-  background: rgba(10, 132, 255, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(63, 156, 255, 0.5);
-}
-
-.nm-side .row.on .tile {
-  background: var(--win-accent);
-  border-color: transparent;
-  color: #fff;
+  background: color-mix(in srgb, var(--win-accent) 13%, transparent);
+  font-weight: 600;
 }
 
 /* Main column: the tool header, the report, and the footer actions. */
@@ -129,6 +175,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0;
 }
 
 .nm-head {
@@ -139,7 +186,7 @@
   border-bottom: 1px solid var(--win-line);
 }
 
-/* Give the active tool a larger accent tile beside its title. */
+/* Give the active tool a larger group-colored tile beside its title. */
 .nm-head .tile {
   display: grid;
   place-items: center;
@@ -147,9 +194,6 @@
   width: 3.3em;
   height: 3.3em;
   border-radius: 0.9em;
-  background: linear-gradient(180deg, #3d9bff, #0a6fff);
-  color: #fff;
-  box-shadow: 0 8px 20px -8px rgba(10, 111, 255, 0.8);
 }
 
 .nm-head .tile .ic {
@@ -159,6 +203,7 @@
 
 /* Truncate the tool title and target when report width is limited. */
 .nm-head .t {
+  flex: 1;
   min-width: 0;
 }
 
@@ -193,6 +238,8 @@
   padding: 0.15em;
   border-radius: 0.6em;
   background: var(--win-fill);
+  border: 1px solid var(--win-border);
+  font-size: 0.85em;
 }
 
 .nm-head .seg span {
@@ -204,7 +251,7 @@
 }
 
 .nm-head .seg span.on {
-  background: var(--win-3);
+  background: var(--pane);
   color: var(--win-fg);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
@@ -220,6 +267,7 @@
   background: var(--win-fill);
   border: 1px solid var(--win-line);
   font-weight: 600;
+  font-size: 0.85em;
   white-space: nowrap;
 }
 
@@ -274,15 +322,16 @@
   font-size: 0.92em;
 }
 
-/* Place the two headline measurements side by side. */
+/* Lookup uses two compact cards; a device sweep fills all four columns. */
 .nm-metrics {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.9em;
   margin-bottom: 0.9em;
 }
 
 .metric {
+  min-width: 0;
   padding: 0.9em 1.1em;
   border-radius: 0.8em;
   background: var(--pane);
@@ -301,9 +350,26 @@
 }
 
 .metric b {
+  display: block;
   font-size: 1.6em;
   letter-spacing: -0.02em;
 }
+
+.metric b.address {
+  font-size: 1.2em;
+  white-space: nowrap;
+}
+
+/* Supporting counts and latency ranges stay secondary to the main value. */
+.metric .detail {
+  display: block;
+  margin-top: 0.4em;
+  color: var(--win-muted);
+  font-size: 0.8em;
+}
+
+.metric b.latency { color: #20bc4f; }
+.metric b .range { color: var(--win-muted); font-size: 0.55em; white-space: nowrap; }
 
 .metric b.accent {
   color: var(--win-accent);
@@ -320,6 +386,7 @@
 
 .nm-card .h {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.6em;
   padding: 0.7em 1em;
@@ -347,8 +414,12 @@
   display: grid;
   grid-template-columns: 34% 1fr;
   gap: 1em;
-  padding: 0.55em 1em;
+  padding: 0.4em 1em;
   border-bottom: 1px solid var(--win-line);
+}
+
+.nm-card .r:nth-child(odd) {
+  background: var(--win-fill);
 }
 
 .nm-card .r:last-child {
@@ -377,6 +448,33 @@
 
 .nm-card pre .c {
   color: var(--win-muted);
+}
+
+/* The raw tab is a single output pane, separate from overview cards. */
+.nm-raw-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 0.8em;
+  color: var(--win-muted);
+  font-size: 0.8em;
+}
+
+.nm-raw-label b {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nm-raw-output {
+  min-height: 30em;
+  margin: 0;
+  padding: 1.2em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.8em;
+  background: var(--pane);
+  font: 0.92em/1.5 var(--mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* Keep the saved-check link and report actions together in the report footer. */
@@ -429,6 +527,15 @@
   background: var(--win-accent);
   border-color: transparent;
   color: #fff;
+  box-shadow: 0 4px 14px -6px var(--win-accent);
+}
+
+.nm-foot .btn.primary .chev {
+  box-sizing: content-box;
+  height: 1em;
+  margin-left: 0.3em;
+  padding-left: 0.7em;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .nm-foot .btn.primary kbd {
@@ -440,8 +547,27 @@
 /* The device table from Local Device Sweep. */
 .nm-table {
   display: grid;
-  grid-template-columns: 1.2fr 1.6fr 1.3fr 0.7fr;
+  grid-template-columns: 1.35fr 2fr 1.25fr 0.85fr 0.85fr;
   font-size: 0.95em;
+}
+
+/* Keep the filter and privacy setting visible above the device results. */
+.nm-device-filter {
+  flex: 1;
+  min-width: 12em;
+  margin-left: auto;
+  padding: 0.4em 0.7em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.6em;
+  color: var(--win-muted);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+.nm-card .h .show {
+  margin-left: 0.7em;
+  color: var(--win-accent);
+  font-weight: 600;
 }
 
 /* Keep device cells aligned and clip content that exceeds its column. */
@@ -450,10 +576,21 @@
   align-items: center;
   gap: 0.5em;
   min-width: 0;
-  padding: 0.55em 1em;
+  padding: 0.75em 0.8em;
   border-bottom: 1px solid var(--win-line);
   white-space: nowrap;
   overflow: hidden;
+}
+
+/* Wrap badges with their device name instead of clipping the service count. */
+.nm-table>span.device {
+  flex-wrap: wrap;
+  gap: 0.3em 0.5em;
+  white-space: normal;
+}
+
+.nm-table>span.current {
+  background: var(--win-fill);
 }
 
 .nm-table>span.hd {
@@ -487,7 +624,8 @@
 /* Draw a bounded bar beside each device's example latency value. */
 .nm-table .bar {
   flex: 1;
-  max-width: 6em;
+  max-width: 5em;
+  min-width: 0.5em;
   height: 0.45em;
   border-radius: 1em;
   background: var(--win-fill);
@@ -498,7 +636,7 @@
   display: block;
   height: 100%;
   border-radius: 1em;
-  background: #34c759;
+  background: linear-gradient(90deg, #12d6cf, #20d570);
 }
 
 /* Set interface names apart from the adjacent action text. */
@@ -530,7 +668,7 @@
   font-style: normal;
 }
 
-/* Drop the sidebar and fourth table column when the report needs more room. */
+/* Keep mobile previews readable by hiding secondary device columns. */
 @media (max-width: 720px) {
   .nm {
     height: auto;
@@ -549,12 +687,44 @@
     display: none;
   }
 
-  .nm-table {
-    grid-template-columns: 1fr 1.4fr 1fr;
+  .nm-head {
+    gap: 0.7em;
   }
 
-  .nm-table>span:nth-child(4n) {
+  .nm-head .tile {
+    width: 2.6em;
+    height: 2.6em;
+  }
+
+  .nm-table {
+    grid-template-columns: 1.35fr 1.5fr 0.95fr;
+  }
+
+  .nm-table>span.interface,
+  .nm-table>span.actions {
     display: none;
+  }
+
+  .nm-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nm-card .h .right {
+    flex-basis: 100%;
+  }
+
+  /* Keep report actions visible; desktop shortcut hints can yield the space. */
+  .nm-foot {
+    gap: 0.65em;
+  }
+
+  .nm-foot kbd,
+  .nm-foot .btn.primary .chev {
+    display: none;
+  }
+
+  .nm-foot .btn {
+    padding: 0.55em 0.7em;
   }
 }
 

@@ -172,6 +172,11 @@ body.landing header.site.scrolled .brand img.dark {
   border-right: 0;
 }
 
+/* The shelf crops a compact Netmin report with room for both metrics. */
+.shot .nm-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .shot .launcher {
   padding: 1em;
 }

@@ -191,12 +191,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
                 <div class="nm-side">
                   <div class="filter"><svg class="ic"><use href="#i-search"/></svg>Filter 84 tools<kbd>⌘K</kbd></div>
                   <div class="grp">Favorites</div>
-                  <div class="row on"><span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span>Network Lookup<svg class="ic star on"><use href="#i-star"/></svg></div>
+                  <div class="row on"><span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span><span class="name">Network Lookup</span><svg class="ic star on"><use href="#i-star"/></svg></div>
                   <div class="grp">Reports</div>
-                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-report"/></svg></span>Site Report</div>
-                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-chart"/></svg></span>My Network Report</div>
+                  <div class="row"><span class="tile report"><svg class="ic"><use href="#i-report"/></svg></span><span class="name">Site Report</span></div>
+                  <div class="row"><span class="tile report"><svg class="ic"><use href="#i-chart"/></svg></span><span class="name">My Network Report</span></div>
                   <div class="grp">Local Network</div>
-                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-radar"/></svg></span>Local Device Sweep</div>
+                  <div class="row"><span class="tile local"><svg class="ic"><use href="#i-radar"/></svg></span><span class="name">Local Device Sweep</span></div>
                 </div>
                 <div class="nm-main">
                   <div class="nm-head">
@@ -206,12 +206,14 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
                   </div>
                   <div class="nm-report">
                     <div class="nm-metrics">
-                      <div class="metric"><small>Address</small><b class="accent">203.0.113.42</b></div>
+                      <div class="metric"><small>Address</small><b class="accent address">203.0.113.42</b></div>
                       <div class="metric"><small>Checks</small><b>3</b></div>
                     </div>
                     <div class="nm-card">
                       <div class="h">Basic</div>
                       <div class="r"><span>Input Type</span><code>IP address</code></div>
+                      <div class="r"><span>Resolved Address</span><code>203.0.113.42</code></div>
+                      <div class="r"><span>IP Version</span><code>IPv4</code></div>
                       <div class="r"><span>Reverse Name</span><code>example.net</code></div>
                     </div>
                   </div>

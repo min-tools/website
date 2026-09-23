@@ -117,20 +117,23 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="nm-side">
             <div class="filter"><svg class="ic"><use href="#i-search"/></svg>Filter 84 tools<kbd>⌘K</kbd></div>
             <div class="grp">Favorites</div>
-            <div class="row on"><span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span>Network Lookup<svg class="ic star on"><use href="#i-star"/></svg></div>
+            <div class="row on"><span class="tile"><svg class="ic"><use href="#i-globe"/></svg></span><span class="name">Network Lookup</span><svg class="ic star on"><use href="#i-star"/></svg></div>
             <div class="grp">Reports</div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-report"/></svg></span>Site Report<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-chart"/></svg></span>My Network Report<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-pin"/></svg></span>My Public IP<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile report"><svg class="ic"><use href="#i-report"/></svg></span><span class="name">Site Report</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile report"><svg class="ic"><use href="#i-chart"/></svg></span><span class="name">My Network Report</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile report"><svg class="ic"><use href="#i-pin"/></svg></span><span class="name">My Public IP</span><svg class="ic star"><use href="#i-star"/></svg></div>
             <div class="grp">Local Network</div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-radar"/></svg></span>Local Device Sweep<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-table"/></svg></span>ARP Table<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-list"/></svg></span>IPv6 Neighbors<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-pulse"/></svg></span>Bonjour Services<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-dns"/></svg></span>DNS Configuration<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-lease"/></svg></span>DHCP Lease<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-wifi"/></svg></span>Wi-Fi Diagnostics<svg class="ic star"><use href="#i-star"/></svg></div>
-            <div class="row"><span class="tile"><svg class="ic"><use href="#i-ports"/></svg></span>Interface Inventory<svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-radar"/></svg></span><span class="name">Local Device Sweep</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-table"/></svg></span><span class="name">ARP Table</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-list"/></svg></span><span class="name">IPv6 Neighbors</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-pulse"/></svg></span><span class="name">Bonjour Services</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-box"/></svg></span><span class="name">SSDP/UPnP Discovery</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-server"/></svg></span><span class="name">Windows Name Discovery</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-route"/></svg></span><span class="name">Gateway and Routes</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-dns"/></svg></span><span class="name">DNS Configuration</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-lease"/></svg></span><span class="name">DHCP Lease</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-wifi"/></svg></span><span class="name">Wi-Fi Diagnostics</span><svg class="ic star"><use href="#i-star"/></svg></div>
+            <div class="row"><span class="tile local"><svg class="ic"><use href="#i-ports"/></svg></span><span class="name">Interface Inventory</span><svg class="ic star"><use href="#i-star"/></svg></div>
             <div class="grp">IP, Routing and Registration</div>
           </div>
           <div class="nm-main">
@@ -142,9 +145,9 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
               <span class="refresh"><svg class="ic" data-nm-refresh><use href="#i-refresh"/></svg></span>
             </div>
             <div class="nm-report">
-              <div class="intro"><b>Report for 203.0.113.42</b><span>Results are grouped by completed check.</span></div>
+              <div class="intro"><b>Report for 203.0.113.42</b><span>Results are grouped by each completed network check.</span></div>
               <div class="nm-metrics">
-                <div class="metric"><small>Address</small><b class="accent">203.0.113.42</b></div>
+                <div class="metric"><small>Address</small><b class="accent address">203.0.113.42</b></div>
                 <div class="metric"><small>Checks</small><b>3</b></div>
               </div>
               <div class="nm-card">
@@ -240,33 +243,40 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       </div>
       <div class="visual reveal d1 frame" aria-hidden="true">
         <div class="win nm sweep">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Netmin</span></div>
           <div class="nm-main">
             <div class="nm-head">
-              <span class="tile"><svg class="ic"><use href="#i-radar"/></svg></span>
-              <div class="t"><b>Local Device Sweep</b><span>1 network · en0 · 4 devices · just now</span></div>
+              <span class="tile local"><svg class="ic"><use href="#i-radar"/></svg></span>
+              <div class="t"><b>Local Device Sweep</b><span>1 network · en0 · just now</span></div>
               <span class="status"><i></i>Complete · 2.8 s</span>
             </div>
             <div class="nm-report">
+              <div class="intro"><b>4 devices on 1 network</b><span>Hosts that answered ping or appeared in the neighbor cache, with names, latency, and advertised services.</span></div>
+              <div class="nm-metrics">
+                <div class="metric"><small>Devices</small><b class="accent">4</b><span class="detail">4 named · 0 unnamed</span></div>
+                <div class="metric"><small>Networks</small><b>1</b><span class="detail">en0</span></div>
+                <div class="metric"><small>Latency</small><b class="latency">0.4 <span class="range">– 2.1 ms</span></b><span class="detail">median 1.6 ms</span></div>
+                <div class="metric"><small>Services</small><b>10</b><span class="detail">10 TCP · 0 Bonjour</span></div>
+              </div>
               <div class="nm-card">
-                <div class="h">Devices <span class="count">4</span><span class="right">MAC and vendor hidden in this run</span></div>
+                <div class="h">Devices <span class="count">4</span><span class="nm-device-filter">Filter by IP, name, interface</span><span class="right">MAC and vendor hidden <span class="show">Show</span></span></div>
                 <div class="nm-table">
-                  <span class="hd">IP address</span><span class="hd">Name</span><span class="hd">Latency</span><span class="hd">Actions</span>
-                  <span><code>192.168.10.1</code></span><span>Wi-Fi Router <i class="pill">1 service</i></span><span>2.1 ms <i class="bar"><i style="width:30%"></i></i></span><span class="act">Ping Ports</span>
-                  <span><code>192.168.10.12</code></span><span>Office Printer <i class="pill">1 service</i></span><span>4.7 ms <i class="bar"><i style="width:55%"></i></i></span><span class="act">Ping Ports</span>
-                  <span><code>192.168.10.24</code></span><span>Media Server <i class="pill">2 services</i></span><span>6.3 ms <i class="bar"><i style="width:80%"></i></i></span><span class="act">Ping Ports</span>
-                  <span><code>192.168.10.40</code></span><span>This Mac <i class="pill you">you</i></span><span>0.8 ms <i class="bar"><i style="width:12%"></i></i></span><span class="act">Ping Ports</span>
+                  <span class="hd">IP address</span><span class="hd">Name</span><span class="hd">Latency</span><span class="hd interface">Interface</span><span class="hd actions">Actions</span>
+                  <span class="current"><code>192.168.10.2</code></span><span class="device current">This Mac <i class="pill you">you</i><i class="pill">3 services</i></span><span class="current"><i class="bar"><i style="width:20%"></i></i>0.4 ms</span><span class="interface current"><i class="iface">en0</i></span><span class="act actions current">Ping Ports</span>
+                  <span><code>192.168.10.10</code></span><span class="device">Office Printer <i class="pill">2 services</i></span><span><i class="bar"><i style="width:76%"></i></i>1.6 ms</span><span class="interface"><i class="iface">en0</i></span><span class="act actions">Ping Ports</span>
+                  <span><code>192.168.10.20</code></span><span class="device">Media Server <i class="pill">2 services</i></span><span><i class="bar"><i style="width:100%"></i></i>2.1 ms</span><span class="interface"><i class="iface">en0</i></span><span class="act actions">Ping Ports</span>
+                  <span><code>192.168.10.1</code></span><span class="device">Wi-Fi Router <i class="pill you">gateway</i><i class="pill">3 services</i></span><span><i class="bar"><i style="width:38%"></i></i>0.8 ms</span><span class="interface"><i class="iface">en0</i></span><span class="act actions">Ping Ports</span>
                 </div>
               </div>
               <div class="nm-card">
                 <div class="h">Networks scanned</div>
                 <div class="r"><span><code>192.168.10.0/24</code></span><code>via en0</code></div>
               </div>
-              <div class="nm-card">
-                <div class="h">Common TCP services <span class="count">4 hosts</span><span class="right">Ports that accepted a connection</span></div>
-                <div class="r"><span><code>192.168.10.1</code></span><code>HTTPS (443)</code></div>
-                <div class="r"><span><code>192.168.10.12</code></span><code>IPP (631)</code></div>
-                <div class="r"><span><code>192.168.10.24</code></span><code>SSH (22), AirPlay (7000)</code></div>
-              </div>
+            </div>
+            <div class="nm-foot">
+              <span class="new">New Sweep <kbd>esc</kbd></span><span class="spacer"></span>
+              <span class="btn"><svg class="ic"><use href="#i-download"/></svg>Save Report…</span>
+              <span class="btn primary">Copy Result <kbd>⌘⇧C</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
             </div>
           </div>
         </div>
@@ -288,30 +298,24 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       </div>
       <div class="visual reveal d1 frame" aria-hidden="true">
         <div class="win nm raw">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Netmin</span></div>
           <div class="nm-main">
             <div class="nm-head">
-              <span class="tile"><svg class="ic"><use href="#i-mail"/></svg></span>
+              <span class="tile mail"><svg class="ic"><use href="#i-mail"/></svg></span>
               <div class="t"><b>Mail MX</b><span><code>example.net</code> · just now</span></div>
               <span class="seg"><span>Overview</span><span class="on">Raw output</span></span>
+              <span class="status"><i></i>Complete · 0.3 s</span>
             </div>
             <div class="nm-report">
-              <div class="nm-card">
-                <div class="h">Mail exchangers <span class="count">2</span></div>
-                <div class="r"><span>Priority 10</span><code>mx1.example.net</code></div>
-                <div class="r"><span>Priority 20</span><code>mx2.example.net</code></div>
-              </div>
-              <div class="nm-card">
-                <div class="h">Raw output <span class="right">dig +noall +answer MX example.net</span></div>
-                <pre>example.net.    3600  IN  MX  10 mx1.example.net.
-example.net.    3600  IN  MX  20 mx2.example.net.
-<span class="c">;; Query time: 23 msec · SERVER: 1.1.1.1#53 · 2 answers</span></pre>
-              </div>
+              <div class="nm-raw-label"><b>Raw output</b><span>2 lines · 87 characters</span></div>
+              <pre class="nm-raw-output">example.net. 3600 IN MX 10 mx1.example.net.
+example.net. 3600 IN MX 20 mx2.example.net.</pre>
             </div>
             <div class="nm-foot">
               <span class="new">New Lookup <kbd>esc</kbd></span>
               <span class="spacer"></span>
               <span class="btn"><svg class="ic"><use href="#i-download"/></svg>Save Report…</span>
-              <span class="btn primary">Copy Result <kbd>⌘⇧C</kbd></span>
+              <span class="btn primary">Copy Result <kbd>⌘⇧C</kbd><svg class="ic chev"><use href="#i-chev-down"/></svg></span>
             </div>
           </div>
         </div>
