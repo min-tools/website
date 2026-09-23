@@ -32,7 +32,7 @@ body.landing header.site.scrolled .brand img.dark {
   }
 }
 
-/* Three app icons floating over the hero glow. */
+/* Three app icons above the hero glow. */
 .trio {
   display: flex;
   justify-content: center;
@@ -47,25 +47,9 @@ body.landing header.site.scrolled .brand img.dark {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  animation: bob 6s ease-in-out infinite;
 }
 
-.trio li:nth-child(2) {
-  animation-delay: -2s;
-}
-
-.trio li:nth-child(3) {
-  animation-delay: -4s;
-}
-
-/* Keep the home page's floating icons still when motion is reduced. */
-@media (prefers-reduced-motion: reduce) {
-  .trio li {
-    animation: none;
-  }
-}
-
-/* Lift linked icons on hover while keeping each label with its icon. */
+/* Keep each linked icon and its label together. */
 .trio a {
   display: flex;
   flex-direction: column;
@@ -73,11 +57,9 @@ body.landing header.site.scrolled .brand img.dark {
   gap: 12px;
   color: var(--fg);
   text-decoration: none;
-  transition: transform 0.3s var(--ease);
 }
 
 .trio a:hover {
-  transform: translateY(-3px);
   text-decoration: none;
 }
 
