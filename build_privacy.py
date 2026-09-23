@@ -78,7 +78,7 @@ if (window.self !== window.top) {{
 </head>
 <body>
 <header class="site">
-  <a class="brand" href="../index.html"><img src="../icon-128.png" alt="" width="128" height="128">{name}</a>
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">{name}</a>
   <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="{repo}">GitHub</a></nav>
 </header>
 <main class="doc">
