@@ -4124,6 +4124,7 @@ body.landing header.site nav a.home {
   gap: 7px;
   margin-right: 4px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 body.landing header.site nav a.home::before {
@@ -4137,7 +4138,8 @@ body.landing header.site nav a.home::before {
 }
 
 @media (max-width: 760px) {
-  body.landing header.site nav a.home {
+  /* Keep All apps and GitHub available in the condensed app navigation. */
+  body.landing header.site nav a.home ~ a[href="#support"] {
     display: none;
   }
 }
