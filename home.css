@@ -287,9 +287,9 @@ body.landing header.site.scrolled .brand img.dark {
   }
 }
 
-/* Hide secondary navigation links on narrow screens. */
+/* Keep Apps, Source, and GitHub visible in the condensed home navigation. */
 @media (max-width: 760px) {
-  body.landing header.site nav a[href="#source"],
+  body.landing header.site nav a[href="#privacy"],
   body.landing header.site nav a[href="#contribute"] {
     display: none;
   }
