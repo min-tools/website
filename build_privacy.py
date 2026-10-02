@@ -3,8 +3,9 @@
 
 The app's root policy is the source for the website; rerun this script after
 policy changes to update the page. With no arguments every app is rendered
-from its sibling checkout (../<app>/<app>-macos/PRIVACY.md). Name an app to
-render only it, and add a path to read the policy from somewhere else:
+from its sibling checkout (../<app>/<app>-macos/PRIVACY.md, or the checkout
+named in PRODUCTS). Name an app to render only it, and add a path to read
+the policy from somewhere else:
 
     python3 build_privacy.py
     python3 build_privacy.py netmin
@@ -171,8 +172,12 @@ def page(slug, markdown):
 
 
 def default_source(slug):
-    """default_source(slug): locate the root policy in the app's sibling checkout."""
-    return SITE.parent / slug / f"{slug}-macos" / "PRIVACY.md"
+    """default_source(slug): locate the root policy in the app's sibling checkout.
+
+    The checkout is <slug>-macos unless the product names another folder.
+    """
+    checkout = PRODUCTS[slug].get("checkout", f"{slug}-macos")
+    return SITE.parent / slug / checkout / "PRIVACY.md"
 
 
 # Generate only when invoked directly, so validation can reuse the renderer without writes.
