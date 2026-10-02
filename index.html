@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Min Tools — Native Mac Apps with No Tracking</title>
-<meta name="description" content="Focused native Mac apps built to feel at home on the system. Source available on GitHub, with no Min Tools accounts, analytics, or servers.">
+<meta name="description" content="Focused native Mac apps and a small Chrome extension, built to feel at home on the system. Source on GitHub, with no Min Tools accounts, analytics, or servers.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://min.tools/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Min Tools">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Min Tools — Native Mac Apps with No Tracking">
-<meta property="og:description" content="Focused native Mac apps with source available, no analytics, and no Min Tools servers.">
+<meta property="og:description" content="Focused native Mac apps and a Chrome extension with source on GitHub, no analytics, and no Min Tools servers.">
 <meta property="og:url" content="https://min.tools/">
 <meta property="og:image" content="https://min.tools/icon.png">
 <meta property="og:image:width" content="512">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Min Tools mark">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Min Tools — Native Mac Apps with No Tracking">
-<meta name="twitter:description" content="Focused native Mac apps with source available, no analytics, and no Min Tools servers.">
+<meta name="twitter:description" content="Focused native Mac apps and a Chrome extension with source on GitHub, no analytics, and no Min Tools servers.">
 <meta name="twitter:image" content="https://min.tools/icon.png">
 <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="landing.css">
 <link rel="stylesheet" href="pastemin/pastemin.css">
 <link rel="stylesheet" href="netmin/netmin.css">
+<link rel="stylesheet" href="paletmin/paletmin.css">
 <link rel="stylesheet" href="home.css">
 <script>
 // Mark scripting support before first paint so CSS can prepare scroll reveals.
@@ -45,7 +46,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 {"@type":"ItemList","name":"Min Tools apps","itemListElement":[
 {"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"Langmin","url":"https://min.tools/langmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A private AI language assistant for the whole Mac: proofread, rewrite, explain, summarize, translate, and look words up from any app."}},
 {"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A private clipboard history for the Mac: search saved text and images and restore them from any app."}},
-{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"Netmin","url":"https://min.tools/netmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"Network diagnostics for the Mac without the terminal: DNS, routing, local devices, mail, TLS, websites, and ports in one app."}}
+{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"Netmin","url":"https://min.tools/netmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"Network diagnostics for the Mac without the terminal: DNS, routing, local devices, mail, TLS, websites, and ports in one app."}},
+{"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Paletmin","url":"https://min.tools/paletmin/","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later","applicationCategory":"BrowserApplication","description":"A Chrome extension that switches the website in the current tab between its light and dark palette with one click, with no data collection and no network requests."}}
 ]}]}
 </script>
 </head>
@@ -89,6 +91,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <symbol id="i-dictionary" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8.8 16.5 3.2-9 3.2 9"/><path d="M10 13.5h4"/></symbol>
   <symbol id="i-library" viewBox="0 0 24 24"><path d="M4 4h4v16H4z"/><path d="M10 4h4v16h-4z"/><path d="m15.5 5.2 3.8-1 3.9 14.6-3.8 1z"/></symbol>
   <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
+  <symbol id="i-reload" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v1h3a2 2 0 0 1 2 2v3h-1a2 2 0 0 0 0 4h1v3a2 2 0 0 1-2 2h-3v-1a2 2 0 0 0-4 0v1H7a2 2 0 0 1-2-2v-3h1a2 2 0 0 0 0-4H5V7a2 2 0 0 1 2-2h3V4Z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pt-dark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2l2.67 2.67h4.66v4.66L22 12l-2.67 2.67v4.66h-4.66L12 22l-2.67-2.67H4.67v-4.66L2 12l2.67-2.67V4.67h4.66L12 2Zm0 6.7a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 1 0 0-6.6Zm0 1.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 1 1 0-3.6Z"/></symbol>
+  <symbol id="i-pt-light" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2l2.67 2.67h4.66v4.66L22 12l-2.67 2.67v4.66h-4.66L12 22l-2.67-2.67H4.67v-4.66L2 12l2.67-2.67V4.67h4.66L12 2Zm0 6.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 1 0 0-7.2Zm0 2.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 1 1 0-2.4Z"/></symbol>
 </svg>
 
 <header class="site">
@@ -101,18 +109,19 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     <div class="wrap">
       <p class="whatsnew org-status"><span class="plat on">Freedom by design</span><span class="plat fact">Source available</span><span class="plat fact">No tracking</span></p>
       <h1>Native Mac apps that <span class="grad">keep to themselves</span>.</h1>
-      <p class="sub">Min Tools is a collection of focused apps built to feel at home on the Mac. Each one is written in Swift, runs in the App Sandbox, and has its source on GitHub. No Min&nbsp;Tools accounts, analytics, or servers.</p>
+      <p class="sub">Min Tools is a collection of focused apps built to feel at home on the Mac, plus a small Chrome extension. The Mac apps are written in Swift and run in the App Sandbox. Every one has its source on GitHub. No Min&nbsp;Tools accounts, analytics, or servers.</p>
       <div class="actions">
         <a class="cta primary" href="#apps"><svg class="ic"><use href="#i-mac"/></svg>See the apps</a>
         <a class="cta ghost" href="https://github.com/min-tools"><svg class="ic"><use href="#i-code"/></svg>Source on GitHub</a>
       </div>
-      <p class="fine">macOS 14 or later on Apple silicon. Free to try, with Mac App Store versions coming soon.</p>
+      <p class="fine">Mac apps for macOS 14 or later on Apple silicon, free to try, with Mac App Store versions coming soon. Paletmin is free in Chrome.</p>
     </div>
 
     <ul class="trio" aria-label="Current apps">
       <li><a href="langmin/"><img src="langmin/icon.png" alt="" width="512" height="512"><b>Langmin</b><span>Language</span></a></li>
       <li><a href="pastemin/"><img src="pastemin/icon.png" alt="" width="512" height="512"><b>Pastemin</b><span>Clipboard</span></a></li>
       <li><a href="netmin/"><img src="netmin/icon.png" alt="" width="512" height="512"><b>Netmin</b><span>Network</span></a></li>
+      <li><a href="paletmin/"><img src="paletmin/icon.png" alt="" width="512" height="512"><b>Paletmin</b><span>Palette</span></a></li>
     </ul>
 
     <ul class="trust reveal" aria-label="Highlights">
@@ -226,6 +235,32 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <ul class="bits"><li>84 tools</li><li>Overview and raw output</li><li>Twenty-seven languages</li></ul>
           <div class="links"><a class="cta primary small" href="netmin/">Learn more</a><a class="cta ghost small" href="https://github.com/min-tools/netmin-macos">GitHub</a></div>
         </article>
+
+        <article class="app-card reveal d1">
+          <div class="shot" aria-hidden="true">
+            <div class="win pt">
+              <div class="pt-tabs">
+                <div class="pt-tab"><i class="fav"></i>min.tools<span class="x">×</span></div>
+                <div class="pt-tab off"><i class="fav"></i>Documentation<span class="x">×</span></div>
+                <span class="plus">+</span>
+              </div>
+              <div class="pt-bar">
+                <span class="nav"><svg class="ic"><use href="#i-arrow-left"/></svg><svg class="ic"><use href="#i-arrow-right"/></svg><svg class="ic"><use href="#i-reload"/></svg></span>
+                <span class="pt-url"><svg class="ic"><use href="#i-lock"/></svg>min.tools<span class="dim">/paletmin/</span></span>
+                <span class="pt-ext"><svg class="ic l"><use href="#i-pt-dark"/></svg><svg class="ic d"><use href="#i-pt-light"/></svg><span class="pt-tip"><i class="l">Dark palette</i><i class="d">Light palette</i></span></span>
+                <span class="pt-ctl"><svg class="ic"><use href="#i-puzzle"/></svg><i class="vr"></i><svg class="ic"><use href="#i-person"/></svg><svg class="ic"><use href="#i-dots"/></svg></span>
+              </div>
+              <div class="pt-page">
+                <div class="pg-head"><i class="logo"></i><b class="bar w12"></b><span class="spacer"></span><i class="pill"></i><i class="pill"></i><i class="pill"></i><i class="pill on"></i></div>
+                <div class="pg-hero"><b class="bar h w60"></b><b class="bar h w40"></b><i class="bar w70"></i><i class="bar w55"></i><div class="btns"><span class="btn on"></span><span class="btn"></span></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="app-head"><img src="paletmin/icon-128.png" alt="" width="128" height="128"><div><h3>Paletmin</h3><p>Light or dark, one tab at a time.</p></div></div>
+          <p>A Chrome extension that switches the website in the current tab between its light and dark palette with one click. The site applies the design it already has, each tab keeps its own mode, and the toolbar icon shows which. No popup, no settings, no data collection, and no network requests.</p>
+          <ul class="bits"><li>Chrome extension</li><li>Three modes per tab</li><li>MIT license</li></ul>
+          <div class="links"><a class="cta primary small" href="paletmin/">Learn more</a><a class="cta ghost small" href="https://github.com/min-tools/paletmin-chrome">GitHub</a></div>
+        </article>
       </div>
     </div>
   </section>
@@ -238,7 +273,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <p class="lead">Every app shown here publishes its complete source on GitHub. What each one sends, stores, and runs is there to read.</p>
         <ul class="feats">
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-git"/></svg></span><div><h3>The whole app, in the open</h3><p>Each repository holds the app, its tests, its translations, and its privacy policy.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>A license that lets you look</h3><p>PolyForm Strict 1.0.0 with added permissions: read and inspect the code, and prepare contributions to the official repository. It is source available rather than open source; redistribution is not permitted, and the names and icons stay ours.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>A license that lets you look</h3><p>The Mac apps use PolyForm Strict 1.0.0 with added permissions: read and inspect the code, and prepare contributions to the official repository. It is source available rather than open source; redistribution is not permitted, and the names and icons stay ours. Paletmin is open source under the MIT license.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><div><h3>Issues and pull requests welcome</h3><p>Bug reports, translations, reviews, and focused changes all help, under the contribution terms published in each repository.</p></div></li>
         </ul>
       </div>
@@ -248,6 +283,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="row"><img src="langmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>langmin-macos</code></b><span>Swift · AppKit · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="pastemin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>pastemin-macos</code></b><span>Swift · AppKit and SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="netmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>netmin-macos</code></b><span>Swift · SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
+          <div class="row"><img src="paletmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>paletmin-chrome</code></b><span>JavaScript · Chrome extension · MIT</span></div><span class="tag ok">Public</span></div>
         </div>
       </div>
     </div>
@@ -261,7 +297,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <p class="lead">These apps keep their local data on your Mac and send no usage data to Min Tools. Network requests depend on the features you use: AI providers, websites, network checks, optional iCloud sync, and Apple purchases.</p>
         <ul class="feats">
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Kept in the sandbox</h3><p>App data stays in each app's own container. Langmin stores API keys separately in Keychain and can sync your Library through iCloud if you enable it.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>You choose the features that connect</h3><p>Langmin connects to the providers and websites you use. Netmin contacts the systems needed for each check. Pastemin never uploads clipboard history.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>You choose the features that connect</h3><p>Langmin connects to the providers and websites you use. Netmin contacts the systems needed for each check. Pastemin never uploads clipboard history, and Paletmin makes no network requests at all.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>Plain-language policies</h3><p>Each has its own privacy policy. This site generates its privacy pages from those policies and checks that the text matches.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><div><h3>Purchases through Apple</h3><p>Trials are counted on your Mac. Pro is bought through the App Store, and Apple never shares your payment details with us.</p></div></li>
         </ul>
@@ -286,12 +322,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <h2>The same rules, every time.</h2>
       </div>
       <div class="details">
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-cpu"/></svg>Native Swift</h3><p>AppKit and SwiftUI on Apple silicon, following your Mac's appearance, contrast, accent, and reduced-motion settings.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>They run in the App Sandbox with Hardened Runtime and need no administrator access. Pastemin requests Accessibility access only for optional automatic paste.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-keyboard"/></svg>Keyboard first</h3><p>Use keyboard shortcuts for common actions. Langmin and Pastemin open from other apps; Netmin lets you find tools and run checks from the keyboard.</p></div>
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-translate"/></svg>Localized</h3><p>Each is available in more than twenty-five languages and follows your Mac's language settings. Translations are welcome as contributions.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-clock"/></svg>Free to start</h3><p>Each starts with 30 days of full access, without starting a subscription. A free tier remains afterward. Pro is a yearly subscription or a one-time lifetime purchase, with Family Sharing where enabled.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>Langmin, Pastemin, and Netmin currently require an Apple-silicon Mac running macOS 14 or later. Each product page lists its current requirements.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-cpu"/></svg>Native Swift</h3><p>The Mac apps use AppKit and SwiftUI on Apple silicon, following your Mac's appearance, contrast, accent, and reduced-motion settings. Paletmin is plain JavaScript inside Chrome.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>The Mac apps run in the App Sandbox with Hardened Runtime and need no administrator access. Pastemin requests Accessibility access only for optional automatic paste.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-keyboard"/></svg>Keyboard first</h3><p>Use keyboard shortcuts for common actions. Langmin and Pastemin open from other apps; Netmin lets you find tools and run checks from the keyboard; Paletmin takes a Chrome shortcut.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-translate"/></svg>Localized</h3><p>The Mac apps are available in more than twenty-five languages and follow your Mac's language settings. Translations are welcome as contributions.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-clock"/></svg>Free to start</h3><p>The Mac apps start with 30 days of full access, without starting a subscription. A free tier remains afterward. Pro is a yearly subscription or a one-time lifetime purchase, with Family Sharing where enabled. Paletmin is free.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>Langmin, Pastemin, and Netmin currently require an Apple-silicon Mac running macOS 14 or later. Paletmin needs Chrome 118 or later on any desktop system. Each product page lists its current requirements.</p></div>
         <div class="card reveal"><h3><svg class="ic"><use href="#i-box"/></svg>Nothing extra to install</h3><p>No Homebrew or developer runtimes are needed. They include their own helpers; some Apple features may download on-device models.</p></div>
         <div class="card reveal d1"><h3><svg class="ic"><use href="#i-person"/></svg>One developer</h3><p>Min Tools is made by Ilia Ross. Questions and bug reports go to the relevant app's GitHub repository.</p></div>
       </div>
@@ -305,7 +341,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <p class="lead">Visit each app's repository for progress and launch updates. You can report problems, improve translations, review code, or contribute a change.</p>
       <div class="ways">
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Report a bug</h3><p>Or suggest an improvement in the app's repository. Say what happened and what you expected, and leave out private text, clipboard content, addresses, and keys.</p></div>
-        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-translate"/></svg></span><h3>Improve a translation</h3><p>Improve a translation or clarify an instruction. The apps shown here each support more than twenty-five languages.</p></div>
+        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-translate"/></svg></span><h3>Improve a translation</h3><p>Improve a translation or clarify an instruction. The Mac apps each support more than twenty-five languages.</p></div>
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Contribute code</h3><p>Small, focused changes and reviews are welcome, under the contribution terms published in each repository.</p></div>
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><h3>Share an app</h3><p>Tell someone who could use it. A Pro purchase on the Mac App Store supports development.</p></div>
       </div>

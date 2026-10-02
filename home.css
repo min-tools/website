@@ -32,9 +32,10 @@ body.landing header.site.scrolled .brand img.dark {
   }
 }
 
-/* Three app icons above the hero glow. */
+/* The app icons above the hero glow. */
 .trio {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: clamp(20px, 3.6vw, 40px);
   margin: clamp(28px, 5vw, 48px) auto 0;
@@ -81,10 +82,11 @@ body.landing header.site.scrolled .brand img.dark {
   color: var(--muted);
 }
 
-/* The app shelf: one card per app with a cropped window on top. */
+/* The app shelf: one card per app with a cropped window on top, two per
+   row. */
 .apps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
@@ -135,8 +137,8 @@ body.landing header.site.scrolled .brand img.dark {
 }
 
 /* Each card shows the top of one window with just enough inside it: the
-   Pastemin list without its detail pane, and the Netmin report without its
-   sidebar. */
+   Pastemin list without its detail pane, the Netmin report without its
+   sidebar, and the Paletmin page down to its first buttons. */
 .shot .pm-body,
 .shot .nm-body {
   grid-template-columns: 1fr;
@@ -235,8 +237,8 @@ body.landing header.site.scrolled .brand img.dark {
   font-size: 15px;
 }
 
-/* Stack complete cards when three readable previews no longer fit. */
-@media (max-width: 1120px) {
+/* Stack complete cards when two readable previews no longer fit. */
+@media (max-width: 860px) {
   .apps {
     grid-template-columns: 1fr;
     max-width: 640px;
