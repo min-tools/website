@@ -16,6 +16,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 ROOT = Path(__file__).resolve().parent
 SHOTS = Path(tempfile.mkdtemp(prefix='min-website-browser-', dir='/tmp'))
 PRICES = {'langmin': ('19.99', '79.99'), 'netmin': ('14.99', '59.99'), 'pastemin': ('9.99', '39.99')}
+# Every app page with document dialogs; Paletmin is free and has no Pro section.
+APPS = (*PRICES, 'paletmin')
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -136,7 +138,7 @@ class BrowserChecks(unittest.TestCase):
     def test_document_dialogs_and_links(self):
         """test_document_dialogs_and_links(): follow nested links and restore page scrolling."""
         self.media()
-        for app in PRICES:
+        for app in APPS:
             with self.subTest(app=app):
                 self.visit(app + '/#support')
                 self.click('a[data-doc="support/index.html"]')
@@ -210,10 +212,12 @@ class BrowserChecks(unittest.TestCase):
         self.media()
         self.browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
         try:
-            for app in PRICES:
+            for app in APPS:
                 with self.subTest(app=app):
-                    self.visit(app + '/#pro')
-                    self.assertTrue(self.browser.find_element(By.ID, 'pro').is_displayed())
+                    # Paid apps land on their plans; Paletmin has none, so use its documents.
+                    section = 'pro' if app in PRICES else 'docs'
+                    self.visit(f'{app}/#{section}')
+                    self.assertTrue(self.browser.find_element(By.ID, section).is_displayed())
                     self.click('a[data-doc="support/index.html"]')
                     self.wait.until(lambda d: d.current_url.endswith('/' + app + '/support/index.html'))
                     self.assertEqual(self.browser.find_element(By.CSS_SELECTOR, 'main h1').text, 'Support')
