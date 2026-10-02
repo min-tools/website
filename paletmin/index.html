@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paletmin — Light or Dark Palette per Tab in Chrome</title>
+<meta name="description" content="Switch the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. A free Chrome extension with no popup, no settings, no data collection, and no network requests.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://min.tools/paletmin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Min Tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Paletmin — Light or Dark Palette per Tab in Chrome">
+<meta property="og:description" content="One click switches the website in the current tab between its light and dark palette. No popup, no settings, no data collection.">
+<meta property="og:url" content="https://min.tools/paletmin/">
+<meta property="og:image" content="https://min.tools/paletmin/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Paletmin extension icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Paletmin — Light or Dark Palette per Tab in Chrome">
+<meta name="twitter:description" content="One click switches the website in the current tab between its light and dark palette. No popup, no settings, no data collection.">
+<meta name="twitter:image" content="https://min.tools/paletmin/icon.png">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<link rel="stylesheet" href="paletmin.css">
+<script>
+// Mark scripting support before first paint so CSS can prepare scroll reveals.
+document.documentElement.classList.add("js");
+// Enable animated hero states only when motion is allowed at page load.
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Paletmin","alternateName":"Paletmin Palette Toggle","url":"https://min.tools/paletmin/","image":"https://min.tools/paletmin/icon.png","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later","applicationCategory":"BrowserApplication","description":"A Chrome extension that switches the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. No popup, no settings, no data collection, and no network requests.","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body class="landing">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Shared icon symbols; visible instances reference these IDs with use.
+     The three mode glyphs are filled, like the extension's own icons. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pt-auto" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2l2.67 2.67h4.66v4.66L22 12l-2.67 2.67v4.66h-4.66L12 22l-2.67-2.67H4.67v-4.66L2 12l2.67-2.67V4.67h4.66L12 2Zm0 5.4 3.9 9.2h-1.8l-.7-2h-2.8l-.7 2H8.1L12 7.4Zm0 2.5-.95 3.2h1.9L12 9.9Z"/></symbol>
+  <symbol id="i-pt-dark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2l2.67 2.67h4.66v4.66L22 12l-2.67 2.67v4.66h-4.66L12 22l-2.67-2.67H4.67v-4.66L2 12l2.67-2.67V4.67h4.66L12 2Zm0 6.7a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 1 0 0-6.6Zm0 1.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 1 1 0-3.6Z"/></symbol>
+  <symbol id="i-pt-light" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2l2.67 2.67h4.66v4.66L22 12l-2.67 2.67v4.66h-4.66L12 22l-2.67-2.67H4.67v-4.66L2 12l2.67-2.67V4.67h4.66L12 2Zm0 6.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 1 0 0-7.2Zm0 2.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 1 1 0-2.4Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10 10 0 0 1 12 5c5 0 8.5 4 9.5 7-.4 1.1-1.1 2.3-2.1 3.4"/><path d="M6.6 6.6C4.6 8 3.2 10 2.5 12c1 3 4.5 7 9.5 7 1.6 0 3-.4 4.3-1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 2 2 3.5-4"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 5-4 14"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M8 9h8"/><path d="M8 12h5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14h.01"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-reload" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v1h3a2 2 0 0 1 2 2v3h-1a2 2 0 0 0 0 4h1v3a2 2 0 0 1-2 2h-3v-1a2 2 0 0 0-4 0v1H7a2 2 0 0 1-2-2v-3h1a2 2 0 0 0 0-4H5V7a2 2 0 0 1 2-2h3V4Z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-tab" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 4v5"/><path d="M12 4v5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 4 8 4.5-8 4.5-8-4.5L12 4Z"/><path d="m4 13 8 4.5 8-4.5"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.2"/><path d="M4 4v4.5h4.5"/><path d="M4 13a8 8 0 0 0 14.6 4.2"/><path d="M20 20v-4.5h-4.5"/></symbol>
+  <symbol id="i-browser" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M6.5 6.5h.01M9 6.5h.01M11.5 6.5h.01"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></symbol>
+</svg>
+
+<header class="site">
+  <a class="brand" href="./" aria-label="Paletmin home"><img src="icon-128.png" alt="" width="128" height="128">Paletmin</a>
+  <nav aria-label="Main navigation"><a class="home" href="../">All apps</a><a href="#features">Features</a><a href="#how">How it works</a><a href="#support">Support</a><a href="#privacy-policy">Privacy</a><a class="gh" href="https://github.com/min-tools/paletmin-chrome" aria-label="Paletmin on GitHub"><svg class="ic"><use href="#i-star"/></svg>GitHub</a></nav>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat on">Chrome</span><span class="plat fact">Free, MIT license</span><span class="plat fact">No network requests</span></p>
+      <h1>Light or dark, <span class="grad">one tab at a time</span>.</h1>
+      <p class="sub">Paletmin switches the website in the current tab between its light and dark palette with one click. The tab keeps your choice until you close it, and the rest of Chrome stays as it is. No popup, no settings page, no account, and no data collection.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/paletmin-chrome"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-browser"/></svg>Coming to the Chrome Web Store</span>
+      </div>
+      <p class="fine">Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Free and open source.</p>
+    </div>
+
+    <!-- A static Chrome window. The page shows the palette the browser is
+         not using: dark while this site is light, light while it is dark. -->
+    <div class="stage pt-stage">
+      <div class="win pt" role="img" aria-label="A Chrome window whose page shows the opposite palette to the browser's own. The Paletmin icon in the toolbar is pressed, and its tooltip names the tab's mode.">
+        <div class="pt-tabs">
+          <div class="pt-tab"><i class="fav"></i>min.tools<span class="x">×</span></div>
+          <div class="pt-tab off"><i class="fav"></i>Documentation<span class="x">×</span></div>
+          <span class="plus">+</span>
+        </div>
+        <div class="pt-bar">
+          <span class="nav"><svg class="ic"><use href="#i-arrow-left"/></svg><svg class="ic"><use href="#i-arrow-right"/></svg><svg class="ic"><use href="#i-reload"/></svg></span>
+          <span class="pt-url"><svg class="ic"><use href="#i-lock"/></svg>min.tools<span class="dim">/paletmin/</span></span>
+          <span class="pt-ext"><svg class="ic l"><use href="#i-pt-dark"/></svg><svg class="ic d"><use href="#i-pt-light"/></svg><span class="pt-tip"><i class="l">Dark palette</i><i class="d">Light palette</i></span></span>
+          <span class="pt-ctl"><svg class="ic"><use href="#i-puzzle"/></svg><i class="vr"></i><svg class="ic"><use href="#i-person"/></svg><svg class="ic"><use href="#i-dots"/></svg></span>
+        </div>
+        <div class="pt-page">
+          <div class="pg-head"><i class="logo"></i><b class="bar w12"></b><span class="spacer"></span><i class="pill"></i><i class="pill"></i><i class="pill"></i><i class="pill on"></i></div>
+          <div class="pg-hero"><b class="bar h w60"></b><b class="bar h w40"></b><i class="bar w70"></i><i class="bar w55"></i><div class="btns"><span class="btn on"></span><span class="btn"></span></div></div>
+          <div class="pg-cards">
+            <div class="pg-card"><i class="img"></i><b class="bar w50"></b><i class="bar w70"></i><i class="bar w40"></i></div>
+            <div class="pg-card"><i class="img"></i><b class="bar w60"></b><i class="bar w70"></i><i class="bar w50"></i></div>
+            <div class="pg-card"><i class="img"></i><b class="bar w40"></b><i class="bar w70"></i><i class="bar w55"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic l"><use href="#i-pt-dark"/></svg><svg class="ic d"><use href="#i-pt-light"/></svg><i class="l">Dark palette</i><i class="d">Light palette</i> <span>This tab only</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-pt-auto"/></svg>One click, three modes</li>
+      <li><svg class="ic"><use href="#i-tab"/></svg>Each tab keeps its own</li>
+      <li><svg class="ic"><use href="#i-globe"/></svg>No network requests</li>
+      <li><svg class="ic"><use href="#i-eye-off"/></svg>No account, no analytics</li>
+      <li><svg class="ic"><use href="#i-code"/></svg>Open source, MIT</li>
+      <li><svg class="ic"><use href="#i-keyboard"/></svg>Optional keyboard shortcut</li>
+    </ul>
+  </section>
+
+  <section id="features" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-pt-auto"/></svg>One job</p>
+        <h2>Click once. The site switches.</h2>
+        <p class="lead">Paletmin changes which palette a website thinks you prefer, the same signal your operating system sends. The site applies the light or dark design it already has, and Paletmin adds nothing of its own.</p>
+      </div>
+      <div class="edges">
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><h3>Three modes, one click</h3><p>Auto follows Chrome's own light or dark setting. Dark and Light force the website's palette. Each click moves the tab to its next mode, and the first click always changes the page.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><h3>One tab at a time</h3><p>Each tab keeps its mode until you close it. Read one site dark while the rest of Chrome stays light, or the other way round.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>The website's own dark theme</h3><p>If a site has a dark palette, you get the real one, designed by its makers. If it has none, or ignores the preference, nothing changes.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-swap"/></svg></span><h3>Rewrites the site's rules</h3><p>Stylesheet rules, <code>media</code> attributes, and nested groups that mention <code>prefers-color-scheme</code> are swapped inside the tab, and put back when you return to Auto.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Scripts see it too</h3><p><code>matchMedia()</code> answers for the chosen palette and fires change events, so themes driven by JavaScript switch along with the stylesheets.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-level"/></svg></span><h3>Form controls follow</h3><p>Pages that declare <code>color-scheme: light dark</code> get it forced too, which drives <code>light-dark()</code> colors, scrollbars, and form controls.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Every frame, every navigation</h3><p>The mode applies in every frame of the tab and again after each navigation, until you close the tab.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><h3>An icon that matches Chrome</h3><p>The toolbar icon shows the tab's mode and is drawn for Chrome's light or dark toolbar, so it reads well in either.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Nothing leaves the tab</h3><p>No network requests, no account, no analytics, and no server. The only things stored are each forced tab's mode and whether Chrome is light or dark.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-swap"/></svg>How it works</p>
+        <h2>Flip the signal, not the page.</h2>
+        <p class="lead">A website with a dark theme asks the browser one question: does this person prefer dark or light? Paletmin changes the answer inside the tab, so the site applies the design it already has.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>In stylesheets</h3><p>Every <code>@media</code> and <code>@import</code> rule that mentions <code>prefers-color-scheme</code> is rewritten to name the other scheme, including rules nested in <code>@supports</code> and <code>@layer</code>.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-browser"/></svg></span><div><h3>In markup</h3><p><code>media</code> attributes on <code>link</code>, <code>style</code>, <code>source</code>, and <code>meta</code> elements are swapped the same way, so alternate stylesheets and picture sources follow.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><div><h3>In scripts</h3><p>A script that runs before the page's own makes <code>matchMedia()</code> report the chosen palette and sends change events, as a real switch would.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-swap"/></svg>What Paletmin changes in the tab</div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>@media (prefers-color-scheme: dark)</b><span>Stylesheet rules, including @import and nested groups</span></div><span class="tag ok">Swapped</span></div>
+          <div class="row"><svg class="ic"><use href="#i-browser"/></svg><div class="t"><b>media="(prefers-color-scheme: …)"</b><span>Attributes on link, style, source, and meta</span></div><span class="tag ok">Swapped</span></div>
+          <div class="row"><svg class="ic"><use href="#i-code"/></svg><div class="t"><b>matchMedia()</b><span>Answers for the chosen palette, with change events</span></div><span class="tag ok">Patched</span></div>
+          <div class="row"><svg class="ic"><use href="#i-level"/></svg><div class="t"><b>color-scheme: light dark</b><span>On pages that declare both schemes</span></div><span class="tag ok">Forced</span></div>
+          <div class="row"><svg class="ic"><use href="#i-globe"/></svg><div class="t"><b>Stylesheets from other sites</b><span>Their rules cannot be read inside the page</span></div><span class="tag ask">Left as they are</span></div>
+          <div class="row"><svg class="ic"><use href="#i-layers"/></svg><div class="t"><b>Styles in shadow roots</b><span>Not rewritten</span></div><span class="tag ask">Left as they are</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modes" class="sec">
+    <div class="wrap split flip">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-pt-auto"/></svg>Three modes</p>
+        <h2>Auto, Dark, Light. Then back.</h2>
+        <p class="lead">Click the toolbar icon to cycle. The order depends on Chrome's own setting, so the first click always shows the other palette.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><div><h3>Auto</h3><p>The tab follows Chrome's light or dark setting. Every tab starts here, and nothing is stored for it.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><div><h3>Dark</h3><p>The website shows its dark palette, whatever Chrome is set to.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-light"/></svg></span><div><h3>Light</h3><p>The website shows its light palette, whatever Chrome is set to.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><div><h3>Keyboard</h3><p>Assign a shortcut at <code>chrome://extensions/shortcuts</code> to cycle without reaching for the mouse.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-pt-auto"/></svg>Clicks in light Chrome</div>
+          <div class="row"><svg class="ic"><use href="#i-pt-dark"/></svg><div class="t"><b>First click</b><span>Dark palette</span></div><span class="tag ok">Changes the page</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-light"/></svg><div class="t"><b>Second click</b><span>Light palette, forced</span></div><span class="tag ok">Chrome's own</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>Third click</b><span>Auto, following Chrome again</span></div><span class="tag ok">Back to Auto</span></div>
+          <div class="row"><svg class="ic"><use href="#i-swap"/></svg><div class="t"><b>In dark Chrome</b><span>Light first, then Dark, then Auto</span></div><span class="tag ask">Reversed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Private by design</p>
+        <h2>Nothing leaves the tab.</h2>
+        <p class="lead">Paletmin reads and rewrites the page's stylesheets inside the tab and makes no network requests at all. There is no Paletmin account, no analytics, and no server.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Why Chrome warns about all websites</h3><p>Running a script on a page is what Chrome calls reading and changing your data. Paletmin needs that to swap the page's rules, and does nothing else with the access.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><div><h3>Two small things stored</h3><p>Each forced tab's mode, in session storage that Chrome clears when it quits, and whether Chrome is light or dark, so the toolbar icon is right after a restart.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No account, no analytics, no advertising, and no record of the pages you visit. The source is public, so you can read exactly what runs.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-eye-off"/></svg>What reaches anyone</div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Page content</b><span>Read and rewritten inside the tab</span></div><span class="tag ok">Stays in the tab</span></div>
+          <div class="row"><svg class="ic"><use href="#i-globe"/></svg><div class="t"><b>Network requests</b><span>None, for anything</span></div><span class="tag no">None</span></div>
+          <div class="row"><svg class="ic"><use href="#i-tab"/></svg><div class="t"><b>Your tab's mode</b><span>Session storage, cleared when Chrome quits</span></div><span class="tag ok">On this device</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>Chrome's light or dark setting</b><span>One word, so the icon matches after a restart</span></div><span class="tag ok">On this device</span></div>
+          <div class="row"><svg class="ic"><use href="#i-person"/></svg><div class="t"><b>Anything to Min Tools</b><span>Pages, addresses, or usage</span></div><span class="tag no">Never</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="more" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-level"/></svg>The details</p>
+        <h2>Small things, done carefully.</h2>
+      </div>
+      <div class="details">
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-browser"/></svg>Requirements</h3><p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Nothing else to install, and no account.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-check"/></svg>Nothing to set up</h3><p>No popup, no settings page, no setup assistant. Install it, and the icon is ready in the toolbar.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-folder"/></svg>Local files</h3><p>Turn on Allow access to file URLs on the extension's details page to switch pages opened from disk.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-ask"/></svg>When a site does not change</h3><p>If a website has no dark theme, or ignores the preference, nothing happens. Rules in stylesheets from other sites and styles in shadow roots are left as they are.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-swap"/></svg>Clean updates</h3><p>After an update, the new scripts tell the previous ones in open tabs to restore the page and step aside, so a forced tab is not left with stale changes.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-shield"/></svg>Chrome's own pages</h3><p>chrome:// pages and the Chrome Web Store do not allow extensions to run, so they stay on Auto.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-code"/></svg>Open source</h3><p>The complete source is on GitHub under the MIT License, with a test suite that drives the extension in headless Chromium.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-trash"/></svg>Easy to remove</h3><p>Remove it at chrome://extensions. Chrome deletes the extension together with the little it stored.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- data-doc opens standalone pages in the dialog; data-scroll names the
+       menu landing target. -->
+  <section id="docs" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-ask"/></svg>Support and policies</p>
+        <h2>Help, privacy, and terms.</h2>
+        <p class="lead">Find help and read the extension's privacy policy and terms.</p>
+      </div>
+      <div class="docs">
+        <a class="doc-card" id="support" href="support/index.html" data-doc="support/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><span class="t"><b>Support</b><span>Contact and common questions</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="privacy-policy" href="privacy/index.html" data-doc="privacy/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><span class="t"><b>Privacy policy</b><span>What is processed in the tab, what is stored, and why nothing is sent</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="terms" href="terms/index.html" data-doc="terms/index.html"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><span class="t"><b>Terms of use</b><span>Free use and the MIT source license</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="outro">
+    <div class="wrap reveal">
+      <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
+      <h2>Coming to the Chrome Web Store.</h2>
+      <p class="lead">Paletmin is a Chrome extension. Follow the project for launch updates, load it unpacked from the repository today, or visit Support for help.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/paletmin-chrome"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <a class="cta ghost" href="#support">Get support</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+<script src="../landing.js" defer></script>
+</body>
+</html>

@@ -7,7 +7,7 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 | Path | Contents |
 | --- | --- |
 | `index.html`, `home.css` | The home page: apps, source code, privacy, and contributions. |
-| `langmin/`, `pastemin/`, `netmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin and Netmin have additional stylesheets and demo scripts. |
+| `langmin/`, `pastemin/`, `netmin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin and Netmin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
 | `landing.css`, `landing.js` | Shared landing-page styles, navigation, demos, and document dialogs. The app demo scripts use helpers exposed as `window.MinTools`. |
 | `style.css` | Shared document styles for the support, privacy, terms, and contribute pages, with light and dark appearances. |
 | `build_privacy.py` | Renders each app's `PRIVACY.md` into its privacy page. |
@@ -23,7 +23,7 @@ The apps link to these pages: `https://min.tools/<app>/`, `/<app>/support/`, `/<
 
 ## Privacy policies
 
-Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`), regenerate every privacy page with:
+Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`, `../paletmin/paletmin-chrome`), regenerate every privacy page with:
 
 ```bash
 python3 build_privacy.py
@@ -41,7 +41,7 @@ Review the generated page before publishing.
 
 Every page uses the Min Tools favicon. The root contains `favicon.ico` at 16, 32, and 48 pixels, a vector `favicon.svg`, and a 180-pixel `apple-touch-icon.png`. The web manifest references `icon-192.png` and the 512-pixel `icon.png`; `icon-128.png` is the smaller site icon.
 
-Each app folder has its own 512-pixel `icon.png` and `icon-128.png` for app branding and social previews. These website copies are cropped and placed on a solid blue background; the app repositories' icons are unchanged.
+Each app folder has its own 512-pixel `icon.png` and `icon-128.png` for app branding and social previews. These website copies are cropped and placed on a solid blue background; the app repositories' icons are unchanged. Paletmin's copies are drawn in the same style from the extension's star-and-A glyph, since the extension itself ships only small toolbar icons.
 
 `brand/` contains the Min Tools icon, mark, and wide and square logos in SVG and PNG formats. The logos also have dark variants. The root icons are downscaled from `brand/mintools-icon-square.png`.
 
@@ -59,4 +59,4 @@ For browser checks, use a disposable Debian VM with Chromium, `chromium-driver`,
 
 ## Publish
 
-GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), and [netmin-macos](https://github.com/min-tools/netmin-macos).
+GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), and [paletmin-chrome](https://github.com/min-tools/paletmin-chrome).

@@ -1,0 +1,376 @@
+/* Paletmin previews used on the home and product pages: a Chrome window
+   whose page shows the palette the browser is not using. Shared styles
+   live in landing.css. */
+
+/* The browser window: tab strip, toolbar, and the page. The browser chrome
+   follows the site's color scheme, as a real Chrome window would. */
+.pt {
+  display: flex;
+  flex-direction: column;
+  height: 34em;
+}
+
+.stage .pt {
+  font-size: clamp(8.5px, 1.5cqw, 14px);
+}
+
+/* Tab strip: one active tab, one inactive, and the new-tab button. */
+.pt-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3em;
+  flex: none;
+  height: 3.1em;
+  padding: 0 0.9em;
+  background: var(--win-3);
+}
+
+.pt-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  height: 2.4em;
+  padding: 0 1em;
+  border-radius: 0.8em 0.8em 0 0;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--win-fg-2);
+  background: var(--win);
+  white-space: nowrap;
+}
+
+.pt-tab.off {
+  color: var(--win-muted);
+  background: transparent;
+}
+
+.pt-tab .fav {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 50%;
+  background: var(--win-accent);
+}
+
+.pt-tab.off .fav {
+  background: var(--win-fill-2);
+}
+
+.pt-tab .x {
+  margin-left: 0.3em;
+  color: var(--win-muted);
+}
+
+.pt-tabs .plus {
+  align-self: center;
+  margin-left: 0.3em;
+  color: var(--win-muted);
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+/* Toolbar: navigation, the address field, the extension icon, and Chrome's
+   own controls. */
+.pt-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  flex: none;
+  height: 3.3em;
+  padding: 0 0.9em;
+  background: var(--win);
+  border-bottom: 1px solid var(--win-line);
+}
+
+.pt-bar .nav {
+  display: flex;
+  gap: 0.6em;
+  color: var(--win-muted);
+}
+
+.pt-bar .nav .ic {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.pt-url {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  flex: 1;
+  min-width: 0;
+  height: 2.2em;
+  padding: 0 1em;
+  border-radius: 999px;
+  font-size: 0.95em;
+  color: var(--win-fg-2);
+  background: var(--win-fill);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pt-url .ic {
+  width: 1em;
+  height: 1em;
+  color: var(--win-muted);
+}
+
+.pt-url .dim {
+  color: var(--win-muted);
+}
+
+/* The Paletmin icon sits in a pressed state while its tooltip shows. */
+.pt-ext {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 0.6em;
+  color: var(--win-fg);
+  background: var(--win-fill);
+}
+
+.pt-ext .ic {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* Tooltip under the icon, naming the tab's mode. */
+.pt-tip {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: 0;
+  z-index: 2;
+  padding: 0.35em 0.7em;
+  border-radius: 0.45em;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--win-fg);
+  background: var(--win-overlay);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 0.6em 1.4em -0.6em rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.pt-ctl {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  flex: none;
+  color: var(--win-muted);
+}
+
+.pt-ctl .ic {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.pt-ctl .vr {
+  width: 1px;
+  height: 1.4em;
+  background: var(--win-border);
+}
+
+/* The page keeps the palette the browser is not using: forced dark while
+   the site is viewed in light mode, forced light in dark mode, so the
+   toggle's effect is visible in both schemes. */
+.pt-page {
+  --pg-bg: #111115;
+  --pg-head: #18181d;
+  --pg-card: #1c1c22;
+  --pg-fg: #f2f2f5;
+  --pg-fg-2: #9a9aa3;
+  --pg-fill: #2a2a31;
+  --pg-line: rgba(255, 255, 255, 0.08);
+  --pg-accent: #3f9cff;
+  --pg-accent-soft: #1a3258;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--pg-fg);
+  background: var(--pg-bg);
+}
+
+/* Labels and glyphs that depend on which palette the page shows. */
+.pt .d,
+.pt-stage .d {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pt-page {
+    --pg-bg: #ffffff;
+    --pg-head: #f7f7f9;
+    --pg-card: #f2f2f5;
+    --pg-fg: #1d1d1f;
+    --pg-fg-2: #6e6e73;
+    --pg-fill: #e4e4e9;
+    --pg-line: rgba(0, 0, 0, 0.08);
+    --pg-accent: #0a7aff;
+    --pg-accent-soft: #d6e8ff;
+  }
+
+  .pt .l,
+  .pt-stage .l {
+    display: none;
+  }
+
+  .pt .d,
+  .pt-stage .d {
+    display: inline-block;
+  }
+}
+
+/* Skeleton bars stand in for the page's text. */
+.pt-page .bar {
+  display: block;
+  height: 0.7em;
+  border-radius: 999px;
+  background: var(--pg-fg-2);
+  opacity: 0.6;
+}
+
+.pt-page b.bar {
+  height: 1.2em;
+  background: var(--pg-fg);
+  opacity: 1;
+}
+
+.pt-page .bar.h {
+  height: 1.7em;
+}
+
+.pt-page .w12 { width: 12%; }
+.pt-page .w40 { width: 40%; }
+.pt-page .w50 { width: 50%; }
+.pt-page .w55 { width: 55%; }
+.pt-page .w60 { width: 60%; }
+.pt-page .w70 { width: 70%; }
+
+/* The page's own header: logo, wordmark, and navigation pills. */
+.pg-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  height: 3.6em;
+  padding: 0 2em;
+  background: var(--pg-head);
+  border-bottom: 1px solid var(--pg-line);
+}
+
+.pg-head .logo {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: var(--pg-accent);
+}
+
+.pg-head .spacer {
+  flex: 1;
+}
+
+.pg-head .pill {
+  width: 3.6em;
+  height: 1.1em;
+  border-radius: 999px;
+  background: var(--pg-fill);
+}
+
+.pg-head .pill.on {
+  background: var(--pg-accent-soft);
+}
+
+/* The page's hero: heading bars, paragraph bars, and two buttons. */
+.pg-hero {
+  display: grid;
+  gap: 0.8em;
+  padding: 2.4em 4em 2em;
+}
+
+.pg-hero .bar+.bar.h {
+  margin-top: -0.2em;
+}
+
+.pg-hero .btns {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 0.8em;
+}
+
+.pg-hero .btn {
+  width: 8em;
+  height: 2.2em;
+  border-radius: 999px;
+  background: var(--pg-fill);
+}
+
+.pg-hero .btn.on {
+  background: var(--pg-accent);
+}
+
+/* Three cards below the hero, cropped by the window's bottom edge. */
+.pg-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  padding: 0 4em;
+}
+
+.pg-card {
+  display: grid;
+  gap: 0.6em;
+  padding: 1.1em;
+  border-radius: 0.9em;
+  background: var(--pg-card);
+}
+
+.pg-card .img {
+  display: block;
+  height: 4.6em;
+  margin-bottom: 0.4em;
+  border-radius: 0.6em;
+  background: var(--pg-fill);
+}
+
+/* The hero toast names the mode the demo window shows. */
+.pt-stage .toast i {
+  font-style: normal;
+}
+
+/* The home card shows only the top of the window, with a shorter tab
+   strip, toolbar, and page header so the page's own hero stays visible
+   above the card's fade. */
+.shot .pt {
+  height: auto;
+}
+
+.shot .pt-tabs {
+  height: 2.4em;
+}
+
+.shot .pt-tab {
+  height: 1.9em;
+}
+
+.shot .pt-bar {
+  height: 2.6em;
+}
+
+.shot .pt-url {
+  height: 1.8em;
+}
+
+.shot .pg-head {
+  height: 2.6em;
+  padding: 0 1.6em;
+}
+
+.shot .pg-hero {
+  gap: 0.6em;
+  padding: 1.4em 3em 1em;
+}
+
+.shot .pt-page {
+  min-height: 11em;
+}

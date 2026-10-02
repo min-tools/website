@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/paletmin/terms/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use · Paletmin</title>
+<meta name="description" content="The terms under which Paletmin is provided.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">Paletmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/paletmin-chrome">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Paletmin Terms of Use</h1>
+<p class="meta">Effective and last updated: October 2, 2026</p>
+
+<p>Paletmin is a free browser extension published by Ilia Ross ("we"). By installing or using it you agree to these terms. If you install it from the Chrome Web Store, Google's terms for that store also apply to the store itself.</p>
+
+<h2>Free of charge</h2>
+<p>Paletmin costs nothing. It has no trial, no subscription, no in-app purchases, and no account. We may change or discontinue it at any time.</p>
+
+<h2>Acceptable use</h2>
+<p>Use Paletmin lawfully. It changes how websites appear in your own browser. It does not change the websites themselves or anything other people see.</p>
+
+<h2>Source code</h2>
+<p>Paletmin's source is published on GitHub under the <a href="https://opensource.org/license/mit">MIT License</a>. The license lets you use, copy, modify, and distribute the code as long as you keep its copyright and license notice. The license text in the repository governs the source code; where these terms and the license differ, the license prevails for the code.</p>
+
+<h2>Warranty and liability</h2>
+<p>Paletmin is provided "as is" without warranties of any kind, to the extent permitted by law. To the same extent, we are not liable for indirect or consequential losses, including losses caused by a website that behaves differently with a forced palette. Nothing in these terms limits rights you have as a consumer that cannot be limited.</p>
+
+<h2>Changes</h2>
+<p>We may update these terms and will change the date above when we do.</p>
+
+<h2>Contact</h2>
+<p>For questions about these terms, visit the <a href="https://github.com/min-tools/paletmin-chrome">Paletmin GitHub repository</a>.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>

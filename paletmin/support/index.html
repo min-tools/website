@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/paletmin/support/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Paletmin</title>
+<meta name="description" content="Get help with Paletmin: contact, common questions, and where to report problems.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">Paletmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/paletmin-chrome">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Support</h1>
+<p class="meta">Help with Paletmin and answers to common questions.</p>
+
+<h2>Contact</h2>
+<ul>
+<li>Questions and support: <a href="https://github.com/min-tools/paletmin-chrome">Paletmin on GitHub</a></li>
+<li>Bug reports and feature requests: <a href="https://github.com/min-tools/paletmin-chrome/issues">GitHub Issues</a></li>
+<li>Privacy questions: <a href="mailto:privacy@min.tools">privacy@min.tools</a></li>
+</ul>
+<p>When reporting a problem, include your Chrome version, the Paletmin version shown at chrome://extensions, the address of the website, and clear steps to reproduce. Leave out private page content.</p>
+
+<h2>Common questions</h2>
+
+<h3>What does Paletmin need?</h3>
+<p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Other Chromium-based browsers are not tested. Paletmin needs no account and no other software.</p>
+
+<h3>How do I switch a tab?</h3>
+<p>Click the Paletmin icon in the toolbar. Each click moves the tab to its next mode: Auto, then the palette Chrome is not using, then the other one, then back to Auto. The first click always changes the page. The icon shows the tab's current mode.</p>
+
+<h3>Can I use a keyboard shortcut?</h3>
+<p>Yes. Open <strong>chrome://<wbr>extensions/<wbr>shortcuts</strong> and assign a shortcut to Paletmin. It does the same as a click on the icon.</p>
+
+<h3>Why does Chrome say Paletmin can read and change all my data on all websites?</h3>
+<p>Paletmin runs a small script in each tab. To switch a page, the script reads the page's stylesheets and swaps the light and dark rules in them. Chrome describes any script that runs on a page that way. The script keeps everything in the tab, and Paletmin makes no network requests. See the <a href="../privacy/index.html">privacy policy</a>.</p>
+
+<h3>A website did not change</h3>
+<p>Paletmin only changes which palette a website thinks you prefer. If the website has no dark theme, or does not follow that preference, nothing changes. Rules inside stylesheets loaded from another website, and styles inside shadow roots, are left as they are, so parts of some pages keep their palette. Chrome's own pages and the Chrome Web Store do not allow extensions to run.</p>
+
+<h3>Does it work on local files?</h3>
+<p>Yes, after you turn on <strong>Allow access to file URLs</strong> on Paletmin's details page at chrome://extensions.</p>
+
+<h3>Does Paletmin remember my choice?</h3>
+<p>Each tab keeps its mode until you close it or quit Chrome. Paletmin has no settings and stores nothing else about you or the pages you visit.</p>
+
+<h3>Does Paletmin collect anything?</h3>
+<p>No. There is no account, no analytics, no server, and no network request of any kind. The <a href="../privacy/index.html">privacy policy</a> lists exactly what the extension processes and stores.</p>
+
+<h3>Where is the source?</h3>
+<p>The <a href="https://github.com/min-tools/paletmin-chrome">extension repository</a> holds the complete source under the MIT License, so you can read exactly what Paletmin does in a page. Bug reports and contributions are welcome there.</p>
+
+<h3>How do I remove Paletmin?</h3>
+<p>Open chrome://extensions and choose Remove on Paletmin's card. Chrome deletes the extension and the little it stored.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>

@@ -36,6 +36,13 @@ PRODUCTS = {
         "repo": "https://github.com/min-tools/netmin-macos",
         "description": "What Netmin keeps on your Mac, which services a check contacts, and the controls you have.",
     },
+    # The checkout folder differs from the Mac apps' <slug>-macos pattern.
+    "paletmin": {
+        "name": "Paletmin",
+        "repo": "https://github.com/min-tools/paletmin-chrome",
+        "checkout": "paletmin-chrome",
+        "description": "What Paletmin processes inside the tab, what it stores, and why it makes no network requests.",
+    },
 }
 
 # The header goes through str.format with the product metadata, so literal
