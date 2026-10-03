@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paletmin — Light or Dark Palette per Tab in Chrome</title>
-<meta name="description" content="Switch the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. A free Chrome extension with no popup, no settings, no data collection, and no network requests.">
+<title>Paletmin — Light or Dark Palette per Tab in Chrome and Firefox</title>
+<meta name="description" content="Switch the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. A free extension for Chrome and Firefox with no popup, no settings, no data collection, and no network requests.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://min.tools/paletmin/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Min Tools">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Paletmin — Light or Dark Palette per Tab in Chrome">
-<meta property="og:description" content="One click switches the website in the current tab between its light and dark palette. No popup, no settings, no data collection.">
+<meta property="og:title" content="Paletmin — Light or Dark Palette per Tab in Chrome and Firefox">
+<meta property="og:description" content="One click switches the website in the current tab between its light and dark palette. For Chrome and Firefox, with no popup, no settings, and no data collection.">
 <meta property="og:url" content="https://min.tools/paletmin/">
 <meta property="og:image" content="https://min.tools/paletmin/icon.png">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta property="og:image:alt" content="Paletmin extension icon">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paletmin — Light or Dark Palette per Tab in Chrome">
-<meta name="twitter:description" content="One click switches the website in the current tab between its light and dark palette. No popup, no settings, no data collection.">
+<meta name="twitter:title" content="Paletmin — Light or Dark Palette per Tab in Chrome and Firefox">
+<meta name="twitter:description" content="One click switches the website in the current tab between its light and dark palette. For Chrome and Firefox, with no popup, no settings, and no data collection.">
 <meta name="twitter:image" content="https://min.tools/paletmin/icon.png">
 <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
@@ -37,7 +37,7 @@ document.documentElement.classList.add("js");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Paletmin","alternateName":"Paletmin Palette Toggle","url":"https://min.tools/paletmin/","image":"https://min.tools/paletmin/icon.png","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later","applicationCategory":"BrowserApplication","description":"A Chrome extension that switches the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. No popup, no settings, no data collection, and no network requests.","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Paletmin","alternateName":"Paletmin Palette Toggle","url":"https://min.tools/paletmin/","image":"https://min.tools/paletmin/icon.png","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later, or Firefox 140 or later","applicationCategory":"BrowserApplication","description":"A browser extension for Chrome and Firefox that switches the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. No popup, no settings, no data collection, and no network requests.","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 </head>
 <body class="landing">
@@ -84,20 +84,20 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 <main id="main-content">
   <section class="hero">
     <div class="wrap">
-      <p class="whatsnew"><span class="plat on">Chrome</span><span class="plat fact">Free, MIT license</span><span class="plat fact">No network requests</span></p>
+      <p class="whatsnew"><span class="plat on">Chrome</span><span class="plat on">Firefox</span><span class="plat fact">Free, MIT license</span></p>
       <h1>Light or dark, <span class="grad">one tab at a time</span>.</h1>
-      <p class="sub">Paletmin switches the website in the current tab between its light and dark palette with one click. The tab keeps your choice until you close it, and the rest of Chrome stays as it is. No popup, no settings page, no account, and no data collection.</p>
+      <p class="sub">Paletmin switches the website in the current tab between its light and dark palette with one click. The tab keeps your choice until you close it, and the rest of the browser stays as it is. No popup, no settings page, no account, and no data collection.</p>
       <div class="actions">
         <a class="cta primary" href="https://github.com/min-tools/paletmin-chrome"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
-        <span class="cta ghost"><svg class="ic"><use href="#i-browser"/></svg>Coming to the Chrome Web Store</span>
+        <span class="cta ghost"><svg class="ic"><use href="#i-browser"/></svg>Coming to the Chrome Web Store and Mozilla Add-ons</span>
       </div>
-      <p class="fine">Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Free and open source.</p>
+      <p class="fine">Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Free and open source.</p>
     </div>
 
-    <!-- A static Chrome window. The page shows the palette the browser is
+    <!-- A static browser window. The page shows the palette the browser is
          not using: dark while this site is light, light while it is dark. -->
     <div class="stage pt-stage">
-      <div class="win pt" role="img" aria-label="A Chrome window whose page shows the opposite palette to the browser's own. The Paletmin icon in the toolbar is pressed, and its tooltip names the tab's mode.">
+      <div class="win pt" role="img" aria-label="A browser window whose page shows the opposite palette to the browser's own. The Paletmin icon in the toolbar is pressed, and its tooltip names the tab's mode.">
         <div class="pt-tabs">
           <div class="pt-tab"><i class="fav"></i>min.tools<span class="x">×</span></div>
           <div class="pt-tab off"><i class="fav"></i>Documentation<span class="x">×</span></div>
@@ -128,7 +128,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <li><svg class="ic"><use href="#i-globe"/></svg>No network requests</li>
       <li><svg class="ic"><use href="#i-eye-off"/></svg>No account, no analytics</li>
       <li><svg class="ic"><use href="#i-code"/></svg>Open source, MIT</li>
-      <li><svg class="ic"><use href="#i-keyboard"/></svg>Optional keyboard shortcut</li>
+      <li><svg class="ic"><use href="#i-browser"/></svg>Chrome and Firefox</li>
     </ul>
   </section>
 
@@ -140,15 +140,15 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <p class="lead">Paletmin changes which palette a website thinks you prefer, the same signal your operating system sends. The site applies the light or dark design it already has, and Paletmin adds nothing of its own.</p>
       </div>
       <div class="edges">
-        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><h3>Three modes, one click</h3><p>Auto follows Chrome's own light or dark setting. Dark and Light force the website's palette. Each click moves the tab to its next mode, and the first click always changes the page.</p></div>
-        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><h3>One tab at a time</h3><p>Each tab keeps its mode until you close it. Read one site dark while the rest of Chrome stays light, or the other way round.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><h3>Three modes, one click</h3><p>Auto follows the browser's own light or dark setting. Dark and Light force the website's palette. Each click moves the tab to its next mode, and the first click always changes the page.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><h3>One tab at a time</h3><p>Each tab keeps its mode until you close it. Read one site dark while the rest of the browser stays light, or the other way round.</p></div>
         <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>The website's own dark theme</h3><p>If a site has a dark palette, you get the real one, designed by its makers. If it has none, or ignores the preference, nothing changes.</p></div>
         <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-swap"/></svg></span><h3>Rewrites the site's rules</h3><p>Stylesheet rules, <code>media</code> attributes, and nested groups that mention <code>prefers-color-scheme</code> are swapped inside the tab, and put back when you return to Auto.</p></div>
         <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Scripts see it too</h3><p><code>matchMedia()</code> answers for the chosen palette and fires change events, so themes driven by JavaScript switch along with the stylesheets.</p></div>
         <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-level"/></svg></span><h3>Form controls follow</h3><p>Pages that declare <code>color-scheme: light dark</code> get it forced too, which drives <code>light-dark()</code> colors, scrollbars, and form controls.</p></div>
         <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Every frame, every navigation</h3><p>The mode applies in every frame of the tab and again after each navigation, until you close the tab.</p></div>
-        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><h3>An icon that matches Chrome</h3><p>The toolbar icon shows the tab's mode and is drawn for Chrome's light or dark toolbar, so it reads well in either.</p></div>
-        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Nothing leaves the tab</h3><p>No network requests, no account, no analytics, and no server. The only things stored are each forced tab's mode and whether Chrome is light or dark.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><h3>An icon that matches the toolbar</h3><p>The toolbar icon shows the tab's mode and is drawn for the browser's light or dark toolbar, so it reads well in either.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Nothing leaves the tab</h3><p>No network requests, no account, no analytics, and no server. The only things stored are each forced tab's mode and whether the browser is light or dark.</p></div>
       </div>
     </div>
   </section>
@@ -184,21 +184,21 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="copy reveal">
         <p class="eyebrow"><svg class="ic"><use href="#i-pt-auto"/></svg>Three modes</p>
         <h2>Auto, Dark, Light. Then back.</h2>
-        <p class="lead">Click the toolbar icon to cycle. The order depends on Chrome's own setting, so the first click always shows the other palette.</p>
+        <p class="lead">Click the toolbar icon to cycle. The order depends on the browser's own setting, so the first click always shows the other palette.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><div><h3>Auto</h3><p>The tab follows Chrome's light or dark setting. Every tab starts here, and nothing is stored for it.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><div><h3>Dark</h3><p>The website shows its dark palette, whatever Chrome is set to.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-light"/></svg></span><div><h3>Light</h3><p>The website shows its light palette, whatever Chrome is set to.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><div><h3>Keyboard</h3><p>Assign a shortcut at <code>chrome://extensions/shortcuts</code> to cycle without reaching for the mouse.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><div><h3>Auto</h3><p>The tab follows the browser's light or dark setting. Every tab starts here, and nothing is stored for it.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><div><h3>Dark</h3><p>The website shows its dark palette, whatever the browser is set to.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-light"/></svg></span><div><h3>Light</h3><p>The website shows its light palette, whatever the browser is set to.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><div><h3>Keyboard</h3><p>Assign a shortcut to cycle without reaching for the mouse: at <code>chrome://extensions/shortcuts</code> in Chrome, or under Manage Extension Shortcuts in Firefox's add-ons manager.</p></div></li>
         </ul>
       </div>
       <div class="visual reveal d1 frame" aria-hidden="true">
         <div class="ledger">
-          <div class="head"><svg class="ic"><use href="#i-pt-auto"/></svg>Clicks in light Chrome</div>
+          <div class="head"><svg class="ic"><use href="#i-pt-auto"/></svg>Clicks with a light browser</div>
           <div class="row"><svg class="ic"><use href="#i-pt-dark"/></svg><div class="t"><b>First click</b><span>Dark palette</span></div><span class="tag ok">Changes the page</span></div>
-          <div class="row"><svg class="ic"><use href="#i-pt-light"/></svg><div class="t"><b>Second click</b><span>Light palette, forced</span></div><span class="tag ok">Chrome's own</span></div>
-          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>Third click</b><span>Auto, following Chrome again</span></div><span class="tag ok">Back to Auto</span></div>
-          <div class="row"><svg class="ic"><use href="#i-swap"/></svg><div class="t"><b>In dark Chrome</b><span>Light first, then Dark, then Auto</span></div><span class="tag ask">Reversed</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-light"/></svg><div class="t"><b>Second click</b><span>Light palette, forced</span></div><span class="tag ok">The browser's own</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>Third click</b><span>Auto, following the browser again</span></div><span class="tag ok">Back to Auto</span></div>
+          <div class="row"><svg class="ic"><use href="#i-swap"/></svg><div class="t"><b>With a dark browser</b><span>Light first, then Dark, then Auto</span></div><span class="tag ask">Reversed</span></div>
         </div>
       </div>
     </div>
@@ -211,9 +211,9 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <h2>Nothing leaves the tab.</h2>
         <p class="lead">Paletmin reads and rewrites the page's stylesheets inside the tab and makes no network requests at all. There is no Paletmin account, no analytics, and no server.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Why Chrome warns about all websites</h3><p>Running a script on a page is what Chrome calls reading and changing your data. Paletmin needs that to swap the page's rules, and does nothing else with the access.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><div><h3>Two small things stored</h3><p>Each forced tab's mode, in session storage that Chrome clears when it quits, and whether Chrome is light or dark, so the toolbar icon is right after a restart.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No account, no analytics, no advertising, and no record of the pages you visit. The source is public, so you can read exactly what runs.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Why the browser warns about all websites</h3><p>Both browsers describe a script that runs on every page as access to your data on all websites. Paletmin needs that to swap the page's rules, and does nothing else with the access.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><div><h3>Two small things stored</h3><p>Each forced tab's mode, in session storage that the browser clears when it quits, and whether the browser is light or dark, so the first click and the toolbar icon are right after a restart.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No account, no analytics, no advertising, and no record of the pages you visit. The Firefox add-on declares in its manifest that it collects no data, and the source of both versions is public, so you can read exactly what runs.</p></div></li>
         </ul>
       </div>
       <div class="visual reveal d1 frame" aria-hidden="true">
@@ -221,8 +221,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="head"><svg class="ic"><use href="#i-eye-off"/></svg>What reaches anyone</div>
           <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Page content</b><span>Read and rewritten inside the tab</span></div><span class="tag ok">Stays in the tab</span></div>
           <div class="row"><svg class="ic"><use href="#i-globe"/></svg><div class="t"><b>Network requests</b><span>None, for anything</span></div><span class="tag no">None</span></div>
-          <div class="row"><svg class="ic"><use href="#i-tab"/></svg><div class="t"><b>Your tab's mode</b><span>Session storage, cleared when Chrome quits</span></div><span class="tag ok">On this device</span></div>
-          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>Chrome's light or dark setting</b><span>One word, so the icon matches after a restart</span></div><span class="tag ok">On this device</span></div>
+          <div class="row"><svg class="ic"><use href="#i-tab"/></svg><div class="t"><b>Your tab's mode</b><span>Session storage, cleared when the browser quits</span></div><span class="tag ok">On this device</span></div>
+          <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>The browser's light or dark setting</b><span>One word, so the icon matches after a restart</span></div><span class="tag ok">On this device</span></div>
           <div class="row"><svg class="ic"><use href="#i-person"/></svg><div class="t"><b>Anything to Min Tools</b><span>Pages, addresses, or usage</span></div><span class="tag no">Never</span></div>
         </div>
       </div>
@@ -236,14 +236,14 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <h2>Small things, done carefully.</h2>
       </div>
       <div class="details">
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-browser"/></svg>Requirements</h3><p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Nothing else to install, and no account.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-browser"/></svg>Requirements</h3><p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Nothing else to install, and no account.</p></div>
         <div class="card reveal d1"><h3><svg class="ic"><use href="#i-check"/></svg>Nothing to set up</h3><p>No popup, no settings page, no setup assistant. Install it, and the icon is ready in the toolbar.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-folder"/></svg>Local files</h3><p>Turn on Allow access to file URLs on the extension's details page to switch pages opened from disk.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-folder"/></svg>Local files</h3><p>In Chrome, turn on Allow access to file URLs on the extension's details page to switch pages opened from disk.</p></div>
         <div class="card reveal"><h3><svg class="ic"><use href="#i-ask"/></svg>When a site does not change</h3><p>If a website has no dark theme, or ignores the preference, nothing happens. Rules in stylesheets from other sites and styles in shadow roots are left as they are.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-swap"/></svg>Clean updates</h3><p>After an update, the new scripts tell the previous ones in open tabs to restore the page and step aside, so a forced tab is not left with stale changes.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-shield"/></svg>Chrome's own pages</h3><p>chrome:// pages and the Chrome Web Store do not allow extensions to run, so they stay on Auto.</p></div>
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-code"/></svg>Open source</h3><p>The complete source is on GitHub under the MIT License, with a test suite that drives the extension in headless Chromium.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-trash"/></svg>Easy to remove</h3><p>Remove it at chrome://extensions. Chrome deletes the extension together with the little it stored.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-swap"/></svg>Clean updates</h3><p>After an update, the new scripts restore each open page and take over, so a forced tab is not left with stale changes. Tabs may return to Auto afterwards.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-shield"/></svg>The browser's own pages</h3><p>Chrome's chrome:// pages and the Chrome Web Store, and Firefox's internal pages, PDF viewer, and protected Mozilla sites, do not allow extensions to run, so they stay on Auto.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-code"/></svg>Open source</h3><p>The complete source is on GitHub under the MIT License, in one repository per browser: <a href="https://github.com/min-tools/paletmin-chrome">paletmin-chrome</a> and <a href="https://github.com/min-tools/paletmin-firefox">paletmin-firefox</a>. The Chrome repository includes a test suite that drives the extension in headless Chromium.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-trash"/></svg>Easy to remove</h3><p>Remove it at chrome://extensions or in Firefox's add-ons manager. The browser deletes the extension together with the little it stored. Reload open pages afterwards to clear its changes.</p></div>
       </div>
     </div>
   </section>
@@ -268,10 +268,11 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <section class="outro">
     <div class="wrap reveal">
       <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
-      <h2>Coming to the Chrome Web Store.</h2>
-      <p class="lead">Paletmin is a Chrome extension. Follow the project for launch updates, load it unpacked from the repository today, or visit Support for help.</p>
+      <h2>Coming to the Chrome Web Store and Mozilla Add-ons.</h2>
+      <p class="lead">Paletmin is an extension for Chrome and Firefox, with a repository for each. Follow them for launch updates, load the extension from a repository today, or visit Support for help.</p>
       <div class="actions">
         <a class="cta primary" href="https://github.com/min-tools/paletmin-chrome"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <a class="cta ghost" href="https://github.com/min-tools/paletmin-firefox"><svg class="ic"><use href="#i-code"/></svg>Firefox version on GitHub</a>
         <a class="cta ghost" href="#support">Get support</a>
       </div>
     </div>

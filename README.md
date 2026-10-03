@@ -37,6 +37,8 @@ python3 build_privacy.py netmin ../netmin/netmin-macos/PRIVACY.md
 
 Review the generated page before publishing.
 
+Paletmin's page is rendered from the Chrome extension's policy. The Firefox add-on in `../paletmin/paletmin-firefox` keeps a policy with the same facts in Firefox's terms; the site links to it from Paletmin's support page rather than rendering a second page.
+
 ## Icons and logo
 
 Every page uses the Min Tools favicon. The root contains `favicon.ico` at 16, 32, and 48 pixels, a vector `favicon.svg`, and a 180-pixel `apple-touch-icon.png`. The web manifest references `icon-192.png` and the 512-pixel `icon.png`; `icon-128.png` is the smaller site icon.
@@ -59,4 +61,4 @@ For browser checks, use a disposable Debian VM with Chromium, `chromium-driver`,
 
 ## Publish
 
-GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), and [paletmin-chrome](https://github.com/min-tools/paletmin-chrome).
+GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), [paletmin-chrome](https://github.com/min-tools/paletmin-chrome), and [paletmin-firefox](https://github.com/min-tools/paletmin-firefox).

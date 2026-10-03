@@ -46,43 +46,43 @@ if (window.self !== window.top) {
 
 <h2>Contact</h2>
 <ul>
-<li>Questions and support: <a href="https://github.com/min-tools/paletmin-chrome">Paletmin on GitHub</a></li>
-<li>Bug reports and feature requests: <a href="https://github.com/min-tools/paletmin-chrome/issues">GitHub Issues</a></li>
+<li>Questions and support: <a href="https://github.com/min-tools/paletmin-chrome">Paletmin for Chrome</a> or <a href="https://github.com/min-tools/paletmin-firefox">Paletmin for Firefox</a> on GitHub</li>
+<li>Bug reports and feature requests: GitHub Issues for <a href="https://github.com/min-tools/paletmin-chrome/issues">Chrome</a> or <a href="https://github.com/min-tools/paletmin-firefox/issues">Firefox</a></li>
 <li>Privacy questions: <a href="mailto:privacy@min.tools">privacy@min.tools</a></li>
 </ul>
-<p>When reporting a problem, include your Chrome version, the Paletmin version shown at chrome://extensions, the address of the website, and clear steps to reproduce. Leave out private page content.</p>
+<p>When reporting a problem, include your browser and its version, the Paletmin version shown at chrome://extensions or about:addons, the address of the website, and clear steps to reproduce. Leave out private page content.</p>
 
 <h2>Common questions</h2>
 
 <h3>What does Paletmin need?</h3>
-<p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS. Other Chromium-based browsers are not tested. Paletmin needs no account and no other software.</p>
+<p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Other Chromium-based browsers and Firefox for Android are not tested. Paletmin needs no account and no other software.</p>
 
 <h3>How do I switch a tab?</h3>
-<p>Click the Paletmin icon in the toolbar. Each click moves the tab to its next mode: Auto, then the palette Chrome is not using, then the other one, then back to Auto. The first click always changes the page. The icon shows the tab's current mode.</p>
+<p>Click the Paletmin icon in the toolbar. Each click moves the tab to its next mode: Auto, then the palette the browser is not using, then the other one, then back to Auto. The first click always changes the page. The icon shows the tab's current mode.</p>
 
 <h3>Can I use a keyboard shortcut?</h3>
-<p>Yes. Open <strong>chrome://<wbr>extensions/<wbr>shortcuts</strong> and assign a shortcut to Paletmin. It does the same as a click on the icon.</p>
+<p>Yes. In Chrome, open <strong>chrome://<wbr>extensions/<wbr>shortcuts</strong> and assign a shortcut to Paletmin. In Firefox, open about:addons, click the gear, and choose <strong>Manage Extension Shortcuts</strong>. The shortcut does the same as a click on the icon.</p>
 
-<h3>Why does Chrome say Paletmin can read and change all my data on all websites?</h3>
-<p>Paletmin runs a small script in each tab. To switch a page, the script reads the page's stylesheets and swaps the light and dark rules in them. Chrome describes any script that runs on a page that way. The script keeps everything in the tab, and Paletmin makes no network requests. See the <a href="../privacy/index.html">privacy policy</a>.</p>
+<h3>Why does the browser say Paletmin can access my data on all websites?</h3>
+<p>Paletmin runs a small script in each tab. To switch a page, the script reads the page's stylesheets and swaps the light and dark rules in them. Chrome and Firefox describe any script that runs on a page that way. The script keeps everything in the tab, and Paletmin makes no network requests. See the <a href="../privacy/index.html">privacy policy</a>.</p>
 
 <h3>A website did not change</h3>
-<p>Paletmin only changes which palette a website thinks you prefer. If the website has no dark theme, or does not follow that preference, nothing changes. Rules inside stylesheets loaded from another website, and styles inside shadow roots, are left as they are, so parts of some pages keep their palette. Chrome's own pages and the Chrome Web Store do not allow extensions to run.</p>
+<p>Paletmin only changes which palette a website thinks you prefer. If the website has no dark theme, or does not follow that preference, nothing changes. Rules inside stylesheets loaded from another website, and styles inside shadow roots, are left as they are, so parts of some pages keep their palette. Chrome's own pages and the Chrome Web Store, and Firefox's internal pages, PDF viewer, and protected Mozilla sites, do not allow extensions to run.</p>
 
 <h3>Does it work on local files?</h3>
-<p>Yes, after you turn on <strong>Allow access to file URLs</strong> on Paletmin's details page at chrome://extensions.</p>
+<p>In Chrome, yes, after you turn on <strong>Allow access to file URLs</strong> on Paletmin's details page at chrome://extensions.</p>
 
 <h3>Does Paletmin remember my choice?</h3>
-<p>Each tab keeps its mode until you close it or quit Chrome. Paletmin has no settings and stores nothing else about you or the pages you visit.</p>
+<p>Each tab keeps its mode until you close it or quit the browser. An extension update may also return open tabs to Auto. Paletmin has no settings and stores nothing else about you or the pages you visit.</p>
 
 <h3>Does Paletmin collect anything?</h3>
-<p>No. There is no account, no analytics, no server, and no network request of any kind. The <a href="../privacy/index.html">privacy policy</a> lists exactly what the extension processes and stores.</p>
+<p>No. There is no account, no analytics, no server, and no network request of any kind. The <a href="../privacy/index.html">privacy policy</a> lists exactly what the extension processes and stores. The Firefox add-on also declares in its manifest that it collects no data, and its repository carries <a href="https://github.com/min-tools/paletmin-firefox/blob/main/PRIVACY.md">the same policy in Firefox's terms</a>.</p>
 
 <h3>Where is the source?</h3>
-<p>The <a href="https://github.com/min-tools/paletmin-chrome">extension repository</a> holds the complete source under the MIT License, so you can read exactly what Paletmin does in a page. Bug reports and contributions are welcome there.</p>
+<p>The <a href="https://github.com/min-tools/paletmin-chrome">Chrome repository</a> and the <a href="https://github.com/min-tools/paletmin-firefox">Firefox repository</a> hold the complete source under the MIT License, so you can read exactly what Paletmin does in a page. Bug reports and contributions are welcome in either.</p>
 
 <h3>How do I remove Paletmin?</h3>
-<p>Open chrome://extensions and choose Remove on Paletmin's card. Chrome deletes the extension and the little it stored.</p>
+<p>In Chrome, open chrome://extensions and choose Remove on Paletmin's card. In Firefox, open about:addons and choose Remove from the extension's menu. The browser deletes the extension and the little it stored. Reload open pages afterwards to clear its changes.</p>
 </main>
 <footer class="site">
   <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
