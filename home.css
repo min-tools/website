@@ -223,9 +223,11 @@ body.landing header.site.scrolled .brand img.dark {
   border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-/* Align card actions at the bottom even when descriptions differ in length. */
+/* Align card actions at the bottom even when descriptions differ in length,
+   and let a third button wrap on narrow cards. */
 .app-card .links {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin: auto 22px 0;
   padding: 20px 0 22px;
