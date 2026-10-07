@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://min.tools/netmin/examples/">
+<title>Examples and testing guide · Netmin</title>
+<meta name="description" content="Try Netmin with sample inputs, expected results, local-network setup, and a reference for all 84 tools.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.examples { overflow-wrap: anywhere; }
+.examples table { width: 100%; table-layout: fixed; }
+.examples th, .examples td { vertical-align: top; }
+.examples th:first-child { width: 26%; }
+.examples th:nth-child(2) { width: 30%; }
+.examples details { margin: 1.5rem 0; }
+.examples summary { cursor: pointer; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">Netmin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/netmin-macos">GitHub</a></nav>
+</header>
+<main class="doc examples">
+<h1>Examples and testing guide</h1>
+<p class="meta">Sample inputs for Netmin 26.10 and all 84 diagnostic tools.</p>
+<p>Netmin runs checks you choose on your Mac. No Netmin account, login, or sample-file import is needed. This page and the <a href="sample.txt">sample text file</a> have stable public addresses and are available without signing in.</p>
+<p><a href="#quick-start">Quick start</a> · <a href="#results">Results and controls</a> · <a href="#local-network">Local network</a> · <a href="#pro">Trial and Pro</a> · <a href="#tool-reference">All tools</a></p>
+
+<h2 id="quick-start">A five-minute walkthrough</h2>
+<ol>
+<li>Open Netmin and accept the first-launch trial notice. The notice does not start a subscription or request payment.</li>
+<li>Press <strong>⌘K</strong>, type a tool name from the table, and select it in the sidebar.</li>
+<li>Enter its sample input. Leave <strong>Use custom resolver</strong> off for the first DNS check.</li>
+<li>Press <strong>⌘Return</strong> or click the run button. Output appears as the check runs, followed by its result.</li>
+<li>Press <strong>⌘1</strong> for Overview or <strong>⌘2</strong> for Raw Output. Use <strong>New Lookup</strong> or Escape after completion to try another tool.</li>
+</ol>
+<table>
+<thead><tr><th scope="col">Tool</th><th scope="col">Input</th><th scope="col">What to look for</th></tr></thead>
+<tbody>
+<tr><td>DNS A</td><td><code>min.tools</code></td><td>One or more published IPv4 addresses.</td></tr>
+<tr><td>HTTP Headers</td><td><code>https://min.tools/netmin/examples/sample.txt</code></td><td>A successful HTTP response with headers.</td></tr>
+<tr><td>TLS Certificate</td><td><code>min.tools</code></td><td>Certificate identity, issuer, validity, and fingerprint.</td></tr>
+<tr><td>Mail MX</td><td><code>min.tools</code></td><td>Mail-server records and priorities.</td></tr>
+<tr><td>CIDR Calculator</td><td><code>192.0.2.0/28</code></td><td>A 16-address subnet calculated locally.</td></tr>
+<tr><td>MAC Formatter</td><td><code>02-00-00-00-00-01</code></td><td><code>02:00:00:00:00:01</code>.</td></tr>
+</tbody>
+</table>
+<p>For a combined report, choose <strong>Network Lookup</strong>, enter <code>min.tools</code>, select <strong>Quick</strong>, and run it. Exact addresses, certificates, timings, and registry data can change. Optional sections may be empty or unavailable.</p>
+
+<h2 id="results">Results and controls</h2>
+<p>Use the result header to switch between <strong>Overview</strong> and <strong>Raw output</strong>. The <strong>Copy Result</strong> menu offers raw output, the command, and a structured summary. During the trial or with Pro, use <strong>Save Report</strong> to export a text file to a location you choose.</p>
+<p>To check cancellation, start Network Lookup with <strong>Full</strong> selected, then click <strong>Stop</strong> or press Escape while it is running. Start a new lookup afterward. The sidebar search, recent targets, window resizing, and light/dark appearance remain available throughout normal use.</p>
+<p>An empty DNS answer, a closed port, a refused connection, and an unsupported service are diagnostic results. They do not require an account or indicate that a feature is locked. A timeout can mean the network blocks that traffic or the destination does not respond. Raw output shows the details.</p>
+
+<h2 id="local-network">Local-network setup</h2>
+<p>Choose <strong>Interface Inventory</strong>, <strong>Gateway and Routes</strong>, or <strong>DNS Configuration</strong> for an immediate view of the reviewing Mac's own network. These tools need no target.</p>
+<p>For <strong>Local Device Sweep</strong>, use an isolated test network you manage, select one of the detected ranges, then run the check. Allow macOS Local Network access when prompted. If permission was denied, enable Netmin under <strong>System Settings → Privacy &amp; Security → Local Network</strong>.</p>
+<p>For positive discovery results, connect a test device to the same network: a Bonjour-capable printer or Mac for Bonjour, a UPnP-enabled router or TV for SSDP, or a Windows/SMB device advertising NetBIOS for Windows Name Discovery. Enter that device's hostname for the last tool. Guest Wi-Fi isolation, VPNs, absent devices, and disabled services can prevent discovery. A public website cannot substitute for a device on the reviewing Mac's LAN.</p>
+
+<h2 id="pro">Trial, purchases, and legal links</h2>
+<p>The free download includes 30 days of Pro access. During the trial, all tools, structured reports, export, summary copying, and unlimited diagnostic requests are available. No subscription starts automatically.</p>
+<p>Open <strong>Netmin → Netmin Pro…</strong> to view the yearly subscription, lifetime purchase, and <strong>Restore Purchases</strong>. App Review can exercise purchases using Apple's sandbox purchase flow. After the trial, Free retains all tools and raw output with five new requests per day; a verified Pro purchase restores unrestricted access. Reinstalling should not be used as a way to reset access.</p>
+<p>The purchase window's bottom row contains <strong>Terms of Use (EULA)</strong> and <strong>Privacy Policy</strong>. These links can be opened without buying anything.</p>
+
+<h2 id="tool-reference">Inputs for all 84 tools</h2>
+<p>Expand a group to find its tools. The quick-start examples are the easiest starting point. The reference also identifies optional records, expected negative examples, and tools that require a particular device or service.</p>
+<details><summary>Reports</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>Network Lookup</td><td>min.tools; Depth: Quick</td><td>A combined DNS, address, and ownership report. Full adds reachability and service checks; those results depend on the target.</td></tr>
+<tr><td>Site Report</td><td>min.tools</td><td>DNS, HTTPS, and certificate sections. Unavailable SSH or mail services are reported separately; a website need not provide those services.</td></tr>
+<tr><td>My Network Report</td><td>No input</td><td>A report about the Mac&#x27;s current connection. Addresses and interfaces depend on the review network.</td></tr>
+<tr><td>My Public IP</td><td>No input</td><td>The public address seen by an external IP lookup service.</td></tr>
+</tbody></table></details>
+<details><summary>Local Network</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>Local Device Sweep</td><td>Select a detected test network</td><td>Allow Local Network access. Select only a test network you manage; devices and services must be present to appear. See local setup below.</td></tr>
+<tr><td>ARP Table</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>IPv6 Neighbors</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>Bonjour Services</td><td>No input</td><td>Advertised service types on the local test network. An empty result means no matching announcements were received.</td></tr>
+<tr><td>SSDP/UPnP Discovery</td><td>No input</td><td>Responses from a UPnP-enabled router, TV, or other device on the same test network. See local setup below.</td></tr>
+<tr><td>Windows Name Discovery</td><td>Your test Windows/SMB device&#x27;s hostname</td><td>Its advertised NetBIOS name and workgroup. Requires a device with that service enabled; a website cannot supply this result.</td></tr>
+<tr><td>Gateway and Routes</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>DNS Configuration</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>DHCP Lease</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>Wi-Fi Diagnostics</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+<tr><td>Interface Inventory</td><td>No input</td><td>Information from this Mac. Empty neighbor caches, no IPv6, no DHCP lease, or an Ethernet-only connection can leave a section empty.</td></tr>
+</tbody></table></details>
+<details><summary>IP, Routing and Registration</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>IP Information</td><td>1.1.1.1</td><td>Public address information, registry data, or its reverse-DNS name. This performs a lookup, not a device scan.</td></tr>
+<tr><td>RDAP IP</td><td>1.1.1.1</td><td>Public address information, registry data, or its reverse-DNS name. This performs a lookup, not a device scan.</td></tr>
+<tr><td>RDAP Domain</td><td>min.tools</td><td>Public registration data. Redacted registrant fields and registry referrals are normal.</td></tr>
+<tr><td>WHOIS</td><td>min.tools</td><td>Public registration data. Redacted registrant fields and registry referrals are normal.</td></tr>
+<tr><td>ASN and BGP Lookup</td><td>AS13335</td><td>Public routing information for the example network.</td></tr>
+<tr><td>RPKI Validation</td><td>Target: AS13335; IP prefix: 1.1.1.0/24</td><td>Route-origin authorization status from the public registry service.</td></tr>
+<tr><td>Reverse DNS</td><td>1.1.1.1</td><td>Public address information, registry data, or its reverse-DNS name. This performs a lookup, not a device scan.</td></tr>
+<tr><td>Ping</td><td>127.0.0.1</td><td>A reachability or route check of the reviewing Mac itself. An external destination can be used on a permitted test network; missing ICMP replies are possible.</td></tr>
+<tr><td>Traceroute</td><td>127.0.0.1</td><td>A reachability or route check of the reviewing Mac itself. An external destination can be used on a permitted test network; missing ICMP replies are possible.</td></tr>
+</tbody></table></details>
+<details><summary>DNS</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>DNS Zone Discovery</td><td>min.tools; Depth: Quick</td><td>A report assembled from published DNS records. A partial result is expected when optional records are absent; complete zone contents are not required.</td></tr>
+<tr><td>DNS Zone Transfer</td><td>localhost (negative example)</td><td>No usable authoritative public zone is available for this local name. A successful transfer requires a test zone whose administrator allows transfers; ordinary public domains usually refuse them.</td></tr>
+<tr><td>DNS A</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS AAAA</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS CNAME</td><td>www.min.tools</td><td>An alias record if one is published. A hostname that publishes A/AAAA directly can have no CNAME.</td></tr>
+<tr><td>DNS NS</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS SOA</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS TXT</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS CAA</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS SRV</td><td>_submission._tcp.min.tools</td><td>A mail-submission service record, if published. No matching answer is a valid result.</td></tr>
+<tr><td>DNS NAPTR</td><td>min.tools</td><td>Optional service-rewrite or geographic records. No matching answer is a valid result.</td></tr>
+<tr><td>DNS LOC</td><td>min.tools</td><td>Optional service-rewrite or geographic records. No matching answer is a valid result.</td></tr>
+<tr><td>DNS HTTPS</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS SVCB</td><td>min.tools</td><td>Published records of the selected type. A successful query with no answers means the domain does not publish that record type.</td></tr>
+<tr><td>DNS TLSA</td><td>_443._tcp.min.tools</td><td>Certificate-association records or their validation status. A site using ordinary HTTPS may publish no TLSA records.</td></tr>
+<tr><td>DNS Propagation</td><td>min.tools</td><td>DNS answers from the selected public resolvers or encrypted DNS endpoint. Resolver access depends on the review network.</td></tr>
+<tr><td>DNS over HTTPS</td><td>min.tools</td><td>DNS answers from the selected public resolvers or encrypted DNS endpoint. Resolver access depends on the review network.</td></tr>
+<tr><td>DNSSEC DS</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNSSEC DNSKEY</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNSSEC Check</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNSSEC Validation</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNSSEC Chain Trace</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNS NSEC Walk Check</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+<tr><td>DNS Trace</td><td>cloudflare.com</td><td>Published DNSSEC data, validation, or delegation information. Some direct queries can be blocked by the review network; NSEC3 is a normal alternative to NSEC.</td></tr>
+</tbody></table></details>
+<details><summary>Mail</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>Mail MX</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail SPF</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail DMARC</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail DKIM</td><td>review._domainkey.min.tools (negative example)</td><td>No answer is expected for this sample selector. A positive check requires the exact selector supplied by the administrator of a mail domain.</td></tr>
+<tr><td>Mail BIMI</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail MTA-STS</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail TLS-RPT</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail Autodiscover SRV</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail Submission SRV</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail IMAPS SRV</td><td>min.tools</td><td>Published mail routing or policy records. Optional policies and service records may be absent; Netmin reports that outcome.</td></tr>
+<tr><td>Mail TLS Report</td><td>localhost (negative example)</td><td>Connection results for mail services on the reviewing Mac. Closed ports are expected unless a local mail test service is running. For positive handshakes, use a mail test server you manage.</td></tr>
+<tr><td>SMTP STARTTLS</td><td>localhost:25 (negative example)</td><td>A local connection refusal when no SMTP test service is running. A positive STARTTLS test requires a mail server offering it on the specified port.</td></tr>
+<tr><td>DANE Validation</td><td>_443._tcp.min.tools</td><td>Certificate-association records or their validation status. A site using ordinary HTTPS may publish no TLSA records.</td></tr>
+</tbody></table></details>
+<details><summary>TLS, Web and Ports</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>TLS Certificate</td><td>min.tools</td><td>The website&#x27;s certificate details or negotiated TLS connection.</td></tr>
+<tr><td>TLS Handshake</td><td>min.tools</td><td>The website&#x27;s certificate details or negotiated TLS connection.</td></tr>
+<tr><td>TLS Service Handshake</td><td>min.tools:443</td><td>The certificate chain or selected TLS protocol. Protocol support depends on both the system TLS utility and the server.</td></tr>
+<tr><td>TLS Certificate Chain</td><td>min.tools:443</td><td>The certificate chain or selected TLS protocol. Protocol support depends on both the system TLS utility and the server.</td></tr>
+<tr><td>TLS 1.2 Handshake</td><td>min.tools:443</td><td>The certificate chain or selected TLS protocol. Protocol support depends on both the system TLS utility and the server.</td></tr>
+<tr><td>TLS 1.3 Handshake</td><td>min.tools:443</td><td>The certificate chain or selected TLS protocol. Protocol support depends on both the system TLS utility and the server.</td></tr>
+<tr><td>DNS over TLS Endpoint</td><td>one.one.one.one</td><td>TLS connection details for a public DNS-over-TLS endpoint. The network must allow outbound TCP 853.</td></tr>
+<tr><td>HTTP Headers</td><td>https://min.tools/netmin/examples/sample.txt</td><td>Response headers, any published security headers, or HTTP status and protocol. The sample text file returns a normal successful response.</td></tr>
+<tr><td>HTTP Security Headers</td><td>https://min.tools/netmin/examples/sample.txt</td><td>Response headers, any published security headers, or HTTP status and protocol. The sample text file returns a normal successful response.</td></tr>
+<tr><td>HTTP Protocol</td><td>https://min.tools/netmin/examples/sample.txt</td><td>Response headers, any published security headers, or HTTP status and protocol. The sample text file returns a normal successful response.</td></tr>
+<tr><td>Security.txt</td><td>min.tools</td><td>The published policy file, or a clear missing-document result. Not every website publishes security.txt.</td></tr>
+<tr><td>Robots.txt</td><td>min.tools</td><td>The published policy file, or a clear missing-document result. Not every website publishes security.txt.</td></tr>
+<tr><td>HSTS Preload Status</td><td>min.tools</td><td>Public preload status or certificate-log data. External service availability can affect the result.</td></tr>
+<tr><td>Certificate Transparency</td><td>min.tools</td><td>Public preload status or certificate-log data. External service availability can affect the result.</td></tr>
+<tr><td>TCP Port Check</td><td>min.tools:443</td><td>A successful connection to the website&#x27;s HTTPS port.</td></tr>
+<tr><td>Common Port Scan</td><td>127.0.0.1</td><td>Open/closed results for common ports on the reviewing Mac only. All ports may be closed; use an isolated managed test host for positive service examples.</td></tr>
+<tr><td>SSH Host Keys</td><td>localhost (negative example)</td><td>No keys if Remote Login is disabled. A positive result requires a managed SSH test host; do not enable remote access solely to follow this guide.</td></tr>
+</tbody></table></details>
+<details><summary>Utilities</summary>
+<table><thead><tr><th scope="col">Tool</th><th scope="col">Example input or setup</th><th scope="col">Expected behavior</th></tr></thead><tbody>
+<tr><td>CIDR Calculator</td><td>192.0.2.0/28</td><td>The subnet boundaries and size, calculated locally. This documentation address is not contacted.</td></tr>
+<tr><td>IP Range Expander</td><td>192.0.2.0/30</td><td>Four documentation addresses, expanded locally without contacting them.</td></tr>
+<tr><td>Punycode Converter</td><td>xn--bcher-kva.example</td><td>The Unicode form bücher.example; no live website is required.</td></tr>
+<tr><td>MAC Formatter</td><td>02-00-00-00-00-01</td><td>02:00:00:00:00:01, calculated locally.</td></tr>
+<tr><td>NTP Offset</td><td>time.apple.com</td><td>Clock-offset information if the network permits NTP traffic.</td></tr>
+<tr><td>Network Quality</td><td>No input</td><td>Upload, download, and responsiveness measurements for this connection. This test transfers data and takes longer than a DNS lookup.</td></tr>
+</tbody></table></details>
+
+<h2>Report a problem</h2>
+<p>If a step fails, include the tool name, sample input, Netmin and macOS versions, and the message shown in Raw output when contacting <a href="../support/index.html">support</a>. Remove private addresses and diagnostic data before posting publicly.</p>
+</main>
+<footer class="site"><a href="https://github.com/iliaross">© 2026 Ilia Ross</a></footer>
+</body>
+</html>

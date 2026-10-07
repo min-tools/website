@@ -1,0 +1,4 @@
+Netmin sample document
+
+This public text file is provided for HTTP diagnostic examples.
+It contains no credentials and requires no account.
