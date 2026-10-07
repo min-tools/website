@@ -37,7 +37,7 @@ document.documentElement.classList.add("js");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Paletmin","alternateName":"Paletmin Palette Toggle","url":"https://min.tools/paletmin/","image":"https://min.tools/paletmin/icon.png","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later, or Firefox 140 or later","applicationCategory":"BrowserApplication","installUrl":"https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo","description":"A browser extension for Chrome and Firefox that switches the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. No popup, no settings, no data collection, and no network requests.","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Paletmin","alternateName":"Paletmin Palette Toggle","url":"https://min.tools/paletmin/","image":"https://min.tools/paletmin/icon.png","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later, or Firefox 140 or later","applicationCategory":"BrowserApplication","installUrl":["https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo","https://addons.mozilla.org/addon/paletmin-palette-toggle/"],"description":"A browser extension for Chrome and Firefox that switches the website in the current tab between its light and dark palette with one click. Each tab keeps its own mode. No popup, no settings, no data collection, and no network requests.","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 </head>
 <body class="landing">
@@ -88,10 +88,11 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <h1>Light or dark, <span class="grad">one tab at a time</span>.</h1>
       <p class="sub">Paletmin switches the website in the current tab between its light and dark palette with one click. The tab keeps your choice until you close it, and the rest of the browser stays as it is. No popup, no settings page, no account, and no data collection.</p>
       <div class="actions">
-        <a class="cta primary" href="https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo"><svg class="ic"><use href="#i-browser"/></svg>Install from the Chrome Web Store</a>
+        <a class="cta primary" href="https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo"><svg class="ic"><use href="#i-browser"/></svg>Add to Chrome</a>
+        <a class="cta primary" href="https://addons.mozilla.org/addon/paletmin-palette-toggle/"><svg class="ic"><use href="#i-browser"/></svg>Add to Firefox</a>
         <a class="cta ghost" href="https://github.com/min-tools/paletmin-chrome"><svg class="ic"><use href="#i-code"/></svg>Source on GitHub</a>
       </div>
-      <p class="fine">Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Free and open source. The Firefox add-on is coming to Mozilla Add-ons.</p>
+      <p class="fine">Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Free and open source, on the Chrome Web Store and Mozilla Add-ons.</p>
     </div>
 
     <!-- A static browser window. The page shows the palette the browser is
@@ -237,7 +238,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       </div>
       <div class="details">
         <div class="card reveal"><h3><svg class="ic"><use href="#i-browser"/></svg>Requirements</h3><p>Google Chrome 118 or later on macOS, Windows, Linux, or ChromeOS, or Firefox 140 or later on desktop. Nothing else to install, and no account.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-check"/></svg>Nothing to set up</h3><p>No popup, no settings page, no setup assistant. Add it from the Chrome Web Store, and the icon is ready in the toolbar.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-check"/></svg>Nothing to set up</h3><p>No popup, no settings page, no setup assistant. Add it from the Chrome Web Store or Mozilla Add-ons, and the icon is ready in the toolbar.</p></div>
         <div class="card reveal d2"><h3><svg class="ic"><use href="#i-folder"/></svg>Local files</h3><p>In Chrome, turn on Allow access to file URLs on the extension's details page to switch pages opened from disk.</p></div>
         <div class="card reveal"><h3><svg class="ic"><use href="#i-ask"/></svg>When a site does not change</h3><p>If a website has no dark theme, or ignores the preference, nothing happens. Rules in stylesheets from other sites and styles in shadow roots are left as they are.</p></div>
         <div class="card reveal d1"><h3><svg class="ic"><use href="#i-swap"/></svg>Clean updates</h3><p>After an update, the new scripts restore each open page and take over, so a forced tab is not left with stale changes. Tabs may return to Auto afterwards.</p></div>
@@ -268,11 +269,11 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <section class="outro">
     <div class="wrap reveal">
       <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
-      <h2>On the Chrome Web Store. Firefox next.</h2>
-      <p class="lead">Paletmin for Chrome is published on the Chrome Web Store. The Firefox add-on is coming to Mozilla Add-ons; until then, load it from its repository. Visit Support for help.</p>
+      <h2>On the Chrome Web Store and Mozilla Add-ons.</h2>
+      <p class="lead">Paletmin is published for Chrome and Firefox. Add it from either store, read the source on GitHub, or visit Support for help.</p>
       <div class="actions">
-        <a class="cta primary" href="https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo"><svg class="ic"><use href="#i-browser"/></svg>Install from the Chrome Web Store</a>
-        <a class="cta ghost" href="https://github.com/min-tools/paletmin-firefox"><svg class="ic"><use href="#i-code"/></svg>Firefox version on GitHub</a>
+        <a class="cta primary" href="https://chromewebstore.google.com/detail/paletmin-palette-toggle/kapadenkddlnndfhddhpnodnhhliikmo"><svg class="ic"><use href="#i-browser"/></svg>Add to Chrome</a>
+        <a class="cta primary" href="https://addons.mozilla.org/addon/paletmin-palette-toggle/"><svg class="ic"><use href="#i-browser"/></svg>Add to Firefox</a>
         <a class="cta ghost" href="#support">Get support</a>
       </div>
     </div>
