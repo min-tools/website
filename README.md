@@ -37,7 +37,7 @@ python3 build_privacy.py netmin ../netmin/netmin-macos/PRIVACY.md
 
 Review the generated page before publishing.
 
-Paletmin's page is rendered from the Chrome extension's policy. The Firefox add-on in `../paletmin/paletmin-firefox` keeps a policy with the same facts in Firefox's terms; the site links to it from Paletmin's support page rather than rendering a second page.
+Paletmin's page is rendered from the Chrome extension's policy. The Firefox add-on in `../paletmin/paletmin-firefox` keeps its own browser-specific policy; the site links to it from Paletmin's support page rather than rendering a second page.
 
 ## Icons and logo
 

@@ -149,7 +149,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-level"/></svg></span><h3>Form controls follow</h3><p>Pages that declare <code>color-scheme: light dark</code> get it forced too, which drives <code>light-dark()</code> colors, scrollbars, and form controls.</p></div>
         <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Every frame, every navigation</h3><p>The mode applies in every frame of the tab and again after each navigation, until you close the tab.</p></div>
         <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><h3>An icon that matches the toolbar</h3><p>The toolbar icon shows the tab's mode and is drawn for the browser's light or dark toolbar, so it reads well in either.</p></div>
-        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Nothing leaves the tab</h3><p>No network requests, no account, no analytics, and no server. The only things stored are each forced tab's mode and whether the browser is light or dark.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Nothing leaves the tab</h3><p>No network requests, no account, no analytics, and no server. Tab preferences and palette-detection state stay on your device. No page content, URLs, or browsing history are stored.</p></div>
       </div>
     </div>
   </section>
@@ -187,7 +187,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <h2>Auto, Dark, Light. Then back.</h2>
         <p class="lead">Click the toolbar icon to cycle. The order depends on the browser's own setting, so the first click always shows the other palette.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><div><h3>Auto</h3><p>The tab follows the browser's light or dark setting. Every tab starts here, and nothing is stored for it.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-auto"/></svg></span><div><h3>Auto</h3><p>The tab follows the browser's light or dark setting. Every tab starts here.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-dark"/></svg></span><div><h3>Dark</h3><p>The website shows its dark palette, whatever the browser is set to.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pt-light"/></svg></span><div><h3>Light</h3><p>The website shows its light palette, whatever the browser is set to.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><div><h3>Keyboard</h3><p>Assign a shortcut to cycle without reaching for the mouse: at <code>chrome://extensions/shortcuts</code> in Chrome, or under Manage Extension Shortcuts in Firefox's add-ons manager.</p></div></li>
@@ -213,7 +213,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <p class="lead">Paletmin reads and rewrites the page's stylesheets inside the tab and makes no network requests at all. There is no Paletmin account, no analytics, and no server.</p>
         <ul class="feats">
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Why the browser warns about all websites</h3><p>Both browsers describe a script that runs on every page as access to your data on all websites. Paletmin needs that to swap the page's rules, and does nothing else with the access.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><div><h3>Two small things stored</h3><p>Each forced tab's mode, in session storage that the browser clears when it quits, and whether the browser is light or dark, so the first click and the toolbar icon are right after a restart.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-tab"/></svg></span><div><h3>Stored on this device</h3><p>Both versions store each tab's mode for the session and the browser's light or dark setting. Chrome also keeps temporary palette-detection and initialization flags, with a random token for each document. No page content, URLs, or browsing history are stored.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>No usage tracking</h3><p>No account, no analytics, no advertising, and no record of the pages you visit. The Firefox add-on declares in its manifest that it collects no data, and the source of both versions is public, so you can read exactly what runs.</p></div></li>
         </ul>
       </div>
@@ -223,6 +223,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Page content</b><span>Read and rewritten inside the tab</span></div><span class="tag ok">Stays in the tab</span></div>
           <div class="row"><svg class="ic"><use href="#i-globe"/></svg><div class="t"><b>Network requests</b><span>None, for anything</span></div><span class="tag no">None</span></div>
           <div class="row"><svg class="ic"><use href="#i-tab"/></svg><div class="t"><b>Your tab's mode</b><span>Session storage, cleared when the browser quits</span></div><span class="tag ok">On this device</span></div>
+          <div class="row"><svg class="ic"><use href="#i-check"/></svg><div class="t"><b>Chrome's palette-detection state</b><span>Temporary flags and random document tokens</span></div><span class="tag ok">On this device</span></div>
           <div class="row"><svg class="ic"><use href="#i-pt-auto"/></svg><div class="t"><b>The browser's light or dark setting</b><span>One word, so the icon matches after a restart</span></div><span class="tag ok">On this device</span></div>
           <div class="row"><svg class="ic"><use href="#i-person"/></svg><div class="t"><b>Anything to Min Tools</b><span>Pages, addresses, or usage</span></div><span class="tag no">Never</span></div>
         </div>
