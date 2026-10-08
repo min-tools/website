@@ -123,9 +123,18 @@ class BrowserChecks(unittest.TestCase):
                         # Check the agreed prices and hash navigation on app pages.
                         if path in [app + '/index.html' for app in PRICES]:
                             app = path.split('/')[0]
-                            self.click('header nav a[href="#support"]')
-                            self.assertFalse(self.browser.find_element(By.CSS_SELECTOR, 'dialog').get_attribute('open'))
-                            self.assertTrue(self.browser.current_url.endswith('#support'))
+                            # The compact header hides Support; its document card stays available.
+                            if self.browser.find_element(By.CSS_SELECTOR, 'header nav a[href="#support"]').is_displayed():
+                                self.click('header nav a[href="#support"]')
+                                self.assertFalse(self.browser.find_element(By.CSS_SELECTOR, 'dialog').get_attribute('open'))
+                                self.assertTrue(self.browser.current_url.endswith('#support'))
+                            else:
+                                # Exercise the visible mobile route with a real click.
+                                self.click('a[data-doc="support/index.html"]')
+                                self.wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'dialog[open] .doc-scroll h2')) > 0)
+                                self.click('.doc-close')
+                                self.wait.until(lambda d: not d.find_element(By.CSS_SELECTOR, 'dialog').get_attribute('open')
+                                                and 'dialog-open' not in d.find_element(By.TAG_NAME, 'html').get_attribute('class'))
                             # Let the menu's queued jump finish before framing Pro.
                             self.browser.execute_async_script('const done = arguments[0]; requestAnimationFrame(() => requestAnimationFrame(done));')
                             self.browser.execute_script('document.querySelector("#pro").scrollIntoView({behavior:"instant"})')
@@ -151,7 +160,9 @@ class BrowserChecks(unittest.TestCase):
                 self.wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, '.doc-scroll h2')) > 0)
                 self.assertTrue(self.browser.find_element(By.TAG_NAME, 'html').get_attribute('class').find('dialog-open') >= 0)
                 self.browser.find_element(By.CSS_SELECTOR, '.doc-close').send_keys(Keys.ESCAPE)
-                self.wait.until(lambda d: not d.find_element(By.CSS_SELECTOR, 'dialog').get_attribute('open'))
+                # The browser queues the close event after clearing the open attribute.
+                self.wait.until(lambda d: not d.find_element(By.CSS_SELECTOR, 'dialog').get_attribute('open')
+                                and 'dialog-open' not in d.find_element(By.TAG_NAME, 'html').get_attribute('class'))
                 self.assertNotIn('dialog-open', self.browser.find_element(By.TAG_NAME, 'html').get_attribute('class'))
                 self.assert_clean_console()
 
