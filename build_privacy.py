@@ -36,6 +36,11 @@ PRODUCTS = {
         "repo": "https://github.com/min-tools/netmin-macos",
         "description": "What Netmin keeps on your Mac, which services a check contacts, and the controls you have.",
     },
+    "keymin": {
+        "name": "Keymin",
+        "repo": "https://github.com/min-tools/keymin-macos",
+        "description": "What Keymin reads and writes on your Mac, what it never touches, and the controls you have.",
+    },
     # The checkout folder differs from the Mac apps' <slug>-macos pattern.
     "paletmin": {
         "name": "Paletmin",

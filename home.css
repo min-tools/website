@@ -138,9 +138,11 @@ body.landing header.site.scrolled .brand img.dark {
 
 /* Each card shows the top of one window with just enough inside it: the
    Pastemin list without its detail pane, the Netmin report without its
-   sidebar, and the Paletmin page down to its first buttons. */
+   sidebar, the Keymin sidebar without its editor, and the Paletmin page down
+   to its first buttons. */
 .shot .pm-body,
-.shot .nm-body {
+.shot .nm-body,
+.shot .km-body {
   grid-template-columns: 1fr;
   min-height: 12em;
 }
@@ -148,11 +150,14 @@ body.landing header.site.scrolled .brand img.dark {
 .shot .pm-detail,
 .shot .nm-side,
 .shot .nm-head .status,
-.shot .nm-head .seg {
+.shot .nm-head .seg,
+.shot .km-main,
+.shot .km-side .foot {
   display: none;
 }
 
-.shot .pm-list {
+.shot .pm-list,
+.shot .km-side {
   border-right: 0;
 }
 

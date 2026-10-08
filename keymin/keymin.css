@@ -1,0 +1,920 @@
+/* Keymin app previews used on the home and product pages: the editor window
+   with its sidebar, the Source page, the first-screen requirement card, and
+   the syntax ledger. Shared styles live in landing.css. */
+
+.km,
+.km-first {
+  /* Match the neutral surfaces in the app captures. */
+  --win: #fafafc;
+  --win-2: #f0f0f1;
+  --pane: #fff;
+  --km-sidebar: #f5f5f7;
+  --km-directive: #8854bb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .km,
+  .km-first {
+    --win: #1f1f1f;
+    --win-2: #272727;
+    --pane: #28282b;
+    --km-sidebar: #232323;
+    --km-directive: #c297ef;
+  }
+}
+
+.km {
+  display: flex;
+  flex-direction: column;
+  height: 46em;
+}
+
+/* Fit the sidebar and the whole shortcut card inside the hero window. */
+.stage .km {
+  font-size: clamp(8.5px, 1.35cqw, 13px);
+}
+
+/* Center the window title independently of the traffic-light controls. */
+.km .win-bar {
+  position: relative;
+  justify-content: center;
+  flex: none;
+  height: 2.2em;
+  color: var(--win-dim);
+  font-size: 0.9em;
+}
+
+.km .win-bar .dots {
+  position: absolute;
+  left: 1.1em;
+}
+
+.km .win-bar .dots i {
+  background: var(--win-fill-2);
+  box-shadow: inset 0 0 0 1px var(--win-line);
+}
+
+/* Reserve a fixed share for the sidebar and let the editor fill the rest. */
+.km-body {
+  display: grid;
+  grid-template-columns: 31% minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar: the filter field, the configuration pages, the bindings, and the
+   New Binding footer. */
+.km-side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--km-sidebar);
+  border-right: 1px solid var(--win-line);
+}
+
+.km-side .list {
+  flex: 1;
+  min-height: 0;
+  padding: 0.9em 0.8em;
+  overflow: hidden;
+}
+
+/* Clip the decorative filter field instead of wrapping its shortcut hint. */
+.km-side .filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.7em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  color: var(--win-muted);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.km-side .filter .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.km kbd {
+  font: 500 0.78em var(--mono);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.3em;
+  color: var(--win-muted);
+}
+
+.km-side .filter kbd {
+  margin-left: auto;
+}
+
+/* Separate the page list from the bindings with subdued uppercase labels. */
+.km-side .grp {
+  margin: 1.1em 0.3em 0.35em;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+  white-space: nowrap;
+}
+
+.km-side .row {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.4em 0.5em;
+  border-radius: 0.55em;
+  font-size: 0.98em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Page rows carry a neutral icon tile and an optional count. */
+.km-side .row .tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.5em;
+  color: var(--win-fg-2);
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+}
+
+.km-side .row .tile .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.km-side .row .count {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-size: 0.88em;
+}
+
+/* Binding rows: the shortcut as key caps, then the name and command. */
+.km-side .row.bind {
+  padding: 0.5em 0.5em;
+}
+
+.km-side .row.on {
+  background: color-mix(in srgb, var(--win-accent) 13%, transparent);
+}
+
+.km-side .row .t {
+  min-width: 0;
+}
+
+.km-side .row .t b {
+  display: block;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.km-side .row .t code {
+  display: block;
+  font: 0.78em var(--mono);
+  color: var(--win-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Key caps as the app draws them: raised, with the key itself in the accent
+   color. The editor's caps are larger. */
+.km .caps {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  flex: none;
+}
+
+.km .caps i {
+  display: grid;
+  place-items: center;
+  min-width: 1.75em;
+  height: 1.75em;
+  padding: 0 0.35em;
+  border-radius: 0.4em;
+  font-size: 0.86em;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--win-fg-2);
+  background: var(--keycap-bg);
+  border: 1px solid var(--win-border);
+  box-shadow: 0 0.14em 0 rgba(0, 0, 0, 0.14);
+}
+
+.km .caps i.k {
+  color: var(--win-accent);
+}
+
+.km .caps.big {
+  gap: 0.5em;
+}
+
+.km .caps.big i {
+  min-width: 2.7em;
+  height: 2.7em;
+  border-radius: 0.6em;
+  font-size: 1.2em;
+}
+
+/* The footer keeps New Binding and the count in view below the list. */
+.km-side .foot {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.7em 0.9em;
+  border-top: 1px solid var(--win-line);
+  white-space: nowrap;
+}
+
+.km-side .foot .muted {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-size: 0.9em;
+}
+
+/* Buttons shared by the window and the first-screen card. */
+.km .btn,
+.km-first .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.45em 0.85em;
+  border-radius: 0.55em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.km .btn .ic,
+.km-first .btn .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.km .btn.primary,
+.km-first .btn.primary {
+  background: var(--win-accent);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px -6px var(--win-accent);
+}
+
+.km .btn.primary kbd {
+  background: rgba(255, 255, 255, 0.2);
+  border: 0;
+  color: #fff;
+}
+
+/* Main column: the file row, then the editor. */
+.km-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--win);
+}
+
+.km-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.8em 1.2em;
+  border-bottom: 1px solid var(--win-line);
+  white-space: nowrap;
+}
+
+.km-head .path {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.km-head .path .ic {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--win-muted);
+}
+
+.km-head .path code {
+  font: 0.92em var(--mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.km-head .spacer {
+  flex: 1;
+}
+
+/* The save state: a green dot when saved, amber while there are changes.
+   The Save button is dimmed until there is something to save. */
+.km-head .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45em 0.9em;
+  border-radius: 0.55em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.km-head .status i {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
+  transition: background 0.3s var(--ease);
+}
+
+[data-km][data-state="unsaved"] .km-head .status i {
+  background: #ffb340;
+  box-shadow: 0 0 0 3px rgba(255, 179, 64, 0.2);
+}
+
+.km-head .btn.save {
+  opacity: 0.45;
+  transition: opacity 0.3s var(--ease);
+}
+
+[data-km][data-state="unsaved"] .km-head .btn.save {
+  opacity: 1;
+}
+
+/* The editor clips to the window; feature windows let it grow. */
+.km-editor {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.3em 1.4em;
+}
+
+/* The placeholder shown while a recording waits for its first key. */
+.km-editor .caps .ph {
+  display: none;
+  align-items: center;
+  height: 2.7em;
+  padding: 0 0.2em;
+  color: var(--win-muted);
+  font-weight: 500;
+}
+
+[data-km][data-state="recording"] .caps.big i:not(.on) {
+  display: none;
+}
+
+[data-km][data-state="recording"] .caps.big.empty .ph {
+  display: flex;
+}
+
+.km-editor .field {
+  margin: 1em 0 0.6em;
+  padding: 0.7em 0.9em;
+  border-radius: 0.6em;
+  background: var(--pane);
+  border: 1px solid var(--win-border);
+  font-size: 1.08em;
+  font-weight: 500;
+}
+
+.km-editor .link {
+  margin-bottom: 1.1em;
+  color: var(--win-accent);
+  font-weight: 600;
+  font-size: 0.92em;
+}
+
+/* Cards group the shortcut and the action, each with an uppercase title. */
+.km-card {
+  margin-bottom: 1em;
+  padding: 1.1em 1.2em;
+  border-radius: 0.9em;
+  background: var(--pane);
+  border: 1px solid var(--win-line);
+}
+
+.km-card .h {
+  margin-bottom: 0.9em;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+}
+
+.km-card .rec-row {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 0.2em;
+}
+
+/* The record button turns red while the replay waits for keys. */
+.km-card .rec .ic {
+  color: var(--win-accent);
+}
+
+[data-km][data-state="recording"] .km-card .rec {
+  background: var(--win-bad-bg);
+  border-color: transparent;
+  color: var(--win-bad);
+}
+
+[data-km][data-state="recording"] .km-card .rec .ic {
+  color: var(--win-bad);
+  animation: km-pulse 1s ease-in-out infinite;
+}
+
+[data-km][data-state="recording"] .km-card .rec kbd {
+  display: none;
+}
+
+@keyframes km-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.km-card .hint {
+  min-width: 0;
+  font-size: 0.85em;
+  line-height: 1.35;
+  color: var(--win-muted);
+}
+
+.km-card .lbl {
+  margin: 0.9em 0 0.45em;
+  font-size: 0.88em;
+  font-weight: 600;
+  color: var(--win-fg-2);
+}
+
+/* Modifier and mode chips: filled with the accent color when selected. */
+.km-card .mods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+}
+
+.km-card .mod {
+  padding: 0.42em 0.8em;
+  border-radius: 0.55em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+  font-size: 0.9em;
+  white-space: nowrap;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.km-card .mod.on {
+  background: var(--win-accent);
+  border-color: transparent;
+  color: #fff;
+}
+
+.km-card .mods .more {
+  align-self: center;
+  margin-left: 0.3em;
+  color: var(--win-accent);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* The key field shows the cap beside its name, then the name/key-code
+   switch as an inset segmented control. */
+.km-card .keyrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.km-card .keyfield {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.3em 0.7em 0.3em 0.3em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font-weight: 600;
+}
+
+.km-card .keyfield .caps i {
+  min-width: 2em;
+  height: 2em;
+}
+
+.km-card .keyfield .dim {
+  color: var(--win-muted);
+  font-weight: 400;
+}
+
+.km .seg {
+  display: inline-flex;
+  flex: none;
+  padding: 0.15em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-border);
+  font-size: 0.85em;
+}
+
+.km .seg span {
+  padding: 0.4em 0.85em;
+  border-radius: 0.45em;
+  font-weight: 600;
+  color: var(--win-muted);
+  white-space: nowrap;
+}
+
+.km .seg span.on {
+  background: var(--pane);
+  color: var(--win-fg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.km-card .check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  margin-top: 1em;
+}
+
+.km-card .check i {
+  flex: none;
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.1em;
+  border-radius: 0.35em;
+  border: 1px solid var(--win-border-2);
+  background: var(--pane);
+}
+
+.km-card .check b {
+  display: block;
+  font-size: 0.95em;
+}
+
+.km-card .check span {
+  display: block;
+  font-size: 0.82em;
+  color: var(--win-muted);
+}
+
+/* The action card: the kind of action, then the chosen app. */
+.km-card .app {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-top: 0.9em;
+  padding: 0.6em 0.8em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.km-card .app .appicon {
+  flex: none;
+  width: 2em;
+  height: 2em;
+  border-radius: 0.5em;
+  background: linear-gradient(160deg, #5ab2ff, #0a7aff);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.km-card .app b {
+  font-weight: 600;
+}
+
+.km-card .app code {
+  min-width: 0;
+  font: 0.85em var(--mono);
+  color: var(--win-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The pressed keys beside the hero window light up one by one while the
+   replay records; otherwise all are shown. */
+[data-km][data-state="recording"] .sat.keys .keycap:not(.on) {
+  opacity: 0.4;
+}
+
+.sat.keys .keycap {
+  transition: opacity 0.3s var(--ease);
+}
+
+/* Show the saved toast during the replay, or keep it visible in the static
+   preview when motion is disabled. */
+.stage .sat.toast {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.stage.saved .sat.toast,
+html:not(.motion) .stage .sat.toast {
+  opacity: 1;
+}
+
+/* The Source page: the file row, the page title with Apply, and the text
+   Keymin will write, in the app's syntax colors. */
+.km.src {
+  height: auto;
+}
+
+.km-page-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 1em 1.3em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+/* Discard Edits and Apply are disabled while the draft matches the file. */
+.km .btn.off {
+  opacity: 0.45;
+}
+
+.km-page-head .t {
+  flex: 1;
+  min-width: 0;
+}
+
+.km-page-head .t b {
+  display: block;
+  font-size: 1.15em;
+  letter-spacing: -0.01em;
+}
+
+.km-page-head .t span {
+  display: block;
+  font-size: 0.88em;
+  color: var(--win-muted);
+}
+
+.km-code {
+  counter-reset: line;
+  margin: 0;
+  padding: 0.9em 1.3em 1.2em 0.6em;
+  font: 0.9em/1.55 var(--mono);
+  overflow: hidden;
+}
+
+/* Each line is numbered in a right-aligned gutter, as in the app's editor.
+   Blank lines keep their height. */
+.km-code .l {
+  display: block;
+  min-height: 1.55em;
+  white-space: pre;
+}
+
+.km-code .l::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2.2em;
+  margin-right: 1.3em;
+  text-align: right;
+  color: var(--win-dim);
+}
+
+.km-code .c {
+  color: var(--win-muted);
+}
+
+.km-code .m {
+  color: var(--win-accent);
+}
+
+.km-code .s {
+  color: var(--win-ok);
+}
+
+.km-code .d {
+  color: var(--km-directive);
+  font-weight: 600;
+}
+
+/* The first screen's requirement card: the status row, then skhd and
+   skhd.zig side by side as an either/or choice, then the file buttons. */
+.km-first {
+  font-size: clamp(9px, 1.9cqw, 14px);
+  color: var(--win-fg);
+  text-align: left;
+}
+
+.km-require {
+  background: var(--win);
+  border: 1px solid var(--win-line);
+  border-radius: 1.1em;
+  box-shadow: var(--win-shadow);
+  overflow: hidden;
+}
+
+.km-require .status {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 1.3em;
+  border-bottom: 1px solid var(--win-line);
+}
+
+.km-require .status>.ic {
+  width: 1.8em;
+  height: 1.8em;
+  color: var(--win-warn);
+}
+
+.km-require .status .t {
+  flex: 1;
+  min-width: 0;
+}
+
+.km-require .status b {
+  display: block;
+  font-weight: 600;
+}
+
+.km-require .status span {
+  display: block;
+  font-size: 0.88em;
+  color: var(--win-muted);
+}
+
+.km-require .install {
+  padding: 1.2em 1.3em 1.3em;
+}
+
+.km-require .install>p {
+  margin: 0 0 0.9em;
+  font-size: 0.92em;
+  color: var(--win-muted);
+}
+
+.km-require .tiles {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.8em;
+}
+
+.km-require .tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  min-width: 0;
+  padding: 0.9em;
+  border-radius: 0.8em;
+  background: var(--pane);
+  border: 1px solid var(--win-line);
+}
+
+.km-require .tile b {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.km-require .tile b span {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--win-accent);
+  white-space: nowrap;
+}
+
+.km-require .tile p {
+  flex: 1;
+  margin: 0;
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: var(--win-muted);
+}
+
+/* Install commands in a chip with a copy icon, clipped rather than wrapped. */
+.km-require .tile code {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45em 0.6em;
+  border-radius: 0.5em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  font: 0.82em var(--mono);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.km-require .tile code .ic {
+  flex: none;
+  margin-left: auto;
+  color: var(--win-muted);
+}
+
+.km-require .or {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.8em;
+  color: var(--win-muted);
+}
+
+.km-require .or i {
+  flex: 1;
+  width: 1px;
+  background: var(--win-line);
+}
+
+.km-require .fine {
+  margin: 0.9em 0 0;
+  font-size: 0.8em;
+  color: var(--win-dim);
+}
+
+.km-first .actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7em;
+  margin-top: 1.1em;
+}
+
+/* skhd syntax quoted in the page copy, in the same style as the shortcut
+   keys but lighter. */
+.lead code,
+.edge code,
+.feat code,
+.card code {
+  font: 500 0.88em var(--mono);
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+/* The syntax ledger shows skhd syntax in monospace with the page that edits
+   it as a neutral tag. */
+.ledger .row .t code {
+  font: 600 0.9em var(--mono);
+  color: var(--win-fg);
+}
+
+.ledger .tag.page {
+  color: var(--win-accent);
+  background: var(--win-accent-bg);
+}
+
+/* Narrow screens: the editor alone, without the sidebar or the longer hints,
+   and the install tiles stacked. */
+@media (max-width: 720px) {
+  .km {
+    height: auto;
+  }
+
+  .km-body {
+    grid-template-columns: 1fr;
+  }
+
+  .km-side,
+  .km-card .hint,
+  .km-head .btn.change {
+    display: none;
+  }
+
+  .km-require .tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .km-require .or {
+    flex-direction: row;
+  }
+
+  .km-require .or i {
+    width: auto;
+    height: 1px;
+  }
+}

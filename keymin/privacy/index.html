@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Keymin</title>
+<link rel="canonical" href="https://min.tools/keymin/privacy/">
+<meta name="description" content="What Keymin reads and writes on your Mac, what it never touches, and the controls you have.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">Keymin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/keymin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Keymin Privacy Policy</h1>
+<p class="meta">Effective and last updated: October 7, 2026</p>
+<p>This policy explains what data Keymin handles, where it goes, and how you can control it.</p>
+<p>Keymin edits one text file: the configuration that the skhd hotkey daemon reads. It has no advertising, analytics, tracking SDKs, account system, or developer-operated service, and it makes no network connections of its own.</p>
+<h2>Data on your Mac</h2>
+<p>Keymin stores a macOS security-scoped bookmark for the configuration file you choose. When that path is a symbolic link and you grant access to the file it points to, Keymin stores a second bookmark for that file. The bookmarks live in Keymin's app container and let the app open the same file on the next launch. Keymin reads and writes no other file's contents, except that it reads the name or bundle identifier of an app you choose, as described below.</p>
+<p>Before you choose a file, the first screen tells you whether skhd is installed and running. To find out, Keymin checks whether the skhd program exists at the usual install locations or in the folders on the app's PATH, and whether an skhd launch agent exists in your LaunchAgents folder. It does not open those files. It also reads the names of the running processes from macOS. The result is shown on that screen only and is not stored.</p>
+<p>The contents of the configuration stay in memory while you edit them. Keymin writes them back only to that file, and only when you choose Save. Unsaved edits are lost if you quit without saving.</p>
+<p>When you pick an app for a binding or the blacklist, Keymin reads the names, bundle identifiers, and icons of the running apps from macOS to offer them in a list. If you choose an app in an Open panel instead, Keymin reads only that app's name or bundle identifier. To show which app an <strong>Open an app</strong> binding opens, Keymin asks macOS for that app's name and icon. None of this is stored, except the name or identifier you pick, which becomes part of your configuration. When you use <strong>Copy as Text</strong>, or copy a command from the first screen, the text is placed on the macOS general pasteboard.</p>
+<p>The app does not run the commands in your configuration, does not monitor your keystrokes outside its own window, and does not start, stop, or signal skhd itself.</p>
+<p>If you turn on <strong>After Saving → Run a shortcut after every save</strong>, Keymin asks the Shortcuts app to run the shortcut you named, passing the path of the saved file as the shortcut's input. <strong>Run Now</strong> on the same page runs it right away with the current file's path. The shortcut runs under Shortcuts' own permissions, outside Keymin's sandbox, and Keymin does not learn what it did. Nothing runs until you turn the option on and name a shortcut. The option and the name are stored in the app container.</p>
+<p>Keymin also stores the trial state in its app container. The Mac App Store build reads Apple's signed original acquisition date to determine the 30-day Pro trial. Source and test builds store a local trial start date instead. Trial information is not sent to the developer.</p>
+<p>After the 30-day Pro trial, without a purchase, Keymin shows and edits only the first five bindings. The others are hidden but kept in your configuration file, and they are written back unchanged when you save. They become visible again once you have Pro access. The limit does not move, delete, or upload them.</p>
+<p>Apple processes Keymin Pro purchases and does not share payment details with Keymin's developer. The app reads your Apple purchase status to unlock Pro, including purchases shared through Family Sharing.</p>
+<h2>Network requests</h2>
+<p>Keymin itself makes no network requests and has no network entitlement. StoreKit, part of macOS, communicates with Apple for product information, purchases, and purchase status. Links in the app, such as those on the first screen, in the About panel, in the Pro panel, and in this policy, open in your browser only when you click them.</p>
+<h2>Retention and deletion</h2>
+<p>The file bookmarks remain in the app container until you pick a different file, choose <strong>Keymin → Forget File Access…</strong>, or remove the container. Forgetting access does not change or delete the configuration file.</p>
+<p>The local trial start date, when used, and other preferences remain in the app container when you forget file access. Removing Keymin and its app container deletes all app-managed data. Your skhd configuration remains where it is. Apple controls the purchase records associated with your Apple Account.</p>
+<h2>Your choices</h2>
+<p>You choose which file Keymin opens, when it saves, and whether it keeps access between launches. During the trial or with Pro, you can also review and edit the exact text on the Source page before saving.</p>
+<h2>Changes and contact</h2>
+<p>This policy and its date will be updated when material changes occur. For privacy questions or requests, visit <a href="https://min.tools/keymin/support/">Keymin support</a>.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>

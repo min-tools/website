@@ -7,7 +7,7 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 | Path | Contents |
 | --- | --- |
 | `index.html`, `home.css` | The home page: apps, source code, privacy, and contributions. |
-| `langmin/`, `pastemin/`, `netmin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin and Netmin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
+| `langmin/`, `pastemin/`, `netmin/`, `keymin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin, Netmin, and Keymin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
 | `landing.css`, `landing.js` | Shared landing-page styles, navigation, demos, and document dialogs. The app demo scripts use helpers exposed as `window.MinTools`. |
 | `style.css` | Shared document styles for the support, privacy, terms, and contribute pages, with light and dark appearances. |
 | `build_privacy.py` | Renders each app's `PRIVACY.md` into its privacy page. |
@@ -23,7 +23,7 @@ The apps link to these pages: `https://min.tools/<app>/`, `/<app>/support/`, `/<
 
 ## Privacy policies
 
-Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`, `../paletmin/paletmin-chrome`), regenerate every privacy page with:
+Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`, `../keymin/keymin-macos`, `../paletmin/paletmin-chrome`), regenerate every privacy page with:
 
 ```bash
 python3 build_privacy.py
@@ -61,4 +61,4 @@ For browser checks, use a disposable Debian VM with Chromium, `chromium-driver`,
 
 ## Publish
 
-GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), [paletmin-chrome](https://github.com/min-tools/paletmin-chrome), and [paletmin-firefox](https://github.com/min-tools/paletmin-firefox).
+GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), [keymin-macos](https://github.com/min-tools/keymin-macos), [paletmin-chrome](https://github.com/min-tools/paletmin-chrome), and [paletmin-firefox](https://github.com/min-tools/paletmin-firefox).

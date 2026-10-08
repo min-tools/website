@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keymin — Hotkeys for skhd on the Mac, Without the Syntax</title>
+<meta name="description" content="Edit the configuration of the skhd hotkey daemon in a native Mac app. Record a shortcut, pick the key and modifiers, write the command, and Keymin writes the file in skhd's own syntax while keeping your comments and spacing. No Keymin account, analytics, or network.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://min.tools/keymin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Min Tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Keymin — Hotkeys for skhd on the Mac, Without the Syntax">
+<meta property="og:description" content="Record a shortcut, pick the keys, write the command. Keymin writes your skhd configuration in skhd's own syntax and leaves the rest of the file as it was.">
+<meta property="og:url" content="https://min.tools/keymin/">
+<meta property="og:image" content="https://min.tools/keymin/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Keymin app icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Keymin — Hotkeys for skhd on the Mac, Without the Syntax">
+<meta name="twitter:description" content="Record a shortcut, pick the keys, write the command. Keymin writes your skhd configuration in skhd's own syntax and leaves the rest of the file as it was.">
+<meta name="twitter:image" content="https://min.tools/keymin/icon.png">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<link rel="stylesheet" href="keymin.css">
+<script>
+// Mark scripting support before first paint so CSS can prepare scroll reveals.
+document.documentElement.classList.add("js");
+// Enable animated hero states only when motion is allowed at page load.
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Keymin","url":"https://min.tools/keymin/","image":"https://min.tools/keymin/icon.png","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A native macOS editor for the configuration of the skhd hotkey daemon: record a shortcut, choose the key and modifiers, write the command or per-app commands, and save the file in skhd's own syntax with comments and spacing preserved. The app runs in the App Sandbox, never runs the commands it edits, and has no network entitlement.","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body class="landing">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Shared icon symbols; visible instances reference these IDs with use. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-mac" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor" stroke="none"/><path d="m8.5 12.5 2.5 2.5 4.5-5" stroke="#fff"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24"><path d="M9 3h7l4 4v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M16 3v4h4"/><path d="M5 8v11a2 2 0 0 0 2 2h9"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-record" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 12V4.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 12V6.5a1.5 1.5 0 0 1 3 0V13"/><path d="M17 13v-3a1.5 1.5 0 0 1 3 0v5a7 7 0 0 1-7 7h-1.5a7 7 0 0 1-5.6-2.8L3.4 15a1.6 1.6 0 0 1 2.5-2L8 15"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.2"/><path d="M4 4v4.5h4.5"/><path d="M4 13a8 8 0 0 0 14.6 4.2"/><path d="M20 20v-4.5h-4.5"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 5-4 14"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3"/><path d="M12 15h5"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1Z"/><path d="m14 7 3 3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.5-1.5"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 10v5"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10 10 0 0 1 12 5c5 0 8.5 4 9.5 7-.4 1.1-1.1 2.3-2.1 3.4"/><path d="M6.6 6.6C4.6 8 3.2 10 2.5 12c1 3 4.5 7 9.5 7 1.6 0 3-.4 4.3-1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 2 2 3.5-4"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4"/><path d="m11 11 9-9"/><path d="m16 6 2.5 2.5"/><path d="m18.5 3.5 2 2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M8 9h8"/><path d="M8 12h5"/></symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14h.01"/></symbol>
+  <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12"/><path d="m18 6-12 12"/></symbol>
+  <symbol id="i-spinner" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-8 8"/></symbol>
+</svg>
+
+<header class="site">
+  <a class="brand" href="./" aria-label="Keymin home"><img src="icon-128.png" alt="" width="128" height="128">Keymin</a>
+  <nav aria-label="Main navigation"><a class="home" href="../">All apps</a><a href="#features">Features</a><a href="#pro">Plans</a><a href="#support">Support</a><a href="#privacy-policy">Privacy</a><a class="gh" href="https://github.com/min-tools/keymin-macos" aria-label="Keymin on GitHub"><svg class="ic"><use href="#i-star"/></svg>GitHub</a></nav>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat on">macOS</span><span class="plat fact">For skhd and skhd.zig</span><span class="plat fact">Source available</span></p>
+      <h1>Hotkeys for skhd, <span class="grad">without the syntax</span>.</h1>
+      <p class="sub">Edit the configuration of the skhd hotkey daemon in a native Mac app. Record a shortcut, pick the key and modifiers, write the command or set per-app commands, and Keymin writes the file back in skhd's own syntax. Your comments and untouched lines stay as they were.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/keymin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-mac"/></svg>Coming to the Mac App Store</span>
+      </div>
+      <p class="fine">macOS 14 or later on Apple silicon. skhd or skhd.zig runs your hotkeys. 30 days of Pro without a subscription.</p>
+    </div>
+
+    <!-- A fixed binding in its saved state; keymin.js replays recording the
+         shortcut and saving. -->
+    <div class="stage" data-km data-state="saved">
+      <div class="win km" role="img" aria-label="The Keymin window: a sidebar with a filter field, the Modes, Blacklist, Included Files, After Saving, and Source pages, and the bindings listed as key caps with their names; and the Focus Safari binding open in the editor, showing its Option Shift S shortcut, the Record Shortcut button, the modifier and key choices, and its Open an app action.">
+        <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Keymin</span></div>
+        <div class="km-body">
+          <div class="km-side">
+            <div class="list">
+              <div class="filter"><svg class="ic"><use href="#i-search"/></svg>Filter 10 bindings<kbd>⌘F</kbd></div>
+              <div class="grp">Configuration</div>
+              <div class="row"><span class="tile"><svg class="ic"><use href="#i-layers"/></svg></span><span class="name">Modes</span><span class="count">1</span></div>
+              <div class="row"><span class="tile"><svg class="ic"><use href="#i-hand"/></svg></span><span class="name">Blacklist</span></div>
+              <div class="row"><span class="tile"><svg class="ic"><use href="#i-files"/></svg></span><span class="name">Included Files</span></div>
+              <div class="row"><span class="tile"><svg class="ic"><use href="#i-refresh"/></svg></span><span class="name">After Saving</span></div>
+              <div class="row"><span class="tile"><svg class="ic"><use href="#i-code"/></svg></span><span class="name">Source</span></div>
+              <div class="grp">Bindings</div>
+              <div class="row bind on"><span class="caps"><i>⌥</i><i>⇧</i><i class="k">S</i></span><span class="t"><b>Focus Safari</b><code>/usr/bin/open -b com.apple.Safari</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌥</i><i>⇧</i><i class="k">T</i></span><span class="t"><b>Focus Terminal</b><code>/usr/bin/open -b com.apple.Terminal</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌥</i><i>⇧</i><i class="k">M</i></span><span class="t"><b>Focus Mail</b><code>/usr/bin/open -b com.apple.mail</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌥</i><i>⇧</i><i class="k">N</i></span><span class="t"><b>Focus Notes</b><code>/usr/bin/open -b com.apple.Notes</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌘</i><i class="k">L</i></span><span class="t"><b>Jump to the address bar in every browser</b><code>Safari, Google Chrome · others pass through</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌃</i><i>⌥</i><i class="k">F</i></span><span class="t"><b>Toggle full screen for the front window</b><code>skhd -k "ctrl + cmd - f"</code></span></div>
+              <div class="row bind"><span class="caps"><i>⌃</i><i>⌥</i><i class="k">R</i></span><span class="t"><b>Resize mode: ⌃⌥R enters it, Escape leaves it</b><code>switch to mode resize</code></span></div>
+            </div>
+            <div class="foot"><span class="btn">+ New Binding <kbd>⌘N</kbd></span><span class="muted">10 bindings</span></div>
+          </div>
+          <div class="km-main">
+            <div class="km-head">
+              <span class="path"><svg class="ic"><use href="#i-doc"/></svg><code>~/.config/skhd/skhdrc</code></span>
+              <span class="btn change">Change</span>
+              <span class="spacer"></span>
+              <span class="status"><i></i><span data-km-status>Saved</span></span>
+              <span class="btn primary save">Save <kbd>⌘S</kbd></span>
+            </div>
+            <div class="km-editor">
+              <div class="caps big" data-km-caps><i data-mod="alt">⌥</i><i data-mod="shift">⇧</i><i class="k">S</i><span class="ph">Press the keys…</span></div>
+              <div class="field">Focus Safari</div>
+              <div class="link">Add Notes</div>
+              <div class="km-card">
+                <div class="h">Shortcut</div>
+                <div class="rec-row"><span class="btn rec"><svg class="ic"><use href="#i-record"/></svg><span data-km-rec-label>Record Shortcut</span><kbd>⌘R</kbd></span><span class="hint">Press the keys you want to bind. Modifiers and the key can also be set by hand below.</span></div>
+                <div class="lbl">Modifiers</div>
+                <div class="mods" data-km-mods><span class="mod" data-mod="ctrl">⌃ Control</span><span class="mod on" data-mod="alt">⌥ Option</span><span class="mod on" data-mod="shift">⇧ Shift</span><span class="mod" data-mod="cmd">⌘ Command</span><span class="mod" data-mod="fn">fn Function</span><span class="more">More Options</span></div>
+                <div class="lbl">Key</div>
+                <div class="keyrow"><span class="keyfield"><span class="caps"><i class="k">S</i></span>S <span class="dim">s</span></span><span class="seg"><span class="on">By name</span><span>By key code</span></span></div>
+                <div class="check"><i></i><div><b>Also send the keypress to the app</b><span>Written as "-&gt;". The app receives the key as if skhd had not intercepted it.</span></div></div>
+                <div class="lbl">Active in modes</div>
+                <div class="mods"><span class="mod on">default</span><span class="mod">resize</span></div>
+              </div>
+              <div class="km-card">
+                <div class="h">Action</div>
+                <span class="seg"><span class="on">Open an app</span><span>Run a command</span><span>Per-app commands</span><span>Switch mode</span></span>
+                <div class="app"><i class="appicon"></i><b>Safari</b><code>/usr/bin/open -b com.apple.Safari</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg>Saved <span>skhd reloads the file</span></div>
+      <div class="sat keys" aria-hidden="true" data-km-keys><span class="keycap">⌥</span><span class="keycap">⇧</span><span class="keycap">S</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-pen"/></svg>Writes skhd's own syntax</li>
+      <li><svg class="ic"><use href="#i-doc"/></svg>Comments and spacing kept</li>
+      <li><svg class="ic"><use href="#i-stop"/></svg>Never runs your commands</li>
+      <li><svg class="ic"><use href="#i-lock"/></svg>No network entitlement</li>
+      <li><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</li>
+      <li><svg class="ic"><use href="#i-mac"/></svg>Mac App Store, Family Sharing</li>
+    </ul>
+  </section>
+
+  <section id="features" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-keyboard"/></svg>The whole file, as forms</p>
+        <h2>Record a shortcut. Write the command. Save.</h2>
+        <p class="lead">Keymin opens your <code>skhdrc</code> and shows every binding, mode, blacklist entry, and included file as something you can edit. Press <kbd>⌘N</kbd> for a new binding, <kbd>⌘R</kbd> to record its shortcut, and <kbd>⌘S</kbd> to write the file back.</p>
+      </div>
+      <div class="edges">
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><h3>Every binding in plain language</h3><p>The sidebar lists each shortcut as key caps, named by the comment above it. Filter by key, name, command, app, or mode.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-record"/></svg></span><h3>Record instead of typing</h3><p>Press <kbd>⌘R</kbd>, then the keys. Keymin writes <code>alt + shift - a</code>, a named key such as <code>return</code>, or an Apple key code such as <code>0x27</code> for keys that have no name.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-grid"/></svg></span><h3>Commands, per-app commands, and modes</h3><p>Open an app, run a shell command, give one shortcut a different command per app with pass-through for the rest, or switch skhd into a mode. Modes, the blacklist, and included files each have their own page.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><h3>Your file stays yours</h3><p>Unchanged bindings and directives are written back exactly as they were, alignment included. Comments and blank lines stay in place. A line skhd would reject is kept and flagged, not rewritten.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Source when you want it</h3><p>The Source page shows the exact text Keymin will write. Edit it there for anything the forms do not cover. Your text is applied when you click Apply, save, leave the page, or make any other change.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><h3>Asks before losing work</h3><p>Before you quit, open or create another file, or forget file access, Keymin offers to save your changes, including text typed on the Source page and not yet applied.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-link"/></svg></span><h3>Links and dotfiles work</h3><p>Point Keymin at <code>~/.config/skhd/skhdrc</code> even when it is a symbolic link into a repository. Keymin may ask once for access to the file the link points to, keeps the link, and updates that file with its permissions intact.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Sandboxed and offline</h3><p>Keymin edits the configuration file you choose, never runs the commands it edits, and has no network entitlement. There is no Keymin account, no analytics, and no developer server.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-refresh"/></svg></span><h3>Hook in Shortcuts after saving</h3><p>With hot loading on, skhd reloads the file on its own. For anything more, such as restarting the skhd service, Keymin can ask the Shortcuts app to run a shortcut after every save, with the saved file's path as input.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skhd" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-terminal"/></svg>Keymin writes. skhd runs.</p>
+        <h2>Needs skhd. On purpose.</h2>
+        <p class="lead">Keymin edits the configuration file; the skhd hotkey daemon reads it and runs your hotkeys. Keymin does not include, start, or control skhd, so install either skhd or the compatible skhd.zig and start it once. The first screen tells you whether it was found and whether it is running.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-box"/></svg></span><div><h3>Two daemons, one file</h3><p><a href="https://github.com/asmvik/skhd">skhd</a> by Åsmund Vikane, written in C, or <a href="https://github.com/jackielii/skhd.zig">skhd.zig</a> by Jackie Li, a compatible rewrite with extra features. Both read the same file, and Keymin writes it the same way.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-check"/></svg></span><div><h3>Found, running, or missing</h3><p>Keymin looks in the usual install places and at the running processes, and says what it found. The install and start commands are one click to copy.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-refresh"/></svg></span><div><h3>Changes go live on save</h3><p>With hot loading on, skhd picks up the saved file by itself. Running with <code>--no-hotload</code>? Run <code>skhd --reload</code> after saving, or let a Shortcuts shortcut do it.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="km-first">
+          <div class="km-require">
+            <div class="status"><svg class="ic"><use href="#i-warn"/></svg><div class="t"><b>skhd was not found on this Mac</b><span>Install one of the projects below and start it. You can prepare the configuration in the meantime.</span></div><span class="btn">Check Again</span></div>
+            <div class="install">
+              <p>Pick one. Both read the same configuration file.</p>
+              <div class="tiles">
+                <div class="tile"><b>skhd<span>GitHub ↗</span></b><p>The original hotkey daemon, written in C and maintained by Åsmund Vikane.</p><code>brew install asmvik/formulae/skhd<svg class="ic"><use href="#i-copy"/></svg></code></div>
+                <div class="or"><i></i>or<i></i></div>
+                <div class="tile"><b>skhd.zig<span>GitHub ↗</span></b><p>A compatible rewrite in Zig by Jackie Li, with extra features.</p><code>brew install jackielii/tap/skhd-zig<svg class="ic"><use href="#i-copy"/></svg></code></div>
+              </div>
+              <p class="fine">After installing, run skhd --start-service once. Keymin does not include, start, or control skhd.</p>
+            </div>
+          </div>
+          <div class="actions"><span class="btn primary">Choose skhdrc <kbd>⌘O</kbd></span><span class="btn">Create New</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="record" class="sec">
+    <div class="wrap split flip">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-record"/></svg>Record instead of typing</p>
+        <h2>Press the keys. Keymin writes the line.</h2>
+        <p class="lead">Press <kbd>⌘R</kbd> and the shortcut you want. Modifiers, the key, and the way the line is written follow the rules of skhd's own tokenizer and parser, so what Keymin writes is what skhd reads.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><div><h3>Named keys and key codes</h3><p>A letter or digit follows the active keyboard layout. Keys without a name are written as Apple key codes such as <code>0x27</code>. An arrow, navigation, or function key written as a key code gets the <code>fn</code> modifier skhd needs to match it, and loses it again when written by name.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-level"/></svg></span><div><h3>Every modifier skhd knows</h3><p>Side-specific modifiers such as <code>lcmd</code> and <code>ralt</code>, the <code>hyper</code> and <code>meh</code> combinations, and <code>fn</code>. Choose them by hand under More Options when a recording is not what you want.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>Pass the key on</h3><p>Tick Also send the keypress to the app, written as <code>-&gt;</code>, and the app receives the key as if skhd had not intercepted it.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-code"/></svg>What Keymin understands</div>
+          <div class="row"><svg class="ic"><use href="#i-keyboard"/></svg><div class="t"><b><code>alt + shift - a : command</code></b><span>Modifiers, key, and command</span></div><span class="tag page">Bindings</span></div>
+          <div class="row"><svg class="ic"><use href="#i-grid"/></svg><div class="t"><b><code>cmd - d [ "Safari" : command, * ~ ]</code></b><span>Per-app commands with pass-through for other apps</span></div><span class="tag page">Bindings</span></div>
+          <div class="row"><svg class="ic"><use href="#i-layers"/></svg><div class="t"><b><code>:: resize @ : command</code></b><span>Modes with capture and an on-enter command</span></div><span class="tag page">Modes</span></div>
+          <div class="row"><svg class="ic"><use href="#i-arrow-right"/></svg><div class="t"><b><code>cmd - x ; resize</code></b><span>Mode switches, and <code>resize &lt; escape ; default</code> to leave</span></div><span class="tag page">Bindings</span></div>
+          <div class="row"><svg class="ic"><use href="#i-level"/></svg><div class="t"><b><code>lcmd</code>, <code>ralt</code>, <code>hyper</code>, <code>meh</code>, <code>fn</code></b><span>Side-specific and combined modifiers</span></div><span class="tag page">Bindings</span></div>
+          <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b><code>0x27</code>, <code>f1</code>, <code>sound_up</code></b><span>Key codes, named keys, and media keys</span></div><span class="tag page">Bindings</span></div>
+          <div class="row"><svg class="ic"><use href="#i-hand"/></svg><div class="t"><b><code>.blacklist [ … ]</code> and <code>.load "file"</code></b><span>Apps skhd ignores, and included files</span></div><span class="tag page">Blacklist, Files</span></div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b><code># comment</code> above a binding</b><span>The binding's name and notes</span></div><span class="tag page">Bindings</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="source" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-code"/></svg>Your file stays yours</p>
+        <h2>Nothing is rewritten that you did not touch.</h2>
+        <p class="lead">Keymin writes out only the bindings you change. Everything else, including comments, blank lines, alignment, and lines it cannot read, goes back exactly as it was. The Source page shows the result before you save.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>Verbatim by default</h3><p>Unchanged bindings and directives keep their spacing and alignment. A new mode declaration goes above the first binding, where skhd expects it.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-warn"/></svg></span><div><h3>Errors flagged, not hidden</h3><p>A line skhd would reject, such as a key code with lowercase hex digits, is kept and marked as an error. Keymin does not save while an error remains in a part of the file you can edit.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-pen"/></svg></span><div><h3>Line endings fixed once</h3><p>skhd would pass a carriage return to the shell as part of a command, so a file with Windows line endings opens with unsaved changes and is saved with plain line feeds.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="win km src">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Keymin</span></div>
+          <div class="km-main">
+            <div class="km-head">
+              <span class="path"><svg class="ic"><use href="#i-doc"/></svg><code>~/.config/skhd/skhdrc</code></span>
+              <span class="spacer"></span>
+              <span class="status"><i></i>Saved</span>
+            </div>
+            <div class="km-page-head"><div class="t"><b>Source</b><span>The exact text Keymin writes. Edit it here for anything the forms cannot express, then apply it.</span></div><span class="btn off">Discard Edits</span><span class="btn primary off">Apply</span></div>
+            <!-- One span per line; the stylesheet numbers them like the app's editor. -->
+            <div class="km-code">
+              <span class="l"><span class="c"># A small, tidy set of hotkeys, kept exactly as written.</span></span>
+              <span class="l"></span>
+              <span class="l"><span class="c"># Focus Safari</span></span>
+              <span class="l"><span class="m">alt</span> + <span class="m">shift</span> - <span class="m">s</span> : /usr/bin/open -b com.apple.Safari</span>
+              <span class="l"></span>
+              <span class="l"><span class="c"># Jump to the address bar in every browser</span></span>
+              <span class="l"><span class="m">cmd</span> - <span class="m">l</span> <span class="d">[</span></span>
+              <span class="l">    <span class="s">"Safari"</span>        : skhd -k "cmd - l"</span>
+              <span class="l">    <span class="s">"Google Chrome"</span> : skhd -k "cmd - l"</span>
+              <span class="l">    *               <span class="d">~</span></span>
+              <span class="l"><span class="d">]</span></span>
+              <span class="l"></span>
+              <span class="l"><span class="c"># Resize mode: ⌃⌥R enters it, Escape leaves it</span></span>
+              <span class="l"><span class="d">::</span> <span class="m">resize</span> <span class="d">@</span> : echo "resize mode"</span>
+              <span class="l"><span class="m">ctrl</span> + <span class="m">alt</span> - <span class="m">r</span> <span class="d">;</span> <span class="m">resize</span></span>
+              <span class="l"><span class="m">resize</span> <span class="d">&lt;</span> <span class="m">escape</span> <span class="d">;</span> <span class="m">default</span></span>
+              <span class="l"><span class="m">resize</span> <span class="d">&lt;</span> <span class="m">h</span> : yabai -m window --resize left:-40:0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="sec">
+    <div class="wrap split flip">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Private by design</p>
+        <h2>One file in. The same file out.</h2>
+        <p class="lead">Keymin has no advertising, analytics, account system, or developer server, and no network entitlement at all. The only network traffic on its behalf is Apple's own StoreKit, for product and purchase information.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>The file you choose</h3><p>Keymin remembers your permission to reopen the configuration next time. It also reads app names and icons to help you choose commands.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-stop"/></svg></span><div><h3>Never runs a command</h3><p>The commands in your file are text to Keymin. It does not run them, does not monitor keystrokes outside its own window, and does not start, stop, or signal skhd.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>Nothing to the developer</h3><p>No usage tracking and no sync. Apple handles purchases and never shares payment details with the developer.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-key"/></svg>What Keymin touches</div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Your skhd configuration</b><span>Read when you open it, written when you save</span></div><span class="tag ok">Kept where it is</span></div>
+          <div class="row"><svg class="ic"><use href="#i-terminal"/></svg><div class="t"><b>The commands in it</b><span>Edited as text, like everything else</span></div><span class="tag no">Never run</span></div>
+          <div class="row"><svg class="ic"><use href="#i-grid"/></svg><div class="t"><b>Running app names and icons</b><span>To offer a list when you pick an app</span></div><span class="tag ask">Only when you ask</span></div>
+          <div class="row"><svg class="ic"><use href="#i-box"/></svg><div class="t"><b>skhd itself</b><span>Keymin only looks for it</span></div><span class="tag no">Never started</span></div>
+          <div class="row"><svg class="ic"><use href="#i-eye-off"/></svg><div class="t"><b>Anything at all</b><span>To Keymin's developer</span></div><span class="tag no">Never sent</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keyboard" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-keyboard"/></svg>Built for the keyboard</p>
+        <h2>New, record, save, done.</h2>
+        <p class="lead">Add, record, move, and save without leaving the keyboard. Every page is one <kbd>⌘</kbd> number away.</p>
+      </div>
+      <div class="keymap reveal">
+        <div class="key"><kbd>⌘N</kbd><div><b>New binding</b><span>Added below the selected one</span></div></div>
+        <div class="key"><kbd>⌘R</kbd><div><b>Record the shortcut</b><span>Then press the keys</span></div></div>
+        <div class="key"><kbd>⌘S</kbd><div><b>Save</b><span>Written in skhd's syntax</span></div></div>
+        <div class="key"><kbd>⌘F</kbd><div><b>Find a binding</b><span>By key, name, command, app, or mode</span></div></div>
+        <div class="key"><kbd>⌘D</kbd><div><b>Duplicate the binding</b><span>Same command, new shortcut</span></div></div>
+        <div class="key"><kbd>⌘⌫</kbd><div><b>Delete the binding</b><span>After a confirmation</span></div></div>
+        <div class="key"><kbd>⌘⌥↑ ↓</kbd><div><b>Move the binding</b><span>Up or down in the file</span></div></div>
+        <div class="key"><kbd>⌘1–6</kbd><div><b>Switch pages</b><span>Bindings, Modes, Blacklist, Files, After Saving, Source</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pro" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-star"/></svg>Keymin Pro</p>
+        <h2>Every binding for 30 days. Then choose.</h2>
+        <p class="lead">Free to download, with 30 days of full access. After the trial, Keymin shows and edits the first five bindings in your file. The rest stay in the file, untouched, and Pro brings them back.</p>
+      </div>
+      <div class="plans">
+        <div class="plan reveal">
+          <p class="name">Free <span class="price">After the trial</span></p>
+          <p class="tag">Small configurations, fully editable.</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>The first five bindings, with recording, per-app commands, and modes</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Modes, the blacklist, included files, and After Saving</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Hidden bindings stay in the file and are written back unchanged <span>· visible again if Pro is restored</span></div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>The first screen's skhd check and install help</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Sandboxed, no account, no network entitlement</div></li>
+          </ul>
+          <div class="tiers">
+            <div class="tier"><b>No account</b><span>No Keymin account required</span></div>
+            <div class="tier"><b>No servers</b><span>Your configuration never passes through ours</span></div>
+          </div>
+        </div>
+        <div class="plan pro reveal d1">
+          <p class="name">Pro <span class="price grad">Yearly or lifetime</span></p>
+          <p class="tag">Your whole configuration, and its source.</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>All bindings, however many</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>The Source page, for anything the forms do not cover</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Everything the trial included</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Family Sharing <span>· yearly and lifetime purchases</span></div></li>
+          </ul>
+          <div class="tiers">
+            <div class="tier"><b>Yearly · $9.99</b><span>Auto-renews yearly through your Apple Account; cancel any time</span></div>
+            <div class="tier"><b>Lifetime · $39.99</b><span>One-time purchase, no renewal</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="plan-note reveal">The trial starts when you first get Keymin from the App Store. It needs no card or additional account, starts no subscription, and charges nothing. Trial information is not sent to the developer.</p>
+      <p class="plan-note reveal">US base prices are shown in USD. Apple converts prices for other App Store regions and handles purchases, renewals, and refunds. Lifetime purchases do not appear in Apple's subscription settings.</p>
+    </div>
+  </section>
+
+  <section id="more" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-level"/></svg>The details</p>
+        <h2>Small things, done carefully.</h2>
+      </div>
+      <div class="details">
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>An Apple-silicon Mac running macOS 14 or later. Install and start skhd or skhd.zig to run your hotkeys; you can edit configurations without it. Keymin needs no Accessibility access.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-sparkles"/></svg>Three steps</h3><p>Choose your <code>skhdrc</code>, usually at <code>~/.config/skhd/skhdrc</code>, or create a new one. Press <kbd>⌘N</kbd> for a binding and <kbd>⌘R</kbd> to record it. Write the command and press <kbd>⌘S</kbd>.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-grid"/></svg>Per-app commands</h3><p>Give one shortcut a different command in each app, with pass-through for the rest. Pick apps from the ones running or with an Open panel; Keymin writes skhd's <code>[ "App" : command, * ~ ]</code> block.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-layers"/></svg>Modes</h3><p>Declare modes with capture and an on-enter command, switch into them from a binding, and scope bindings to them. Renaming a mode updates every binding that uses it.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-hand"/></svg>Blacklist and included files</h3><p>Keep skhd out of chosen apps with <code>.blacklist</code>, and split a long configuration across <code>.load</code> files. Keymin checks that an included file exists and is not the configuration itself.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-refresh"/></svg>After Saving</h3><p>Run a Shortcuts shortcut after every save, with the saved file's path as input, or run it right away. Handy for restarting the skhd service.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>Keymin runs in the App Sandbox with Hardened Runtime. Its container holds the file bookmarks, the trial state, and a few settings such as the After Saving option.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-code"/></svg>Source available</h3><p>The source is on GitHub under the PolyForm Strict License 1.0.0 with added permissions. You can read exactly how Keymin reads and writes your file.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- data-doc opens standalone pages in the dialog; data-scroll names the
+       menu landing target. -->
+  <section id="docs" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-ask"/></svg>Support and policies</p>
+        <h2>Help, privacy, and terms.</h2>
+        <p class="lead">Find help and read the app's privacy policy and terms.</p>
+      </div>
+      <div class="docs">
+        <a class="doc-card" id="support" href="support/index.html" data-doc="support/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><span class="t"><b>Support</b><span>Contact and common questions</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="privacy-policy" href="privacy/index.html" data-doc="privacy/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><span class="t"><b>Privacy policy</b><span>What Keymin reads and writes, what it never touches, and your controls</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="terms" href="terms/index.html" data-doc="terms/index.html"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><span class="t"><b>Terms of use</b><span>The trial, Keymin Pro, and the source license</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="outro">
+    <div class="wrap reveal">
+      <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
+      <h2>Coming to the Mac App Store.</h2>
+      <p class="lead">Keymin is a Mac app. Follow the project for launch updates, or visit Support for help.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/keymin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <a class="cta ghost" href="#support">Get support</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+<script src="../landing.js" defer></script>
+<script src="keymin.js" defer></script>
+</body>
+</html>

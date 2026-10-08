@@ -15,7 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 ROOT = Path(__file__).resolve().parent
 SHOTS = Path(tempfile.mkdtemp(prefix='min-website-browser-', dir='/tmp'))
-PRICES = {'langmin': ('19.99', '79.99'), 'netmin': ('14.99', '59.99'), 'pastemin': ('9.99', '39.99')}
+PRICES = {'langmin': ('19.99', '79.99'), 'netmin': ('14.99', '59.99'), 'pastemin': ('9.99', '39.99'), 'keymin': ('9.99', '39.99')}
 # Every app page with document dialogs; Paletmin is free and has no Pro section.
 APPS = (*PRICES, 'paletmin')
 
@@ -196,7 +196,7 @@ class BrowserChecks(unittest.TestCase):
     def test_live_demos(self):
         """test_live_demos(): let each animated hero advance without JavaScript errors."""
         self.media(motion='no-preference')
-        for app, selector in (('langmin', '[data-hero]'), ('pastemin', '[data-pm]'), ('netmin', '[data-nm]')):
+        for app, selector in (('langmin', '[data-hero]'), ('pastemin', '[data-pm]'), ('netmin', '[data-nm]'), ('keymin', '[data-km]')):
             with self.subTest(app=app):
                 self.visit(app + '/')
                 before = self.browser.find_element(By.CSS_SELECTOR, selector).get_attribute('innerHTML')
