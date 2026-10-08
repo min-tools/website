@@ -92,10 +92,11 @@
   height: 1.3em;
 }
 
+/* No flex gap here: the host and the dimmed path are separate items and
+   must sit flush, so only the lock icon carries spacing. */
 .pt-url {
   display: flex;
   align-items: center;
-  gap: 0.6em;
   flex: 1;
   min-width: 0;
   height: 2.2em;
@@ -111,6 +112,7 @@
 .pt-url .ic {
   width: 1em;
   height: 1em;
+  margin-right: 0.6em;
   color: var(--win-muted);
 }
 
@@ -333,7 +335,14 @@
   background: var(--pg-fill);
 }
 
-/* The hero toast names the mode the demo window shows. */
+/* The hero toast names the mode the demo window shows. It floats by the
+   cards at the bottom, not at the top right where the shared position
+   would cover the toolbar icon and its tooltip. */
+.pt-stage .sat.toast {
+  top: auto;
+  bottom: 12%;
+}
+
 .pt-stage .toast i {
   font-style: normal;
 }
