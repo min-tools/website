@@ -41,6 +41,11 @@ PRODUCTS = {
         "repo": "https://github.com/min-tools/keymin-macos",
         "description": "What Keymin reads and writes on your Mac, what it never touches, and the controls you have.",
     },
+    "agemin": {
+        "name": "Agemin",
+        "repo": "https://github.com/min-tools/agemin-macos",
+        "description": "What Agemin reads and writes on your Mac, what it never keeps or sends, and the controls you have.",
+    },
     # The checkout folder differs from the Mac apps' <slug>-macos pattern.
     "paletmin": {
         "name": "Paletmin",

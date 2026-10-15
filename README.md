@@ -7,7 +7,7 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 | Path | Contents |
 | --- | --- |
 | `index.html`, `home.css` | The home page: apps, source code, privacy, and contributions. |
-| `langmin/`, `pastemin/`, `netmin/`, `keymin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin, Netmin, and Keymin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
+| `langmin/`, `pastemin/`, `netmin/`, `keymin/`, `agemin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin, Netmin, Keymin, and Agemin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
 | `landing.css`, `landing.js` | Shared landing-page styles, navigation, demos, and document dialogs. The app demo scripts use helpers exposed as `window.MinTools`. |
 | `style.css` | Shared document styles for the support, privacy, terms, and contribute pages, with light and dark appearances. |
 | `build_privacy.py` | Renders each app's `PRIVACY.md` into its privacy page. |
@@ -19,11 +19,11 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 
 Navigation and asset links use relative paths so the site can be previewed from disk or served over HTTP. The app previews use HTML and CSS and follow the system's light or dark appearance. Their shared colors are defined by the `--win-*` variables at the top of `landing.css`.
 
-The apps link to these pages: `https://min.tools/<app>/`, `/<app>/support/`, `/<app>/privacy/`, and, for Langmin, `/langmin/terms/` and `/langmin/contribute/`. Keep those paths stable.
+The apps link to these pages: `https://min.tools/<app>/`, `/<app>/support/`, `/<app>/privacy/`, `/<app>/terms/`, and `/<app>/contribute/`. Keep those paths stable.
 
 ## Privacy policies
 
-Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`, `../keymin/keymin-macos`, `../paletmin/paletmin-chrome`), regenerate every privacy page with:
+Each app's `PRIVACY.md` is the source of truth. With the app checkouts beside this folder (`../langmin/langmin-macos`, `../pastemin/pastemin-macos`, `../netmin/netmin-macos`, `../keymin/keymin-macos`, `../agemin/agemin-macos`, `../paletmin/paletmin-chrome`), regenerate every privacy page with:
 
 ```bash
 python3 build_privacy.py
@@ -61,4 +61,4 @@ For browser checks, use a disposable Debian VM with Chromium, `chromium-driver`,
 
 ## Publish
 
-GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), [keymin-macos](https://github.com/min-tools/keymin-macos), [paletmin-chrome](https://github.com/min-tools/paletmin-chrome), and [paletmin-firefox](https://github.com/min-tools/paletmin-firefox).
+GitHub Pages serves this repository at `min.tools` (see `CNAME`). App support and bug reports go to the app repositories: [langmin-macos](https://github.com/min-tools/langmin-macos), [pastemin-macos](https://github.com/min-tools/pastemin-macos), [netmin-macos](https://github.com/min-tools/netmin-macos), [keymin-macos](https://github.com/min-tools/keymin-macos), [agemin-macos](https://github.com/min-tools/agemin-macos), [paletmin-chrome](https://github.com/min-tools/paletmin-chrome), and [paletmin-firefox](https://github.com/min-tools/paletmin-firefox).

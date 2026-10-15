@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://min.tools/agemin/support/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Agemin</title>
+<meta name="description" content="Get help with Agemin: contact, common questions, and where to report problems.">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="stylesheet" href="../../style.css">
+<script>
+// When framed in the landing-page dialog, hide the standalone page chrome.
+// Direct disk previews use this frame because fetching local files is restricted.
+if (window.self !== window.top) {
+  document.documentElement.classList.add("embed");
+  // report(): send the body height so the parent can size the frame to its content.
+  var report = function () { window.parent.postMessage({ height: Math.ceil(document.body.getBoundingClientRect().height) }, "*"); };
+  window.addEventListener("load", report);
+  window.addEventListener("resize", report);
+  // Click handler(event): route document links through the parent dialog.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    // Leave clicks outside links alone.
+    if (!link) { return; }
+    var doc = /(^|[/])(support|privacy|terms)[/]index[.]html$/.exec(link.getAttribute("href"));
+    // Ask the parent to load a sibling document and update its dialog header.
+    if (doc) { event.preventDefault(); window.parent.postMessage({ doc: doc[2] }, "*"); } else {
+      // Other destinations should open outside the small document frame.
+      link.target = "_top";
+    }
+  });
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="../"><img src="../icon-128.png" alt="" width="128" height="128">Agemin</a>
+  <nav><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy</a><a href="../terms/index.html">Terms</a><a href="https://github.com/min-tools/agemin-macos">GitHub</a></nav>
+</header>
+<main class="doc">
+<h1>Support</h1>
+<p class="meta">Help with Agemin and answers to common questions.</p>
+
+<h2>Contact</h2>
+<ul>
+<li>Questions and support: <a href="https://github.com/min-tools/agemin-macos">Agemin on GitHub</a></li>
+<li>Bug reports and feature requests: <a href="https://github.com/min-tools/agemin-macos/issues">GitHub Issues</a></li>
+<li>Privacy questions: <a href="mailto:privacy@min.tools">privacy@min.tools</a></li>
+</ul>
+<p>When reporting a problem, include your macOS version, the Agemin version from About Agemin, the kind of key involved (age, ssh-ed25519, or ssh-rsa), and clear steps to reproduce. Never attach a private key, a passphrase, or a file you encrypted. A public key, or a small test file encrypted for a throwaway key, is fine.</p>
+
+<h2>Common questions</h2>
+
+<h3>What does Agemin need?</h3>
+<p>An Apple silicon Mac running macOS 14 or later. Agemin implements the <a href="https://age-encryption.org/">age</a> format itself, so you do not need the <code>age</code> command line tool, Homebrew, or any other software. Files Agemin writes open with the age tool and other age software, and theirs open in Agemin.</p>
+
+<h3>Is Agemin in my language?</h3>
+<p>Agemin follows your Mac's language settings and ships in thirty-one languages, including Serbian in both scripts. If a translation reads badly, open an issue or send a correction; the catalogs live in the repository.</p>
+
+<h3>Where do my keys go?</h3>
+<p>Agemin works with two folders you choose. The recipients folder holds the public keys you encrypt for, one <code>.pub</code> file per person; <code>~/.age</code> is the usual choice, and any folder works. The identities folder holds your private keys, usually <code>~/.ssh</code>. Choose them with Choose Folder on the Recipients and Identities pages or in the Keys menu; the Open panel shows hidden folders. Agemin remembers both until you choose Forget Folder Access… from the Agemin menu. A key kept somewhere else can be added on its own with Add Key File.</p>
+
+<h3>Which keys work?</h3>
+<p>Recipients: <code>age1…</code> public keys, and <code>ssh-ed25519</code> and <code>ssh-rsa</code> public keys as they appear in <code>.pub</code> files. Identities: age identity files (<code>AGE-SECRET-KEY-1…</code>), OpenSSH private keys for Ed25519 and RSA with or without a passphrase, and legacy PEM RSA keys without a passphrase. RSA keys work up to 16384 bits, the largest OpenSSH makes. These are the key types age itself supports. ECDSA, DSA, and security-key (<code>sk-</code>) SSH keys cannot be used with age, and keys from age plugins are not supported in this version.</p>
+
+<h3>My SSH key has a passphrase</h3>
+<p>That is fine. Agemin lists the key with a passphrase badge and asks for the passphrase when it decrypts with that key. The passphrase is used once and not stored. Passphrase-protected keys in the legacy PEM format (the file starts with <code>-----BEGIN RSA PRIVATE KEY-----</code> and mentions <code>ENCRYPTED</code>) are not supported; convert such a key with <code>ssh-keygen -p -o</code> or use an unprotected copy kept somewhere safe. A key made with more than 4096 key derivation rounds (<code>ssh-keygen -a</code>) is refused, so a damaged or hostile key file cannot keep Agemin busy for hours.</p>
+
+<h3>How do I give someone my public key, or get theirs?</h3>
+<p>To receive files, share a public key: the <code>.pub</code> file of your SSH key, or the <code>age1…</code> line Agemin shows after New age Key on the Identities page, with a Copy button beside it. To encrypt for someone, click Add Recipient on the Recipients page and paste the key they sent you under a name; the Add Recipient chip on the Encrypt page takes you there. Agemin saves it as <code>&lt;name&gt;.pub</code> in your recipients folder.</p>
+
+<h3>Can I give keys faces?</h3>
+<p>Yes. On the Recipients and Identities pages, click a key's avatar to pick one of twelve drawn symbols, initials in a color, or an image of your own with Choose Image; you can also drop an image onto the avatar. The choice is stored in Agemin, keyed by the key's fingerprint, so the same key looks the same everywhere, including the chips on the Encrypt page. Nothing in your key folders changes, and Use Initials removes a stored choice.</p>
+
+<h3>Agemin says none of my identities can decrypt the file</h3>
+<p>The file was encrypted for keys you do not have. The Decrypt page lists every recipient entry in the file's header: SSH entries carry a short tag that must match one of your keys, and age entries are tried with every age identity you have. Ask the sender to encrypt for the public key you actually use, or add the right private key with Add Key File. A wrong passphrase, a corrupt file, and a file that is not an age file at all each get their own message.</p>
+
+<h3>Can I use a passphrase instead of keys?</h3>
+<p>Yes. Switch Encrypt for to Passphrase on the Encrypt page. Anyone with the passphrase can open the file; age stretches it with scrypt, so a long passphrase matters more than a complex one. Generate fills in a random one and shows it once so you can store it in a password manager. A passphrase file cannot also have key recipients; that is a rule of the age format.</p>
+
+<h3>What is ASCII armor?</h3>
+<p>A text form of the same encrypted file, between <code>-----BEGIN AGE ENCRYPTED FILE-----</code> and <code>-----END AGE ENCRYPTED FILE-----</code> lines, for email, chat, and configuration files. Turn on ASCII armor under Options before encrypting. Agemin reads both forms, and accepts armored text whose lines were rewrapped by a mail client or chat app.</p>
+
+<h3>Where does the result go, and why does it ask every time?</h3>
+<p>Agemin runs in the App Sandbox, so it can write only where you let it. Encrypt and Decrypt open a Save panel with the usual name filled in: the original name plus <code>.age</code>, or the name without <code>.age</code> for a decrypted file. The panel asks before replacing an existing file. Results are created readable only by your user account, and a failed or canceled run removes its partial file.</p>
+
+<h3>What is the checksum under a decrypted file?</h3>
+<p>The SHA-256 of the decrypted bytes, the same value <code>shasum -a 256</code> prints. If the sender gave you a checksum, compare the two.</p>
+
+<h3>What happens after the first 30 days?</h3>
+<p>The 30-day trial includes full access. No subscription starts and there is no charge. After the trial, Agemin still encrypts or decrypts one file per local day, counted when the operation starts. Reading keys, inspecting a file's recipients, copying keys, and creating new keys stay unlimited. Pro removes the daily limit and is sold as a yearly subscription or a one-time lifetime purchase through the Mac App Store.</p>
+
+<h3>Does Agemin send anything anywhere?</h3>
+<p>No. Agemin has no network entitlement, no account, no analytics, and no developer server. All encryption and decryption happens on your Mac, and keys and passphrases stay in memory only while they are used. See the <a href="../privacy/index.html">privacy policy</a> for details.</p>
+
+<h3>Where is the source?</h3>
+<p>The <a href="https://github.com/min-tools/agemin-macos">app repository</a> holds the public app source under the PolyForm Strict License 1.0.0 with added permissions, including the age implementation and the tests that check it against the <code>age</code> tool. Bug reports and contributions are welcome there.</p>
+
+<h3>How do I cancel or restore Agemin Pro?</h3>
+<p>Subscriptions are managed in your App Store settings (App Store → your name → Subscriptions). To restore a purchase on another Mac, choose Agemin Pro… from the Agemin menu and click Restore Purchases while signed in with the same Apple Account.</p>
+</main>
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+</body>
+</html>

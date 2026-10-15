@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agemin — age Encryption on the Mac, Without the Terminal</title>
+<meta name="description" content="Encrypt files for the SSH and age keys of the people who should open them, or with a passphrase, and decrypt what they send you with your own keys. Agemin reads and writes the standard age format in a sandboxed Mac app. No account, no analytics, no network entitlement.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://min.tools/agemin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Min Tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Agemin — age Encryption on the Mac, Without the Terminal">
+<meta property="og:description" content="Encrypt for the SSH and age keys you already have, or with a passphrase, and decrypt with your own keys. Standard age files, in a native Mac app.">
+<meta property="og:url" content="https://min.tools/agemin/">
+<meta property="og:image" content="https://min.tools/agemin/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Agemin app icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agemin — age Encryption on the Mac, Without the Terminal">
+<meta name="twitter:description" content="Encrypt for the SSH and age keys you already have, or with a passphrase, and decrypt with your own keys. Standard age files, in a native Mac app.">
+<meta name="twitter:image" content="https://min.tools/agemin/icon.png">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<link rel="stylesheet" href="agemin.css">
+<script>
+// Mark scripting support before first paint so CSS can prepare scroll reveals.
+document.documentElement.classList.add("js");
+// Enable animated hero states only when motion is allowed at page load.
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Agemin","url":"https://min.tools/agemin/","image":"https://min.tools/agemin/icon.png","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A native macOS app that encrypts and decrypts files in the age format: encrypt for ssh-ed25519, ssh-rsa, and age public keys or with a passphrase, decrypt with SSH keys and age identity files, and manage recipient keys. The app runs in the App Sandbox, implements the format itself without the age tool, and has no network entitlement.","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body class="landing">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Shared icon symbols; visible instances reference these IDs with use. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></symbol>
+  <symbol id="i-mac" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor" stroke="none"/><path d="m8.5 12.5 2.5 2.5 4.5-5" stroke="#fff"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4"/><path d="m11 11 9-9"/><path d="m16 6 2.5 2.5"/><path d="m18.5 3.5 2 2"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M15.5 20a5.5 5.5 0 0 1 6-5.2"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3"/><path d="M12 15h5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 2 2 3.5-4"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10 10 0 0 1 12 5c5 0 8.5 4 9.5 7-.4 1.1-1.1 2.3-2.1 3.4"/><path d="M6.6 6.6C4.6 8 3.2 10 2.5 12c1 3 4.5 7 9.5 7 1.6 0 3-.4 4.3-1"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 5-4 14"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 10v5"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M8 9h8"/><path d="M8 12h5"/></symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2"/><path d="M12 14h.01"/></symbol>
+  <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12"/><path d="m18 6-12 12"/></symbol>
+  <symbol id="i-spinner" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-8 8"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.2"/><path d="M4 4v4.5h4.5"/><path d="M4 13a8 8 0 0 0 14.6 4.2"/><path d="M20 20v-4.5h-4.5"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M12 4v16"/><path d="M9 20h6"/></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M5 9h14"/><path d="M5 15h14"/><path d="m10 3-2 18"/><path d="m16 3-2 18"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.5-1.5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3v11"/><path d="m8 10 4 4 4-4"/><path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+  <!-- Avatar symbols, as the app draws them. -->
+  <symbol id="av-orbit" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#C4674A" stroke="none"/><circle cx="50" cy="50" r="26" fill="none" stroke="#FFFFFF" stroke-width="7"/><circle cx="50" cy="24" r="9" fill="#FFFFFF" stroke="none"/></symbol>
+  <symbol id="av-waves" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#3A9E95" stroke="none"/><path d="M24 37 q13 -10 26 0 t26 0 M24 51 q13 -10 26 0 t26 0 M24 65 q13 -10 26 0 t26 0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/></symbol>
+  <symbol id="av-hex" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#3F8BD9" stroke="none"/><polygon points="50,20 76,35 76,65 50,80 24,65 24,35" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linejoin="round"/></symbol>
+  <symbol id="av-leaf" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#5E9C5A" stroke="none"/><path d="M50 20 C 78 28, 82 62, 50 80 C 18 62, 22 28, 50 20 Z" fill="#FFFFFF" stroke="none"/><path d="M50 32 L50 70" fill="none" stroke="#5E9C5A" stroke-width="5" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="site">
+  <a class="brand" href="./" aria-label="Agemin home"><img src="icon-128.png" alt="" width="128" height="128">Agemin</a>
+  <nav aria-label="Main navigation"><a class="home" href="../">All apps</a><a href="#features">Features</a><a href="#pro">Plans</a><a href="#support">Support</a><a href="#privacy-policy">Privacy</a><a class="gh" href="https://github.com/min-tools/agemin-macos" aria-label="Agemin on GitHub"><svg class="ic"><use href="#i-star"/></svg>GitHub</a></nav>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="wrap">
+      <p class="whatsnew"><span class="plat on">macOS</span><span class="plat fact">Standard age files</span><span class="plat fact">Source available</span></p>
+      <h1>age encryption, <span class="grad">without the terminal</span>.</h1>
+      <p class="sub">Encrypt files for the SSH and age keys of the people who should open them, or with a passphrase, and decrypt what they send you with your own keys. Agemin reads and writes the standard age format in a native Mac app, with nothing to install beside it.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/agemin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <span class="cta ghost"><svg class="ic"><use href="#i-mac"/></svg>Coming to the Mac App Store</span>
+      </div>
+      <p class="fine">macOS 14 or later on Apple silicon. Files open with the age tool and other age software. 30 days of full access, no subscription.</p>
+    </div>
+
+    <!-- The Encrypt page with a finished encryption; agemin.js replays ticking the
+         recipients, the progress bar, and the result. -->
+    <div class="stage" data-ag data-state="done">
+      <div class="win ag" role="img" aria-label="The Agemin window: a sidebar with the Encrypt, Decrypt, Recipients, and Identities pages, and the Encrypt page with the chosen file Board report Q3.pdf, four recipient chips with avatars (three ticked, one marked as your own key), an Add Recipient chip, the Encrypt button, and a result card with the encrypted file's name, size, and recipients.">
+        <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Agemin</span></div>
+        <div class="ag-body">
+          <div class="ag-side">
+            <div class="grp">Files</div>
+            <div class="row on"><span class="tile"><svg class="ic"><use href="#i-lock"/></svg></span><span class="name">Encrypt</span></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-unlock"/></svg></span><span class="name">Decrypt</span></div>
+            <div class="grp">Keys</div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-people"/></svg></span><span class="name">Recipients</span><span class="count">4</span></div>
+            <div class="row"><span class="tile"><svg class="ic"><use href="#i-key"/></svg></span><span class="name">Identities</span><span class="count">2</span></div>
+          </div>
+          <div class="ag-main">
+            <div class="ag-head"><span class="tile big"><svg class="ic"><use href="#i-lock"/></svg></span><div class="t"><b>Encrypt</b><span>Encrypt a file for people using their public keys, or protect it with a passphrase. The result is a standard age file.</span></div></div>
+            <div class="ag-file"><span class="tile"><svg class="ic"><use href="#i-doc"/></svg></span><div class="t"><b>Board report Q3.pdf</b><code>~/Documents/Board report Q3.pdf</code></div><span class="size">2.4 MB</span><span class="btn small">Change</span></div>
+            <div class="ag-card">
+              <div class="h">Encrypt for<span class="seg"><span class="on">Recipients</span><span>Passphrase</span></span></div>
+              <div class="sum">3 of 4 recipients selected<span class="links">All · None</span></div>
+              <div class="chips">
+                <span class="rchip on" data-ag-rec><svg class="av"><use href="#av-orbit"/></svg>alice<svg class="ic chk"><use href="#i-check"/></svg></span>
+                <span class="rchip on" data-ag-rec><svg class="av"><use href="#av-waves"/></svg>carol<svg class="ic chk"><use href="#i-check"/></svg></span>
+                <span class="rchip on" data-ag-rec><svg class="av"><use href="#av-hex"/></svg>dave<svg class="ic chk"><use href="#i-check"/></svg></span>
+                <span class="rchip"><i class="av ini" style="background:#6366D1">M</i>me<em>you</em><svg class="ic chk"><use href="#i-check"/></svg></span>
+                <span class="rchip add"><svg class="ic"><use href="#i-plus"/></svg>Add Recipient</span>
+              </div>
+            </div>
+            <div class="ag-action"><span class="btn primary">Encrypt <kbd>⌘⏎</kbd></span><div class="progress" data-ag-progress><i></i><span>Encrypting 1.6 MB of 2.4 MB</span></div></div>
+            <div class="ag-result">
+              <div class="h"><svg class="ic ok"><use href="#i-check-circle"/></svg><b>Encrypted</b><span class="spacer"></span><span class="btn small">Reveal in Finder</span><span class="btn small">Decrypt This File</span></div>
+              <div class="kv"><span>Output</span><code>~/Documents/Board report Q3.pdf.age</code></div>
+              <div class="kv"><span>Size</span><b>2.4 MB · 612 bytes more than the original for the header</b></div>
+              <div class="kv"><span>Recipients</span><span class="chips"><i>alice</i><i>carol</i><i>dave</i></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sat toast" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg>Encrypted <span>readable only by your account</span></div>
+    </div>
+
+    <ul class="trust reveal" aria-label="Highlights">
+      <li><svg class="ic"><use href="#i-key"/></svg>SSH and age keys</li>
+      <li><svg class="ic"><use href="#i-box"/></svg>Standard age format</li>
+      <li><svg class="ic"><use href="#i-terminal"/></svg>No age tool needed</li>
+      <li><svg class="ic"><use href="#i-eye-off"/></svg>No network entitlement</li>
+      <li><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</li>
+      <li><svg class="ic"><use href="#i-mac"/></svg>Mac App Store, Family Sharing</li>
+    </ul>
+  </section>
+
+  <section id="features" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>Encrypt, decrypt, and keep the keys straight</p>
+        <h2>Drop a file. Tick the people. Done.</h2>
+        <p class="lead">Agemin shows the keys you can encrypt for and the keys that can open a file, so the only decision left is who should read it. Press <kbd>⌘O</kbd> to choose a file, tick the recipients, and press <kbd>⌘⏎</kbd> to write the age file.</p>
+      </div>
+      <div class="edges">
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><h3>The keys you already have</h3><p>Encrypt for <code>ssh-ed25519</code> and <code>ssh-rsa</code> public keys straight from <code>.pub</code> files, or for <code>age1…</code> keys. One file per recipient in a folder of your choice, usually <code>~/.age</code>.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-unlock"/></svg></span><h3>Decrypt with your SSH key</h3><p>Agemin finds the private keys in your identities folder, usually <code>~/.ssh</code>, and your age identity files. It shows which of them match a file before you decrypt it, and asks for a protected key's passphrase only when it needs it.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-text"/></svg></span><h3>Passphrases too</h3><p>Protect a file with a passphrase instead of keys, and open files others protected that way. age stretches passphrases with scrypt; Agemin can generate a strong one and shows it once so you can keep it.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-box"/></svg></span><h3>Standard age files</h3><p>Everything Agemin writes opens with the <code>age</code> command line tool and other age software, and the other way around. Binary or ASCII-armored, large files included, streamed chunk by chunk.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-people"/></svg></span><h3>Who can open it, before you open it</h3><p>Drop an age file on the Decrypt page and Agemin lists every recipient entry in its header, marks the ones your keys match, and selects a matching key for you.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-hash"/></svg></span><h3>Careful with the result</h3><p>Output files are readable only by your account, a failed or canceled run leaves no partial file behind, and a decrypted file comes with its SHA-256 checksum to compare with the sender's.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>Keys without the terminal</h3><p>Add a recipient by pasting a key, create a new age key pair, copy public keys, read fingerprints, and reveal any key file in Finder. Give each key a face: one of twelve drawn symbols, initials in a color, or an image of your own, kept in Agemin and never written to your key folders.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-terminal"/></svg></span><h3>Nothing to install beside it</h3><p>Agemin implements the age format itself, with CryptoKit and its own tested code. No Homebrew, no <code>age</code> binary, no runtime. The test suite checks the implementation against the age tool.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Sandboxed and offline</h3><p>Agemin reads only the folders and files you choose, never runs a command, and has no network entitlement. There is no Agemin account, no analytics, and no developer server.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keys" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-key"/></svg>Recipients and identities</p>
+        <h2>Two folders. That is the whole setup.</h2>
+        <p class="lead">A recipients folder with one <code>.pub</code> file per person you encrypt for, and an identities folder with your own private keys, usually <code>~/.ssh</code>. Agemin lists what it finds, says what each key is, and never changes an existing key.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-people"/></svg></span><div><h3>Recipients</h3><p>Every <code>.pub</code> file is one recipient, named after the file. Add a key someone sent you under a name and Agemin saves it as <code>&lt;name&gt;.pub</code>. Keys age cannot use are still listed, with the reason.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><div><h3>Identities</h3><p>OpenSSH private keys for Ed25519 and RSA, with or without a passphrase, and age identity files. Add Key File brings in keys kept elsewhere, and New age Key creates a pair.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-link"/></svg></span><div><h3>Matching done for you</h3><p>SSH entries in an age file carry a short tag of the key they are for. Agemin compares it with your keys, so a file encrypted for your laptop key opens with that key instead of being tried against all of them.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-key"/></svg>What Agemin reads</div>
+          <div class="row"><svg class="ic"><use href="#i-people"/></svg><div class="t"><b><code>age1…</code>, <code>ssh-ed25519</code>, <code>ssh-rsa</code></b><span>Public keys, one .pub file each</span></div><span class="tag page">Recipients</span></div>
+          <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b><code>AGE-SECRET-KEY-1…</code></b><span>age identity files, as age-keygen writes them</span></div><span class="tag page">Identities</span></div>
+          <div class="row"><svg class="ic"><use href="#i-terminal"/></svg><div class="t"><b>OpenSSH private keys</b><span>Ed25519 and RSA, with or without a passphrase</span></div><span class="tag page">Identities</span></div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Legacy PEM RSA keys</b><span>Without a passphrase</span></div><span class="tag page">Identities</span></div>
+          <div class="row"><svg class="ic"><use href="#i-lock"/></svg><div class="t"><b>Encrypted identity files</b><span>An age identity file protected with a passphrase</span></div><span class="tag page">Identities</span></div>
+          <div class="row"><svg class="ic"><use href="#i-text"/></svg><div class="t"><b>Passphrases</b><span>Stretched with scrypt, as age does</span></div><span class="tag page">Both</span></div>
+          <div class="row"><svg class="ic"><use href="#i-warn"/></svg><div class="t"><b>ECDSA, DSA, and security keys</b><span>Not supported by age</span></div><span class="tag no">Named, not used</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="decrypt" class="sec">
+    <div class="wrap split flip">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-unlock"/></svg>Decrypting</p>
+        <h2>The header tells you who it is for.</h2>
+        <p class="lead">An age file lists its recipients before any key is used. Agemin shows that list the moment you drop the file, marks the entries your keys match, and uses the right one. A passphrase file asks for its passphrase instead.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-check"/></svg></span><div><h3>Matching keys first</h3><p>Matching keys are tried first, then the rest, so a file for an age key, which carries no tag, still opens. Choose a key by hand when you want to.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><div><h3>Protected keys stay protected</h3><p>A passphrase-protected SSH key is unlocked for one decryption and forgotten. Agemin never writes an unprotected copy.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-stop"/></svg></span><div><h3>Wrong key, no file</h3><p>Agemin verifies the key against the header before it creates the output, so a wrong key or a tampered file leaves nothing on disk.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-doc"/></svg>Board report Q3.pdf.age · Encrypted for</div>
+          <div class="row"><svg class="ic"><use href="#i-terminal"/></svg><div class="t"><b>SSH key (Ed25519) <code>oSb7</code></b><span>Matches id_ed25519</span></div><span class="tag ok">Your key</span></div>
+          <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b>age key</b><span>Tried with every age identity</span></div><span class="tag ask">Candidate</span></div>
+          <div class="row"><svg class="ic"><use href="#i-terminal"/></svg><div class="t"><b>SSH key (RSA) <code>kQ2m</code></b><span>No matching key</span></div><span class="tag no">Not yours</span></div>
+          <div class="row"><svg class="ic"><use href="#i-hash"/></svg><div class="t"><b>After decryption</b><span>SHA-256 of the result, ready to compare</span></div><span class="tag page">Checksum</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="sec">
+    <div class="wrap split">
+      <div class="copy reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-eye-off"/></svg>Private by design</p>
+        <h2>Your keys never leave the Mac.</h2>
+        <p class="lead">Agemin has no advertising, analytics, account system, or developer server, and no network entitlement at all. Keys and passphrases stay in memory only while they are used. The only network traffic on its behalf is Apple's own StoreKit, for product and purchase information.</p>
+        <ul class="feats">
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><div><h3>The folders you choose</h3><p>Agemin remembers its permission for your recipients and identities folders, and for key files you add on their own, and reopens them next time. Beyond those and the files you choose, it reads nothing.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>Results where you say</h3><p>Every encrypted or decrypted file goes through a Save panel, is readable only by your account, and is removed again if the run fails.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-eye-off"/></svg></span><div><h3>Nothing to the developer</h3><p>No usage tracking, no sync, no logs of files, keys, or passphrases. Apple handles purchases and never shares payment details with the developer.</p></div></li>
+        </ul>
+      </div>
+      <div class="visual reveal d1 frame" aria-hidden="true">
+        <div class="ledger">
+          <div class="head"><svg class="ic"><use href="#i-shield"/></svg>What Agemin touches</div>
+          <div class="row"><svg class="ic"><use href="#i-people"/></svg><div class="t"><b>Your recipients folder</b><span>.pub files read when listed; one written when you add a recipient</span></div><span class="tag ok">Yours to choose</span></div>
+          <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b>Your private keys</b><span>Read locally only when needed</span></div><span class="tag no">Never changed</span></div>
+          <div class="row"><svg class="ic"><use href="#i-text"/></svg><div class="t"><b>Passphrases</b><span>Used once, then forgotten</span></div><span class="tag no">Never stored</span></div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>The files you encrypt or decrypt</b><span>Read where you chose them, written where you save them</span></div><span class="tag ok">Kept where they are</span></div>
+          <div class="row"><svg class="ic"><use href="#i-eye-off"/></svg><div class="t"><b>Anything at all</b><span>To Agemin's developer</span></div><span class="tag no">Never sent</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keyboard" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-keyboard"/></svg>Built for the keyboard</p>
+        <h2>Open, tick, encrypt.</h2>
+        <p class="lead">Choose a file, encrypt or decrypt it, and switch pages without reaching for the mouse.</p>
+      </div>
+      <div class="keymap reveal">
+        <div class="key"><kbd>⌘O</kbd><div><b>Choose a file to encrypt</b><span>Or drop one on the page</span></div></div>
+        <div class="key"><kbd>⌘⇧O</kbd><div><b>Choose a file to decrypt</b><span>Its recipients show at once</span></div></div>
+        <div class="key"><kbd>⌘⏎</kbd><div><b>Encrypt or decrypt</b><span>Then pick where to save</span></div></div>
+        <div class="key"><kbd>⌘.</kbd><div><b>Cancel</b><span>Between chunks, with no partial file left</span></div></div>
+        <div class="key"><kbd>⌘N</kbd><div><b>New age key</b><span>Saved where you choose</span></div></div>
+        <div class="key"><kbd>⌘F</kbd><div><b>Find a key</b><span>By name, key, or fingerprint</span></div></div>
+        <div class="key"><kbd>⌘R</kbd><div><b>Refresh keys</b><span>Read both folders again</span></div></div>
+        <div class="key"><kbd>⌘1–4</kbd><div><b>Switch pages</b><span>Encrypt, Decrypt, Recipients, Identities</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pro" class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-star"/></svg>Agemin Pro</p>
+        <h2>Everything for 30 days. Then choose.</h2>
+        <p class="lead">Free to download, with 30 days of full access. After the trial, Agemin still encrypts or decrypts one file a day; reading keys, inspecting files, and creating keys stay unlimited. Pro removes the daily limit.</p>
+      </div>
+      <div class="plans">
+        <div class="plan reveal">
+          <p class="name">Free <span class="price">After the trial</span></p>
+          <p class="tag">Occasional files, fully featured.</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>One encryption or decryption per day <span>· every key type, passphrases, and armor</span></div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Recipients and identities without limit</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Inspect any age file's recipients, copy keys, create new keys</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Thirty-one languages, sandboxed, no account</div></li>
+          </ul>
+          <div class="tiers">
+            <div class="tier"><b>No account</b><span>No Agemin account required</span></div>
+            <div class="tier"><b>No servers</b><span>Your files and keys never pass through ours</span></div>
+          </div>
+        </div>
+        <div class="plan pro reveal d1">
+          <p class="name">Pro <span class="price grad">Yearly or lifetime</span></p>
+          <p class="tag">As many files as you like.</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Unlimited encryption and decryption</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Everything the trial included</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Family Sharing <span>· yearly and lifetime purchases</span></div></li>
+          </ul>
+          <div class="tiers">
+            <div class="tier"><b>Yearly · $14.99</b><span>Auto-renews yearly through your Apple Account; cancel any time</span></div>
+            <div class="tier"><b>Lifetime · $59.99</b><span>One-time purchase, no renewal</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="plan-note reveal">The trial starts when you first get Agemin from the App Store. It needs no card or additional account, starts no subscription, and charges nothing. Trial information is not sent to the developer.</p>
+      <p class="plan-note reveal">US base prices are shown in USD. Apple converts prices for other App Store regions and handles purchases, renewals, and refunds. Lifetime purchases do not appear in Apple's subscription settings.</p>
+    </div>
+  </section>
+
+  <section id="more" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-level"/></svg>The details</p>
+        <h2>Small things, done carefully.</h2>
+      </div>
+      <div class="details">
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>An Apple-silicon Mac running macOS 14 or later. Nothing else: Agemin implements the age format itself, and needs no Homebrew, no age tool, and no administrator access.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-sparkles"/></svg>Three steps</h3><p>Choose your recipients folder, usually <code>~/.age</code>, and your identities folder, usually <code>~/.ssh</code>. Drop a file on the Encrypt page, tick the recipients, and press <kbd>⌘⏎</kbd>. Drop an age file on the Decrypt page to open it.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-box"/></svg>The age format</h3><p>Agemin writes age v1 files: ChaCha20-Poly1305 in 64 KiB chunks, X25519 for age and Ed25519 keys, RSA-OAEP for RSA keys, and scrypt for passphrases. Binary or ASCII-armored, as you choose.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-text"/></svg>Passphrases</h3><p>Switch Encrypt for to Passphrase. Generate fills in a random passphrase and shows it once. A passphrase file has no key recipients; the age format allows only one or the other.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-doc"/></svg>Large files</h3><p>Files are streamed chunk by chunk with a progress bar and a Cancel button, so memory use does not grow with the file and a canceled run leaves nothing behind.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-grid"/></svg>Open With</h3><p>Agemin registers the <code>.age</code> type, so an age file opened with Agemin from Finder lands on the Decrypt page. Any other file lands on the Encrypt page.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>Agemin runs in the App Sandbox with Hardened Runtime. Its container holds the folder bookmarks, avatars, the trial state, the day's Free count, and the window position.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-code"/></svg>Source available</h3><p>The source is on GitHub under the PolyForm Strict License 1.0.0 with added permissions. It includes the age implementation and the tests that check it against the age tool.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- data-doc opens standalone pages in the dialog; data-scroll names the
+       menu landing target. -->
+  <section id="docs" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><svg class="ic"><use href="#i-ask"/></svg>Support and policies</p>
+        <h2>Help, privacy, and terms.</h2>
+        <p class="lead">Find help and read the app's privacy policy and terms.</p>
+      </div>
+      <div class="docs">
+        <a class="doc-card" id="support" href="support/index.html" data-doc="support/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><span class="t"><b>Support</b><span>Contact and common questions</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="privacy-policy" href="privacy/index.html" data-doc="privacy/index.html" data-scroll="docs"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><span class="t"><b>Privacy policy</b><span>What Agemin reads and writes, what it never keeps or sends, and your controls</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+        <a class="doc-card" id="terms" href="terms/index.html" data-doc="terms/index.html"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><span class="t"><b>Terms of use</b><span>The trial, Agemin Pro, your keys, and the source license</span></span><svg class="ic chev"><use href="#i-chev-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="outro">
+    <div class="wrap reveal">
+      <img src="icon-128.png" alt="" width="128" height="128" loading="lazy" decoding="async">
+      <h2>Coming to the Mac App Store.</h2>
+      <p class="lead">Follow the project on GitHub for launch updates, or visit Support for help.</p>
+      <div class="actions">
+        <a class="cta primary" href="https://github.com/min-tools/agemin-macos"><img class="wordmark" src="../logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
+        <a class="cta ghost" href="#support">Get support</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <a href="https://github.com/iliaross">© 2026 Ilia Ross</a>
+</footer>
+<script src="../landing.js" defer></script>
+<script src="agemin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+/* Agemin app previews used on the home and product pages: the main window with
+   its sidebar and the Encrypt page. Shared styles live in landing.css. */
+
+.ag {
+  /* Match the neutral surfaces in the app captures. */
+  --win: #fbfbfd;
+  --win-2: #f0f0f1;
+  --pane: #fff;
+  --ag-sidebar: #f5f5f7;
+  --ag-ok: #1b8a3d;
+  --ag-ok-bg: rgba(52, 199, 89, 0.09);
+  --ag-ok-line: rgba(52, 199, 89, 0.35);
+  display: flex;
+  flex-direction: column;
+  /* Tall enough for the whole Encrypt page; the window grows rather than clips. */
+  min-height: 46em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ag {
+    --win: #1c1c1e;
+    --win-2: #262628;
+    --pane: #28282b;
+    --ag-sidebar: #232325;
+    --ag-ok: #4cd964;
+    --ag-ok-bg: rgba(52, 199, 89, 0.1);
+    --ag-ok-line: rgba(52, 199, 89, 0.4);
+  }
+}
+
+/* Fit the sidebar and the whole Encrypt page inside the hero window. */
+.stage .ag {
+  font-size: clamp(8.5px, 1.35cqw, 13px);
+}
+
+/* Center the window title independently of the traffic-light controls. */
+.ag .win-bar {
+  position: relative;
+  justify-content: center;
+  flex: none;
+  height: 2.2em;
+  color: var(--win-dim);
+  font-size: 0.9em;
+}
+
+.ag .win-bar .dots {
+  position: absolute;
+  left: 1.1em;
+}
+
+.ag .win-bar .dots i {
+  background: var(--win-fill-2);
+  box-shadow: inset 0 0 0 1px var(--win-line);
+}
+
+/* Reserve a fixed share for the sidebar and let the page fill the rest. */
+.ag-body {
+  display: grid;
+  grid-template-columns: 24% minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar: the two file pages and the two key pages. */
+.ag-side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.9em 0.8em;
+  background: var(--ag-sidebar);
+  border-right: 1px solid var(--win-line);
+}
+
+.ag-side .grp {
+  margin: 0.8em 0.3em 0.35em;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+  white-space: nowrap;
+}
+
+.ag-side .row {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.45em 0.6em;
+  border-radius: 0.55em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ag-side .row.on {
+  background: color-mix(in srgb, var(--win-accent) 13%, transparent);
+  font-weight: 600;
+}
+
+/* Page rows carry a neutral icon tile, accent-tinted on the selected page, and an optional count. */
+.ag .tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.5em;
+  color: var(--win-fg-2);
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+}
+
+.ag-side .row.on .tile {
+  color: var(--win-accent);
+  background: color-mix(in srgb, var(--win-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--win-accent) 20%, transparent);
+}
+
+.ag .tile .ic {
+  width: 1em;
+  height: 1em;
+}
+
+.ag .tile.big {
+  width: 3em;
+  height: 3em;
+  border-radius: 0.8em;
+  color: var(--win-accent);
+  background: color-mix(in srgb, var(--win-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--win-accent) 20%, transparent);
+}
+
+.ag .tile.big .ic {
+  width: 1.35em;
+  height: 1.35em;
+}
+
+.ag-side .row .count {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-size: 0.88em;
+  font-family: var(--mono);
+}
+
+/* The page: header, file card, recipients card, action row, and result, in order. */
+.ag-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 0;
+  padding: 1.5em 1.8em;
+  overflow: hidden;
+  background: var(--win);
+}
+
+.ag-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9em;
+}
+
+.ag-head .t b {
+  display: block;
+  font-size: 1.45em;
+  font-weight: 700;
+}
+
+.ag-head .t span {
+  display: block;
+  color: var(--win-muted);
+  font-size: 0.92em;
+}
+
+/* Cards share one chrome: a pane, a hairline, and rounded corners. */
+.ag-card,
+.ag-file,
+.ag-result {
+  border: 1px solid var(--win-line);
+  border-radius: 0.9em;
+  background: var(--pane);
+}
+
+.ag-file {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  padding: 0.9em 1.1em;
+}
+
+.ag-file .tile {
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 0.7em;
+}
+
+.ag-file .t {
+  min-width: 0;
+}
+
+.ag-file .t b,
+.ag .t code {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-file .t b {
+  font-weight: 600;
+}
+
+.ag .t code {
+  font: 0.82em var(--mono);
+  color: var(--win-muted);
+}
+
+.ag-file .size {
+  margin-left: auto;
+  color: var(--win-muted);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* Buttons as the app draws them: a quiet secondary fill and the accent primary. */
+.ag .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.45em 0.95em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-border);
+  font-weight: 600;
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+.ag .btn.small {
+  padding: 0.3em 0.75em;
+  font-size: 0.85em;
+}
+
+.ag .btn.primary {
+  color: #fff;
+  background: linear-gradient(var(--win-accent), color-mix(in srgb, var(--win-accent) 85%, #000));
+  border-color: color-mix(in srgb, var(--win-accent) 80%, #000);
+  box-shadow: 0 0.25em 0.7em color-mix(in srgb, var(--win-accent) 35%, transparent);
+}
+
+.ag kbd {
+  font: 500 0.78em var(--mono);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--win-line);
+  border-radius: 0.3em;
+  color: var(--win-muted);
+}
+
+.ag .btn.primary kbd {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Buttons on the result card take its green, as in the app. */
+.ag-result .btn {
+  color: var(--ag-ok);
+  background: color-mix(in srgb, var(--ag-ok) 20%, transparent);
+  border-color: color-mix(in srgb, var(--ag-ok) 55%, transparent);
+}
+
+.ag-card {
+  padding: 1.1em 1.3em;
+}
+
+.ag-card .h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--win-muted);
+}
+
+/* The Recipients / Passphrase segmented control. */
+.ag .seg {
+  display: inline-flex;
+  padding: 0.15em;
+  border-radius: 0.6em;
+  background: var(--win-fill);
+  border: 1px solid var(--win-line);
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 1.18em;
+  font-weight: 500;
+}
+
+.ag .seg span {
+  padding: 0.3em 0.9em;
+  border-radius: 0.45em;
+  color: var(--win-muted);
+}
+
+.ag .seg span.on {
+  background: var(--pane);
+  color: var(--win-fg);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.ag-card .sum {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4em;
+  color: var(--win-muted);
+  font-size: 0.9em;
+}
+
+.ag-card .sum .links {
+  color: var(--win-accent);
+  font-weight: 500;
+}
+
+/* Recipient chips: an avatar, the name, a "you" mark on the user's own key, and a check mark
+   while selected. The last chip adds a recipient. */
+.ag .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55em;
+  padding-top: 0.3em;
+}
+
+.ag .rchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.28em 0.8em 0.28em 0.32em;
+  border-radius: 999px;
+  border: 1px solid var(--win-border);
+  background: var(--win-fill);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.ag .rchip.on {
+  background: color-mix(in srgb, var(--win-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--win-accent) 38%, transparent);
+}
+
+.ag .rchip .av {
+  flex: none;
+  width: 1.65em;
+  height: 1.65em;
+  border-radius: 50%;
+}
+
+.ag .rchip .av.ini {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.78em;
+  width: 2.1em;
+  height: 2.1em;
+}
+
+.ag .rchip em {
+  font-style: normal;
+  color: var(--win-muted);
+  font-size: 0.85em;
+}
+
+.ag .rchip .chk {
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--win-accent);
+  stroke-width: 3;
+}
+
+.ag .rchip:not(.on) .chk {
+  display: none;
+}
+
+.ag .rchip.add {
+  padding-left: 0.7em;
+  border-style: dashed;
+  background: var(--pane);
+  color: var(--win-muted);
+}
+
+.ag .rchip.add .ic {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+/* The action row: the Encrypt button, or the progress bar while a run is replayed. */
+.ag-action {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  min-height: 2.6em;
+}
+
+.ag-action .progress {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35em;
+  color: var(--win-muted);
+  font-size: 0.9em;
+}
+
+.ag-action .progress i {
+  display: block;
+  height: 0.5em;
+  border-radius: 0.3em;
+  background: var(--win-fill-2);
+  overflow: hidden;
+  position: relative;
+}
+
+.ag-action .progress i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--ag-progress, 0%);
+  background: var(--win-accent);
+  border-radius: inherit;
+  transition: width 0.45s linear;
+}
+
+/* The result card: green-tinted, with the output, its size, and the recipients. */
+.ag-result {
+  padding: 1.1em 1.3em;
+  background: var(--ag-ok-bg);
+  border-color: var(--ag-ok-line);
+}
+
+.ag-result .h {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.7em;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.ag-result .h .ic.ok {
+  width: 1.2em;
+  height: 1.2em;
+  color: var(--ag-ok);
+}
+
+.ag-result .h .spacer {
+  flex: 1;
+}
+
+.ag-result .kv {
+  display: grid;
+  grid-template-columns: 7em minmax(0, 1fr);
+  gap: 0.8em;
+  padding: 0.25em 0;
+  font-size: 0.92em;
+}
+
+.ag-result .kv>span:first-child {
+  color: var(--win-muted);
+}
+
+.ag-result .kv code {
+  font: 0.92em var(--mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-result .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+.ag-result .chips i {
+  font-style: normal;
+  padding: 0.1em 0.55em;
+  border-radius: 0.45em;
+  border: 1px solid var(--win-line);
+  background: var(--pane);
+  font-size: 0.88em;
+  font-weight: 500;
+}
+
+/* Replay states: ready hides the result, running shows the progress bar, done shows both the
+   result and, briefly, the toast. Without scripting the finished state is shown. The result
+   keeps its space while hidden so the window height does not jump. */
+[data-ag][data-state="ready"] .ag-result,
+[data-ag][data-state="running"] .ag-result {
+  visibility: hidden;
+}
+
+[data-ag][data-state="running"] .ag-action .btn {
+  display: none;
+}
+
+[data-ag][data-state="running"] .ag-action .progress {
+  display: flex;
+}
+
+/* Show the toast during the replay, or keep it visible in the static state. */
+.stage .sat.toast {
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.stage.saved .sat.toast,
+html:not(.motion) .stage .sat.toast {
+  opacity: 1;
+  transform: none;
+}
+
+/* The home page card shows the sidebar, the file, and the recipients only. */
+.shot .ag {
+  font-size: clamp(7px, 1.05cqw, 10px);
+  height: 100%;
+}
+
+.shot .ag-body {
+  grid-template-columns: 30% minmax(0, 1fr);
+}
+
+.shot .ag-action,
+.shot .ag-result,
+.shot .ag-card .sum {
+  display: none;
+}
+
+.shot .ag-main {
+  padding: 1.2em 1.3em;
+  gap: 0.8em;
+}

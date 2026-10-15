@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="pastemin/pastemin.css">
 <link rel="stylesheet" href="netmin/netmin.css">
 <link rel="stylesheet" href="keymin/keymin.css">
+<link rel="stylesheet" href="agemin/agemin.css">
 <link rel="stylesheet" href="paletmin/paletmin.css">
 <link rel="stylesheet" href="home.css">
 <script>
@@ -49,7 +50,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
 {"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A private clipboard history for the Mac: search saved text and images and restore them from any app."}},
 {"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"Netmin","url":"https://min.tools/netmin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"Network diagnostics for the Mac without the terminal: DNS, routing, local devices, mail, TLS, websites, and ports in one app."}},
 {"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Keymin","url":"https://min.tools/keymin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A native Mac editor for the configuration of the skhd hotkey daemon: record a shortcut, pick the key and modifiers, write the command, and save the file in skhd's own syntax with comments and spacing preserved."}},
-{"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"Paletmin","url":"https://min.tools/paletmin/","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later, or Firefox 140 or later","applicationCategory":"BrowserApplication","description":"A browser extension for Chrome and Firefox that switches the website in the current tab between its light and dark palette with one click, with no data collection and no network requests."}}
+{"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"Agemin","url":"https://min.tools/agemin/","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","description":"A native Mac app that encrypts and decrypts files in the age format: encrypt for the SSH and age keys of the people who should open them, or with a passphrase, and decrypt with your own keys, with no age tool to install."}},
+{"@type":"ListItem","position":6,"item":{"@type":"SoftwareApplication","name":"Paletmin","url":"https://min.tools/paletmin/","operatingSystem":"macOS, Windows, Linux, ChromeOS","browserRequirements":"Google Chrome 118 or later, or Firefox 140 or later","applicationCategory":"BrowserApplication","description":"A browser extension for Chrome and Firefox that switches the website in the current tab between its light and dark palette with one click, with no data collection and no network requests."}}
 ]}]}
 </script>
 </head>
@@ -78,6 +80,11 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4"/><path d="m11 11 9-9"/><path d="m16 6 2.5 2.5"/><path d="m18.5 3.5 2 2"/></symbol>
+  <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M15.5 20a5.5 5.5 0 0 1 6-5.2"/></symbol>
+  <symbol id="av-orbit" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#C4674A" stroke="none"/><circle cx="50" cy="50" r="26" fill="none" stroke="#FFFFFF" stroke-width="7"/><circle cx="50" cy="24" r="9" fill="#FFFFFF" stroke="none"/></symbol>
+  <symbol id="av-waves" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#3A9E95" stroke="none"/><path d="M24 37 q13 -10 26 0 t26 0 M24 51 q13 -10 26 0 t26 0 M24 65 q13 -10 26 0 t26 0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/></symbol>
+  <symbol id="av-hex" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#3F8BD9" stroke="none"/><polygon points="50,20 76,35 76,65 50,80 24,65 24,35" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linejoin="round"/></symbol>
   <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/><path d="M5 7.5h14"/><path d="M5 16.5h14"/></symbol>
   <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><path d="M9 11h6"/><path d="M9 15h4"/></symbol>
@@ -124,6 +131,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <li><a href="pastemin/"><img src="pastemin/icon.png" alt="" width="512" height="512"><b>Pastemin</b><span>Clipboard</span></a></li>
       <li><a href="netmin/"><img src="netmin/icon.png" alt="" width="512" height="512"><b>Netmin</b><span>Network</span></a></li>
       <li><a href="keymin/"><img src="keymin/icon.png" alt="" width="512" height="512"><b>Keymin</b><span>Hotkeys</span></a></li>
+      <li><a href="agemin/"><img src="agemin/icon.png" alt="" width="512" height="512"><b>Agemin</b><span>Encryption</span></a></li>
       <li><a href="paletmin/"><img src="paletmin/icon.png" alt="" width="512" height="512"><b>Paletmin</b><span>Palette</span></a></li>
     </ul>
 
@@ -264,6 +272,40 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="links"><a class="cta primary small" href="keymin/">Learn more</a><a class="cta ghost small" href="https://apps.apple.com/app/id6820648683">Mac App Store</a><a class="cta ghost small" href="https://github.com/min-tools/keymin-macos">GitHub</a></div>
         </article>
 
+        <article class="app-card reveal d2">
+          <div class="shot" aria-hidden="true">
+            <div class="win ag">
+              <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><span>Agemin</span></div>
+              <div class="ag-body">
+                <div class="ag-side">
+                  <div class="grp">Files</div>
+                  <div class="row on"><span class="tile"><svg class="ic"><use href="#i-lock"/></svg></span><span class="name">Encrypt</span></div>
+                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-unlock"/></svg></span><span class="name">Decrypt</span></div>
+                  <div class="grp">Keys</div>
+                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-people"/></svg></span><span class="name">Recipients</span><span class="count">4</span></div>
+                  <div class="row"><span class="tile"><svg class="ic"><use href="#i-key"/></svg></span><span class="name">Identities</span><span class="count">2</span></div>
+                </div>
+                <div class="ag-main">
+                  <div class="ag-file"><span class="tile"><svg class="ic"><use href="#i-doc"/></svg></span><div class="t"><b>Board report Q3.pdf</b><code>~/Documents/Board report Q3.pdf</code></div><span class="size">2.4 MB</span></div>
+                  <div class="ag-card">
+                    <div class="h">Encrypt for<span class="seg"><span class="on">Recipients</span><span>Passphrase</span></span></div>
+                    <div class="chips">
+                      <span class="rchip on"><svg class="av"><use href="#av-orbit"/></svg>alice<svg class="ic chk"><use href="#i-check"/></svg></span>
+                      <span class="rchip on"><svg class="av"><use href="#av-waves"/></svg>carol<svg class="ic chk"><use href="#i-check"/></svg></span>
+                      <span class="rchip on"><svg class="av"><use href="#av-hex"/></svg>dave<svg class="ic chk"><use href="#i-check"/></svg></span>
+                      <span class="rchip"><i class="av ini" style="background:#6366D1">M</i>me<em>you</em></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-head"><img src="agemin/icon-128.png" alt="" width="128" height="128"><div><h3>Agemin</h3><p>age encryption, without the terminal.</p></div></div>
+          <p>Encrypt files for the SSH and age keys of the people who should open them, or with a passphrase, and decrypt what they send you with your own keys. Agemin reads and writes the standard age format itself, in a sandboxed Mac app with no age tool, no account, and no network entitlement.</p>
+          <ul class="bits"><li>SSH and age keys</li><li>Standard age files</li><li>Thirty-one languages</li></ul>
+          <div class="links"><a class="cta primary small" href="agemin/">Learn more</a><a class="cta ghost small" href="https://github.com/min-tools/agemin-macos">GitHub</a></div>
+        </article>
+
         <article class="app-card reveal">
           <div class="shot" aria-hidden="true">
             <div class="win pt">
@@ -312,6 +354,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <div class="row"><img src="pastemin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>pastemin-macos</code></b><span>Swift · AppKit and SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="netmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>netmin-macos</code></b><span>Swift · SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="keymin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>keymin-macos</code></b><span>Swift · SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
+          <div class="row"><img src="agemin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>agemin-macos</code></b><span>Swift · SwiftUI · PolyForm Strict + permissions</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="paletmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>paletmin-chrome</code></b><span>JavaScript · Chrome extension · MIT</span></div><span class="tag ok">Public</span></div>
           <div class="row"><img src="paletmin/icon-128.png" alt="" width="128" height="128" style="width:2.2em;height:2.2em;border-radius:0.55em"><div class="t"><b><code>paletmin-firefox</code></b><span>JavaScript · Firefox add-on · MIT</span></div><span class="tag ok">Public</span></div>
         </div>
@@ -324,10 +367,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="copy reveal">
         <p class="eyebrow"><svg class="ic"><use href="#i-lock"/></svg>No tracking</p>
         <h2>No Min Tools accounts, analytics, or servers.</h2>
-        <p class="lead">These apps keep their data on your device and send no usage data to Min Tools. Network requests depend on the features you use: AI providers, websites, network checks, optional iCloud sync, and Apple purchases. Keymin has no network entitlement, and Paletmin makes no requests at all.</p>
+        <p class="lead">These apps keep their data on your device and send no usage data to Min Tools. Network requests depend on the features you use: AI providers, websites, network checks, optional iCloud sync, and Apple purchases. Keymin and Agemin have no network entitlement, and Paletmin makes no requests at all.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Kept in the sandbox</h3><p>Each Mac app keeps its data in its own container; Keymin also edits the configuration file you choose. Paletmin keeps its two small settings inside the browser. Langmin stores API keys separately in Keychain and can sync your Library through iCloud if you enable it.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>You choose the features that connect</h3><p>Langmin connects to the providers and websites you use. Netmin contacts the systems needed for each check. Pastemin never uploads clipboard history, Keymin has no network entitlement, and Paletmin makes no network requests at all.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3>Kept in the sandbox</h3><p>Each Mac app keeps its data in its own container; Keymin also edits the configuration file you choose, and Agemin reads the key folders you choose and writes only where you save. Paletmin keeps its two small settings inside the browser. Langmin stores API keys separately in Keychain and can sync your Library through iCloud if you enable it.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>You choose the features that connect</h3><p>Langmin connects to the providers and websites you use. Netmin contacts the systems needed for each check. Pastemin never uploads clipboard history, Keymin and Agemin have no network entitlement, and Paletmin makes no network requests at all.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>Plain-language policies</h3><p>Each has its own privacy policy. This site generates its privacy pages from those policies and checks that the text matches.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><div><h3>Purchases through Apple</h3><p>The Mac apps include a 30-day trial, and Pro is bought through the App Store; Apple never shares your payment details with us. Paletmin has nothing to buy.</p></div></li>
         </ul>
@@ -353,12 +396,12 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       </div>
       <div class="details">
         <div class="card reveal"><h3><svg class="ic"><use href="#i-cpu"/></svg>Native to where it runs</h3><p>The Mac apps use AppKit and SwiftUI on Apple silicon and follow your Mac's appearance, contrast, accent, and reduced-motion settings. Paletmin is plain JavaScript inside Chrome or Firefox, with an icon drawn for their light and dark toolbars.</p></div>
-        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>The Mac apps run in the App Sandbox with Hardened Runtime and need no administrator access. Pastemin's direct builds can request Accessibility access for optional automatic paste; its App Store edition uses manual paste. Keymin edits the file you choose. Paletmin runs inside the browser with only the permissions it needs.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-keyboard"/></svg>Keyboard first</h3><p>Use keyboard shortcuts for common actions. Langmin and Pastemin open from other apps; Netmin lets you find tools and run checks from the keyboard; Keymin records a shortcut as you press it; Paletmin takes a browser shortcut.</p></div>
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-translate"/></svg>Localized</h3><p>Langmin, Pastemin, and Netmin are available in more than twenty-five languages and follow your Mac's language settings. Keymin starts in English. Translations are welcome as contributions.</p></div>
+        <div class="card reveal d1"><h3><svg class="ic"><use href="#i-shield"/></svg>Sandboxed</h3><p>The Mac apps run in the App Sandbox with Hardened Runtime and need no administrator access. Pastemin's direct builds can request Accessibility access for optional automatic paste; its App Store edition uses manual paste. Keymin edits the file you choose; Agemin reads the key folders you choose. Paletmin runs inside the browser with only the permissions it needs.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-keyboard"/></svg>Keyboard first</h3><p>Use keyboard shortcuts for common actions. Langmin and Pastemin open from other apps; Netmin lets you find tools and run checks from the keyboard; Keymin records a shortcut as you press it; Agemin encrypts with one key press; Paletmin takes a browser shortcut.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-translate"/></svg>Localized</h3><p>Langmin, Pastemin, Netmin, and Agemin are available in more than twenty-five languages and follow your Mac's language settings. Keymin starts in English. Translations are welcome as contributions.</p></div>
         <div class="card reveal d1"><h3><svg class="ic"><use href="#i-clock"/></svg>Free to start</h3><p>The Mac apps start with 30 days of full access, without starting a subscription. A free tier remains afterward. Pro is a yearly subscription or a one-time lifetime purchase, with Family Sharing where enabled. Paletmin is free.</p></div>
-        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>Langmin, Pastemin, Netmin, and Keymin currently require an Apple-silicon Mac running macOS 14 or later. To run the hotkeys you edit in Keymin, install skhd or skhd.zig. Paletmin needs Chrome 118 or Firefox 140 or later on a desktop system. Each product page lists its current requirements.</p></div>
-        <div class="card reveal"><h3><svg class="ic"><use href="#i-box"/></svg>Nothing extra to install</h3><p>No developer runtimes or companion apps are needed. The Mac apps include their own helpers; some Apple features may download on-device models. Keymin is the one exception by design: it edits the configuration of skhd, which you install yourself. Paletmin is a single extension.</p></div>
+        <div class="card reveal d2"><h3><svg class="ic"><use href="#i-mac"/></svg>Requirements</h3><p>Langmin, Pastemin, Netmin, Keymin, and Agemin currently require an Apple-silicon Mac running macOS 14 or later. To run the hotkeys you edit in Keymin, install skhd or skhd.zig. Paletmin needs Chrome 118 or Firefox 140 or later on a desktop system. Each product page lists its current requirements.</p></div>
+        <div class="card reveal"><h3><svg class="ic"><use href="#i-box"/></svg>Nothing extra to install</h3><p>No developer runtimes or companion apps are needed. The Mac apps include their own helpers; some Apple features may download on-device models. Keymin is the one exception by design: it edits the configuration of skhd, which you install yourself. Agemin implements the age format itself, so the age tool is not needed. Paletmin is a single extension.</p></div>
         <div class="card reveal d1"><h3><svg class="ic"><use href="#i-person"/></svg>One developer</h3><p>Min Tools is made by Ilia Ross. Questions and bug reports go to the relevant app's GitHub repository.</p></div>
       </div>
     </div>
@@ -371,7 +414,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <p class="lead">Visit each app's repository for progress and launch updates. You can report problems, improve translations, review code, or contribute a change.</p>
       <div class="ways">
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Report a bug</h3><p>Or suggest an improvement in the app's repository. Say what happened and what you expected, and leave out private text, clipboard content, addresses, and keys.</p></div>
-        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-translate"/></svg></span><h3>Improve a translation</h3><p>Improve a translation or clarify an instruction. Langmin, Pastemin, and Netmin each support more than twenty-five languages; Keymin is ready for its first.</p></div>
+        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-translate"/></svg></span><h3>Improve a translation</h3><p>Improve a translation or clarify an instruction. Langmin, Pastemin, and Netmin each support more than twenty-five languages; Keymin and Agemin are ready for their first.</p></div>
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Contribute code</h3><p>Small, focused changes and reviews are welcome, under the contribution terms published in each repository.</p></div>
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><h3>Share an app</h3><p>Tell someone who could use it. A Pro purchase on the Mac App Store supports development.</p></div>
       </div>
