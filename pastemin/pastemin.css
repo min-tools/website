@@ -9,6 +9,21 @@
   height: 30em;
 }
 
+/* On macOS 26 and later the panel is Liquid Glass: large continuous corners
+   and a translucent surface that blurs whatever sits behind it. */
+.win.pm {
+  border-radius: 1.9em;
+  border-color: var(--win-border);
+  background: color-mix(in srgb, var(--win) 82%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  backdrop-filter: blur(28px) saturate(170%);
+}
+
+/* The preview pane shares the glass instead of an opaque fill of its own. */
+.win.pm .pm-detail {
+  background: transparent;
+}
+
 .pm-bar {
   display: flex;
   align-items: center;
@@ -360,11 +375,17 @@
   width: 78%;
   height: 84%;
   font-size: 0.9em;
-  border: 1px solid var(--win-line);
-  border-radius: 1em;
-  background: var(--win);
+  border: 1px solid var(--win-border);
+  border-radius: 1.7em;
+  background: color-mix(in srgb, var(--win) 82%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  backdrop-filter: blur(28px) saturate(170%);
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
   overflow: hidden;
+}
+
+.pm-scene .pm .pm-detail {
+  background: transparent;
 }
 
 .pm-scene .menu {
