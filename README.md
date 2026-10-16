@@ -41,9 +41,16 @@ Paletmin's page is rendered from the Chrome extension's policy. The Firefox add-
 
 ## Icons and logo
 
-Every page uses the Min Tools favicon. The root contains `favicon.ico` at 16, 32, and 48 pixels, a vector `favicon.svg`, and a 180-pixel `apple-touch-icon.png`. The web manifest references `icon-192.png` and the 512-pixel `icon.png`; `icon-128.png` is the smaller site icon.
+The home page uses the Min Tools favicon. The root contains `favicon.ico` at 16, 32, and 48 pixels, a vector `favicon.svg`, and a 180-pixel `apple-touch-icon.png`. The web manifest references `icon-192.png` and the 512-pixel `icon.png`; `icon-128.png` is the smaller site icon.
 
 Each app folder has its own 512-pixel `icon.png` and `icon-128.png` for app branding and social previews. These website copies are cropped and placed on a solid blue background; the app repositories' icons are unchanged. Paletmin's copies are drawn in the same style from the extension's star-and-A glyph, since the extension itself ships only small toolbar icons.
+
+An app's pages use the app's own icon in the browser: `favicon.ico` at 16, 32, and 48 pixels, `icon-128.png` as the larger PNG icon, and an opaque 180-pixel `apple-touch-icon.png`, all made from its `icon.png` with ImageMagick:
+
+```bash
+magick app/icon.png -define icon:auto-resize=48,32,16 app/favicon.ico
+magick app/icon.png -background "$(magick app/icon.png -alpha off -format '%[pixel:p{256,6}]' info:)" -flatten -alpha off -resize 180x180 app/apple-touch-icon.png
+```
 
 `brand/` contains the Min Tools icon, mark, and wide and square logos in SVG and PNG formats. The logos also have dark variants. The root icons are downscaled from `brand/mintools-icon-square.png`.
 

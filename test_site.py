@@ -118,7 +118,7 @@ class SiteTests(unittest.TestCase):
         """test_every_app_has_its_pages(): check each app's pages and icons exist."""
         for slug in PRODUCTS:
             for name in ('index.html', 'support/index.html', 'privacy/index.html', 'terms/index.html', 'contribute/index.html',
-                         'icon.png', 'icon-128.png'):
+                         'icon.png', 'icon-128.png', 'favicon.ico', 'apple-touch-icon.png'):
                 self.assertTrue((ROOT / slug / name).is_file(), f'{slug}/{name}')
 
     def test_sitemap_lists_every_page_once(self):

@@ -65,9 +65,9 @@ HEADER = """<!doctype html>
 <title>Privacy Policy · {name}</title>
 <link rel="canonical" href="https://min.tools/{slug}/privacy/">
 <meta name="description" content="{description}">
-<link rel="icon" href="../../favicon.ico" sizes="32x32">
-<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../icon-128.png" type="image/png" sizes="128x128">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../../site.webmanifest">
 <link rel="stylesheet" href="../../style.css">
 <script>
