@@ -505,3 +505,11 @@
 html:not(.motion) .stage .sat.toast {
   opacity: 1;
 }
+
+/* The shortcut keycaps float at the bottom left, over the empty end of
+   the history list, not at the bottom right where the shared position
+   would cover the selected item's source and size line. */
+.stage[data-pm] .sat.keys {
+  right: auto;
+  left: 3%;
+}
