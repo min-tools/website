@@ -522,6 +522,34 @@ body.landing header.site nav a.on:hover {
   color: transparent;
 }
 
+/* The accented phrase of a hero heading is set in the italic serif, a
+   little larger to match the sans's x-height, with a tight line height so
+   it does not grow the line box and room on the right for the overhang. */
+.hero h1 .grad {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.08em;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  padding-right: 0.06em;
+}
+
+/* The drawn app windows, desktop scenes, ledgers, demo panes, and floating
+   toasts and keycaps imitate real macOS and browser interfaces, so they
+   keep the system font rather than the site's. */
+.stage,
+.visual,
+.shot,
+.demo,
+.bvis,
+.ledger,
+.sat,
+.scene,
+.pm-scene {
+  font-family: var(--ui);
+}
+
 .hero .sub {
   font-size: clamp(17px, 2vw, 21px);
   line-height: 1.45;

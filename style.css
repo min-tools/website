@@ -1,5 +1,30 @@
+/* Self-hosted type: Instrument Sans as a variable font for all site text,
+   and Instrument Serif in italic for the accented phrase in hero headings.
+   The paths resolve against this file, so every page can share them.
+   font-display: swap shows the system font until each file loads. */
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("fonts/InstrumentSans-Variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light dark;
+  /* Site text uses Instrument Sans; the drawn app windows keep the system
+     font (--ui) so they look like real macOS and browser windows. */
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --bg: #f5f5f7;
   --fg: #1d1d1f;
   --muted: #6e6e73;
@@ -23,7 +48,7 @@
 
 body {
   margin: 0;
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 17px/1.55 var(--sans);
   background: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;

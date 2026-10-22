@@ -69,6 +69,7 @@ HEADER = """<!doctype html>
 <link rel="icon" href="../icon-128.png" type="image/png" sizes="128x128">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../../site.webmanifest">
+<link rel="preload" href="../../fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../style.css">
 <script>
 // When framed in the landing-page dialog, hide the standalone page chrome.

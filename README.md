@@ -16,6 +16,7 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 | `test_browser.py` | Checks layouts, prices, footers, dialogs, demos, and keyboard navigation in Chromium. |
 | `CNAME`, `robots.txt`, `sitemap.xml`, `.nojekyll` | GitHub Pages and search-engine files. |
 | `brand/`, `logo-wide*.svg`, `favicon.*`, `apple-touch-icon.png`, `icon*.png`, `site.webmanifest` | Min Tools logos and site icons. |
+| `fonts/` | Instrument Sans and Instrument Serif Italic as self-hosted WOFF2 files, with their license. |
 
 Navigation and asset links use relative paths so the site can be previewed from disk or served over HTTP. The app previews use HTML and CSS and follow the system's light or dark appearance. Their shared colors are defined by the `--win-*` variables at the top of `landing.css`.
 
@@ -38,6 +39,10 @@ python3 build_privacy.py netmin ../netmin/netmin-macos/PRIVACY.md
 Review the generated page before publishing.
 
 Paletmin's page is rendered from the Chrome extension's policy. The Firefox add-on in `../paletmin/paletmin-firefox` keeps its own browser-specific policy; the site links to it from Paletmin's support page rather than rendering a second page.
+
+## Fonts
+
+Site text is set in Instrument Sans, loaded as one variable WOFF2 file, and the accented phrase in each hero heading in Instrument Serif Italic. Both are declared in `style.css`, so every page shares them, and each page preloads the files it uses. The drawn app windows, scenes, ledgers, and demo panes keep the system font so they look like real macOS and browser interfaces; `landing.css` resets them through the `--ui` variable. The fonts are licensed under the SIL Open Font License; see `fonts/LICENSES.md`.
 
 ## Icons and logo
 
