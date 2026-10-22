@@ -97,7 +97,7 @@ main { max-width: 960px; margin: 0 auto; padding: 0 24px 24px; }
 
 .hero { text-align: center; padding: 40px 0 24px; }
 .hero img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); }
-.hero h1 { font-size: 44px; margin: 20px 0 8px; letter-spacing: -0.02em; }
+.hero h1 { font-size: 44px; margin: 20px 0 8px; letter-spacing: -0.04em; font-weight: 520; }
 .hero .tag { font-size: 22px; color: var(--muted); margin: 0 0 24px; }
 .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
@@ -121,9 +121,11 @@ section > p.lead { color: var(--muted); margin: 0 0 20px; max-width: 64ch; }
 .card h3 { margin: 0 0 6px; font-size: 17px; }
 .card p { margin: 0; color: var(--muted); font-size: 15px; }
 
-.doc h1 { font-size: 34px; letter-spacing: -0.02em; margin: 24px 0 4px; }
-.doc h2 { font-size: 22px; margin: 32px 0 8px; }
-.doc h3 { font-size: 17px; margin: 24px 0 4px; }
+/* Document headings use the same medium weights as the landing pages;
+   the browser's default bold is too heavy in Instrument Sans. */
+.doc h1 { font-size: 34px; letter-spacing: -0.04em; font-weight: 540; margin: 24px 0 4px; }
+.doc h2 { font-size: 22px; letter-spacing: -0.02em; font-weight: 600; margin: 32px 0 8px; }
+.doc h3 { font-size: 17px; font-weight: 600; margin: 24px 0 4px; }
 .doc p, .doc li { max-width: 72ch; }
 .doc .meta { color: var(--muted); margin-top: 0; }
 .doc code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; background: var(--card); padding: 1px 5px; border-radius: 5px; }

@@ -360,11 +360,18 @@ body.landing header.site nav a.on:hover {
 
 .landing h2 {
   font-size: clamp(30px, 4.2vw, 46px);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.033em;
+  font-weight: 520;
   margin: 0 0 14px;
   text-wrap: balance;
+}
+
+/* Card and feature titles stay a step bolder than the large headings but
+   below the browser's default bold, which is too heavy in this face. */
+.landing h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .landing .lead {
@@ -505,11 +512,14 @@ body.landing header.site nav a.on:hover {
   box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
 }
 
+/* Large headings sit at a medium weight with tight tracking: Instrument
+   Sans reads heavy at bold sizes, and the lighter cut lets the italic
+   serif accent carry the emphasis. */
 .hero h1 {
   font-size: clamp(40px, 6.6vw, 76px);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 520;
   margin: 0 auto 16px;
   max-width: 16ch;
   text-wrap: balance;
