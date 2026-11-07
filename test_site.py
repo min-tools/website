@@ -150,11 +150,12 @@ class SiteTests(unittest.TestCase):
     def test_email_links_are_not_nested(self):
         """test_email_links_are_not_nested(): check bare and explicitly linked addresses."""
         address = 'privacy@example.com'
-        linked = f'<a href="mailto:{address}">{address}</a>'
+        # Every email link is wrapped so Cloudflare's obfuscation skips it.
+        linked = f'<!--email_off--><a href="mailto:{address}">{address}</a><!--/email_off-->'
         self.assertEqual(inline(address), linked)
         self.assertEqual(inline(f'[{address}](mailto:{address})'), linked)
         self.assertEqual(inline(f'[Email us](mailto:{address})'),
-                         f'<a href="mailto:{address}">Email us</a>')
+                         f'<!--email_off--><a href="mailto:{address}">Email us</a><!--/email_off-->')
 
 
 # Run the suite only when invoked directly; imports can reuse the page parser.

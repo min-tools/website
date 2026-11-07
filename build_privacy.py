@@ -129,6 +129,10 @@ def inline(text):
         lambda match: match[1] or f'<a href="mailto:{match[2]}">{match[2]}</a>',
         text,
     )
+    # Cloudflare's email obfuscation would rewrite each address and rely on a
+    # page script to restore it, which never runs for content fetched into
+    # the landing-page dialog. These comments tell it to leave the link alone.
+    text = re.sub(r'(<a href="mailto:[^"]*">.*?</a>)', r"<!--email_off-->\1<!--/email_off-->", text)
     return text
 
 
