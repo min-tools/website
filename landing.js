@@ -618,6 +618,18 @@
       event.preventDefault();
       showDoc(card);
     });
+    // Click handler(event): copy buttons in a fetched document, such as the
+    // donate page's wallet addresses, whose own script is not fetched with it.
+    box.addEventListener("click", (event) => {
+      const button = event.target.closest?.("button[data-copy]");
+      // Other clicks inside the document are not copy requests.
+      if (!button) { return; }
+      navigator.clipboard.writeText(button.dataset.copy).then(() => {
+        button.textContent = "Copied";
+        button.classList.add("copied");
+        setTimeout(() => { button.textContent = "Copy"; button.classList.remove("copied"); }, 1500);
+      });
+    });
     // Message handler(event): accept sizing and document links from the open frame.
     window.addEventListener("message", (event) => {
       const frame = $("iframe", box);

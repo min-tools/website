@@ -273,13 +273,34 @@ body.landing header.site.scrolled .brand img.dark {
   padding: 18px 18px 20px;
 }
 
-.ways .edge h3 {
-  margin-top: 12px;
-  font-size: 16px;
+/* The donate card is a link whose name and summary live in a .t span, as
+   the document dialog expects; style them like the other cards' h3 and p. */
+.ways a.edge {
+  display: block;
+  color: var(--fg);
+  text-decoration: none;
 }
 
-.ways .edge p {
+.ways .edge .t {
+  display: block;
+}
+
+.ways .edge h3,
+.ways .edge .t b {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ways .edge p,
+.ways .edge .t > span {
+  display: block;
+  margin: 0;
   font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 /* Keep contribution cards readable as the available width narrows. */

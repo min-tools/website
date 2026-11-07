@@ -130,6 +130,73 @@ section > p.lead { color: var(--muted); margin: 0 0 20px; max-width: 64ch; }
 .doc .meta { color: var(--muted); margin-top: 0; }
 .doc code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; background: var(--card); padding: 1px 5px; border-radius: 5px; }
 
+/* Donation wallets: a row per coin with its mark, name, and address, and a
+   copy button at the end. Each row sets --coin to its brand color, which
+   tints the card's left edge and the glow under the mark. The address may
+   break anywhere so it never overflows a phone screen. The selectors
+   outrank the document and embed heading rules so the rows keep their
+   tight spacing inside the dialog. */
+.wallets { display: grid; gap: 12px; margin: 14px 0 0; }
+.wallet {
+  --coin: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background:
+    radial-gradient(90% 160% at 0% 50%, color-mix(in srgb, var(--coin) 14%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--fg) 3%, var(--card)), var(--card));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+}
+.wallet:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--coin) 45%, var(--line));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 24px -14px color-mix(in srgb, var(--coin) 60%, transparent);
+}
+.wallet > svg {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 6px 12px color-mix(in srgb, var(--coin) 45%, transparent));
+}
+.wallet .t { flex: 1; min-width: 0; display: grid; gap: 4px; }
+.doc .wallet .t h3 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 15px; line-height: 1.3; }
+.wallet .t h3 span {
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.doc .wallet .t code {
+  display: block;
+  padding: 0;
+  background: none;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  word-break: break-all;
+  user-select: all;
+}
+.wallet button {
+  flex: none;
+  font: 600 14px var(--sans);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.wallet button:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
+.wallet button.copied { color: #fff; background: #34c759; border-color: #34c759; }
+
 /* Framed documents add "embed" in their page script: hide the standalone
    header and footer, and use the dialog background. */
 .embed body { background: transparent; }

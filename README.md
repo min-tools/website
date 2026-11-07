@@ -7,6 +7,7 @@ Static website for [min.tools](https://min.tools/), with a home page and pages f
 | Path | Contents |
 | --- | --- |
 | `index.html`, `home.css` | The home page: apps, source code, privacy, and contributions. |
+| `donate/` | Wallet addresses for direct donations, opened from the home page's Donate card and linked from each app's contribute page. Marked `noindex` and left out of the sitemap. |
 | `langmin/`, `pastemin/`, `netmin/`, `keymin/`, `agemin/`, `paletmin/` | Each app's landing page, icons, and `support/`, `privacy/`, `terms/`, and `contribute/` pages. Pastemin, Netmin, Keymin, and Agemin have additional stylesheets and demo scripts; Paletmin has a stylesheet for its browser-window preview. |
 | `landing.css`, `landing.js` | Shared landing-page styles, navigation, demos, and document dialogs. The app demo scripts use helpers exposed as `window.MinTools`. |
 | `style.css` | Shared document styles for the support, privacy, terms, and contribute pages, with light and dark appearances. |

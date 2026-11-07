@@ -20,6 +20,7 @@ class Page(HTMLParser):
         # Keep parse results separate from the current anchor/title state.
         self.links, self.ids, self.canonical, self.title = [], set(), None, None
         self.duplicate_ids, self.nested_links = [], []
+        self.noindex = False  # Set by a robots meta tag that keeps the page out of search results.
         self._in_link = False
         self._in_title = False
         self.feed(path.read_text())
@@ -47,6 +48,9 @@ class Page(HTMLParser):
         # Keep the declared public URL for comparison with the file's path.
         if tag == 'link' and attrs.get('rel') == 'canonical':
             self.canonical = attrs.get('href')
+        # A noindex page stays out of the sitemap as well.
+        if tag == 'meta' and attrs.get('name') == 'robots' and 'noindex' in attrs.get('content', ''):
+            self.noindex = True
         self._in_title = tag == 'title'
 
     def handle_endtag(self, tag):
@@ -123,9 +127,9 @@ class SiteTests(unittest.TestCase):
 
     def test_sitemap_lists_every_page_once(self):
         """test_sitemap_lists_every_page_once(): check page coverage and domain settings."""
-        # Every HTML page must appear once at its canonical directory URL.
+        # Every indexable HTML page must appear once at its canonical directory URL.
         entries = [e.text for e in ET.parse(ROOT / 'sitemap.xml').findall('.//{*}loc')]
-        expected = {BASE + f.relative_to(ROOT).as_posix().removesuffix('index.html') for f in pages()}
+        expected = {BASE + f.relative_to(ROOT).as_posix().removesuffix('index.html') for f in pages() if not Page(f).noindex}
         self.assertEqual(set(entries), expected)
         self.assertEqual(len(entries), len(expected))
         # Hosting and crawler configuration must use the same domain.

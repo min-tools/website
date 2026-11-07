@@ -102,6 +102,9 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <symbol id="i-dictionary" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8.8 16.5 3.2-9 3.2 9"/><path d="M10 13.5h4"/></symbol>
   <symbol id="i-library" viewBox="0 0 24 24"><path d="M4 4h4v16H4z"/><path d="M10 4h4v16h-4z"/><path d="m15.5 5.2 3.8-1 3.9 14.6-3.8 1z"/></symbol>
   <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12"/><path d="m18 6-12 12"/></symbol>
+  <symbol id="i-spinner" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-8 8"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
   <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
   <symbol id="i-reload" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
   <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v1h3a2 2 0 0 1 2 2v3h-1a2 2 0 0 0 0 4h1v3a2 2 0 0 1-2 2h-3v-1a2 2 0 0 0-4 0v1H7a2 2 0 0 1-2-2v-3h1a2 2 0 0 0 0-4H5V7a2 2 0 0 1 2-2h3V4Z"/></symbol>
@@ -416,9 +419,11 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <p class="lead">Visit each app's repository for progress and launch updates. You can report problems, improve translations, review code, or contribute a change.</p>
       <div class="ways">
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Report a bug</h3><p>Or suggest an improvement in the app's repository. Say what happened and what you expected, and leave out private text, clipboard content, addresses, and keys.</p></div>
-        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-translate"/></svg></span><h3>Improve a translation</h3><p>Improve a translation or clarify an instruction. Langmin, Pastemin, and Netmin each support more than twenty-five languages; Keymin and Agemin are ready for their first.</p></div>
-        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Contribute code</h3><p>Small, focused changes and reviews are welcome, under the contribution terms published in each repository.</p></div>
+        <div class="edge"><span class="badge"><svg class="ic"><use href="#i-code"/></svg></span><h3>Translate or contribute code</h3><p>Improve a translation, clarify an instruction, or send a small, focused change or review, under the contribution terms in each repository. Langmin, Pastemin, and Netmin have more than twenty-five languages each. Keymin and Agemin are ready for their first.</p></div>
         <div class="edge"><span class="badge"><svg class="ic"><use href="#i-hand"/></svg></span><h3>Share an app</h3><p>Tell someone who could use it. A Pro purchase on the Mac App Store supports development.</p></div>
+        <!-- A link rather than a div: data-doc opens the donate page in the
+             dialog, which reads the name and summary from the .t span. -->
+        <a class="edge" id="donate" href="donate/index.html" data-doc="donate/index.html"><span class="badge"><svg class="ic"><use href="#i-heart"/></svg></span><span class="t"><b>Donate</b><span>Send support directly in Bitcoin, Ethereum, Litecoin, or TON. A gift, not a purchase, so it does not unlock Pro.</span></span></a>
       </div>
       <div class="actions">
         <a class="cta primary" href="https://github.com/min-tools"><img class="wordmark" src="logo-wide-white.svg" alt="min.tools" width="2400" height="600">on GitHub</a>
