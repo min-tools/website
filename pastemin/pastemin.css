@@ -278,8 +278,44 @@
   flex: 1;
 }
 
-.pm-head .trash {
+/* Match the app's muted item actions, with filled blue saved metadata. */
+.pm-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
   color: var(--win-muted);
+}
+
+.pm-actions .ic {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.pm-actions .on {
+  color: var(--win-accent);
+  fill: currentColor;
+}
+
+.pm-actions .pm-tag {
+  width: 1.03em;
+  height: 1.03em;
+  transform: translateY(0.5px);
+}
+
+/* Keep the tag's small hole open when the symbol is filled. */
+.pm-actions .pm-tag.on {
+  stroke-width: 0;
+}
+
+.pm-list .pm-saved {
+  width: 0.9em;
+  height: 0.9em;
+  fill: currentColor;
+}
+
+.pm-list .row .pm-tags {
+  margin-top: 0.2em;
+  font-size: 0.8em;
 }
 
 /* Clip long example text to the available preview height. */
@@ -302,6 +338,13 @@
   margin: 0;
   white-space: pre-line;
   overflow-wrap: anywhere;
+}
+
+/* Tags describe the saved item without becoming part of its copied text. */
+.pm-text .pm-tags {
+  margin-bottom: 1em;
+  font-size: 0.8em;
+  color: var(--win-muted);
 }
 
 /* The image example uses the same landscape colors as its row icon. */
@@ -357,7 +400,7 @@
 /* The options menu, floating over the panel in the "your rules" section. */
 .pm-scene {
   position: relative;
-  aspect-ratio: 16 / 12;
+  aspect-ratio: 1;
   container-type: inline-size;
   font-size: clamp(7.5px, 1.75cqw, 14px);
   color: var(--win-fg);
@@ -390,15 +433,27 @@
 
 .pm-scene .menu {
   right: 4%;
-  top: 14%;
+  top: 8%;
   bottom: auto;
-  width: 46%;
+  width: 64%;
 }
 
 .pm-scene .menu .row .sub {
   margin-left: auto;
   color: var(--win-muted);
   font-weight: 400;
+}
+
+/* Small count capsules mirror the starred and tagged filter summaries. */
+.pm-scene .menu .pm-count {
+  margin-left: auto;
+  min-width: 1.7em;
+  padding: 0.1em 0.5em;
+  border-radius: 1em;
+  background: var(--win-fill-2);
+  color: var(--win-muted);
+  font-size: 0.8em;
+  text-align: center;
 }
 
 /* Draw static toggle switches that scale with the options-menu preview. */
@@ -432,13 +487,13 @@
   right: 0.15em;
 }
 
-.pm-scene .menu .note {
+.pm-scene .menu .pm-menu-note {
   padding: 0.5em 0.9em 0.6em;
   font-size: 0.85em;
   color: var(--win-muted);
 }
 
-.pm-scene .menu .note b {
+.pm-scene .menu .pm-menu-note b {
   display: block;
   color: var(--win-fg);
   font-weight: 600;

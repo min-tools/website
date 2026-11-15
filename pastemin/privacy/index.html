@@ -43,10 +43,11 @@ if (window.self !== window.top) {
 </header>
 <main class="doc">
 <h1>Pastemin Privacy Policy</h1>
-<p class="meta">Effective and last updated: October 6, 2026</p>
+<p class="meta">Effective and last updated: November 14, 2026</p>
 <p>This policy explains what data Pastemin handles, where it goes, and how you can control it.</p>
 <h2>Data on your Mac</h2>
 <p>While Pastemin is running, it watches the macOS general pasteboard for changes and stores supported text and images in its app container. Each history record can include the content, the time it was copied, its size, and the source app's display name and bundle identifier. Pastemin uses the source information only to label the item and show the app's icon.</p>
+<p>Stars and custom tags are stored with the item on your Mac. Tags are included in local searches. Copying the same content again keeps its star and tags.</p>
 <p>Pastemin also stores your retention period, global shortcut, menu-bar setting, and setup status. Local builds also store an automatic-paste setting. The Mac App Store build reads Apple's signed original acquisition date to determine the 30-day Pro period. Source and test builds store a local trial start date instead. Trial information is not sent to the developer.</p>
 <p>Pastemin has no account system, advertising, analytics, or tracking SDKs. It does not sync clipboard history through iCloud or a developer-operated service.</p>
 <p>Apple processes Pastemin Pro purchases and does not share payment details with Pastemin's developer. The app reads your Apple purchase status to unlock Pro, including purchases shared through Family Sharing.</p>
@@ -57,9 +58,9 @@ if (window.self !== window.top) {
 <p>The Mac App Store edition leaves pasting to you and does not request Accessibility permission. Press ⌘V in the destination app to paste the selected item.</p>
 <p>Automatic paste is available only in local builds and is disabled by default. After you enable it, the first selected item asks macOS for permission to post events, shown under <strong>System Settings → Privacy &amp; Security → Accessibility</strong>. With permission, Pastemin sends one ⌘V after you choose an item. This feature does not read your keystrokes or inspect another app's interface. If permission is unavailable or denied, Pastemin still copies the item and returns focus to the previous app.</p>
 <h2>Retention and deletion</h2>
-<p>You choose whether Pastemin keeps copied items for one hour, one day, one week, one month, three months, or forever. Expired items and their stored text or image files are removed automatically.</p>
-<p>You can delete one history item or clear the complete history. <strong>Clear Current Clipboard</strong> clears the macOS general pasteboard; it does not clear saved history. Clearing history does not change clipboard content that another app may still hold.</p>
-<p>After the 30-day Pro trial, Pastemin shows and searches only the five newest items without a purchase. Older items remain on this Mac and become visible again if Pro access is restored. The limit does not upload, move, or delete them.</p>
+<p>You choose whether Pastemin keeps copied items for one hour, one day, one week, one month, three months, or forever. Expired unstarred items and their stored text or image files are removed automatically. Starred items remain until you delete them or remove their stars. Removing a star makes the item subject to the retention period again.</p>
+<p>You can delete individual items, including starred items. Clearing history preserves starred items unless you explicitly include them. Clearing the current clipboard removes its contents without deleting stored history. Clearing stored history does not change clipboard content that another app may still hold.</p>
+<p>After the 30-day Pro trial, Free access shows and searches up to five items: the three most recently starred items, when available, plus recent unstarred items to fill the remaining slots. Additional stars remain stored and protected from cleanup. Other unstarred history remains subject to the retention period. Restoring Pro makes all retained items available again. The access limit does not upload, move, or delete items.</p>
 <p>Removing Pastemin and its app container deletes app-managed history and preferences. Apple controls purchase records associated with your Apple Account.</p>
 <h2>Your choices</h2>
 <p>You can quit Pastemin to stop clipboard monitoring, change the retention period, delete individual items, clear all history, or remove Pastemin and its container. In local builds, you can also keep automatic paste disabled or revoke its Accessibility permission in System Settings.</p>

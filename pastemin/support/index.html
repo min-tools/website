@@ -64,11 +64,14 @@ if (window.self !== window.top) {
 <h3>How do I open the history?</h3>
 <p>Press <strong>⌃⌥C</strong>. The search field is ready as soon as the panel opens, so just start typing. Use the arrow keys to move, Return to restore an item, ⌘Delete to delete one, and Escape to close. You can change the shortcut in the options menu (⌘,).</p>
 
+<h3>How do stars and tags work?</h3>
+<p>Star an item with ⌘F to keep it until you delete it. Add or edit tags with ⌘T, then search those words to find it again. You can also filter your history to starred or tagged items. Starred items never expire and are kept when you clear history unless you explicitly include them.</p>
+
 <h3>What happens after the first 30 days?</h3>
-<p>Pastemin starts a 30-day full-access trial after you accept its notice at first launch. No subscription starts and there is no charge. After the trial, Pastemin keeps monitoring the clipboard while the panel shows and searches the five newest items. Older items stay on your Mac, subject to your retention settings, and become visible again when Pro access is restored. Pro is a yearly subscription or a one-time lifetime purchase through the Mac App Store.</p>
+<p>The 30-day full-access trial runs from your first App Store download. No subscription starts and there is no charge. After the trial, Pastemin keeps monitoring the clipboard while you can view and search up to five starred and recent items. Older items stay on your Mac, subject to your retention settings, and become visible again when Pro access is restored. Pro is a yearly subscription or a one-time lifetime purchase through the Mac App Store.</p>
 
 <h3>Something I copied is missing</h3>
-<p>Pastemin ignores clipboard items that the source app marks as concealed, transient, or automatically generated. Password managers and short-lived macOS features commonly use these markers. Items also expire according to the retention period you chose. If access is limited to five items, check whether the trial or Pro subscription has ended.</p>
+<p>Pastemin ignores clipboard items that the source app marks as concealed, transient, or automatically generated. Password managers and short-lived macOS features commonly use these markers. Unstarred items also expire according to the retention period you chose. If access is limited to five items, check whether the trial or Pro subscription has ended.</p>
 
 <h3>Why is automatic paste asking for Accessibility access?</h3>
 <p>Automatic paste sends one ⌘V after you choose an item, which needs macOS event-posting permission. macOS lists it under System Settings → Privacy &amp; Security → Accessibility. Pastemin asks after you enable automatic paste and select an item. It does not read your keystrokes or inspect other apps' interfaces. If you decline, the item is still copied and focus returns to your app.</p>
@@ -77,7 +80,7 @@ if (window.self !== window.top) {
 <p>No. Clipboard history is stored only in Pastemin's sandboxed app container on your Mac. There is no Pastemin account, no analytics, no advertising, and no developer server. See the <a href="../privacy/index.html">privacy policy</a> for details.</p>
 
 <h3>Where is the history stored, and how do I delete it?</h3>
-<p>In Pastemin's own Application Support folder inside its sandbox. The options menu shows how much space it uses and can open the folder in Finder. Delete one item with ⌘Delete, or use Clear History… to remove everything. Removing Pastemin and its container deletes the history and preferences.</p>
+<p>In Pastemin's own Application Support folder inside its sandbox. The options menu shows how much space it uses and can open the folder in Finder. Delete one item with ⌘Delete, or clear history. Starred items are kept unless you explicitly include them. Removing Pastemin and its container deletes the history and preferences.</p>
 
 <h3>Where is the source?</h3>
 <p>The <a href="https://github.com/min-tools/pastemin-macos">app repository</a> holds the public app source under the PolyForm Strict License 1.0.0 with added permissions, so you can read exactly what Pastemin does with your clipboard. Bug reports and contributions are welcome there.</p>

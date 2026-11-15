@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pastemin — Private Clipboard History for Mac</title>
-<meta name="description" content="Keep a searchable history of the text and images you copy on your Mac. Open it from any app with a shortcut, find an earlier item, and put it back on the clipboard. Clipboard history stays on your Mac. No Pastemin account, analytics, or servers.">
+<meta name="description" content="Keep a searchable history of the text and images you copy on your Mac. Star items to keep them, add searchable tags, and restore an earlier copy with a shortcut. Clipboard history stays on your Mac. No Pastemin account, analytics, or servers.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://min.tools/pastemin/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Min Tools">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Pastemin — Private Clipboard History for Mac">
-<meta property="og:description" content="Search copied text and images with a shortcut from any app. Your clipboard history stays on your Mac.">
+<meta property="og:description" content="Search copied text and images, star items to keep them, and add your own tags. Your clipboard history stays on your Mac.">
 <meta property="og:url" content="https://min.tools/pastemin/">
 <meta property="og:image" content="https://min.tools/pastemin/icon.png">
 <meta property="og:image:width" content="512">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Pastemin app icon">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pastemin — Private Clipboard History for Mac">
-<meta name="twitter:description" content="Search copied text and images with a shortcut from any app. Your clipboard history stays on your Mac.">
+<meta name="twitter:description" content="Search copied text and images, star items to keep them, and add your own tags. Your clipboard history stays on your Mac.">
 <meta name="twitter:image" content="https://min.tools/pastemin/icon.png">
 <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
@@ -39,7 +39,7 @@ document.documentElement.classList.add("js");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("motion"); }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","image":"https://min.tools/pastemin/icon.png","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","installUrl":"https://apps.apple.com/app/id6814809346","description":"A native macOS clipboard history: a searchable record of the text and images you copy, opened from any app with a global shortcut, restored with Return, and kept only on your Mac.","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pastemin","url":"https://min.tools/pastemin/","image":"https://min.tools/pastemin/icon.png","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","installUrl":"https://apps.apple.com/app/id6814809346","description":"A native macOS clipboard history: a searchable record of copied text and images, with stars to keep items and tags to find them. Your history stays on your Mac.","author":{"@type":"Person","name":"Ilia Ross","url":"https://github.com/iliaross"},"publisher":{"@type":"Organization","name":"Min Tools","url":"https://min.tools/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 </head>
 <body class="landing">
@@ -54,6 +54,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></symbol>
   <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m21 16-5.5-5-6 6-2-2L3 19"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M14 3h5a2 2 0 0 1 2 2v5a2 2 0 0 1-.6 1.4l-9 9a2 2 0 0 1-2.8 0l-5-5a2 2 0 0 1 0-2.8l9-9A2 2 0 0 1 14 3ZM17.5 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></symbol>
   <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></symbol>
   <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
@@ -91,18 +92,18 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     <div class="wrap">
       <p class="whatsnew"><span class="plat">Linux<em> planned</em></span><span class="plat on">macOS</span><span class="plat">Windows<em> planned</em></span></p>
       <h1>Your clipboard, <span class="grad">ready when you need it</span>.</h1>
-      <p class="sub">Keep a searchable history of the text and images you copy on your Mac. Open it from any app, preview an item, and put it back on the clipboard in a few keystrokes. Your history stays on your Mac.</p>
+      <p class="sub">Keep a searchable history of the text and images you copy on your Mac. Star items to keep them, add searchable tags, and restore an earlier copy in a few keystrokes. Your history stays on your Mac.</p>
       <div class="actions">
         <a class="cta primary" href="https://apps.apple.com/app/id6814809346"><svg class="ic"><use href="#i-mac"/></svg>Download on the Mac App Store</a>
         <a class="cta ghost" href="https://github.com/min-tools/pastemin-macos"><svg class="ic"><use href="#i-code"/></svg>Source on GitHub</a>
       </div>
-      <p class="fine">macOS 14 or later on Apple silicon. 30 days of full access from first launch, with no subscription.</p>
+      <p class="fine">macOS 14 or later on Apple silicon. 30 days of full access from your first App Store download, with no subscription.</p>
     </div>
 
     <!-- A static clipboard example; pastemin.js animates these data-pm
          fields when motion is allowed. -->
     <div class="stage" data-pm>
-      <div class="win pm" role="img" aria-label="The Pastemin panel: a search field in the title row, a history of copied items on the left with the app each came from, and the selected item, a note titled Project brief, shown in full on the right.">
+      <div class="win pm" role="img" aria-label="Pastemin clipboard history with starred items, searchable tags, and a preview of the selected text or image.">
         <div class="pm-bar">
           <svg class="ic clip"><use href="#i-clipboard"/></svg><i class="vr"></i>
           <span class="search" data-pm-search><span class="ph">Clipboard</span><span class="typed" data-pm-typed></span><i class="caret"></i></span>
@@ -112,16 +113,16 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <!-- Row data attributes supply the details; scene pick indexes in
                pastemin.js depend on this order. -->
           <div class="pm-list" data-pm-list>
-            <div class="row on" data-title="Project brief" data-kind="Text" data-source="Notes" data-meta="278 bytes · Sep 20, 2026 at 14:32:17" data-body="Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search."><span class="src notes"></span><div class="t"><b>Project brief</b><span>Notes · 14:32</span></div></div>
+            <div class="row on" data-starred="true" data-tags="work" data-title="Project brief" data-kind="Text" data-source="Notes" data-meta="278 bytes · Sep 20, 2026 at 14:32:17" data-body="Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search."><span class="src notes"></span><div class="t"><b>Project brief</b><span><svg class="ic pm-saved"><use href="#i-star"/></svg> Notes · 14:32</span><span class="pm-tags">work</span></div></div>
             <div class="row" data-title="Meeting notes" data-kind="Text" data-source="Mail" data-meta="164 bytes · Sep 20, 2026 at 14:28:05" data-body="Thursday sync: the launch moves to the 24th. Mira owns the release notes, Tom takes the pricing page, and we go through the beta feedback next week."><span class="src mail"></span><div class="t"><b>Meeting notes</b><span>Mail · 14:28</span></div></div>
             <div class="row" data-title="Release checklist" data-kind="Text" data-source="Notes" data-meta="96 bytes · Sep 20, 2026 at 14:20:41" data-body="Tag the build&#10;Update the screenshots&#10;Check every public link&#10;Submit for review"><span class="src notes"></span><div class="t"><b>Release checklist</b><span>Notes · 14:20</span></div></div>
-            <div class="row" data-title="https://min.tools" data-kind="Text" data-source="Safari" data-meta="17 bytes · Sep 20, 2026 at 14:18:22" data-body="https://min.tools"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span>Safari · 14:18</span></div></div>
+            <div class="row" data-starred="true" data-tags="documentation" data-title="https://min.tools" data-kind="Text" data-source="Safari" data-meta="17 bytes · Sep 20, 2026 at 14:18:22" data-body="https://min.tools"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span><svg class="ic pm-saved"><use href="#i-star"/></svg> Safari · 14:18</span><span class="pm-tags">documentation</span></div></div>
             <div class="row" data-title="Design reference" data-kind="Image" data-source="Finder" data-meta="1.2 MB · Sep 20, 2026 at 14:12:09" data-body=""><span class="src finder"></span><div class="t"><b>Design reference</b><span>Finder · 14:12</span></div></div>
             <div class="empty" hidden>No matching items</div>
           </div>
           <div class="pm-detail">
-            <div class="pm-head"><svg class="ic" data-pm-kind-icon><use href="#i-doc"/></svg><b data-pm-kind>Text</b><span class="spacer"></span><svg class="ic trash"><use href="#i-trash"/></svg></div>
-            <div class="pm-text"><h4 data-pm-title>Project brief</h4><p data-pm-body>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search.</p><div class="pic" data-pm-pic hidden></div></div>
+            <div class="pm-head"><svg class="ic" data-pm-kind-icon><use href="#i-doc"/></svg><b data-pm-kind>Text</b><span class="spacer"></span><span class="pm-actions"><svg class="ic pm-star on" data-pm-star><use href="#i-star"/></svg><svg class="ic pm-tag on" data-pm-tag><use href="#i-tag"/></svg><svg class="ic"><use href="#i-trash"/></svg></span></div>
+            <div class="pm-text"><p class="pm-tags" data-pm-tags>work</p><h4 data-pm-title>Project brief</h4><p data-pm-body>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused, with a clean interface and powerful search.</p><div class="pic" data-pm-pic hidden></div></div>
             <div class="pm-foot"><span data-pm-source>Notes</span><span class="spacer"></span><span data-pm-meta>278 bytes · Sep 20, 2026 at 14:32:17</span></div>
           </div>
         </div>
@@ -131,7 +132,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
     </div>
 
     <ul class="trust reveal" aria-label="Highlights">
-      <li><svg class="ic"><use href="#i-lock"/></svg>History stays on this Mac</li>
+      <li><svg class="ic"><use href="#i-lock"/></svg>History stays on your Mac</li>
       <li><svg class="ic"><use href="#i-eye-off"/></svg>No account, no analytics</li>
       <li><svg class="ic"><use href="#i-image"/></svg>Text and images</li>
       <li><svg class="ic"><use href="#i-keyboard"/></svg>⌃⌥C from any app</li>
@@ -148,15 +149,15 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
         <p class="lead">Pastemin watches the clipboard while it runs and keeps what you copy in its own sandboxed folder. When you need something back, one shortcut opens the history, and Return puts it on the clipboard again.</p>
       </div>
       <div class="edges">
-        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-search"/></svg></span><h3>Find an earlier copy in seconds</h3><p>Press <kbd>⌃⌥C</kbd>, start typing, and search the complete text of your clipboard history. Results update while you type, and the newest copies come first.</p></div>
+        <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-search"/></svg></span><h3>Find an earlier copy in seconds</h3><p>Press <kbd>⌃⌥C</kbd>, start typing, and search the complete text of your clipboard history. Results update while you type, with matching tags and starred items helping you find saved copies.</p></div>
         <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-image"/></svg></span><h3>Text and images together</h3><p>Preview copied text at full length and inspect images without opening another app. Each item shows the app it came from and when.</p></div>
         <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-keyboard"/></svg></span><h3>Made for the keyboard</h3><p>Move with the arrow keys, press Return to restore an item, delete one with <kbd>⌘⌫</kbd>, and dismiss with Escape. The search field is ready the moment the panel opens.</p></div>
         <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Optional automatic paste</h3><p>Pastemin can send one <kbd>⌘V</kbd> after you choose an item. It is off by default and works only after you turn it on and grant macOS permission. It never reads your keystrokes.</p></div>
-        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Your history stays on this Mac</h3><p>Clipboard content lives inside Pastemin's sandbox. There is no Pastemin account, no analytics, no advertising, and no developer server.</p></div>
-        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-clock"/></svg></span><h3>You decide what remains</h3><p>Keep copied items for an hour, a day, a week, a month, three months, or forever. Clear one item, the current clipboard, or the whole history whenever you want.</p></div>
+        <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Your history stays on your Mac</h3><p>Clipboard content lives inside Pastemin's sandbox. There is no Pastemin account, no analytics, no advertising, and no developer server.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-star"/></svg></span><h3>Star it. Keep it.</h3><p>Star links, notes, or images to keep them until you delete them. Starred items survive automatic cleanup and stay when you clear history, unless you include them.</p></div>
         <div class="edge reveal"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Sensitive items are respected</h3><p>Pastemin skips entries marked concealed, temporary, or automatically generated. Password managers use these markers to keep sensitive items out of clipboard history.</p></div>
         <div class="edge reveal d1"><span class="badge"><svg class="ic"><use href="#i-menubar"/></svg></span><h3>At home on macOS</h3><p>Use the menu bar, choose your own global shortcut, and work in any of thirty-one interface languages. Native AppKit and SwiftUI, on Apple silicon.</p></div>
-        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-level"/></svg></span><h3>Fast with a long history</h3><p>Large text and image payloads load only when needed, so a long history does not have to enter memory at launch. The list renders in batches as you scroll.</p></div>
+        <div class="edge reveal d2"><span class="badge"><svg class="ic"><use href="#i-tag"/></svg></span><h3>Your tags, easy to find</h3><p>Add tags such as work or documentation. Search them like any other word, or filter your history to starred or tagged items.</p></div>
       </div>
     </div>
   </section>
@@ -166,26 +167,24 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="copy reveal">
         <p class="eyebrow"><svg class="ic"><use href="#i-search"/></svg>Find and restore</p>
         <h2>Type a word. Press Return.</h2>
-        <p class="lead">Start typing in the search field to find matches in the full text of your accessible history. Choose an item to copy it again and return to the app you were using.</p>
+        <p class="lead">Search copied text and your own tags to find items in your accessible history. Choose an item to copy it again and return to the app you were using.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-text"/></svg></span><div><h3>Full-text search</h3><p>Search the full text of accessible items, including long notes. After the trial, the free tier searches the five newest items.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-text"/></svg></span><div><h3>Search text and tags</h3><p>Find a saved link by its tag, even when the word is missing from the URL. Search also covers the full text of accessible items, including long notes.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-arrow-right"/></svg></span><div><h3>Back to the top</h3><p>Restoring an older item copies it again and moves it to the top of the history.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-copy"/></svg></span><div><h3>Copy only, or paste too</h3><p>By default the item is copied and you paste it yourself. With automatic paste on and allowed, Pastemin pastes it for you.</p></div></li>
         </ul>
       </div>
       <div class="visual reveal d1 frame" aria-hidden="true">
         <div class="win pm">
-          <div class="pm-bar"><svg class="ic clip"><use href="#i-clipboard"/></svg><i class="vr"></i><span class="search filled"><span class="ph">Clipboard</span><span class="typed">brief</span><i class="caret"></i></span><span class="spacer"></span><span class="more">···</span></div>
+          <div class="pm-bar"><svg class="ic clip"><use href="#i-clipboard"/></svg><i class="vr"></i><span class="search filled"><span class="ph">Clipboard</span><span class="typed">documentation</span><i class="caret"></i></span><span class="spacer"></span><span class="more">···</span></div>
           <div class="pm-body">
             <div class="pm-list">
-              <div class="row on"><span class="src notes"></span><div class="t"><b>Project brief</b><span>Notes · 14:32</span></div></div>
-              <div class="row"><span class="src mail"></span><div class="t"><b>Re: brief for the launch page</b><span>Mail · Yesterday</span></div></div>
-              <div class="row"><span class="src finder"></span><div class="t"><b>Brief v3.pdf outline</b><span>Finder · Sep 18</span></div></div>
+              <div class="row on"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span><svg class="ic pm-saved"><use href="#i-star"/></svg> Safari · 14:18</span><span class="pm-tags">documentation</span></div></div>
             </div>
             <div class="pm-detail">
-              <div class="pm-head"><svg class="ic"><use href="#i-doc"/></svg><b>Text</b><span class="spacer"></span><svg class="ic trash"><use href="#i-trash"/></svg></div>
-              <div class="pm-text"><h4>Project brief</h4><p>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy. Keep the experience native, fast, and privacy-focused.</p></div>
-              <div class="pm-foot"><span>Notes</span><span class="spacer"></span><span>278 bytes · Sep 20, 2026 at 14:32:17</span></div>
+              <div class="pm-head"><svg class="ic"><use href="#i-doc"/></svg><b>Text</b><span class="spacer"></span><span class="pm-actions"><svg class="ic pm-star on"><use href="#i-star"/></svg><svg class="ic pm-tag on"><use href="#i-tag"/></svg><svg class="ic"><use href="#i-trash"/></svg></span></div>
+              <div class="pm-text"><p class="pm-tags">documentation</p><p>https://min.tools</p></div>
+              <div class="pm-foot"><span>Safari</span><span class="spacer"></span><span>17 bytes · Nov 15, 2026 at 14:18:22</span></div>
             </div>
           </div>
         </div>
@@ -198,10 +197,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="copy reveal">
         <p class="eyebrow"><svg class="ic"><use href="#i-clock"/></svg>Your clipboard, your rules</p>
         <h2>Keep it for an hour, or for good.</h2>
-        <p class="lead">Choose how long copied items remain, whether Pastemin sits in the menu bar, and which shortcut opens it. Expired items and their stored files are removed automatically.</p>
+        <p class="lead">Choose how long copied items remain, whether Pastemin sits in the menu bar, and which shortcut opens it. Expired unstarred items and their stored files are removed automatically.</p>
         <ul class="feats">
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-clock"/></svg></span><div><h3>Retention you set</h3><p>One hour, one day, one week, one month, three months, or forever. Change it any time; the history follows.</p></div></li>
-          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-broom"/></svg></span><div><h3>Clear what you want</h3><p>Delete one item with <kbd>⌘⌫</kbd>, clear the current clipboard, or clear the whole history. Clearing history leaves what other apps still hold untouched.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-clock"/></svg></span><div><h3>Retention you set</h3><p>One hour, one day, one week, one month, three months, or forever. Starred items never expire.</p></div></li>
+          <li class="feat"><span class="badge"><svg class="ic"><use href="#i-broom"/></svg></span><div><h3>Clear what you want</h3><p>Delete one item with <kbd>⌘⌫</kbd>, clear the current clipboard, or clear history. Starred items are kept unless you explicitly include them. Clearing history leaves what other apps still hold untouched.</p></div></li>
           <li class="feat"><span class="badge"><svg class="ic"><use href="#i-folder"/></svg></span><div><h3>See where it lives</h3><p>The storage summary shows how much space the history uses, and Show in Finder opens its local folder.</p></div></li>
         </ul>
       </div>
@@ -211,27 +210,30 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
             <div class="pm-bar"><svg class="ic clip"><use href="#i-clipboard"/></svg><i class="vr"></i><span class="search"><span class="ph">Clipboard</span></span><span class="spacer"></span><span class="more">···</span></div>
             <div class="pm-body">
               <div class="pm-list">
-                <div class="row on"><span class="src notes"></span><div class="t"><b>Project brief</b><span>Notes · 14:32</span></div></div>
+                <div class="row on"><span class="src notes"></span><div class="t"><b>Project brief</b><span><svg class="ic pm-saved"><use href="#i-star"/></svg> Notes · 14:32</span><span class="pm-tags">work</span></div></div>
                 <div class="row"><span class="src mail"></span><div class="t"><b>Meeting notes</b><span>Mail · 14:28</span></div></div>
                 <div class="row"><span class="src notes"></span><div class="t"><b>Release checklist</b><span>Notes · 14:20</span></div></div>
-                <div class="row"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span>Safari · 14:18</span></div></div>
+                <div class="row"><span class="src safari"></span><div class="t"><b>https://min.tools</b><span><svg class="ic pm-saved"><use href="#i-star"/></svg> Safari · 14:18</span><span class="pm-tags">documentation</span></div></div>
               </div>
               <div class="pm-detail">
-                <div class="pm-head"><svg class="ic"><use href="#i-doc"/></svg><b>Text</b><span class="spacer"></span></div>
-                <div class="pm-text"><h4>Project brief</h4><p>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy.</p></div>
+                <div class="pm-head"><svg class="ic"><use href="#i-doc"/></svg><b>Text</b><span class="spacer"></span><span class="pm-actions"><svg class="ic pm-star on"><use href="#i-star"/></svg><svg class="ic pm-tag on"><use href="#i-tag"/></svg><svg class="ic"><use href="#i-trash"/></svg></span></div>
+                <div class="pm-text"><p class="pm-tags">work</p><h4>Project brief</h4><p>Build a lightweight macOS clipboard history app that helps users quickly find and reuse everything they copy.</p></div>
               </div>
             </div>
           </div>
           <div class="menu">
+            <div class="row">Starred Items<span class="pm-count">2</span></div>
+            <div class="row">Tagged Items<span class="pm-count">2</span></div>
+            <hr>
             <div class="row"><svg class="ic"><use href="#i-broom"/></svg>Clear Current Clipboard</div>
             <div class="row"><svg class="ic"><use href="#i-trash"/></svg>Clear History…</div>
             <hr>
-            <div class="row on"><svg class="ic"><use href="#i-clock"/></svg>Keep copied items<span class="sub">1 month</span><svg class="ic chev"><use href="#i-chev-right"/></svg></div>
-            <div class="row"><svg class="ic"><use href="#i-menubar"/></svg>Show in menu bar<span class="sw on"><i></i></span></div>
-            <div class="row"><svg class="ic"><use href="#i-bolt"/></svg>Paste automatically<span class="sw"><i></i></span></div>
+            <div class="row on"><svg class="ic"><use href="#i-clock"/></svg>Keep Copied Items<span class="sub">1 month</span><svg class="ic chev"><use href="#i-chev-right"/></svg></div>
+            <div class="row"><svg class="ic"><use href="#i-menubar"/></svg>Show in Menu Bar<span class="sw on"><i></i></span></div>
+            <div class="row"><svg class="ic"><use href="#i-bolt"/></svg>Paste Automatically<span class="sw"><i></i></span></div>
             <div class="row"><svg class="ic"><use href="#i-keyboard"/></svg>Show Pastemin<span class="sub">⌃⌥C</span></div>
             <hr>
-            <div class="note"><b>Local storage · 12.4 MB</b>Clipboard history never leaves this Mac<br>Show in Finder</div>
+            <div class="pm-menu-note"><b>Local Storage · 12.4 MB</b>Clipboard history never leaves your Mac<br>Show in Finder</div>
           </div>
           <div class="submenu">
             <div class="row">1 hour</div>
@@ -261,8 +263,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="visual reveal d1 frame" aria-hidden="true">
         <div class="ledger">
           <div class="head"><svg class="ic"><use href="#i-clipboard"/></svg>What Pastemin keeps</div>
-          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Project brief</b><span>Text from Notes</span></div><span class="tag ok">Kept on this Mac</span></div>
-          <div class="row"><svg class="ic"><use href="#i-image"/></svg><div class="t"><b>Design reference.png</b><span>Image from Finder</span></div><span class="tag ok">Kept on this Mac</span></div>
+          <div class="row"><svg class="ic"><use href="#i-doc"/></svg><div class="t"><b>Project brief</b><span>Text from Notes</span></div><span class="tag ok">Kept on your Mac</span></div>
+          <div class="row"><svg class="ic"><use href="#i-image"/></svg><div class="t"><b>Design reference.png</b><span>Image from Finder</span></div><span class="tag ok">Kept on your Mac</span></div>
           <div class="row"><svg class="ic"><use href="#i-key"/></svg><div class="t"><b>••••••••••••</b><span>Marked concealed by a password manager</span></div><span class="tag no">Skipped</span></div>
           <div class="row"><svg class="ic"><use href="#i-clock"/></svg><div class="t"><b>Verification code</b><span>Marked transient by macOS</span></div><span class="tag no">Skipped</span></div>
           <div class="row"><svg class="ic"><use href="#i-eye-off"/></svg><div class="t"><b>Anything at all</b><span>To the developer</span></div><span class="tag no">Never sent</span></div>
@@ -281,8 +283,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="keymap reveal">
         <div class="key"><kbd>⌃⌥C</kbd><div><b>Open Pastemin</b><span>From any app, by default</span></div></div>
         <div class="key"><kbd>a–z</kbd><div><b>Search</b><span>Just start typing</span></div></div>
-        <div class="key"><kbd>↑ ↓</kbd><div><b>Move through results</b><span>Newest first</span></div></div>
+        <div class="key"><kbd>↑ ↓</kbd><div><b>Move through results</b><span>Choose a matching item</span></div></div>
         <div class="key"><kbd>↩</kbd><div><b>Restore the selected item</b><span>Back on the clipboard</span></div></div>
+        <div class="key"><kbd>⌘F</kbd><div><b>Star or unstar an item</b><span>Keep an item for later</span></div></div>
+        <div class="key"><kbd>⌘T</kbd><div><b>Edit tags</b><span>Your words, searchable</span></div></div>
         <div class="key"><kbd>⌘⌫</kbd><div><b>Delete the selected item</b><span>Gone from the history</span></div></div>
         <div class="key"><kbd>esc</kbd><div><b>Close Pastemin</b><span>Back to your app</span></div></div>
         <div class="key"><kbd>⌘,</kbd><div><b>Open options</b><span>Retention, shortcut, menu bar</span></div></div>
@@ -295,7 +299,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
       <div class="sec-head center reveal">
         <p class="eyebrow"><svg class="ic"><use href="#i-star"/></svg>Pastemin Pro</p>
         <h2>Full history for 30 days. Then choose.</h2>
-        <p class="lead">Free to download, with 30 days of full access. After the trial, the free tier shows and searches your five newest items. Pro gives you access to your complete history.</p>
+        <p class="lead">Free to download, with 30 days of full access. After the trial, you can view and search up to five starred and recent items. Pro gives you access to your complete history.</p>
       </div>
       <div class="plans">
         <div class="plan reveal">
@@ -303,8 +307,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <p class="tag">Still watching, still private.</p>
           <ul>
             <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Clipboard monitoring continues</div></li>
-            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Shows and searches the five newest items</div></li>
-            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Older items stay until their retention period expires <span>· visible again if Pro is restored</span></div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>View and search up to five starred and recent items</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Starred items stay saved; other items follow your retention settings <span>· visible again if Pro is restored</span></div></li>
             <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Retention, shortcut, menu bar, and automatic paste settings</div></li>
             <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Text and image previews</div></li>
           </ul>
@@ -318,7 +322,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { document.d
           <p class="tag">Access your complete history.</p>
           <ul>
             <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Unlimited history in the panel and in search</div></li>
-            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Everything the trial included</div></li>
+            <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Unlimited stars, plus everything the trial included</div></li>
             <li><svg class="ic"><use href="#i-check-circle"/></svg><div>Family Sharing <span>· yearly and lifetime purchases</span></div></li>
           </ul>
           <div class="tiers">

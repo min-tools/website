@@ -20,6 +20,9 @@
     kind: find("[data-pm-kind]"),
     kindIcon: find("[data-pm-kind-icon] use"),
     title: find("[data-pm-title]"),
+    star: find("[data-pm-star]"),
+    tag: find("[data-pm-tag]"),
+    tags: find("[data-pm-tags]"),
     body: find("[data-pm-body]"),
     pic: find("[data-pm-pic]"),
     source: find("[data-pm-source]"),
@@ -30,11 +33,16 @@
   const select = (row) => {
     // Row callback(candidate): mark only the row supplying the detail pane.
     rows.forEach((candidate) => candidate.classList.toggle("on", candidate === row));
-    const { kind, title, body, source, meta } = row.dataset;
+    const { kind, title, body, source, meta, starred, tags = "" } = row.dataset;
     const image = kind === "Image";
     // Fill the detail pane from this row's example data.
     ui.kind.textContent = kind;
     ui.kindIcon.setAttribute("href", image ? "#i-image" : "#i-doc");
+    // Saved metadata follows the selected example, including untagged items.
+    ui.star.classList.toggle("on", starred === "true");
+    ui.tag.classList.toggle("on", tags !== "");
+    ui.tags.textContent = tags;
+    ui.tags.hidden = tags === "";
     ui.title.textContent = title;
     ui.body.textContent = body;
     // An image item shows a picture instead of text.
@@ -44,12 +52,12 @@
     ui.meta.textContent = meta;
   };
 
-  // filter(query): keeps only the rows whose title or text contains the query, and selects the first of them.
+  // filter(query): keeps only the rows whose title, text, or tags contain the query, and selects the first of them.
   const filter = (query) => {
     const needle = query.toLowerCase();
-    // Filter callback(row): match title and body, or show every row for no query.
+    // Filter callback(row): match title, body, and tags, or show every row for no query.
     const shown = rows.filter((row) => {
-      const hit = needle === "" || `${row.dataset.title} ${row.dataset.body}`.toLowerCase().includes(needle);
+      const hit = needle === "" || `${row.dataset.title} ${row.dataset.body} ${row.dataset.tags || ""}`.toLowerCase().includes(needle);
       row.hidden = !hit;
       return hit;
     });
@@ -62,7 +70,7 @@
   const scenes = [
     { query: "launch", pick: 1 },
     { query: "design", pick: 4 },
-    { query: "min.tools", pick: 3 },
+    { query: "documentation", pick: 3 },
     { query: "review", pick: 2 }
   ];
 
